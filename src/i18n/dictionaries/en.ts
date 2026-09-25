@@ -559,6 +559,10 @@ const en: Dictionary = {
   consent: {
     title: "Cookies on the ForceCar website",
     text: "We use necessary cookies to make the site work. With your consent, we also use analytics and marketing cookies to understand how the site is used and to measure our campaigns.",
+    textAnalytics:
+      "We use necessary cookies to make the site work. With your consent, we also use analytics cookies to understand how the site is used.",
+    textMarketing:
+      "We use necessary cookies to make the site work. With your consent, we also use marketing cookies to measure our campaigns.",
     acceptAll: "Accept all",
     rejectAll: "Necessary only",
     customize: "Settings",

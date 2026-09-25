@@ -89,7 +89,7 @@ export const business: BusinessConfig = {
     countryCode: "MD",
     countryName: "Republica Moldova",
   },
-  geo: null, // ⚠ OWNER: { lat: 47.0, lng: 28.8 } — coordonatele exacte din Google Maps
+  geo: { lat: 47.007, lng: 28.709571 }, // confirmat de proprietar
 
   // ⚠ OWNER: programul real, ex. [{ days: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "09:00", closes: "18:00" }]
   openingHours: [],

@@ -80,7 +80,13 @@ export function ConsentManager({ labels, policyHref }: { labels: Dictionary["con
         >
           <p className="font-extrabold">{labels.title}</p>
           <p className="mt-2 text-sm leading-relaxed text-muted">
-            {labels.text}{" "}
+            {hasAnalytics && hasMarketing
+              ? labels.text
+              : hasAnalytics
+                ? labels.textAnalytics
+                : hasMarketing
+                  ? labels.textMarketing
+                  : labels.text}{" "}
             <Link href={policyHref} className="font-semibold text-text underline underline-offset-2">
               {labels.policyLink}
             </Link>
