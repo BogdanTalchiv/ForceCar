@@ -7,10 +7,29 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath } from "@/i18n/routes";
 import { phoneLink } from "@/lib/business-info";
 import { fmt } from "@/lib/format";
-import { serviceLinks } from "@/lib/navigation";
+import { serviceLinks, type ServiceLink } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
 import { FcImage } from "@/components/ui/FcImage";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
+
+function HeroServicePills({ services, hidden }: { services: ServiceLink[]; hidden?: boolean }) {
+  return (
+    <ul className="flex items-center gap-2 pr-2" aria-hidden={hidden || undefined}>
+      {services.map((s) => (
+        <li key={`${hidden ? "dup" : "src"}-${s.id}`} className="shrink-0">
+          <Link
+            href={s.href}
+            tabIndex={hidden ? -1 : undefined}
+            className="flex h-9 items-center gap-2 rounded-md px-3 text-sm font-semibold whitespace-nowrap text-white/80 ring-1 ring-white/12 transition-colors hover:bg-white/8 hover:text-white"
+          >
+            <ServiceIcon name={s.icon} className="size-4 text-brand" />
+            {s.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function Hero({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
@@ -18,6 +37,7 @@ export function Hero({ locale }: { locale: Locale }) {
   const years = business.experienceYears;
   const image = getImage(forceCarImages.hero, locale);
   const phone = phoneLink();
+  const services = serviceLinks(locale);
 
   return (
     <section aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-ink-900 text-white">
@@ -76,19 +96,12 @@ export function Hero({ locale }: { locale: Locale }) {
       <div className="relative border-t border-white/8 bg-ink-950/70 backdrop-blur-sm">
         <div className="container-fc flex items-center gap-5 py-3.5">
           <p className="hidden shrink-0 text-xs font-bold tracking-[0.14em] text-steel-400 uppercase md:block">{t.servicesLabel}</p>
-          <ul className="-mx-1 flex gap-2 overflow-x-auto px-1 py-0.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" aria-label={t.servicesLabel}>
-            {serviceLinks(locale).map((s) => (
-              <li key={s.id} className="shrink-0">
-                <Link
-                  href={s.href}
-                  className="flex h-9 items-center gap-2 rounded-md px-3 text-sm font-semibold text-white/80 ring-1 ring-white/12 transition-colors hover:bg-white/8 hover:text-white"
-                >
-                  <ServiceIcon name={s.icon} className="size-4 text-brand" />
-                  {s.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="hero-services-ticker min-w-0 flex-1" role="region" aria-label={t.servicesLabel}>
+            <div className="hero-services-ticker__track">
+              <HeroServicePills services={services} />
+              <HeroServicePills services={services} hidden />
+            </div>
+          </div>
         </div>
       </div>
     </section>

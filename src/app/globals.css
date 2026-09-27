@@ -259,3 +259,36 @@
 .animate-fade-up {
   animation: fc-fade-up 0.35s var(--ease-out-soft) both;
 }
+
+@keyframes fc-ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.hero-services-ticker {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 1.25rem, #000 calc(100% - 1.25rem), transparent);
+}
+
+.hero-services-ticker__track {
+  display: flex;
+  width: max-content;
+  animation: fc-ticker 36s linear infinite;
+}
+
+.hero-services-ticker:hover .hero-services-ticker__track,
+.hero-services-ticker:focus-within .hero-services-ticker__track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-services-ticker__track {
+    animation: none !important;
+    width: 100%;
+  }
+
+  .hero-services-ticker [aria-hidden="true"] {
+    display: none;
+  }
+}
