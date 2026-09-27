@@ -41,7 +41,7 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
     <footer className="bg-ink-950 text-white">
       <div className="container-fc grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr] lg:gap-12 lg:py-16">
         <div>
-          <Logo />
+          <Logo size="lg" />
           <p className="mt-5 max-w-xs text-[0.9375rem] leading-relaxed text-white/70">
             {fmt(dict.entity.statement, { years: business.experienceYears })}
           </p>

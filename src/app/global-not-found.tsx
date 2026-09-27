@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { localeMeta, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { Logo } from "@/components/layout/Logo";
 import { manrope } from "./fonts";
 
 export const metadata: Metadata = {
@@ -17,9 +18,7 @@ export default function GlobalNotFound() {
       <body className="pb-0!">
         <main className="flex min-h-dvh flex-col justify-center bg-ink-900 text-white">
           <div className="container-fc py-16">
-            <p className="text-2xl font-extrabold tracking-[0.04em]">
-              FORCE<span className="text-brand">CAR</span>
-            </p>
+            <Logo size="lg" />
             <p className="mt-10 text-7xl font-extrabold text-brand">404</p>
             <h1 className="mt-4 text-h2 font-extrabold">{ro.notFound.title}</h1>
             <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:max-w-3xl">

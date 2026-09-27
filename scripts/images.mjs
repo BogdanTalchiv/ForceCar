@@ -92,18 +92,34 @@ for (const file of files.sort()) {
 
 await writeFile(MANIFEST, JSON.stringify(manifest, null, 2) + "\n", "utf8");
 
-// Iconițe PNG (Apple touch icon + manifest) generate din src/app/icon.svg.
+// Iconițe PNG (Apple touch icon + manifest) din semnul F al logoului oficial, altfel din icon.svg.
 const ICON_SVG = path.join(ROOT, "src", "app", "icon.svg");
+const LOGO_PNG = path.join(IMAGES_DIR, OG_DIR_NAME, "forcecarlogo2.png");
+const iconSource = (await stat(LOGO_PNG).then(() => LOGO_PNG).catch(() => null)) ?? ICON_SVG;
 const iconTargets = [
   [path.join(ROOT, "src", "app", "apple-icon.png"), 180],
   [path.join(ROOT, "public", "brand", "icon-192.png"), 192],
   [path.join(ROOT, "public", "brand", "icon-512.png"), 512],
 ];
+
+async function brandMark(size) {
+  if (iconSource === LOGO_PNG) {
+    return sharp(LOGO_PNG)
+      .extract({ left: 910, top: 196, width: 290, height: 270 })
+      .resize(size, size, { fit: "contain", background: { r: 11, g: 12, b: 14, alpha: 1 } })
+      .flatten({ background: { r: 11, g: 12, b: 14 } })
+      .ensureAlpha()
+      .png()
+      .toBuffer();
+  }
+  return sharp(ICON_SVG, { density: 72 * (size / 64) }).ensureAlpha().resize(size, size).png().toBuffer();
+}
+
 await mkdir(path.join(ROOT, "public", "brand"), { recursive: true });
 for (const [target, size] of iconTargets) {
-  if (await isFresh(target, ICON_SVG)) continue;
+  if (await isFresh(target, iconSource)) continue;
   try {
-    await sharp(ICON_SVG, { density: 72 * (size / 64) }).resize(size, size).png().toFile(target);
+    await sharp(await brandMark(size)).toFile(target);
   } catch (err) {
     warnings.push(`Iconița ${path.basename(target)} nu a putut fi generată: ${err.message}`);
   }
@@ -111,10 +127,10 @@ for (const [target, size] of iconTargets) {
 
 // favicon.ico (PNG încapsulat în ICO: 16, 32, 48 px) — browserele îl cer implicit la fiecare vizită.
 const FAVICON = path.join(ROOT, "src", "app", "favicon.ico");
-if (!(await isFresh(FAVICON, ICON_SVG))) {
+if (!(await isFresh(FAVICON, iconSource))) {
   try {
     const sizes = [16, 32, 48];
-    const pngs = await Promise.all(sizes.map((s) => sharp(ICON_SVG, { density: 72 * (s / 64) * 2 }).resize(s, s).png().toBuffer()));
+    const pngs = await Promise.all(sizes.map((s) => brandMark(s)));
     const header = Buffer.alloc(6 + 16 * sizes.length);
     header.writeUInt16LE(0, 0);
     header.writeUInt16LE(1, 2);

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { business } from "@/config/business";
 import type { ResolvedImage } from "@/config/forcecar-images";
 
 interface FcImageProps {
@@ -37,9 +38,13 @@ export function FcImage({ image, sizes, className = "", fill = false, preload = 
 export function ImageFallback({ className = "" }: { className?: string }) {
   return (
     <div aria-hidden="true" className={`flex items-center justify-center bg-ink-800 ${className}`}>
-      <span className="text-sm font-extrabold tracking-[0.2em] text-white/25">
-        FORCE<span className="text-brand/60">CAR</span>
-      </span>
+      {business.logo ? (
+        <Image src={business.logo} alt="" width={2117} height={743} className="h-12 w-auto opacity-35" />
+      ) : (
+        <span className="text-sm font-extrabold tracking-[0.2em] text-white/25">
+          FORCE<span className="text-brand/60">CAR</span>
+        </span>
+      )}
     </div>
   );
 }

@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Bot, CalendarCheck, Phone, Send, X } from "lucide-react";
+import { business } from "@/config/business";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { chatLimits } from "@/config/site";
 import type { Locale } from "@/i18n/config";
@@ -152,9 +154,13 @@ export default function ChatWidget({ locale, labels, bookingHref, contactHref, p
       className="fixed inset-0 z-50 flex flex-col bg-white shadow-float lg:inset-auto lg:right-6 lg:bottom-6 lg:h-[min(40rem,calc(100dvh-3rem))] lg:w-[24rem] lg:overflow-hidden lg:rounded-xl lg:ring-1 lg:ring-black/10"
     >
       <header className="flex shrink-0 items-center gap-3 bg-ink-900 px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] text-white">
-        <span className="flex size-10 items-center justify-center rounded-full bg-brand">
-          <Bot className="size-5" aria-hidden="true" />
-        </span>
+        {business.logo ? (
+          <Image src={business.logo} alt="" width={2117} height={743} className="h-9 w-auto" />
+        ) : (
+          <span className="flex size-10 items-center justify-center rounded-full bg-brand">
+            <Bot className="size-5" aria-hidden="true" />
+          </span>
+        )}
         <div className="min-w-0 flex-1">
           <h2 id="fc-chat-title" className="truncate font-extrabold">
             {labels.name}

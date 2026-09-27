@@ -1,4 +1,5 @@
 import { business } from "@/config/business";
+import { siteConfig } from "@/config/site";
 import { getService, type ServiceId } from "@/config/services";
 import { getServiceContent } from "@/content/services";
 import { localeMeta, type Locale } from "@/i18n/config";
@@ -95,7 +96,11 @@ function layout({ preheader, header, body, lang }: { preheader: string; header: 
 <tr><td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:640px;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid ${LINE};">
 <tr><td style="background:${INK};padding:20px 32px;border-bottom:4px solid ${BRAND};">
-  <span style="color:#ffffff;font-size:20px;font-weight:800;letter-spacing:.02em;">FORCE<span style="color:${BRAND};">CAR</span></span>
+  ${
+    business.logo
+      ? `<img src="${e(`${siteConfig.url}${business.logo}`)}" alt="ForceCar" height="44" style="height:44px;width:auto;display:block;border:0;" />`
+      : `<span style="color:#ffffff;font-size:20px;font-weight:800;letter-spacing:.02em;">FORCE<span style="color:${BRAND};">CAR</span></span>`
+  }
   <div style="color:#C9CDD2;font-size:13px;margin-top:4px;">${e(header)}</div>
 </td></tr>
 ${body}

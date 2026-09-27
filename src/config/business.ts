@@ -108,7 +108,7 @@ export const business: BusinessConfig = {
     walkInsAccepted: null, // ⚠ OWNER: primiți clienți fără programare?
   },
 
-  logo: null, // ⚠ OWNER: ex. "/brand/forcecar-logo.svg"
+  logo: "/images/forcecar/_og/forcecarlogo2.png",
 };
 
 /** Lista câmpurilor esențiale care lipsesc — afișată în dev și la build. */

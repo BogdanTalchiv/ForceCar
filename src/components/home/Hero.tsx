@@ -9,8 +9,8 @@ import { phoneLink } from "@/lib/business-info";
 import { fmt } from "@/lib/format";
 import { serviceLinks, type ServiceLink } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
-import { FcImage } from "@/components/ui/FcImage";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
+import { HeroMedia } from "./HeroMedia";
 
 function HeroServicePills({ services, hidden }: { services: ServiceLink[]; hidden?: boolean }) {
   return (
@@ -41,18 +41,18 @@ export function Hero({ locale }: { locale: Locale }) {
 
   return (
     <section aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-ink-900 text-white">
-      {/* Mobil: fotografia deasupra textului. Desktop: fotografia în dreapta, mecanicul rămâne vizibil. */}
-      <div className="relative aspect-[4/3] sm:aspect-[16/9] lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[58%]">
-        <FcImage image={image} fill preload quality={72} sizes="(min-width: 1024px) 58vw, 100vw" />
+      <div className="absolute inset-0">
+        <HeroMedia poster={image} />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-linear-to-t from-ink-900 via-ink-900/10 via-45% to-transparent lg:bg-linear-to-r lg:from-ink-900 lg:via-ink-900/0 lg:via-28% lg:to-transparent"
+          className="absolute inset-0 bg-linear-to-r from-ink-900 from-0% via-ink-900/82 via-40% to-ink-900/25 lg:via-36% lg:to-ink-900/10"
         />
-        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 hidden h-40 bg-linear-to-t from-ink-900/80 to-transparent lg:block" />
+        <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgb(11_12_14/0.5))]" />
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-28 bg-linear-to-t from-ink-900 to-transparent" />
       </div>
 
       <div className="container-fc relative">
-        <div className="-mt-14 pb-12 sm:-mt-24 sm:pb-14 lg:mt-0 lg:flex lg:min-h-[min(44rem,calc(100svh-7.5rem))] lg:max-w-[34rem] lg:flex-col lg:justify-center lg:py-20 xl:max-w-[38rem]">
+        <div className="flex min-h-[32rem] flex-col justify-end py-14 sm:min-h-[36rem] sm:py-16 lg:min-h-[min(44rem,calc(100svh-7.5rem))] lg:max-w-[36rem] lg:justify-center lg:py-20 xl:max-w-[40rem]">
           <p className="eyebrow">{t.eyebrow}</p>
           <h1 id="hero-title" className="mt-5 text-display font-extrabold text-balance">
             {fmt(t.title, { years })}
@@ -93,7 +93,7 @@ export function Hero({ locale }: { locale: Locale }) {
         </div>
       </div>
 
-      <div className="relative border-t border-white/8 bg-ink-950/70 backdrop-blur-sm">
+      <div className="relative border-t border-white/8 bg-ink-950/80 backdrop-blur-md">
         <div className="container-fc flex items-center gap-5 py-3.5">
           <p className="hidden shrink-0 text-xs font-bold tracking-[0.14em] text-steel-400 uppercase md:block">{t.servicesLabel}</p>
           <div className="hero-services-ticker min-w-0 flex-1" role="region" aria-label={t.servicesLabel}>
