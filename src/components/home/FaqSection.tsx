@@ -6,13 +6,13 @@ import { pagePath } from "@/i18n/routes";
 import type { FaqItem } from "@/lib/faq";
 import { buttonClasses } from "@/components/ui/button";
 import { FaqList } from "@/components/faq/FaqList";
-import { Section } from "@/components/ui/Section";
+import { TechSurface } from "@/components/ui/TechSurface";
 
 export function FaqSection({ locale, items, tone = "white" }: { locale: Locale; items: FaqItem[]; tone?: "white" | "mist" }) {
   const dict = getDictionary(locale);
   const t = dict.home.faq;
   return (
-    <Section labelledBy="faq-title" tone={tone}>
+    <TechSurface variant="diagnostic" labelledBy="faq-title" tone={tone}>
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div>
           <p className="eyebrow mb-4">{t.eyebrow}</p>
@@ -26,6 +26,6 @@ export function FaqSection({ locale, items, tone = "white" }: { locale: Locale; 
         </div>
         <FaqList items={items} />
       </div>
-    </Section>
+    </TechSurface>
   );
 }

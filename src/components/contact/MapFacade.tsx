@@ -11,11 +11,13 @@ export function MapFacade({
   mapsUrl,
   labels,
   cover,
+  coords,
 }: {
   embedUrl: string;
   mapsUrl: string | null;
   labels: { title: string; load: string; notice: string; open: string };
   cover?: ResolvedImage | null;
+  coords?: { lat: number; lng: number } | null;
 }) {
   const [active, setActive] = useState(false);
   return (
@@ -41,7 +43,7 @@ export function MapFacade({
               className="absolute inset-0 [background-image:radial-gradient(circle_at_center,rgb(255_255_255/0.06)_1px,transparent_1px)] [background-size:22px_22px]"
             />
           )}
-          <span className="relative z-10 flex size-12 items-center justify-center rounded-md bg-brand">
+          <span className="map-pin relative z-10 flex size-12 items-center justify-center rounded-md bg-brand">
             <MapPin className="size-6" strokeWidth={1.75} aria-hidden="true" />
           </span>
           <button type="button" onClick={() => setActive(true)} className="relative z-10 h-11 rounded-md bg-white px-5 font-bold text-ink-900 hover:bg-mist">
@@ -58,6 +60,11 @@ export function MapFacade({
               {labels.open}
               <ExternalLink className="size-3.5" aria-hidden="true" />
             </a>
+          )}
+          {coords && (
+            <span className="pointer-events-none absolute right-3 bottom-3 z-10 font-mono text-[0.625rem] font-bold tracking-[0.14em] text-white/45 uppercase">
+              {coords.lat.toFixed(3)}° N · {coords.lng.toFixed(3)}° E
+            </span>
           )}
         </div>
       )}

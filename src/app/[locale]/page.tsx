@@ -21,7 +21,8 @@ import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { TrustSection } from "@/components/home/TrustSection";
 import { WorksTeaser } from "@/components/home/WorksTeaser";
 import { PageShell } from "@/components/layout/PageShell";
-import { Section, SectionHeader } from "@/components/ui/Section";
+import { SectionHeader } from "@/components/ui/Section";
+import { TechSurface } from "@/components/ui/TechSurface";
 import { buttonClasses } from "@/components/ui/button";
 
 type Params = { params: Promise<{ locale: string }> };
@@ -53,7 +54,7 @@ export default async function HomePage({ params }: Params) {
       <ProcessSection locale={locale} />
 
       {showBlog && (
-        <Section labelledBy="home-blog-title">
+        <TechSurface variant="editorial" labelledBy="home-blog-title" tone="white">
           <SectionHeader
             id="home-blog-title"
             eyebrow={dict.blog.eyebrow}
@@ -72,7 +73,7 @@ export default async function HomePage({ params }: Params) {
               </li>
             ))}
           </ul>
-        </Section>
+        </TechSurface>
       )}
 
       <FaqSection locale={locale} items={faq} tone={showBlog ? "mist" : "white"} />

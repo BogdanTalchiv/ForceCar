@@ -4,6 +4,7 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { BeforeAfterSlider } from "@/components/before-after/BeforeAfterSlider";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/Section";
+import { TechSurface } from "@/components/ui/TechSurface";
 
 export function ResultsSection({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
@@ -14,36 +15,34 @@ export function ResultsSection({ locale }: { locale: Locale }) {
   const preview = getImage("collisionRepair", locale);
 
   return (
-    <section aria-labelledby="results-title" className="bg-mist section-y">
-      <div className="container-fc">
-        <SectionHeader id="results-title" eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
-        <Reveal>
-          {pairs.length > 0 ? (
-            <div className={`grid gap-8 ${pairs.length > 1 ? "lg:grid-cols-2" : ""}`}>
-              {pairs.map((p) => (
-                <BeforeAfterSlider
-                  key={p.id}
-                  id={p.id}
-                  before={p.before!}
-                  after={p.after!}
-                  title={p.title[locale]}
-                  labels={dict.beforeAfter}
-                />
-              ))}
-            </div>
-          ) : (
-            preview && (
+    <TechSurface variant="blueprint" labelledBy="results-title" tone="mist">
+      <SectionHeader id="results-title" eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
+      <Reveal>
+        {pairs.length > 0 ? (
+          <div className={`grid gap-8 ${pairs.length > 1 ? "lg:grid-cols-2" : ""}`}>
+            {pairs.map((p) => (
               <BeforeAfterSlider
-                id="preview-collision"
-                preview={preview}
-                title={t.title}
+                key={p.id}
+                id={p.id}
+                before={p.before!}
+                after={p.after!}
+                title={p.title[locale]}
                 labels={dict.beforeAfter}
-                notice={t.previewNotice}
               />
-            )
-          )}
-        </Reveal>
-      </div>
-    </section>
+            ))}
+          </div>
+        ) : (
+          preview && (
+            <BeforeAfterSlider
+              id="preview-collision"
+              preview={preview}
+              title={t.title}
+              labels={dict.beforeAfter}
+              notice={t.previewNotice}
+            />
+          )
+        )}
+      </Reveal>
+    </TechSurface>
   );
 }
