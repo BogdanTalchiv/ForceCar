@@ -1,9 +1,7 @@
 import { getBeforeAfterPairs, getImage } from "@/config/forcecar-images";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { BeforeAfterSlider } from "@/components/before-after/BeforeAfterSlider";
-import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeader } from "@/components/ui/Section";
+import { ResultsShowcase, type ResultSlide } from "@/components/home/ResultsShowcase";
 import { TechSurface } from "@/components/ui/TechSurface";
 
 export function ResultsSection({ locale }: { locale: Locale }) {
@@ -14,35 +12,29 @@ export function ResultsSection({ locale }: { locale: Locale }) {
     .filter((p) => p.before && p.after);
   const preview = getImage("collisionRepair", locale);
 
+  const slides: ResultSlide[] =
+    pairs.length > 0
+      ? pairs.map((p) => ({
+          id: p.id,
+          title: p.title[locale],
+          before: p.before!,
+          after: p.after!,
+        }))
+      : preview
+        ? [{ id: "preview-collision", title: t.title, preview, notice: t.previewNotice }]
+        : [];
+
+  if (slides.length === 0) return null;
+
   return (
-    <TechSurface variant="blueprint" labelledBy="results-title" tone="mist">
-      <SectionHeader id="results-title" eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
-      <Reveal>
-        {pairs.length > 0 ? (
-          <div className={`grid gap-8 ${pairs.length > 1 ? "lg:grid-cols-2" : ""}`}>
-            {pairs.map((p) => (
-              <BeforeAfterSlider
-                key={p.id}
-                id={p.id}
-                before={p.before!}
-                after={p.after!}
-                title={p.title[locale]}
-                labels={dict.beforeAfter}
-              />
-            ))}
-          </div>
-        ) : (
-          preview && (
-            <BeforeAfterSlider
-              id="preview-collision"
-              preview={preview}
-              title={t.title}
-              labels={dict.beforeAfter}
-              notice={t.previewNotice}
-            />
-          )
-        )}
-      </Reveal>
+    <TechSurface variant="blueprint" labelledBy="results-title" tone="dark">
+      <ResultsShowcase
+        eyebrow={t.eyebrow}
+        title={t.title}
+        lead={t.lead}
+        slides={slides}
+        labels={{ ...dict.beforeAfter, prev: dict.gallery.prev, next: dict.gallery.next }}
+      />
     </TechSurface>
   );
 }

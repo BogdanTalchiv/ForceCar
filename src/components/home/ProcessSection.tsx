@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { CalendarCheck, ClipboardList, Search, Wrench } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath } from "@/i18n/routes";
 import { buttonClasses } from "@/components/ui/button";
 import { SectionHeader } from "@/components/ui/Section";
 import { TechSurface } from "@/components/ui/TechSurface";
+
+const icons = [CalendarCheck, Search, ClipboardList, Wrench];
 
 export function ProcessSection({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
@@ -22,7 +25,7 @@ export function ProcessSection({ locale }: { locale: Locale }) {
           </Link>
         }
       />
-      <div className="relative">
+      <div className="relative mt-4 lg:mt-8">
         <div className="process-rail" aria-hidden="true">
           <span className="process-rail__base" />
           <span className="process-rail__progress" />
@@ -30,19 +33,22 @@ export function ProcessSection({ locale }: { locale: Locale }) {
         <span className="process-rail-v" aria-hidden="true">
           <span className="process-rail-v__progress" />
         </span>
-        <ol className="process-steps relative grid gap-0 lg:grid-cols-4 lg:gap-6">
-          {t.steps.map((step, i) => (
-            <li
-              key={step.title}
-              className="relative py-5 pl-6 first:pt-0 last:pb-0 lg:py-0 lg:pl-0"
-            >
-              <span className="process-node relative z-10 mb-4 flex size-16 items-center justify-center rounded-full bg-ink-800 text-[1.375rem] font-extrabold text-brand tabular-nums ring-1 ring-white/12">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 className="text-h3 font-bold">{step.title}</h3>
-              <p className="mt-2 max-w-[20rem] leading-relaxed text-steel-300">{step.text}</p>
-            </li>
-          ))}
+        <ol className="process-steps relative grid gap-0 lg:grid-cols-4 lg:gap-8">
+          {t.steps.map((step, i) => {
+            const Icon = icons[i] ?? Wrench;
+            return (
+              <li key={step.title} className="relative flex gap-5 py-6 first:pt-0 last:pb-0 lg:block lg:py-0 lg:text-center">
+                <span className="process-node relative z-10 flex size-[4.5rem] shrink-0 items-center justify-center rounded-full bg-[#101317] text-brand lg:mx-auto lg:mb-5">
+                  <Icon className="size-7" strokeWidth={1.6} aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="mb-2 text-sm font-extrabold tracking-[0.14em] text-brand tabular-nums">{String(i + 1).padStart(2, "0")}</p>
+                  <h3 className="text-h3 font-bold">{step.title}</h3>
+                  <p className="mt-2 max-w-[18rem] leading-relaxed text-steel-300 lg:mx-auto">{step.text}</p>
+                </div>
+              </li>
+            );
+          })}
         </ol>
       </div>
     </TechSurface>

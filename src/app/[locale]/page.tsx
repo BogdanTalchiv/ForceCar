@@ -66,17 +66,17 @@ export default async function HomePage({ params }: Params) {
               </Link>
             }
           />
-          <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {articles.map((a) => (
               <li key={a.id}>
-                <ArticleCard locale={locale} article={a} readLabel={dict.cta.readArticle} />
+                <ArticleCard locale={locale} article={a} readLabel={dict.cta.readArticle} excerpt={false} />
               </li>
             ))}
           </ul>
         </TechSurface>
       )}
 
-      <FaqSection locale={locale} items={faq} tone={showBlog ? "mist" : "white"} />
+      <FaqSection locale={locale} items={faq} />
       <ContactBand locale={locale} />
       <FinalCta locale={locale} />
     </PageShell>

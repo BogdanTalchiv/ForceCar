@@ -7,7 +7,7 @@ export type TechVariant = "blueprint" | "network" | "voice" | "process" | "edito
 const tones: Record<"mist" | "white" | "dark", string> = {
   mist: "bg-mist text-text",
   white: "bg-white text-text",
-  dark: "bg-ink-900 text-white",
+  dark: "bg-[#0B0E11] text-white",
 };
 
 export function TechSurface({
@@ -16,7 +16,7 @@ export function TechSurface({
   labelledBy,
   className = "",
   mark,
-  coords,
+  compact = false,
   children,
 }: {
   variant: TechVariant;
@@ -24,7 +24,7 @@ export function TechSurface({
   labelledBy?: string;
   className?: string;
   mark?: string;
-  coords?: { lat: number; lng: number } | null;
+  compact?: boolean;
   children: ReactNode;
 }) {
   const ref = useRef<HTMLElement>(null);
@@ -43,7 +43,7 @@ export function TechSurface({
         if (entry.isIntersecting) setOn(true);
         setLive(entry.isIntersecting);
       },
-      { threshold: 0.16, rootMargin: "0px 0px -10% 0px" },
+      { threshold: 0.14, rootMargin: "0px 0px -8% 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -53,98 +53,87 @@ export function TechSurface({
     <section
       ref={ref}
       aria-labelledby={labelledBy}
-      className={`tech-surface tech-surface--${variant} relative section-y ${tones[tone]} ${on ? "tech-in" : ""} ${live ? "tech-live" : ""} ${className}`}
+      className={`tech-surface tech-surface--${variant} tech-surface--${tone} relative section-y ${tones[tone]} ${compact ? "tech-surface--compact" : ""} ${on ? "tech-in" : ""} ${live ? "tech-live" : ""} ${className}`}
     >
-      <TechLayer variant={variant} mark={mark} coords={coords} />
+      <TechLayer variant={variant} mark={mark} />
       <div className="container-fc relative">{children}</div>
     </section>
   );
 }
 
-function TechLayer({
-  variant,
-  mark,
-  coords,
-}: {
-  variant: TechVariant;
-  mark?: string;
-  coords?: { lat: number; lng: number } | null;
-}) {
+function TechLayer({ variant, mark }: { variant: TechVariant; mark?: string }) {
   return (
     <div className="tech-layer" aria-hidden="true">
       {variant === "blueprint" && (
         <>
-          <div className="tech-grid-light" />
-          <div className="tech-diag" />
-          <div className="tech-radial" />
-          <svg className="tech-ticks" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M4 16V4h12" />
-            <path d="M96 16V4H84" />
-            <path d="M4 84v12h12" />
-            <path d="M96 84v12H84" />
-          </svg>
-          <div className="tech-scan" />
+          <div className="tech-grid-dark" />
+          <div className="tech-glow-red tech-glow-red--left" />
+          <div className="tech-vignette" />
         </>
       )}
       {variant === "network" && (
         <>
-          <div className="tech-grid-light tech-grid-light--wide" />
+          <div className="tech-grid-dark tech-grid-dark--wide" />
+          <div className="tech-slash" />
           {mark && <span className="tech-watermark">{mark}</span>}
-          <svg className="tech-schematic" viewBox="0 0 800 360" fill="none">
-            <path className="tech-draw" d="M40 180H210C230 180 240 150 270 150H390" />
-            <path className="tech-draw" d="M390 150H520C560 150 560 220 600 220H760" />
-            <path className="tech-draw" d="M270 150V80H430" />
-            <path className="tech-draw" d="M520 150V280H680" />
-            <circle cx="210" cy="180" r="3.5" />
-            <circle cx="390" cy="150" r="3.5" />
-            <circle cx="520" cy="150" r="3.5" />
-            <circle cx="600" cy="220" r="3.5" />
-          </svg>
         </>
       )}
       {variant === "voice" && (
         <>
           <div className="tech-dots" />
-          <div className="tech-radial tech-radial--soft" />
+          <div className="tech-wash-red" />
           <span className="tech-quote">”</span>
         </>
       )}
       {variant === "process" && (
         <>
           <div className="tech-grid-dark" />
-          <svg className="tech-arcs" viewBox="0 0 1200 420" fill="none">
-            <path d="M-20 320C180 120 420 80 640 180C860 280 1040 240 1220 90" />
-            <path d="M-40 380C220 200 500 160 760 250C980 320 1120 300 1240 180" />
-          </svg>
+          <div className="tech-glow-red tech-glow-red--right" />
+          <WireCar />
         </>
       )}
       {variant === "editorial" && (
         <>
           <div className="tech-dots" />
-          <div className="tech-diag tech-diag--tight" />
+          <div className="tech-diag-red" />
         </>
       )}
       {variant === "diagnostic" && (
         <>
-          <div className="tech-rings" />
+          <div className="tech-wash-red tech-wash-red--faq" />
           <span className="tech-qmark">?</span>
         </>
       )}
       {variant === "nav" && (
         <>
-          <div className="tech-grid-dark tech-grid-dark--map" />
-          <svg className="tech-route" viewBox="0 0 900 480" fill="none">
-            <path className="tech-route-line" d="M80 400C180 390 210 250 340 240C470 230 500 120 640 110C760 102 800 70 860 40" />
-            <circle cx="340" cy="240" r="3" />
-            <circle cx="640" cy="110" r="3" />
+          <div className="tech-glow-red tech-glow-red--right" />
+          <svg className="tech-trail" viewBox="0 0 1200 200" fill="none" preserveAspectRatio="none">
+            <path d="M40 150C280 40 520 190 760 90C940 20 1080 70 1200 40" />
           </svg>
-          {coords && (
-            <span className="tech-coords">
-              {coords.lat.toFixed(3)}° N · {coords.lng.toFixed(3)}° E
-            </span>
-          )}
         </>
       )}
     </div>
+  );
+}
+
+function WireCar() {
+  return (
+    <svg className="tech-car" viewBox="0 0 920 280" fill="none">
+      <path d="M92 186H168C186 148 214 118 268 104L318 62C338 50 372 44 418 44H548C612 44 658 62 696 98L768 118C812 124 842 148 854 186H868" />
+      <path d="M268 104H690" />
+      <path d="M318 62L338 104" />
+      <path d="M548 44L572 104" />
+      <path d="M92 186C92 198 102 208 118 208H168" />
+      <path d="M286 208H612" />
+      <path d="M730 208H854C870 208 880 198 880 186" />
+      <circle cx="228" cy="204" r="36" />
+      <circle cx="228" cy="204" r="16" />
+      <circle cx="672" cy="204" r="36" />
+      <circle cx="672" cy="204" r="16" />
+      <path d="M400 62V104" />
+      <path d="M488 62V104" />
+      <path d="M140 168H200" />
+      <path d="M760 156H830" />
+    </svg>
   );
 }
