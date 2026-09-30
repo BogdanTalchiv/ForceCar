@@ -12,11 +12,11 @@ export function TrustSection({ locale }: { locale: Locale }) {
   return (
     <Section labelledBy="trust-title">
       <SectionHeader id="trust-title" eyebrow={t.eyebrow} title={t.title} />
-      <ul className="grid gap-x-10 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {t.items.map((item, i) => {
           const Icon = icons[i] ?? ShieldCheck;
           return (
-            <li key={item.title} className="flex gap-5 border-t border-line py-7">
+            <li key={item.title} className="flex gap-5 rounded-lg border border-line bg-white px-5 py-6 shadow-card">
               <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-mist text-brand">
                 <Icon className="size-5" strokeWidth={1.75} aria-hidden="true" />
               </span>

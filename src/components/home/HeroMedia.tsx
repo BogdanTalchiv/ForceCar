@@ -7,21 +7,29 @@ import { FcImage } from "@/components/ui/FcImage";
 const VIDEO_SRC = "/images/forcecar/_og/forcecarvideo.mp4";
 
 export function HeroMedia({ poster }: { poster: ResolvedImage | null }) {
-  const [reduceMotion, setReduceMotion] = useState(false);
+  const [playVideo, setPlayVideo] = useState(false);
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => setReduceMotion(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
+    const mqReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mqDesktop = window.matchMedia("(min-width: 768px)");
+    const update = () => {
+      const saveData = Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
+      setPlayVideo(!mqReduce.matches && mqDesktop.matches && !saveData);
+    };
+    mqReduce.addEventListener("change", update);
+    mqDesktop.addEventListener("change", update);
+    const timer = window.setTimeout(update, 0);
+    return () => {
+      mqReduce.removeEventListener("change", update);
+      mqDesktop.removeEventListener("change", update);
+      window.clearTimeout(timer);
+    };
   }, []);
 
   return (
     <div className="absolute inset-0" aria-hidden="true">
-      {reduceMotion && poster ? (
-        <FcImage image={poster} fill decorative quality={72} sizes="100vw" />
-      ) : (
+      {poster && <FcImage image={poster} fill decorative quality={72} sizes="100vw" />}
+      {playVideo && (
         <video
           className="absolute inset-0 size-full object-cover object-[center_40%]"
           autoPlay

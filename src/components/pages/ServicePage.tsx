@@ -178,7 +178,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
       {articles.length > 0 && (
         <Section labelledBy="service-articles">
           <h2 id="service-articles" className="mb-8 text-2xl font-extrabold">
-            {dict.blog.title}
+            {t.articlesTitle}
           </h2>
           <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {articles.map((a) => (

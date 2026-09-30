@@ -99,6 +99,9 @@ const it: Dictionary = {
     viewServices: "Vedi i servizi",
     allServices: "Vedi tutti i servizi",
     viewWorks: "Vedi la galleria dei lavori",
+    worksShort: "Vedi i lavori",
+    callUs: "Chiamaci",
+    bookNow: "Prenota ora",
     about: "Chi è ForceCar",
     details: "Dettagli",
     contact: "Contatti",
@@ -137,10 +140,20 @@ const it: Dictionary = {
 
   home: {
     hero: {
-      eyebrow: "ForceCar · Officina auto a Chișinău",
-      title: "Officina auto a Chișinău con oltre {years} anni di esperienza",
-      lead: "Diagnosi, riparazioni meccaniche, manutenzione, carrozzeria e verniciatura eseguite da tecnici esperti. Prima di iniziare i lavori ti spieghiamo il problema con chiarezza.",
+      eyebrow: "Esperienza. Qualità. Fiducia.",
+      kicker: "Officina auto a Chișinău.",
+      accent: "Ripariamo nel modo giusto,",
+      rest: "ti spieghiamo con chiarezza.",
+      lead: "Oltre {years} anni di esperienza nella riparazione e manutenzione delle auto. Diagnostichiamo, ripariamo e ti spieghiamo ogni passo in modo chiaro.",
       servicesLabel: "Servizi ForceCar",
+      stats: {
+        experienceValue: "{years}+",
+        experienceLabel: "anni di esperienza",
+        languagesValue: "4 lingue",
+        languagesLabel: "RO / RU / IT / EN",
+        locationValue: "Chișinău",
+        locationLabel: "Officina auto",
+      },
     },
     trust: {
       eyebrow: "Perché ForceCar",
@@ -173,14 +186,21 @@ const it: Dictionary = {
       ],
     },
     services: {
-      eyebrow: "Servizi",
-      title: "I servizi dell'officina ForceCar a Chișinău",
-      lead: "Scegli il servizio di cui hai bisogno. Se non sai esattamente cosa ha l'auto, inizia con una diagnosi.",
+      eyebrow: "I nostri servizi",
+      title: "Tutto quello che serve alla tua auto, in un unico posto.",
+      lead: "Diagnosi, meccanica, carrozzeria e verniciatura — nella stessa officina a Chișinău. Se non sai cosa ha l'auto, inizia con una diagnosi.",
       featuredLabel: "Non sai cosa ha l'auto?",
     },
+    results: {
+      eyebrow: "Risultati reali",
+      title: "Trasformazioni che parlano da sole.",
+      lead: "I confronti Prima/Dopo compaiono qui quando abbiamo le foto della stessa auto, dello stesso intervento.",
+      previewNotice:
+        "Slider dimostrativo: la stessa foto dell'officina, in due versioni. Non è il confronto dello stesso intervento. Le coppie reali saranno pubblicate qui.",
+    },
     process: {
-      eyebrow: "Come lavoriamo",
-      title: "Come si svolge una visita da ForceCar",
+      eyebrow: "Come funziona",
+      title: "Semplice, rapido e trasparente.",
       steps: [
         { title: "Prenoti la visita", text: "Invii la richiesta online o ci chiami. Ti ricontattiamo per fissare giorno e ora." },
         { title: "Controlliamo l'auto", text: "Ascoltiamo cosa hai notato e controlliamo l'auto per trovare la causa." },
@@ -197,13 +217,46 @@ const it: Dictionary = {
       ],
     },
     works: {
-      eyebrow: "Lavori",
-      title: "Dall'officina ForceCar",
-      lead: "Immagini dei lavori di meccanica, distribuzione, freni, carrozzeria e verniciatura.",
+      eyebrow: "Lavori reali ForceCar",
+      title: "Auto reali. Risultati reali.",
+      lead: "Immagini dall'officina ForceCar: meccanica, distribuzione, freni, carrozzeria e verniciatura.",
+      viewCase: "Vedi il lavoro",
+      problem: "Problema",
+      result: "Risultato",
+      cases: {
+        engine: {
+          problem: "Guasti al motore individuati in officina.",
+          result: "Controllo e riparazione eseguiti dal team ForceCar.",
+        },
+        timing: {
+          problem: "Distribuzione usurata o a rischio di rottura.",
+          result: "Sostituzione e controllo nell'officina ForceCar.",
+        },
+        brakes: {
+          problem: "Freni usurati o sintomi di un guasto.",
+          result: "Controllo e riparazione dell'impianto frenante.",
+        },
+        mechanical: {
+          problem: "Problema meccanico individuato in sede di controllo.",
+          result: "Intervento meccanico in officina.",
+        },
+        bodywork: {
+          problem: "Elementi di carrozzeria danneggiati.",
+          result: "Carrozzeria riparata nell'officina ForceCar.",
+        },
+        paint: {
+          problem: "Superficie preparata per la verniciatura o la finitura.",
+          result: "Verniciatura eseguita in cabina ForceCar.",
+        },
+      },
     },
     reviews: {
-      eyebrow: "Recensioni",
-      title: "Cosa dicono i clienti ForceCar",
+      eyebrow: "Cosa dicono i nostri clienti",
+      title: "La loro fiducia ci motiva.",
+      lead: "Pubblichiamo solo recensioni reali, con il consenso del cliente. Fino ad allora, gli spazi qui sotto restano riservati.",
+      placeholderQuote: "La recensione video reale del cliente apparirà qui.",
+      placeholderName: "Spazio riservato",
+      placeholderNotice: "Non pubblichiamo recensioni inventate.",
     },
     faq: {
       eyebrow: "Domande frequenti",
@@ -212,6 +265,15 @@ const it: Dictionary = {
     finalCta: {
       title: "Non sei sicuro di cosa abbia la tua auto?",
       text: "Prenota un controllo: il team ForceCar ti aiuterà a individuare il problema.",
+    },
+    contactBand: {
+      eyebrow: "Contatti e prenotazione",
+      title: "Parliamo della tua auto.",
+      lead: "Invia una richiesta di prenotazione. Se i recapiti sono pubblicati, li trovi qui, insieme alla sede di Chișinău.",
+      call: "Chiamaci",
+      whatsapp: "WhatsApp",
+      bookNow: "Prenota ora",
+      map: "Mappa",
     },
   },
 
@@ -242,6 +304,7 @@ const it: Dictionary = {
     checksTitle: "Cosa controlliamo",
     stepsTitle: "Come funziona",
     photosTitle: "Dall'officina",
+    articlesTitle: "Consigli utili su questo servizio",
     faqTitle: "Domande frequenti",
     relatedTitle: "Servizi correlati",
     safetyTitle: "Importante per la sicurezza",
@@ -599,6 +662,8 @@ const it: Dictionary = {
 
   mobileBar: {
     call: "Chiama",
+    map: "Mappa",
+    whatsapp: "WhatsApp",
     message: "Scrivi",
     book: "Prenota",
     messageTitle: "Scrivici",

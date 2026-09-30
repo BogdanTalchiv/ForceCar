@@ -23,7 +23,7 @@ export function AboutTeaser({ locale }: { locale: Locale }) {
           src="/images/forcecar/_og/background2.png"
           alt=""
           fill
-          quality={75}
+          quality={72}
           sizes="100vw"
           className="object-cover object-[82%_center]"
         />

@@ -99,6 +99,9 @@ const en: Dictionary = {
     viewServices: "View services",
     allServices: "View all services",
     viewWorks: "View our work",
+    worksShort: "See our work",
+    callUs: "Call us",
+    bookNow: "Book now",
     about: "About ForceCar",
     details: "Details",
     contact: "Contact details",
@@ -137,10 +140,20 @@ const en: Dictionary = {
 
   home: {
     hero: {
-      eyebrow: "ForceCar · Car service in Chișinău",
-      title: "Car service in Chișinău with more than {years} years of experience",
-      lead: "Diagnostics, mechanical repairs, maintenance, body repair and painting by experienced technicians. We explain the problem clearly before any work begins.",
+      eyebrow: "Experience. Quality. Trust.",
+      kicker: "Car service in Chișinău.",
+      accent: "We repair it right,",
+      rest: "and explain it clearly.",
+      lead: "More than {years} years of experience in car repair and maintenance. We diagnose, repair and explain every step in plain language.",
       servicesLabel: "ForceCar services",
+      stats: {
+        experienceValue: "{years}+",
+        experienceLabel: "years of experience",
+        languagesValue: "4 languages",
+        languagesLabel: "RO / RU / IT / EN",
+        locationValue: "Chișinău",
+        locationLabel: "Car service",
+      },
     },
     trust: {
       eyebrow: "Why ForceCar",
@@ -173,14 +186,21 @@ const en: Dictionary = {
       ],
     },
     services: {
-      eyebrow: "Services",
-      title: "ForceCar car services in Chișinău",
-      lead: "Choose the service you need. If you're not sure what's wrong with the car, start with diagnostics.",
+      eyebrow: "Our services",
+      title: "Everything your car needs, in one place.",
+      lead: "Diagnostics, mechanics, body repair and painting — at the same workshop in Chișinău. If you're not sure what's wrong, start with diagnostics.",
       featuredLabel: "Not sure what's wrong?",
     },
+    results: {
+      eyebrow: "Real results",
+      title: "Transformations that speak for themselves.",
+      lead: "Before/after comparisons appear here when we have photos of the same car, from the same job.",
+      previewNotice:
+        "Demo slider: the same workshop photo, in two versions. This is not a comparison of the same repair. Real pairs will be published here.",
+    },
     process: {
-      eyebrow: "How we work",
-      title: "What a visit to ForceCar looks like",
+      eyebrow: "How it works",
+      title: "Simple, quick and transparent.",
       steps: [
         { title: "You book a visit", text: "Send a request online or call us. We'll contact you to agree on a day and time." },
         { title: "We inspect the car", text: "We listen to what you've noticed and inspect the car to find the cause." },
@@ -197,13 +217,46 @@ const en: Dictionary = {
       ],
     },
     works: {
-      eyebrow: "Our work",
-      title: "From the ForceCar workshop",
-      lead: "Photos of mechanical, timing, brake, body repair and paint work.",
+      eyebrow: "Real ForceCar work",
+      title: "Real cars. Real results.",
+      lead: "Photos from the ForceCar workshop: mechanics, timing belts, brakes, body repair and painting.",
+      viewCase: "View this job",
+      problem: "Problem",
+      result: "Result",
+      cases: {
+        engine: {
+          problem: "Engine faults identified in the workshop.",
+          result: "Inspection and repair carried out by the ForceCar team.",
+        },
+        timing: {
+          problem: "Worn timing belt or chain, or a risk of failure.",
+          result: "Replacement and inspection in the ForceCar workshop.",
+        },
+        brakes: {
+          problem: "Worn brakes or symptoms of a braking fault.",
+          result: "Brake inspection and repair.",
+        },
+        mechanical: {
+          problem: "A mechanical issue found during inspection.",
+          result: "Mechanical work carried out in the workshop.",
+        },
+        bodywork: {
+          problem: "Damaged body panels.",
+          result: "Bodywork repaired in the ForceCar workshop.",
+        },
+        paint: {
+          problem: "A surface prepared for painting or finishing.",
+          result: "Paintwork completed in the ForceCar booth.",
+        },
+      },
     },
     reviews: {
-      eyebrow: "Reviews",
-      title: "What ForceCar customers say",
+      eyebrow: "What our customers say",
+      title: "Their trust is what drives us.",
+      lead: "We only publish real reviews, with the customer's consent. Until then, the slots below stay reserved.",
+      placeholderQuote: "The customer's real video review will appear here.",
+      placeholderName: "Reserved slot",
+      placeholderNotice: "We do not publish invented reviews.",
     },
     faq: {
       eyebrow: "FAQ",
@@ -212,6 +265,15 @@ const en: Dictionary = {
     finalCta: {
       title: "Not sure what's wrong with your car?",
       text: "Book an inspection and the ForceCar team will help you find the problem.",
+    },
+    contactBand: {
+      eyebrow: "Contact and booking",
+      title: "Let's talk about your car.",
+      lead: "Send a booking request. If contact details are published, you will find them here, along with the Chișinău location.",
+      call: "Call us",
+      whatsapp: "WhatsApp",
+      bookNow: "Book now",
+      map: "Map",
     },
   },
 
@@ -242,6 +304,7 @@ const en: Dictionary = {
     checksTitle: "What we check",
     stepsTitle: "How it works",
     photosTitle: "From the workshop",
+    articlesTitle: "Useful advice about this service",
     faqTitle: "Frequently asked questions",
     relatedTitle: "Related services",
     safetyTitle: "Important for safety",
@@ -599,6 +662,8 @@ const en: Dictionary = {
 
   mobileBar: {
     call: "Call",
+    map: "Map",
+    whatsapp: "WhatsApp",
     message: "Message",
     book: "Book",
     messageTitle: "Message us",

@@ -5,7 +5,7 @@ const ro = {
     home: {
       title: "Service auto în Chișinău cu peste 20 de ani de experiență | ForceCar",
       description:
-        "ForceCar este un service auto din Chișinău cu peste 20 de ani de experiență: diagnosticare, reparații motor, distribuție, frâne, suspensie, caroserie și vopsitorie. Programează-te online.",
+        "ForceCar este un service auto din Chișinău: diagnostică auto, reparații motor, schimb distribuție, frâne, suspensie, caroserie și vopsitorie. Peste 20 de ani de experiență. Programează-te online.",
     },
     services: {
       title: "Servicii auto în Chișinău — mecanică, caroserie, vopsitorie",
@@ -97,6 +97,9 @@ const ro = {
     viewServices: "Vezi serviciile",
     allServices: "Vezi toate serviciile",
     viewWorks: "Vezi galeria lucrărilor",
+    worksShort: "Vezi lucrările",
+    callUs: "Sună-ne",
+    bookNow: "Programează-te acum",
     about: "Despre ForceCar",
     details: "Detalii",
     contact: "Date de contact",
@@ -135,10 +138,20 @@ const ro = {
 
   home: {
     hero: {
-      eyebrow: "ForceCar · Service auto în Chișinău",
-      title: "Service auto în Chișinău cu peste {years} de ani de experiență",
-      lead: "Diagnosticare, reparații mecanice, întreținere, caroserie și vopsitorie, realizate de specialiști cu experiență. Îți explicăm problema clar înainte de a începe lucrările.",
+      eyebrow: "Experiență. Calitate. Încredere.",
+      kicker: "Service auto în Chișinău.",
+      accent: "Reparăm corect,",
+      rest: "explicăm clar.",
+      lead: "Peste {years} de ani de experiență în reparația și întreținerea automobilelor. Diagnosticăm, reparăm și îți explicăm fiecare pas, pe înțelesul tău.",
       servicesLabel: "Servicii ForceCar",
+      stats: {
+        experienceValue: "{years}+",
+        experienceLabel: "ani experiență",
+        languagesValue: "4 limbi",
+        languagesLabel: "RO / RU / IT / EN",
+        locationValue: "Chișinău",
+        locationLabel: "Service auto",
+      },
     },
     trust: {
       eyebrow: "De ce ForceCar",
@@ -171,14 +184,21 @@ const ro = {
       ],
     },
     services: {
-      eyebrow: "Servicii",
-      title: "Servicii auto ForceCar în Chișinău",
-      lead: "Alege serviciul de care ai nevoie. Dacă nu știi exact ce are mașina, începe cu o diagnosticare.",
+      eyebrow: "Serviciile noastre",
+      title: "Tot ce are nevoie mașina ta, într-un singur loc.",
+      lead: "Diagnostică, mecanică, caroserie și vopsitorie — în același service din Chișinău. Dacă nu știi ce are mașina, începe cu o diagnosticare.",
       featuredLabel: "Nu știi ce are mașina?",
     },
+    results: {
+      eyebrow: "Rezultate reale",
+      title: "Transformări care vorbesc de la sine.",
+      lead: "Comparațiile Înainte/După apar aici când avem fotografiile aceleiași mașini, din aceeași lucrare.",
+      previewNotice:
+        "Glisor demonstrativ: aceeași fotografie din atelier, în două variante. Nu este o comparație a aceleiași reparații. Perechile reale vor fi publicate aici.",
+    },
     process: {
-      eyebrow: "Cum lucrăm",
-      title: "Cum decurge o vizită la ForceCar",
+      eyebrow: "Cum funcționează",
+      title: "Simplu, rapid și transparent.",
       steps: [
         { title: "Programezi vizita", text: "Trimiți cererea online sau ne suni. Te contactăm pentru a stabili ziua și ora." },
         { title: "Verificăm automobilul", text: "Ascultăm ce ai observat și verificăm mașina ca să găsim cauza." },
@@ -195,13 +215,46 @@ const ro = {
       ],
     },
     works: {
-      eyebrow: "Lucrări",
-      title: "Din atelierul ForceCar",
-      lead: "Imagini din lucrările de mecanică, distribuție, frâne, caroserie și vopsitorie.",
+      eyebrow: "Lucrări reale ForceCar",
+      title: "Mașini reale. Rezultate reale.",
+      lead: "Imagini din atelierul ForceCar: mecanică, distribuție, frâne, caroserie și vopsitorie.",
+      viewCase: "Vezi lucrarea",
+      problem: "Problemă",
+      result: "Rezultat",
+      cases: {
+        engine: {
+          problem: "Defecțiuni de motor identificate în atelier.",
+          result: "Verificare și reparație realizate de echipa ForceCar.",
+        },
+        timing: {
+          problem: "Distribuție uzată sau cu risc de rupere.",
+          result: "Înlocuire și verificare în atelierul ForceCar.",
+        },
+        brakes: {
+          problem: "Sistem de frânare uzat sau cu simptome de avarie.",
+          result: "Verificare și reparație a frânelor.",
+        },
+        mechanical: {
+          problem: "Problemă mecanică identificată la verificare.",
+          result: "Intervenție mecanică în atelier.",
+        },
+        bodywork: {
+          problem: "Elemente de caroserie deteriorate.",
+          result: "Caroserie reparată în atelierul ForceCar.",
+        },
+        paint: {
+          problem: "Suprafață pregătită pentru vopsire sau finisaj.",
+          result: "Vopsitorie realizată în cabina ForceCar.",
+        },
+      },
     },
     reviews: {
-      eyebrow: "Recenzii",
-      title: "Ce spun clienții ForceCar",
+      eyebrow: "Ce spun clienții noștri",
+      title: "Încrederea lor ne motivează.",
+      lead: "Publicăm doar recenzii reale, cu acordul clientului. Până atunci, locurile de mai jos rămân rezervate.",
+      placeholderQuote: "Recenzia video reală a clientului va apărea aici.",
+      placeholderName: "Loc rezervat",
+      placeholderNotice: "Nu publicăm recenzii inventate.",
     },
     faq: {
       eyebrow: "Întrebări frecvente",
@@ -210,6 +263,15 @@ const ro = {
     finalCta: {
       title: "Nu ești sigur ce problemă are mașina?",
       text: "Programează o verificare și echipa ForceCar te va ajuta să identifici problema.",
+    },
+    contactBand: {
+      eyebrow: "Contact și programare",
+      title: "Hai să discutăm despre mașina ta.",
+      lead: "Trimite o cerere de programare. Dacă datele de contact sunt publicate, le găsești aici, împreună cu locația din Chișinău.",
+      call: "Sună-ne",
+      whatsapp: "WhatsApp",
+      bookNow: "Programează-te acum",
+      map: "Hartă",
     },
   },
 
@@ -240,6 +302,7 @@ const ro = {
     checksTitle: "Ce verificăm",
     stepsTitle: "Cum decurge",
     photosTitle: "Din atelier",
+    articlesTitle: "Sfaturi utile despre acest serviciu",
     faqTitle: "Întrebări frecvente",
     relatedTitle: "Servicii conexe",
     safetyTitle: "Important pentru siguranță",
@@ -595,6 +658,8 @@ const ro = {
 
   mobileBar: {
     call: "Sună",
+    map: "Hartă",
+    whatsapp: "WhatsApp",
     message: "Mesaj",
     book: "Programare",
     messageTitle: "Scrie-ne",

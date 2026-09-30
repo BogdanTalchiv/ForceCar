@@ -282,6 +282,24 @@
   animation-play-state: paused;
 }
 
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .reveal:not(.reveal-in) {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  .reveal-in {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.55s var(--ease-out-soft),
+      transform 0.55s var(--ease-out-soft);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-services-ticker__track {
     animation: none !important;

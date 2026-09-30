@@ -7,6 +7,7 @@ import { phoneLink } from "@/lib/business-info";
 import { mainNav, serviceLinks } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
+import { HeaderFrame } from "./HeaderFrame";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
 import { MobileMenu } from "./MobileMenu";
@@ -27,7 +28,7 @@ export function Header({
   const bookingHref = pagePath(locale, "booking");
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/8 bg-ink-900/95 text-white backdrop-blur supports-[backdrop-filter]:bg-ink-900/85">
+    <HeaderFrame>
       <div className="container-fc flex h-16 items-center justify-between gap-4 lg:h-[4.5rem]">
         <Link href={pagePath(locale, "home")} aria-label={dict.a11y.home} className="shrink-0 rounded-sm">
           <Logo tagline={`${dict.meta.tagline} · Chișinău`} />
@@ -117,6 +118,6 @@ export function Header({
           />
         </div>
       </div>
-    </header>
+    </HeaderFrame>
   );
 }

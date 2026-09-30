@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { localizedPaths, pagePath, type PageKey, type PageRef } from "@/i18n/routes";
-import { messengerLinks, phoneLink } from "@/lib/business-info";
+import { mapsUrl, messengerLinks, phoneLink } from "@/lib/business-info";
 import { businessNode, graph, websiteNode } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { DevNotice } from "./DevNotice";
@@ -29,6 +29,8 @@ export function PageShell({
 }) {
   const dict = getDictionary(locale);
   const alternates = localizedPaths(pageRef);
+  const messengers = messengerLinks();
+  const whatsapp = messengers.find((m) => m.id === "whatsapp") ?? null;
 
   return (
     <>
@@ -39,7 +41,9 @@ export function PageShell({
       <Footer locale={locale} alternates={alternates} />
       <MobileActionBar
         phone={phoneLink()}
-        messengers={messengerLinks().map((m) => ({ ...m, name: dict.common.messengerNames[m.id] }))}
+        messengers={messengers.map((m) => ({ ...m, name: dict.common.messengerNames[m.id] }))}
+        whatsapp={whatsapp}
+        mapsHref={mapsUrl()}
         bookingHref={pagePath(locale, "booking")}
         labels={{
           call: dict.mobileBar.call,
@@ -49,6 +53,8 @@ export function PageShell({
           assistant: dict.mobileBar.assistant,
           close: dict.a11y.closeMenu,
           region: dict.a11y.quickActions,
+          map: dict.mobileBar.map,
+          whatsapp: dict.mobileBar.whatsapp,
         }}
       />
       <JsonLd data={graph([businessNode(locale), websiteNode(locale), ...schema])} />

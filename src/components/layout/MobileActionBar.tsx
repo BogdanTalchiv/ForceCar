@@ -1,27 +1,40 @@
 "use client";
 
 import Link from "next/link";
-import { Bot, CalendarCheck, MessageCircle, Phone, X } from "lucide-react";
+import { Bot, CalendarCheck, MapPin, MessageCircle, Phone, X } from "lucide-react";
 import { useRef } from "react";
 import { OPEN_CHAT_EVENT } from "@/lib/chat/types";
 
 interface Props {
   phone: { href: string; label: string } | null;
   messengers: { id: string; href: string; name: string }[];
+  whatsapp: { href: string } | null;
+  mapsHref: string | null;
   bookingHref: string;
-  labels: { call: string; message: string; book: string; messageTitle: string; assistant: string; close: string; region: string };
+  labels: {
+    call: string;
+    message: string;
+    book: string;
+    messageTitle: string;
+    assistant: string;
+    close: string;
+    region: string;
+    map: string;
+    whatsapp: string;
+  };
 }
 
-/** Bara fixă de pe mobil: Sună (dacă există telefon) · Mesaj · Programare. */
-export function MobileActionBar({ phone, messengers, bookingHref, labels }: Props) {
+/** Bara fixă de pe mobil: Sună · WhatsApp · Programare · Hartă — doar acțiunile disponibile. */
+export function MobileActionBar({ phone, messengers, whatsapp, mapsHref, bookingHref, labels }: Props) {
   const sheet = useRef<HTMLDialogElement>(null);
   const openChat = () => {
     sheet.current?.close();
     window.dispatchEvent(new Event(OPEN_CHAT_EVENT));
   };
   const onMessage = () => (messengers.length ? sheet.current?.showModal() : openChat());
+  const showMessage = !phone && !whatsapp;
 
-  const item = "flex flex-1 flex-col items-center justify-center gap-1 text-[0.6875rem] font-bold tracking-wide";
+  const item = "flex flex-1 flex-col items-center justify-center gap-1 rounded-md text-[0.6875rem] font-bold tracking-wide";
 
   return (
     <>
@@ -29,21 +42,41 @@ export function MobileActionBar({ phone, messengers, bookingHref, labels }: Prop
         aria-label={labels.region}
         className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-ink-900/97 pb-[env(safe-area-inset-bottom)] text-white backdrop-blur lg:hidden"
       >
-        <div className="flex h-[4.25rem] items-stretch gap-1.5 px-2 py-2">
+        <div className="flex h-[4.25rem] items-stretch gap-1 px-2 py-2">
           {phone && (
-            <a href={phone.href} className={`${item} rounded-md hover:bg-white/8`} data-track-location="mobile_bar">
+            <a href={phone.href} className={`${item} hover:bg-white/8`} data-track-location="mobile_bar">
               <Phone className="size-5" aria-hidden="true" />
               {labels.call}
             </a>
           )}
-          <button type="button" onClick={onMessage} className={`${item} rounded-md hover:bg-white/8`}>
-            <MessageCircle className="size-5" aria-hidden="true" />
-            {labels.message}
-          </button>
-          <Link href={bookingHref} className={`${item} flex-[1.4] rounded-md bg-brand hover:bg-brand-hover`}>
+          {whatsapp && (
+            <a
+              href={whatsapp.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${item} hover:bg-white/8`}
+              data-track-location="mobile_bar"
+            >
+              <MessageCircle className="size-5" aria-hidden="true" />
+              {labels.whatsapp}
+            </a>
+          )}
+          {showMessage && (
+            <button type="button" onClick={onMessage} className={`${item} hover:bg-white/8`}>
+              <MessageCircle className="size-5" aria-hidden="true" />
+              {labels.message}
+            </button>
+          )}
+          <Link href={bookingHref} className={`${item} flex-[1.35] bg-brand hover:bg-brand-hover`}>
             <CalendarCheck className="size-5" aria-hidden="true" />
             {labels.book}
           </Link>
+          {mapsHref && (
+            <a href={mapsHref} target="_blank" rel="noopener noreferrer" className={`${item} hover:bg-white/8`}>
+              <MapPin className="size-5" aria-hidden="true" />
+              {labels.map}
+            </a>
+          )}
         </div>
       </nav>
 

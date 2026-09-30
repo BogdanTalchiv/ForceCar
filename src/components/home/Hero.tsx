@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { CalendarCheck, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { CalendarCheck, Globe, MapPin, ShieldCheck } from "lucide-react";
 import { business } from "@/config/business";
 import { forceCarImages, getImage } from "@/config/forcecar-images";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath } from "@/i18n/routes";
-import { phoneLink } from "@/lib/business-info";
 import { fmt } from "@/lib/format";
 import { serviceLinks, type ServiceLink } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
@@ -36,7 +35,6 @@ export function Hero({ locale }: { locale: Locale }) {
   const t = dict.home.hero;
   const years = business.experienceYears;
   const image = getImage(forceCarImages.hero, locale);
-  const phone = phoneLink();
   const services = serviceLinks(locale);
 
   return (
@@ -45,49 +43,54 @@ export function Hero({ locale }: { locale: Locale }) {
         <HeroMedia poster={image} />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-linear-to-r from-ink-900 from-0% via-ink-900/82 via-40% to-ink-900/25 lg:via-36% lg:to-ink-900/10"
+          className="absolute inset-0 bg-linear-to-r from-ink-950 from-0% via-ink-950/88 via-42% to-ink-950/30 lg:via-38% lg:to-ink-950/15"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgb(11_12_14/0.5))]" />
-        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-28 bg-linear-to-t from-ink-900 to-transparent" />
+        <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgb(11_12_14/0.55))]" />
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-ink-950 to-transparent" />
       </div>
 
       <div className="container-fc relative">
-        <div className="flex min-h-[32rem] flex-col justify-end py-14 sm:min-h-[36rem] sm:py-16 lg:min-h-[min(44rem,calc(100svh-7.5rem))] lg:max-w-[36rem] lg:justify-center lg:py-20 xl:max-w-[40rem]">
+        <div className="flex min-h-[28rem] flex-col justify-end py-10 sm:min-h-[32rem] sm:py-12 lg:min-h-[min(34rem,calc(100svh-10.5rem))] lg:max-w-[38rem] lg:py-12 xl:max-w-[42rem]">
           <p className="eyebrow">{t.eyebrow}</p>
-          <h1 id="hero-title" className="mt-5 text-display font-extrabold text-balance">
-            {fmt(t.title, { years })}
+          <h1 id="hero-title" className="mt-4 text-display font-extrabold text-balance">
+            <span className="block">{t.kicker}</span>
+            <span className="mt-1 block">
+              <span className="text-brand">{t.accent}</span> {t.rest}
+            </span>
           </h1>
-          <p className="mt-5 max-w-xl text-lead text-steel-300">{t.lead}</p>
+          <p className="mt-4 max-w-xl text-lead text-steel-300">{fmt(t.lead, { years })}</p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link href={pagePath(locale, "booking")} className={buttonClasses({ size: "lg" })}>
               <CalendarCheck className="size-5" aria-hidden="true" />
               {dict.cta.book}
             </Link>
-            {phone ? (
-              <a href={phone.href} className={buttonClasses({ variant: "onDark", size: "lg" })} data-track-location="hero">
-                <Phone className="size-5" aria-hidden="true" />
-                {dict.cta.call}
-              </a>
-            ) : (
-              <Link href={pagePath(locale, "services")} className={buttonClasses({ variant: "onDark", size: "lg" })}>
-                {dict.cta.viewServices}
-              </Link>
-            )}
+            <Link href={pagePath(locale, "works")} className={buttonClasses({ variant: "onDark", size: "lg" })}>
+              {dict.cta.worksShort}
+            </Link>
           </div>
 
-          <ul className="mt-9 grid gap-3 text-sm font-semibold text-white/85 sm:flex sm:flex-wrap sm:gap-x-6">
-            <li className="flex items-center gap-2">
-              <ShieldCheck className="size-4 text-brand" aria-hidden="true" />
-              {fmt(dict.common.experience, { years })}
+          <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm">
+            <li className="flex items-center gap-2.5">
+              <ShieldCheck className="size-4 shrink-0 text-brand" aria-hidden="true" />
+              <span>
+                <span className="font-extrabold tabular-nums">{fmt(t.stats.experienceValue, { years })}</span>
+                <span className="ml-1.5 text-steel-300">{t.stats.experienceLabel}</span>
+              </span>
             </li>
-            <li className="flex items-center gap-2">
-              <MapPin className="size-4 text-brand" aria-hidden="true" />
-              {dict.common.location}
+            <li className="flex items-center gap-2.5">
+              <Globe className="size-4 shrink-0 text-brand" aria-hidden="true" />
+              <span>
+                <span className="font-extrabold">{t.stats.languagesValue}</span>
+                <span className="ml-1.5 text-steel-300">{t.stats.languagesLabel}</span>
+              </span>
             </li>
-            <li className="flex items-center gap-2">
-              <CalendarCheck className="size-4 text-brand" aria-hidden="true" />
-              {dict.common.quickBooking}
+            <li className="flex items-center gap-2.5">
+              <MapPin className="size-4 shrink-0 text-brand" aria-hidden="true" />
+              <span>
+                <span className="font-extrabold">{t.stats.locationValue}</span>
+                <span className="ml-1.5 text-steel-300">{t.stats.locationLabel}</span>
+              </span>
             </li>
           </ul>
         </div>
