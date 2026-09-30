@@ -72,7 +72,7 @@ const BRANDS = [
 ];
 
 const input =
-  "block h-12 w-full rounded-md border border-line bg-white px-3.5 text-base text-text placeholder:text-steel-400 transition-shadow focus:border-ink-900 focus:ring-2 focus:ring-ink-900/10 focus:outline-none aria-[invalid=true]:border-danger aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-danger/10";
+  "block h-12 w-full rounded-md border border-line/90 bg-white px-3.5 text-base text-text placeholder:text-steel-400 transition-[border-color,box-shadow] duration-200 focus:border-brand focus:ring-2 focus:ring-brand/15 focus:outline-none aria-[invalid=true]:border-danger aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-danger/10";
 
 const safeSession = {
   get(key: string) {

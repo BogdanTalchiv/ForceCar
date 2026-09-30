@@ -14,9 +14,9 @@ export function ResultsSection({ locale }: { locale: Locale }) {
   const preview = getImage("collisionRepair", locale);
 
   return (
-    <section aria-labelledby="results-title" className="bg-ink-900 py-16 text-white sm:py-20 lg:py-24">
+    <section aria-labelledby="results-title" className="bg-mist section-y">
       <div className="container-fc">
-        <SectionHeader id="results-title" eyebrow={t.eyebrow} title={t.title} lead={t.lead} dark />
+        <SectionHeader id="results-title" eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
         <Reveal>
           {pairs.length > 0 ? (
             <div className={`grid gap-8 ${pairs.length > 1 ? "lg:grid-cols-2" : ""}`}>

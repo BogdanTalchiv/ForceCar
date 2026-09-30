@@ -17,7 +17,7 @@ export function AboutTeaser({ locale }: { locale: Locale }) {
   const image = getImage(forceCarImages.about, locale);
 
   return (
-    <section aria-labelledby="about-title" className="relative overflow-hidden bg-ink-900 py-16 text-white sm:py-20 lg:py-24">
+    <section aria-labelledby="about-title" className="relative overflow-hidden bg-ink-900 section-y text-white">
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <Image
           src="/images/forcecar/_og/background2.png"
@@ -27,36 +27,37 @@ export function AboutTeaser({ locale }: { locale: Locale }) {
           sizes="100vw"
           className="object-cover object-[82%_center]"
         />
-        <div className="absolute inset-0 bg-linear-to-r from-ink-900 from-0% via-ink-900/70 via-38% to-ink-900/20 lg:via-ink-900/40 lg:to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-b from-transparent to-ink-900/35" />
+        <div className="absolute inset-0 bg-linear-to-r from-ink-900 from-0% via-ink-900/78 via-42% to-ink-900/25 lg:via-ink-900/50 lg:to-transparent" />
       </div>
-      <div className="container-fc relative pb-4">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <p className="eyebrow mb-4">{t.eyebrow}</p>
+      <div className="container-fc relative pb-8">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
+          <div className="lg:pr-6">
+            <p className="eyebrow mb-3">{t.eyebrow}</p>
             <h2 id="about-title" className="text-h2 font-extrabold text-balance">
               {fmt(t.title, { years })}
             </h2>
             {t.paragraphs.map((p) => (
-              <p key={p.slice(0, 24)} className="mt-5 text-lead text-steel-300">
+              <p key={p.slice(0, 24)} className="mt-4 max-w-[38rem] text-lead text-steel-300">
                 {fmt(p, { years })}
               </p>
             ))}
             <Link href={pagePath(locale, "about")} className={buttonClasses({ variant: "onDark", className: "mt-8" })}>
               {dict.cta.about}
-              <ArrowRight className="size-4" aria-hidden="true" />
+              <ArrowRight className="btn-arrow size-4" aria-hidden="true" />
             </Link>
           </div>
-          <div className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-ink-800 shadow-float ring-1 ring-white/10">
+          <div className="relative lg:-ml-4 lg:translate-x-2">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-ink-800 ring-1 ring-white/10">
               <FcImage image={image} fill quality={72} sizes="(min-width: 1024px) 50vw, 100vw" />
             </div>
-            <div className="absolute -bottom-6 left-5 rounded-lg bg-ink-900 px-6 py-5 text-white shadow-float ring-1 ring-white/10 sm:left-8">
-              <p className="text-4xl leading-none font-extrabold">
+            <div className="absolute -bottom-5 left-3 bg-ink-950 px-5 py-4 text-white ring-1 ring-white/12 sm:left-0 sm:-translate-x-4">
+              <p className="text-[2.75rem] leading-none font-extrabold tabular-nums">
                 {years}
                 <span className="text-brand">+</span>
               </p>
-              <p className="mt-1.5 text-sm font-semibold text-steel-300">{dict.common.experience.replace("{years}+ ", "")}</p>
+              <p className="mt-1.5 text-[0.6875rem] font-bold tracking-[0.14em] text-steel-300 uppercase">
+                {dict.home.hero.stats.experienceLabel}
+              </p>
             </div>
           </div>
         </div>

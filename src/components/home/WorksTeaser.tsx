@@ -6,6 +6,7 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath } from "@/i18n/routes";
 import { buttonClasses } from "@/components/ui/button";
 import { FcImage } from "@/components/ui/FcImage";
+import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/Section";
 
 const teaserCases: { image: ImageKey; category: GalleryCategory }[] = [
@@ -21,7 +22,7 @@ export function WorksTeaser({ locale }: { locale: Locale }) {
   const worksHref = pagePath(locale, "works");
 
   return (
-    <section aria-labelledby="works-title" className="bg-ink-950 py-16 text-white sm:py-20 lg:py-24">
+    <section aria-labelledby="works-title" className="bg-ink-950 section-y text-white">
       <div className="container-fc">
         <SectionHeader
           id="works-title"
@@ -30,49 +31,58 @@ export function WorksTeaser({ locale }: { locale: Locale }) {
           lead={t.lead}
           dark
           action={
-            <Link href={worksHref} className={buttonClasses({ variant: "onDark" })}>
+            <Link href={pagePath(locale, "works")} className={buttonClasses({ variant: "onDark" })}>
               {dict.cta.viewWorks}
-              <ArrowRight className="size-4" aria-hidden="true" />
+              <ArrowRight className="btn-arrow size-4" aria-hidden="true" />
             </Link>
           }
         />
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
-          {teaserCases.map((item) => {
-            const img = getImage(item.image, locale);
-            const copy = t.cases[item.category];
-            return (
-              <li key={item.image}>
-                <article className="group relative flex h-full flex-col overflow-hidden rounded-lg bg-ink-900 ring-1 ring-white/10 transition-[transform,ring-color] duration-300 hover:-translate-y-0.5 hover:ring-brand/50">
-                  <Link href={worksHref} className="flex h-full flex-col" aria-label={`${t.viewCase}: ${dict.gallery.categories[item.category]}`}>
-                    <div className="relative aspect-[4/3] overflow-hidden bg-ink-800">
+        <Reveal>
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {teaserCases.map((item, i) => {
+              const img = getImage(item.image, locale);
+              const copy = t.cases[item.category];
+              const category = dict.gallery.categories[item.category];
+              const featured = i === 0;
+              return (
+                <li key={item.image} className={featured ? "sm:col-span-2 lg:col-span-3" : ""}>
+                  <article className="group relative overflow-hidden rounded-lg bg-ink-800 ring-1 ring-white/10 transition-[ring-color] duration-300 hover:ring-white/25">
+                    <Link
+                      href={worksHref}
+                      className={`relative block overflow-hidden ${featured ? "aspect-[16/10] sm:aspect-[2/1]" : "aspect-[4/3]"}`}
+                      aria-label={`${t.viewCase}: ${category}. ${copy.result}`}
+                    >
                       <FcImage
                         image={img}
                         fill
                         decorative
-                        quality={60}
-                        sizes="(min-width: 1024px) 24vw, 50vw"
-                        className="transition-transform duration-700 group-hover:scale-[1.05]"
+                        quality={featured ? 72 : 60}
+                        sizes={featured ? "100vw" : "(min-width: 1024px) 33vw, 50vw"}
+                        className="transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                       />
-                      <span className="absolute top-3 left-3 rounded bg-ink-950/85 px-2.5 py-1 text-xs font-bold tracking-wide text-white uppercase backdrop-blur-sm">
-                        {dict.gallery.categories[item.category]}
-                      </span>
-                    </div>
-                    <div className="flex flex-1 flex-col p-5">
-                      <p className="text-xs font-bold tracking-wide text-steel-400 uppercase">{t.problem}</p>
-                      <p className="mt-1 text-[0.9375rem] leading-relaxed text-steel-200">{copy.problem}</p>
-                      <p className="mt-4 text-xs font-bold tracking-wide text-steel-400 uppercase">{t.result}</p>
-                      <p className="mt-1 text-[0.9375rem] leading-relaxed text-steel-200">{copy.result}</p>
-                      <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-bold text-white group-hover:text-brand-bright">
-                        {t.viewCase}
-                        <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
-                      </span>
-                    </div>
-                  </Link>
-                </article>
-              </li>
-            );
-          })}
-        </ul>
+                      <div
+                        aria-hidden="true"
+                        className="absolute inset-0 bg-linear-to-t from-ink-950/80 via-ink-950/15 to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-90"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 sm:p-5">
+                        <div className="min-w-0">
+                          <p className="text-[0.6875rem] font-bold tracking-[0.14em] text-white/80 uppercase">{category}</p>
+                          <p className="mt-1 max-w-md truncate text-sm font-bold text-white opacity-100 sm:opacity-0 sm:transition-opacity sm:duration-300 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100">
+                            {copy.result}
+                          </p>
+                        </div>
+                        <ArrowRight
+                          className="btn-arrow size-5 shrink-0 text-white opacity-80 sm:opacity-0 sm:transition-opacity sm:duration-300 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100"
+                          aria-hidden="true"
+                        />
+                      </div>
+                    </Link>
+                  </article>
+                </li>
+              );
+            })}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );

@@ -253,7 +253,7 @@ const en: Dictionary = {
     reviews: {
       eyebrow: "What our customers say",
       title: "Their trust is what drives us.",
-      lead: "We only publish real reviews, with the customer's consent. Until then, the slots below stay reserved.",
+      lead: "We only publish real reviews, with the customer's consent. Until then, this space stays reserved.",
       placeholderQuote: "The customer's real video review will appear here.",
       placeholderName: "Reserved slot",
       placeholderNotice: "We do not publish invented reviews.",

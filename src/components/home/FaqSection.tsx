@@ -21,7 +21,7 @@ export function FaqSection({ locale, items, tone = "white" }: { locale: Locale; 
           </h2>
           <Link href={pagePath(locale, "faq")} className={buttonClasses({ variant: "outline", className: "mt-8" })}>
             {dict.cta.allFaq}
-            <ArrowRight className="size-4" aria-hidden="true" />
+            <ArrowRight className="btn-arrow size-4" aria-hidden="true" />
           </Link>
         </div>
         <FaqList items={items} />

@@ -253,7 +253,7 @@ const it: Dictionary = {
     reviews: {
       eyebrow: "Cosa dicono i nostri clienti",
       title: "La loro fiducia ci motiva.",
-      lead: "Pubblichiamo solo recensioni reali, con il consenso del cliente. Fino ad allora, gli spazi qui sotto restano riservati.",
+      lead: "Pubblichiamo solo recensioni reali, con il consenso del cliente. Fino ad allora, questo spazio resta riservato.",
       placeholderQuote: "La recensione video reale del cliente apparirà qui.",
       placeholderName: "Spazio riservato",
       placeholderNotice: "Non pubblichiamo recensioni inventate.",

@@ -92,7 +92,7 @@ export function ArticlePage({ locale, article }: { locale: Locale; article: Arti
                 </Link>
                 <Link href={servicePath(locale, service.slugs)} className={buttonClasses({ variant: "outline" })}>
                   {dict.cta.details}
-                  <ArrowRight className="size-4" aria-hidden="true" />
+                  <ArrowRight className="btn-arrow size-4" aria-hidden="true" />
                 </Link>
               </div>
             </aside>

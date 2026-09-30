@@ -28,3 +28,10 @@ export function lowerFirst(text: string, locale: string): string {
   if (!text) return text;
   return text.charAt(0).toLocaleLowerCase(locale) + text.slice(1);
 }
+
+/** Dată de articol în forma scurtă a limbii curente (ex. 25 sept. 2026). */
+export function formatDate(iso: string, locale: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  return new Intl.DateTimeFormat(locale, { day: "numeric", month: "short", year: "numeric" }).format(d);
+}

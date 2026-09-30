@@ -19,7 +19,7 @@ export function FinalCta({ locale, title, text }: { locale: Locale; title?: stri
         <FcImage image={image} fill decorative quality={60} sizes="100vw" />
       </div>
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-r from-ink-900 via-ink-900/90 to-ink-900/50" />
-      <div className="container-fc py-16 sm:py-20 lg:py-24">
+      <div className="container-fc section-y">
         <div className="max-w-2xl">
           <h2 id="final-cta-title" className="text-h2 font-extrabold text-balance">
             {title ?? dict.home.finalCta.title}

@@ -59,7 +59,7 @@ export function ServicesPage({ locale }: { locale: Locale }) {
             {diagnostics && (
               <Link href={servicePath(locale, diagnostics.slugs)} className={buttonClasses({ variant: "onDark" })}>
                 {dict.cta.details}
-                <ArrowRight className="size-4" aria-hidden="true" />
+                <ArrowRight className="btn-arrow size-4" aria-hidden="true" />
               </Link>
             )}
           </div>

@@ -41,7 +41,7 @@ export function BeforeAfterSlider({ id, before, after, preview, title, labels, n
 
   return (
     <figure className={className}>
-      <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-ink-800 select-none has-[input:focus-visible]:ring-2 has-[input:focus-visible]:ring-brand has-[input:focus-visible]:ring-offset-2 sm:aspect-[16/9]">
+      <div className="relative aspect-[16/11] overflow-hidden rounded-lg bg-ink-800 select-none ring-1 ring-black/5 has-[input:focus-visible]:ring-2 has-[input:focus-visible]:ring-brand has-[input:focus-visible]:ring-offset-2 sm:aspect-[16/9] lg:aspect-[2/1]">
         <Image
           src={right.src}
           alt={right.alt}
@@ -74,9 +74,9 @@ export function BeforeAfterSlider({ id, before, after, preview, title, labels, n
           {labels.after}
         </span>
 
-        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 w-0.5 -translate-x-1/2 bg-white shadow-float" style={{ left: `${value}%` }}>
-          <span className="absolute top-1/2 left-1/2 flex size-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-ink-900 shadow-float ring-4 ring-white/25">
-            <MoveHorizontal className="size-5" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 w-px -translate-x-1/2 bg-white" style={{ left: `${value}%` }}>
+          <span className="absolute top-1/2 left-1/2 flex size-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-ink-900 shadow-[0_4px_16px_rgb(0_0_0/0.28)] ring-4 ring-white/30">
+            <MoveHorizontal className="size-5" strokeWidth={1.75} />
           </span>
         </div>
 
@@ -93,8 +93,8 @@ export function BeforeAfterSlider({ id, before, after, preview, title, labels, n
         />
       </div>
       <figcaption className="mt-3 flex flex-col gap-1 text-sm sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-        <span className="font-bold">{title}</span>
-        <span className="text-muted">{notice ?? labels.hint}</span>
+        <span className="font-bold text-text">{title}</span>
+        <span className="max-w-xl text-muted">{notice ?? labels.hint}</span>
       </figcaption>
     </figure>
   );

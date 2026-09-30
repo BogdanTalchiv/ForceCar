@@ -22,7 +22,7 @@ export function Section({
   labelledBy?: string;
 }) {
   return (
-    <section id={id} aria-labelledby={labelledBy} className={`${tones[tone]} py-16 sm:py-20 lg:py-24 ${className}`}>
+    <section id={id} aria-labelledby={labelledBy} className={`${tones[tone]} section-y ${className}`}>
       <div className="container-fc">{children}</div>
     </section>
   );
@@ -46,13 +46,15 @@ export function SectionHeader({
   as?: "h1" | "h2";
 }) {
   return (
-    <div className="mb-10 flex flex-col gap-6 lg:mb-12 lg:flex-row lg:items-end lg:justify-between">
+    <div className="mb-8 flex flex-col gap-5 lg:mb-10 lg:flex-row lg:items-end lg:justify-between">
       <div className="max-w-3xl">
-        {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
+        {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
         <Heading id={id} className="text-h2 font-extrabold text-balance">
           {title}
         </Heading>
-        {lead && <p className={`mt-4 text-lead ${dark ? "text-steel-300" : "text-muted"}`}>{lead}</p>}
+        {lead && (
+          <p className={`mt-3 max-w-[40rem] text-lead ${dark ? "text-steel-300" : "text-muted"}`}>{lead}</p>
+        )}
       </div>
       {action && <div className="shrink-0">{action}</div>}
     </div>
@@ -79,7 +81,7 @@ export function PageHero({
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:linear-gradient(to_right,white_1px,transparent_1px)] [background-size:120px_100%]"
       />
-      <div className="container-fc relative pt-8 pb-14 sm:pb-16 lg:pt-10 lg:pb-20">
+      <div className="container-fc relative pt-8 pb-12 sm:pb-14 lg:pt-10 lg:pb-16">
         {breadcrumbs}
         <div className="mt-8 max-w-3xl lg:mt-10">
           {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}

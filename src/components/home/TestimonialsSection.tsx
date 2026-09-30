@@ -1,4 +1,4 @@
-import { Play, Star } from "lucide-react";
+import { Play } from "lucide-react";
 import Link from "next/link";
 import { reviews, videoReviews } from "@/config/reviews";
 import type { Locale } from "@/i18n/config";
@@ -8,37 +8,7 @@ import { hasReviews } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
 import { ReviewCard } from "@/components/reviews/ReviewCard";
 import { VideoReview } from "@/components/reviews/VideoReview";
-import { SectionHeader } from "@/components/ui/Section";
-
-function PlaceholderCard({
-  quote,
-  name,
-  notice,
-}: {
-  quote: string;
-  name: string;
-  notice: string;
-}) {
-  return (
-    <article className="flex h-full flex-col overflow-hidden rounded-lg bg-ink-800 ring-1 ring-dashed ring-white/20">
-      <div className="relative flex aspect-video items-center justify-center bg-linear-to-br from-ink-700 to-ink-950">
-        <span className="flex size-16 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20">
-          <Play className="ml-1 size-7 fill-white/70 text-white/70" aria-hidden="true" />
-        </span>
-      </div>
-      <div className="flex flex-1 flex-col p-5">
-        <span className="flex gap-0.5" aria-hidden="true">
-          {Array.from({ length: 5 }, (_, i) => (
-            <Star key={i} className="size-4 text-white/20" />
-          ))}
-        </span>
-        <blockquote className="mt-4 flex-1 leading-relaxed text-steel-300">“{quote}”</blockquote>
-        <p className="mt-4 text-sm font-bold text-white/70">{name}</p>
-        <p className="mt-2 text-xs text-steel-400">{notice}</p>
-      </div>
-    </article>
-  );
-}
+import { Section, SectionHeader } from "@/components/ui/Section";
 
 export function TestimonialsSection({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
@@ -47,21 +17,36 @@ export function TestimonialsSection({ locale }: { locale: Locale }) {
   const texts = reviews.slice(0, 3);
   const showReal = hasReviews && (videos.length > 0 || texts.length > 0);
 
+  if (!showReal) {
+    return (
+      <Section labelledBy="home-reviews-title" tone="mist">
+        <SectionHeader id="home-reviews-title" eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
+        <div className="flex max-w-2xl items-start gap-4 border-y border-line py-7">
+          <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-white ring-1 ring-line">
+            <Play className="ml-0.5 size-4 text-ink-900" aria-hidden="true" />
+          </span>
+          <div>
+            <p className="font-bold">{t.placeholderName}</p>
+            <p className="mt-1 text-[0.9375rem] leading-relaxed text-muted">{t.placeholderNotice}</p>
+            <p className="mt-2 text-sm text-muted">{t.placeholderQuote}</p>
+          </div>
+        </div>
+      </Section>
+    );
+  }
+
   return (
-    <section aria-labelledby="home-reviews-title" className="bg-ink-950 py-16 text-white sm:py-20 lg:py-24">
+    <section aria-labelledby="home-reviews-title" className="bg-mist section-y">
       <div className="container-fc">
         <SectionHeader
           id="home-reviews-title"
           eyebrow={t.eyebrow}
           title={t.title}
           lead={t.lead}
-          dark
           action={
-            showReal ? (
-              <Link href={pagePath(locale, "reviews")} className={buttonClasses({ variant: "onDark" })}>
-                {dict.nav.reviews}
-              </Link>
-            ) : undefined
+            <Link href={pagePath(locale, "reviews")} className={buttonClasses({ variant: "outline" })}>
+              {dict.nav.reviews}
+            </Link>
           }
         />
         {videos.length > 0 ? (
@@ -72,10 +57,10 @@ export function TestimonialsSection({ locale }: { locale: Locale }) {
               </li>
             ))}
           </ul>
-        ) : texts.length > 0 ? (
+        ) : (
           <ul className="grid gap-4 md:grid-cols-3">
             {texts.map((r) => (
-              <li key={r.id} className="text-text">
+              <li key={r.id}>
                 <ReviewCard
                   review={r}
                   locale={locale}
@@ -86,14 +71,6 @@ export function TestimonialsSection({ locale }: { locale: Locale }) {
                     newTab: dict.a11y.newTab,
                   }}
                 />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <ul className="grid gap-4 md:grid-cols-3">
-            {[0, 1, 2].map((i) => (
-              <li key={i}>
-                <PlaceholderCard quote={t.placeholderQuote} name={t.placeholderName} notice={t.placeholderNotice} />
               </li>
             ))}
           </ul>

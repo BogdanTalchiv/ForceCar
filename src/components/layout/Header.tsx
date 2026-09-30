@@ -29,7 +29,7 @@ export function Header({
 
   return (
     <HeaderFrame>
-      <div className="container-fc flex h-16 items-center justify-between gap-4 lg:h-[4.5rem]">
+      <div className="header-bar container-fc flex items-center justify-between gap-4">
         <Link href={pagePath(locale, "home")} aria-label={dict.a11y.home} className="shrink-0 rounded-sm">
           <Logo tagline={`${dict.meta.tagline} · Chișinău`} />
         </Link>
@@ -42,7 +42,7 @@ export function Header({
                   <Link
                     href={item.href}
                     aria-current={current === item.key ? "page" : undefined}
-                    className="flex h-10 items-center gap-1 rounded-md px-3 text-[0.9375rem] font-semibold text-white/85 transition-colors hover:text-white aria-[current=page]:text-white"
+                    className="relative flex h-10 items-center gap-1 rounded-md px-3 text-[0.9375rem] font-semibold text-white/85 transition-colors hover:text-white aria-[current=page]:text-white after:absolute after:inset-x-3 after:-bottom-[0.7rem] after:h-px after:bg-transparent after:transition-colors hover:after:bg-white/35 aria-[current=page]:after:bg-brand"
                   >
                     {item.label}
                     <ChevronDown className="size-4 opacity-70 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" aria-hidden="true" />
@@ -72,7 +72,7 @@ export function Header({
                   <Link
                     href={item.href}
                     aria-current={current === item.key ? "page" : undefined}
-                    className="relative flex h-10 items-center rounded-md px-3 text-[0.9375rem] font-semibold text-white/85 transition-colors hover:text-white aria-[current=page]:text-white aria-[current=page]:after:absolute aria-[current=page]:after:inset-x-3 aria-[current=page]:after:-bottom-[0.9rem] aria-[current=page]:after:h-0.5 aria-[current=page]:after:bg-brand"
+                    className="relative flex h-10 items-center rounded-md px-3 text-[0.9375rem] font-semibold text-white/85 transition-colors hover:text-white aria-[current=page]:text-white after:absolute after:inset-x-3 after:-bottom-[0.7rem] after:h-px after:bg-transparent after:transition-colors hover:after:bg-white/35 aria-[current=page]:after:bg-brand"
                   >
                     {item.label}
                   </Link>

@@ -15,8 +15,8 @@ export function ServicesGrid({ locale }: { locale: Locale }) {
   const t = dict.home.services;
 
   return (
-    <section aria-labelledby="services-title" className="relative overflow-hidden bg-ink-950 py-16 text-white sm:py-20 lg:py-24">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[22rem] opacity-40 sm:h-[26rem]" aria-hidden="true">
+    <section aria-labelledby="services-title" className="relative overflow-hidden bg-ink-950 section-y text-white">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[20rem] opacity-35 sm:h-[24rem]" aria-hidden="true">
         <Image
           src="/images/forcecar/_og/background1.png"
           alt=""
@@ -25,7 +25,7 @@ export function ServicesGrid({ locale }: { locale: Locale }) {
           sizes="100vw"
           className="object-cover object-[72%_center]"
         />
-        <div className="absolute inset-0 bg-linear-to-b from-ink-950/40 via-ink-950/85 to-ink-950" />
+        <div className="absolute inset-0 bg-linear-to-b from-ink-950/50 via-ink-950/88 to-ink-950" />
       </div>
       <div className="container-fc relative">
         <SectionHeader
@@ -37,12 +37,12 @@ export function ServicesGrid({ locale }: { locale: Locale }) {
           action={
             <Link href={pagePath(locale, "services")} className={buttonClasses({ variant: "onDark" })}>
               {dict.cta.allServices}
-              <ArrowRight className="size-4" aria-hidden="true" />
+              <ArrowRight className="btn-arrow size-4" aria-hidden="true" />
             </Link>
           }
         />
         <Reveal>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+          <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
             {enabledServices.map((s) => (
               <ServiceCard
                 key={s.id}

@@ -48,7 +48,7 @@ export function FaqPage({ locale }: { locale: Locale }) {
                 <h3 className="text-xl font-extrabold">{content.name}</h3>
                 <Link href={servicePath(locale, service.slugs)} className="inline-flex shrink-0 items-center gap-1 text-sm font-bold text-brand hover:underline">
                   {dict.cta.details}
-                  <ArrowRight className="size-4" aria-hidden="true" />
+                  <ArrowRight className="btn-arrow size-4" aria-hidden="true" />
                 </Link>
               </div>
               <FaqList items={content.faq} />

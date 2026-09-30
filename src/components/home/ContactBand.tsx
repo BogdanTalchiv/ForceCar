@@ -8,7 +8,6 @@ import { mapsEmbedUrl, mapsUrl, messengerLinks, openingHoursRows, phoneLink, str
 import { buttonClasses } from "@/components/ui/button";
 import { MapFacade } from "@/components/contact/MapFacade";
 import { FcImage } from "@/components/ui/FcImage";
-import { SectionHeader } from "@/components/ui/Section";
 
 export function ContactBand({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
@@ -21,25 +20,27 @@ export function ContactBand({ locale }: { locale: Locale }) {
   const maps = mapsUrl();
   const image = getImage(forceCarImages.about, locale);
 
+  const row = "flex items-start gap-4 py-4";
+  const label = "block text-[0.6875rem] font-bold tracking-[0.14em] text-steel-400 uppercase";
+
   return (
-    <section aria-labelledby="contact-band-title" className="bg-ink-900 py-16 text-white sm:py-20 lg:py-24">
+    <section aria-labelledby="contact-band-title" className="bg-ink-900 section-y text-white">
       <div className="container-fc">
-        <SectionHeader id="contact-band-title" eyebrow={t.eyebrow} title={t.title} lead={t.lead} dark />
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-10">
-          <div className="flex flex-col gap-4">
-            <ul className="grid gap-3">
+        <div className="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+          <div>
+            <p className="eyebrow mb-3">{t.eyebrow}</p>
+            <h2 id="contact-band-title" className="text-h2 font-extrabold text-balance">
+              {t.title}
+            </h2>
+            <p className="mt-3 max-w-[38rem] text-lead text-steel-300">{t.lead}</p>
+
+            <ul className="mt-8 divide-y divide-white/10 border-y border-white/10">
               {phone && (
                 <li>
-                  <a
-                    href={phone.href}
-                    className="flex items-center gap-4 rounded-lg bg-white/5 px-4 py-4 ring-1 ring-white/10 transition-colors hover:bg-white/8"
-                    data-track-location="home_contact"
-                  >
-                    <span className="flex size-11 items-center justify-center rounded-md bg-brand">
-                      <Phone className="size-5" aria-hidden="true" />
-                    </span>
+                  <a href={phone.href} className={`${row} transition-colors hover:text-white`} data-track-location="home_contact">
+                    <Phone className="mt-0.5 size-5 shrink-0 text-brand-bright" strokeWidth={1.75} aria-hidden="true" />
                     <span>
-                      <span className="block text-xs font-bold tracking-wide text-steel-400 uppercase">{dict.common.phone}</span>
+                      <span className={label}>{dict.common.phone}</span>
                       <span className="text-lg font-extrabold">{phone.label}</span>
                     </span>
                   </a>
@@ -51,45 +52,44 @@ export function ContactBand({ locale }: { locale: Locale }) {
                     href={whatsapp.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 rounded-lg bg-white/5 px-4 py-4 ring-1 ring-white/10 transition-colors hover:bg-white/8"
+                    className={`${row} transition-colors hover:text-white`}
                     data-track-location="home_contact"
                   >
-                    <span className="flex size-11 items-center justify-center rounded-md bg-brand">
-                      <MessageCircle className="size-5" aria-hidden="true" />
-                    </span>
+                    <MessageCircle className="mt-0.5 size-5 shrink-0 text-brand-bright" strokeWidth={1.75} aria-hidden="true" />
                     <span>
-                      <span className="block text-xs font-bold tracking-wide text-steel-400 uppercase">{t.whatsapp}</span>
+                      <span className={label}>{t.whatsapp}</span>
                       <span className="text-lg font-extrabold">{t.whatsapp}</span>
                     </span>
                   </a>
                 </li>
               )}
-              <li className="flex items-start gap-4 rounded-lg bg-white/5 px-4 py-4 ring-1 ring-white/10">
-                <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-white/8">
-                  <MapPin className="size-5 text-brand" aria-hidden="true" />
-                </span>
+              <li className={row}>
+                <MapPin className="mt-0.5 size-5 shrink-0 text-brand-bright" strokeWidth={1.75} aria-hidden="true" />
                 <span>
-                  <span className="block text-xs font-bold tracking-wide text-steel-400 uppercase">{dict.common.address}</span>
+                  <span className={label}>{dict.common.address}</span>
                   <span className="font-bold">{address ?? dict.common.locationLong}</span>
                 </span>
               </li>
               {hours.length > 0 && (
-                <li className="flex items-start gap-4 rounded-lg bg-white/5 px-4 py-4 ring-1 ring-white/10">
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-white/8">
-                    <Clock className="size-5 text-brand" aria-hidden="true" />
-                  </span>
+                <li className={row}>
+                  <Clock className="mt-0.5 size-5 shrink-0 text-brand-bright" strokeWidth={1.75} aria-hidden="true" />
                   <span>
-                    <span className="block text-xs font-bold tracking-wide text-steel-400 uppercase">{dict.common.hours}</span>
-                    {hours.map((row) => (
-                      <span key={row.days} className="block font-semibold">
-                        {row.days}: {row.hours}
+                    <span className={label}>{dict.common.hours}</span>
+                    {hours.map((h) => (
+                      <span key={h.days} className="block font-semibold">
+                        {h.days}: {h.hours}
                       </span>
                     ))}
                   </span>
                 </li>
               )}
             </ul>
-            <div className="mt-2 flex flex-col gap-3 sm:flex-row">
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href={pagePath(locale, "booking")} className={buttonClasses({ size: "lg" })}>
+                <CalendarCheck className="size-5" aria-hidden="true" />
+                {t.bookNow}
+              </Link>
               {phone && (
                 <a href={phone.href} className={buttonClasses({ variant: "onDark", size: "lg" })} data-track-location="home_contact">
                   <Phone className="size-5" aria-hidden="true" />
@@ -108,25 +108,23 @@ export function ContactBand({ locale }: { locale: Locale }) {
                   {t.whatsapp}
                 </a>
               )}
-              <Link href={pagePath(locale, "booking")} className={buttonClasses({ size: "lg" })}>
-                <CalendarCheck className="size-5" aria-hidden="true" />
-                {t.bookNow}
-              </Link>
             </div>
           </div>
 
-          <div className="grid gap-4">
-            {embed && (
-              <MapFacade
-                embedUrl={embed}
-                mapsUrl={maps}
-                labels={{ title: dict.contact.mapTitle, load: dict.contact.mapLoad, notice: dict.contact.mapNotice, open: dict.contact.openMaps }}
-              />
-            )}
-            <div className="relative aspect-[16/9] overflow-hidden rounded-lg bg-ink-800 ring-1 ring-white/10">
-              <FcImage image={image} fill quality={60} sizes="(min-width: 1024px) 50vw, 100vw" />
-            </div>
-          </div>
+          {embed ? (
+            <MapFacade
+              embedUrl={embed}
+              mapsUrl={maps}
+              cover={image}
+              labels={{ title: dict.contact.mapTitle, load: dict.contact.mapLoad, notice: dict.contact.mapNotice, open: dict.contact.openMaps }}
+            />
+          ) : (
+            image && (
+              <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-ink-800 ring-1 ring-white/10 sm:aspect-[16/10]">
+                <FcImage image={image} fill quality={60} sizes="(min-width: 1024px) 50vw, 100vw" />
+              </div>
+            )
+          )}
         </div>
       </div>
     </section>

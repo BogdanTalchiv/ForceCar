@@ -8,6 +8,7 @@ import { pagePath } from "@/i18n/routes";
 import { emailLink, messengerLinks, openingHoursRows, phoneLink, socialLinks, streetAddressLine } from "@/lib/business-info";
 import { fmt } from "@/lib/format";
 import { hasReviews, serviceLinks } from "@/lib/navigation";
+import { buttonClasses } from "@/components/ui/button";
 import { CookieSettingsButton } from "./CookieSettingsButton";
 import { Logo } from "./Logo";
 
@@ -39,10 +40,10 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
 
   return (
     <footer className="bg-ink-950 text-white">
-      <div className="container-fc grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr] lg:gap-12 lg:py-16">
+      <div className="container-fc grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr] lg:gap-12 lg:py-14">
         <div>
           <Logo size="lg" />
-          <p className="mt-5 max-w-xs text-[0.9375rem] leading-relaxed text-white/70">
+          <p className="mt-4 max-w-xs text-[0.9375rem] leading-relaxed text-white/70">
             {fmt(dict.entity.statement, { years: business.experienceYears })}
           </p>
           <p className="mt-4 text-sm font-semibold text-white/85">{dict.common.locationLong}</p>
@@ -127,10 +128,7 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
               ))}
             </ul>
           )}
-          <Link
-            href={pagePath(locale, "booking")}
-            className="mt-6 inline-flex h-11 items-center rounded-md bg-brand px-5 text-[0.9375rem] font-bold hover:bg-brand-hover"
-          >
+          <Link href={pagePath(locale, "booking")} className={buttonClasses({ className: "mt-6" })}>
             {dict.cta.requestBooking}
           </Link>
         </div>

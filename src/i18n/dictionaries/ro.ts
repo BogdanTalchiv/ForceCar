@@ -251,7 +251,7 @@ const ro = {
     reviews: {
       eyebrow: "Ce spun clienții noștri",
       title: "Încrederea lor ne motivează.",
-      lead: "Publicăm doar recenzii reale, cu acordul clientului. Până atunci, locurile de mai jos rămân rezervate.",
+      lead: "Publicăm doar recenzii reale, cu acordul clientului. Până atunci, spațiul de mai jos rămâne rezervat.",
       placeholderQuote: "Recenzia video reală a clientului va apărea aici.",
       placeholderName: "Loc rezervat",
       placeholderNotice: "Nu publicăm recenzii inventate.",
