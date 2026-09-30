@@ -52,18 +52,22 @@ export function Hero({ locale }: { locale: Locale }) {
         <HeroMedia poster={image} />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-linear-to-r from-ink-950 from-[12%] via-ink-950/78 via-[46%] to-transparent"
+          className="absolute inset-0 bg-linear-to-t from-ink-950 from-20% via-ink-950/55 via-55% to-ink-950/30 md:hidden"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_42%,rgb(11_12_14/0.45))]"
+          className="absolute inset-0 hidden bg-linear-to-r from-ink-950 from-[12%] via-ink-950/78 via-[46%] to-transparent md:block"
         />
-        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-28 bg-linear-to-t from-ink-950/90 to-transparent" />
-        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-ink-950/70 to-transparent" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_42%,rgb(11_12_14/0.4))]"
+        />
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-36 bg-linear-to-t from-ink-950/90 to-transparent md:h-28" />
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-24 bg-linear-to-b from-ink-950/55 to-transparent md:h-28 md:from-ink-950/70" />
       </div>
 
       <div className="container-fc relative">
-        <div className="flex min-h-[26rem] flex-col justify-end py-9 sm:min-h-[30rem] sm:py-11 lg:min-h-[min(32rem,calc(100svh-9.5rem))] lg:max-w-[38rem] lg:py-11 xl:max-w-[42rem]">
+        <div className="flex min-h-[min(32rem,72svh)] flex-col justify-end py-9 sm:min-h-[30rem] sm:py-11 lg:min-h-[min(32rem,calc(100svh-9.5rem))] lg:max-w-[38rem] lg:py-11 xl:max-w-[42rem]">
           <p className="eyebrow">{t.eyebrow}</p>
           <h1 id="hero-title" className="mt-3 text-display font-extrabold text-balance">
             <span className="block">{t.kicker}</span>
