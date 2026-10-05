@@ -10,8 +10,8 @@ import { buildMetadata } from "./seo";
 const ogImage: Partial<Record<SectionKey, ImageKey>> = {
   services: "motor",
   works: "caroserie",
-  about: "mecanica",
-  blog: "distributie",
+  about: "fatada",
+  blog: "motor",
 };
 
 export function sectionMetadata(locale: Locale, key: SectionKey): Metadata {

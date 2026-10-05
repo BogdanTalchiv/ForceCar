@@ -11,7 +11,7 @@ import { SectionHeader } from "@/components/ui/Section";
 
 const teaserCases: { image: ImageKey; category: Exclude<GalleryCategory, "video"> }[] = [
   { image: "caroserie", category: "bodywork" },
-  { image: "distributie", category: "timing" },
+  { image: "vopsitorie", category: "paint" },
   { image: "frane", category: "brakes" },
   { image: "motor", category: "engine" },
 ];

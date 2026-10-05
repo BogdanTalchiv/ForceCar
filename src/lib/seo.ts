@@ -39,7 +39,7 @@ export function buildMetadata({
   ref,
   title,
   description,
-  image = "diagnostica",
+  image = "fatada",
   type = "website",
   publishedTime,
   modifiedTime,

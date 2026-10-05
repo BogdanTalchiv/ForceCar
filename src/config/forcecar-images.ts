@@ -54,52 +54,63 @@ interface ImageDef {
 }
 
 const images = {
-  diagnostica: {
-    file: "services/diagnostica.jpg",
-    focal: "42% 38%",
+  fatada: {
+    file: "workshop/atelier-19.jpg",
+    focal: "50% 55%",
     category: "mechanical",
     alt: {
-      ro: "Mecanic diagnosticând un automobil cu laptop-ul conectat la motor, capota deschisă",
-      ru: "Механик диагностирует автомобиль с ноутбуком, подключённым к двигателю, капот открыт",
-      it: "Meccanico che diagnostica un'auto con il laptop collegato al motore, cofano aperto",
-      en: "Mechanic diagnosing a car with a laptop connected to the engine, bonnet open",
+      ro: "BMW parcat în fața service-ului auto ForceCar din Chișinău",
+      ru: "BMW у здания автосервиса ForceCar в Кишинёве",
+      it: "BMW parcheggiata davanti all'officina ForceCar di Chișinău",
+      en: "BMW parked in front of the ForceCar workshop in Chișinău",
+    },
+  },
+  diagnostica: {
+    file: "workshop/atelier-18.jpg",
+    focal: "42% 45%",
+    category: "mechanical",
+    alt: {
+      ro: "Porsche cu capota deschisă și bara demontată, în atelier",
+      ru: "Porsche с открытым капотом и снятым бампером в мастерской",
+      it: "Porsche con cofano aperto e paraurti smontato in officina",
+      en: "Porsche with the bonnet open and bumper removed in the workshop",
     },
   },
   motor: {
-    file: "services/motor.jpg",
-    focal: "55% 48%",
+    file: "workshop/atelier-09.jpg",
+    focal: "45% 42%",
     category: "engine",
     alt: {
-      ro: "Motor scos pe stand, în lucru, în atelierul auto",
-      ru: "Двигатель на стенде в работе в автомастерской",
-      it: "Motore sul banco di lavoro in officina",
-      en: "Engine on a stand being worked on in the workshop",
+      ro: "Motor și structura față a unui Porsche, în lucru în atelier",
+      ru: "Двигатель и передняя структура Porsche в работе в мастерской",
+      it: "Motore e struttura anteriore di una Porsche in lavorazione",
+      en: "Porsche engine and front structure being worked on in the workshop",
     },
   },
   distributie: {
-    file: "services/distributie.jpg",
-    focal: "48% 45%",
+    file: "workshop/atelier-09.jpg",
+    focal: "45% 42%",
     category: "timing",
     alt: {
-      ro: "Lanț de distribuție și ax cu came vizibile pe un motor deschis",
-      ru: "Цепь ГРМ и распредвал на открытом двигателе",
-      it: "Catena di distribuzione e albero a camme su un motore aperto",
-      en: "Timing chain and camshaft on an opened engine",
+      ro: "Compartimentul motor al unui automobil, deschis pentru intervenție în atelier",
+      ru: "Моторный отсек автомобиля, открытый для ремонта в мастерской",
+      it: "Vano motore di un'auto aperto per l'intervento in officina",
+      en: "Car engine bay opened for workshop work",
     },
   },
   frane: {
-    file: "services/frane.webp",
-    focal: "50% 50%",
+    file: "workshop/atelier-14.jpg",
+    focal: "58% 62%",
     category: "brakes",
     alt: {
-      ro: "Disc și etrier de frână verificați pe un automobil ridicat",
-      ru: "Тормозной диск и суппорт на поднятом автомобиле",
-      it: "Disco e pinza del freno su un'auto sollevata",
-      en: "Brake disc and caliper on a car on a lift",
+      ro: "Automobil pe standul de îndreptare, cu discul de frână și suspensia vizibile",
+      ru: "Автомобиль на стапеле, видны тормозной диск и подвеска",
+      it: "Auto sul banco di raddrizzatura, con disco freno e sospensione visibili",
+      en: "Car on a frame bench with the brake disc and suspension visible",
     },
   },
   mecanica: {
-    file: "services/mecanica.jpg",
+    file: "workshop/atelier-17.jpg",
     focal: "50% 42%",
     category: "mechanical",
     alt: {
@@ -110,14 +121,25 @@ const images = {
     },
   },
   caroserie: {
-    file: "services/caroserie.jpg",
-    focal: "50% 50%",
+    file: "workshop/atelier-01.jpg",
+    focal: "38% 48%",
     category: "bodywork",
     alt: {
-      ro: "Tehnicieni lucrând la caroseria unui automobil pe standul de îndreptare",
-      ru: "Мастера работают с кузовом автомобиля на стапеле",
-      it: "Tecnici al lavoro sulla carrozzeria di un'auto sul banco di raddrizzatura",
-      en: "Technicians working on a car body on a frame bench",
+      ro: "Automobil pe standul de îndreptare a caroseriei, în atelier",
+      ru: "Автомобиль на стапеле для правки кузова в мастерской",
+      it: "Auto sul banco di raddrizzatura della carrozzeria in officina",
+      en: "Car on a body-alignment bench in the workshop",
+    },
+  },
+  vopsitorie: {
+    file: "workshop/atelier-06.jpg",
+    focal: "50% 45%",
+    category: "paint",
+    alt: {
+      ro: "Element de caroserie vopsit în cabina de vopsire",
+      ru: "Деталь кузова после покраски в окрасочной камере",
+      it: "Elemento di carrozzeria verniciato in cabina di verniciatura",
+      en: "Body panel painted inside the paint booth",
     },
   },
 } satisfies Record<string, ImageDef>;
@@ -137,10 +159,10 @@ export interface BeforeAfterPair {
  * Harta semantică folosită de componente. Nu scrie căi de imagini în componente.
  */
 export const forceCarImages = {
-  hero: "diagnostica",
+  hero: "fatada",
   about: "mecanica",
-  workshop: ["mecanica", "diagnostica"],
-  finalCta: "motor",
+  workshop: ["mecanica", "fatada"],
+  finalCta: "fatada",
   services: {
     diagnostics: "diagnostica",
     engine: "motor",
@@ -149,16 +171,16 @@ export const forceCarImages = {
     suspension: "mecanica",
     mechanical: "mecanica",
     bodywork: "caroserie",
-    paint: "caroserie",
+    paint: "vopsitorie",
   },
   engine: ["motor"],
-  timing: ["distributie"],
+  timing: ["motor"],
   brakes: ["frane"],
   mechanical: ["mecanica"],
   bodywork: ["caroserie"],
-  paint: ["caroserie"],
+  paint: ["vopsitorie"],
   parts: ["mecanica"],
-  gallery: ["motor", "distributie", "frane", "caroserie", "mecanica", "diagnostica"],
+  gallery: ["caroserie", "vopsitorie", "frane", "motor", "mecanica", "diagnostica", "fatada"],
   /**
    * NU există încă perechi reale Înainte/După. Nu combina fotografii ale unor mașini diferite.
    * Exemplu (după ce ai fotografiile reale ale aceleiași lucrări):
@@ -220,7 +242,7 @@ const folderCategory: Record<string, GalleryCategory> = {
   engine: "engine",
   timing: "timing",
   brakes: "brakes",
-  workshop: "mechanical",
+  workshop: "bodywork",
   parts: "mechanical",
   services: "mechanical",
   bodywork: "bodywork",
