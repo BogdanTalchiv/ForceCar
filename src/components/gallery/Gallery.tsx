@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize2, Play, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { GalleryCategory, ResolvedImage } from "@/config/forcecar-images";
 
@@ -10,6 +10,8 @@ interface Labels {
   filterLabel: string;
   categories: Record<GalleryCategory, string>;
   open: string;
+  openVideo: string;
+  play: string;
   close: string;
   prev: string;
   next: string;
@@ -80,37 +82,65 @@ export function Gallery({ images, labels, filters = true }: { images: ResolvedIm
       )}
 
       <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:gap-4">
-        {visible.map((img, i) => (
-          <li key={img.id}>
-            <button
-              type="button"
-              onClick={() => open(i)}
-              aria-label={fill(labels.open, { alt: img.alt })}
-              className="group relative block aspect-[4/3] w-full overflow-hidden rounded-lg bg-ink-800"
-            >
-              <Image
-                src={img.src}
-                alt=""
-                fill
-                sizes="(min-width: 768px) 33vw, 50vw"
-                quality={60}
-                placeholder="blur"
-                blurDataURL={img.blurDataURL}
-                style={{ objectPosition: img.focal }}
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              />
-              <span className="absolute inset-0 bg-ink-900/0 transition-colors group-hover:bg-ink-900/20" aria-hidden="true" />
-              <span className="absolute top-3 right-3 flex size-9 items-center justify-center rounded-md bg-ink-900/70 text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
-                <Maximize2 className="size-4" aria-hidden="true" />
-              </span>
-              {img.category && (
-                <span className="absolute bottom-3 left-3 rounded bg-ink-900/85 px-2.5 py-1 text-xs font-bold text-white">
-                  {labels.categories[img.category]}
-                </span>
-              )}
-            </button>
-          </li>
-        ))}
+        {visible.map((img, i) => {
+          const isVideo = img.kind === "video";
+          return (
+            <li key={img.id}>
+              <button
+                type="button"
+                onClick={() => open(i)}
+                aria-label={fill(isVideo ? labels.openVideo : labels.open, { alt: img.alt })}
+                className="group relative block aspect-[4/3] w-full overflow-hidden rounded-lg bg-ink-800"
+              >
+                {isVideo ? (
+                  img.poster ? (
+                    <Image
+                      src={img.poster}
+                      alt=""
+                      fill
+                      sizes="(min-width: 768px) 33vw, 50vw"
+                      quality={60}
+                      placeholder={img.blurDataURL.startsWith("data:image/webp") ? "blur" : "empty"}
+                      blurDataURL={img.blurDataURL.startsWith("data:image/webp") ? img.blurDataURL : undefined}
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  ) : (
+                    <span className="absolute inset-0 bg-ink-800" aria-hidden="true" />
+                  )
+                ) : (
+                  <Image
+                    src={img.src}
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 33vw, 50vw"
+                    quality={60}
+                    placeholder="blur"
+                    blurDataURL={img.blurDataURL}
+                    style={{ objectPosition: img.focal }}
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                )}
+                <span className="absolute inset-0 bg-ink-900/0 transition-colors group-hover:bg-ink-900/20" aria-hidden="true" />
+                {isVideo ? (
+                  <span className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+                    <span className="flex size-12 items-center justify-center rounded-full bg-ink-900/75 text-white ring-1 ring-white/25">
+                      <Play className="size-5 fill-white" />
+                    </span>
+                  </span>
+                ) : (
+                  <span className="absolute top-3 right-3 flex size-9 items-center justify-center rounded-md bg-ink-900/70 text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+                    <Maximize2 className="size-4" aria-hidden="true" />
+                  </span>
+                )}
+                {img.category && (
+                  <span className="absolute bottom-3 left-3 rounded bg-ink-900/85 px-2.5 py-1 text-xs font-bold text-white">
+                    {labels.categories[img.category]}
+                  </span>
+                )}
+              </button>
+            </li>
+          );
+        })}
       </ul>
 
       <dialog
@@ -143,17 +173,32 @@ export function Gallery({ images, labels, filters = true }: { images: ResolvedIm
             </div>
             <figure className="relative flex min-h-0 flex-1 flex-col">
               <div className="relative min-h-0 flex-1">
-                <Image
-                  key={current.id}
-                  src={current.src}
-                  alt={current.alt}
-                  fill
-                  sizes="100vw"
-                  quality={80}
-                  placeholder="blur"
-                  blurDataURL={current.blurDataURL}
-                  className="animate-fade-up object-contain"
-                />
+                {current.kind === "video" ? (
+                  <video
+                    key={current.id}
+                    src={current.src}
+                    poster={current.poster}
+                    controls
+                    playsInline
+                    autoPlay
+                    preload="metadata"
+                    className="absolute inset-0 m-auto max-h-full max-w-full animate-fade-up object-contain"
+                  >
+                    {labels.play}
+                  </video>
+                ) : (
+                  <Image
+                    key={current.id}
+                    src={current.src}
+                    alt={current.alt}
+                    fill
+                    sizes="100vw"
+                    quality={80}
+                    placeholder="blur"
+                    blurDataURL={current.blurDataURL}
+                    className="animate-fade-up object-contain"
+                  />
+                )}
               </div>
               <figcaption className="mx-auto max-w-3xl px-6 py-4 text-center text-sm text-white/80">{current.alt}</figcaption>
             </figure>

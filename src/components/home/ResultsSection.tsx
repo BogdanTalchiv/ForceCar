@@ -10,7 +10,7 @@ export function ResultsSection({ locale }: { locale: Locale }) {
   const pairs = getBeforeAfterPairs()
     .map((p) => ({ ...p, before: getImage(p.before, locale), after: getImage(p.after, locale) }))
     .filter((p) => p.before && p.after);
-  const preview = getImage("collisionRepair", locale);
+  const preview = getImage("caroserie", locale);
 
   const slides: ResultSlide[] =
     pairs.length > 0

@@ -22,7 +22,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
   const crumbs = crumbsFor(locale, "about");
   const services = serviceNamesList(locale);
   const mainImage = getImage(forceCarImages.about, locale);
-  const workshop = getImages(["timingBelt", "collisionRepair", "paintBooth"], locale);
+  const workshop = getImages(["distributie", "caroserie", "motor"], locale);
   const address = streetAddressLine();
   const phone = phoneLink();
 

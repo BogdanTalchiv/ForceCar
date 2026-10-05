@@ -10,6 +10,7 @@
  * și fotografiile noi care nu sunt încă descrise în configurație.
  */
 import sharp from "sharp";
+import { spawn } from "node:child_process";
 import { readdir, readFile, stat, mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -18,8 +19,10 @@ const IMAGES_DIR = path.join(ROOT, "public", "images", "forcecar");
 const OG_DIR_NAME = "_og";
 const OG_DIR = path.join(IMAGES_DIR, OG_DIR_NAME);
 const MANIFEST = path.join(ROOT, "src", "config", "generated", "image-manifest.json");
+const VIDEO_MANIFEST = path.join(ROOT, "src", "config", "generated", "video-manifest.json");
 const CONFIG = path.join(ROOT, "src", "config", "forcecar-images.ts");
 const EXT = new Set([".webp", ".jpg", ".jpeg", ".png", ".avif"]);
+const VIDEO_EXT = new Set([".mp4", ".webm"]);
 const LARGE_FILE = 1.5 * 1024 * 1024;
 
 async function walk(dir) {
@@ -34,7 +37,7 @@ async function walk(dir) {
     if (e.name.startsWith(".") || e.name === OG_DIR_NAME) continue;
     const full = path.join(dir, e.name);
     if (e.isDirectory()) out.push(...(await walk(full)));
-    else if (EXT.has(path.extname(e.name).toLowerCase())) out.push(full);
+    else if (EXT.has(path.extname(e.name).toLowerCase()) || VIDEO_EXT.has(path.extname(e.name).toLowerCase())) out.push(full);
   }
   return out;
 }
@@ -48,14 +51,44 @@ async function isFresh(target, source) {
   }
 }
 
+function runCommand(cmd, args) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(cmd, args, { windowsHide: true });
+    let stdout = "";
+    let stderr = "";
+    child.stdout?.on("data", (d) => {
+      stdout += d;
+    });
+    child.stderr?.on("data", (d) => {
+      stderr += d;
+    });
+    child.on("error", reject);
+    child.on("close", (code) => {
+      if (code === 0) resolve(stdout.trim());
+      else reject(new Error(stderr.trim() || `${cmd} exited ${code}`));
+    });
+  });
+}
+
+async function hasFfmpeg() {
+  try {
+    await runCommand("ffmpeg", ["-version"]);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 const files = await walk(IMAGES_DIR);
+const imageFiles = files.filter((f) => EXT.has(path.extname(f).toLowerCase())).sort();
+const videoFiles = files.filter((f) => VIDEO_EXT.has(path.extname(f).toLowerCase())).sort();
 await mkdir(OG_DIR, { recursive: true });
 await mkdir(path.dirname(MANIFEST), { recursive: true });
 
 const manifest = {};
 const warnings = [];
 
-for (const file of files.sort()) {
+for (const file of imageFiles) {
   const rel = path.relative(IMAGES_DIR, file).split(path.sep).join("/");
   const { size } = await stat(file);
   const image = sharp(file);
@@ -91,6 +124,53 @@ for (const file of files.sort()) {
 }
 
 await writeFile(MANIFEST, JSON.stringify(manifest, null, 2) + "\n", "utf8");
+
+const ffmpegOk = videoFiles.length > 0 ? await hasFfmpeg() : false;
+const videoManifest = {};
+for (const file of videoFiles) {
+  const rel = path.relative(IMAGES_DIR, file).split(path.sep).join("/");
+  const { size } = await stat(file);
+  const entry = {
+    src: `/images/forcecar/${rel}`,
+    bytes: size,
+  };
+  if (ffmpegOk) {
+    try {
+      const probe = await runCommand("ffprobe", [
+        "-v",
+        "error",
+        "-select_streams",
+        "v:0",
+        "-show_entries",
+        "stream=width,height",
+        "-of",
+        "csv=p=0",
+        file,
+      ]);
+      const [w, h] = probe.split(",").map((n) => Number(n));
+      if (w && h) {
+        entry.width = w;
+        entry.height = h;
+      }
+    } catch {
+      /* dimensiunile rămân opționale */
+    }
+    const posterName = rel.replace(/\//g, "--").replace(/\.[a-z]+$/i, ".jpg");
+    const posterPath = path.join(OG_DIR, posterName);
+    try {
+      if (!(await isFresh(posterPath, file))) {
+        await runCommand("ffmpeg", ["-y", "-ss", "0.4", "-i", file, "-frames:v", "1", "-q:v", "3", posterPath]);
+      }
+      const blurBuffer = await sharp(posterPath).rotate().resize(16).webp({ quality: 40 }).toBuffer();
+      entry.poster = `/images/forcecar/${OG_DIR_NAME}/${posterName}`;
+      entry.posterBlur = `data:image/webp;base64,${blurBuffer.toString("base64")}`;
+    } catch (err) {
+      warnings.push(`Poster video eșuat pentru ${rel}: ${err.message}`);
+    }
+  }
+  videoManifest[rel] = entry;
+}
+await writeFile(VIDEO_MANIFEST, JSON.stringify(videoManifest, null, 2) + "\n", "utf8");
 
 // Iconițe PNG (Apple touch icon + manifest) din semnul F al logoului oficial, altfel din icon.svg.
 const ICON_SVG = path.join(ROOT, "src", "app", "icon.svg");
@@ -166,6 +246,7 @@ const missing = [...referenced].filter((r) => !manifest[r]);
 const unreferenced = Object.keys(manifest).filter((k) => !referenced.has(k));
 
 console.log(`[images] ${Object.keys(manifest).length} fotografii ForceCar indexate → src/config/generated/image-manifest.json`);
+console.log(`[images] ${Object.keys(videoManifest).length} videoclipuri ForceCar indexate → src/config/generated/video-manifest.json`);
 for (const w of warnings) console.warn(`[images] ⚠ ${w}`);
 if (missing.length) {
   console.warn(`[images] ⚠ Lipsesc ${missing.length} imagini configurate (se afișează fallback controlat):`);

@@ -22,8 +22,8 @@ export default async function DevPage({ params }: { params: Promise<{ locale: st
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale);
-  const a = getImage("bodyPrep", locale);
-  const b = getImage("paintBooth", locale);
+  const a = getImage("mecanica", locale);
+  const b = getImage("caroserie", locale);
   const ai = getProviderConfig();
 
   return (

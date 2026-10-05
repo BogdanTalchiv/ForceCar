@@ -9,11 +9,11 @@ import { FcImage } from "@/components/ui/FcImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/Section";
 
-const teaserCases: { image: ImageKey; category: GalleryCategory }[] = [
-  { image: "collisionRepair", category: "bodywork" },
-  { image: "timingBelt", category: "timing" },
-  { image: "brakes", category: "brakes" },
-  { image: "paintBooth", category: "paint" },
+const teaserCases: { image: ImageKey; category: Exclude<GalleryCategory, "video"> }[] = [
+  { image: "caroserie", category: "bodywork" },
+  { image: "distributie", category: "timing" },
+  { image: "frane", category: "brakes" },
+  { image: "motor", category: "engine" },
 ];
 
 export function WorksTeaser({ locale }: { locale: Locale }) {

@@ -9,12 +9,17 @@
  * Pentru a adăuga una nouă: pune-o în folderul categoriei — apare automat în galerie;
  * adaug-o aici doar dacă vrei text alternativ specific sau să o folosești pe un serviciu.
  *
+ * Videoclipurile din folderele de categorie (în afară de `_og`) apar în Lucrări.
+ * Videoclipul din header rămâne în `_og` și nu intră în galerie.
+ *
  * Dacă o imagine lipsește, site-ul afișează un fallback grafic controlat (nu imagine spartă).
  */
 import type { Locale, Localized } from "@/i18n/config";
 import manifestJson from "./generated/image-manifest.json";
+import videoManifestJson from "./generated/video-manifest.json";
 
-export type GalleryCategory = "engine" | "timing" | "brakes" | "mechanical" | "bodywork" | "paint";
+export type GalleryCategory = "engine" | "timing" | "brakes" | "mechanical" | "bodywork" | "paint" | "video";
+export type MediaKind = "image" | "video";
 
 interface ManifestEntry {
   src: string;
@@ -25,7 +30,20 @@ interface ManifestEntry {
   bytes: number;
 }
 
+interface VideoManifestEntry {
+  src: string;
+  bytes: number;
+  width?: number;
+  height?: number;
+  poster?: string;
+  posterBlur?: string;
+}
+
 const manifest = manifestJson as Record<string, ManifestEntry>;
+const videoManifest = videoManifestJson as Record<string, VideoManifestEntry>;
+
+const VIDEO_PLACEHOLDER =
+  "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 
 interface ImageDef {
   file: string;
@@ -36,103 +54,70 @@ interface ImageDef {
 }
 
 const images = {
-  hero: {
-    file: "hero/forcecar-service-auto-chisinau-hero.webp",
-    focal: "40% 40%",
-    category: "engine",
-    alt: {
-      ro: "Mecanic ForceCar lucrând la motorul unui automobil în atelierul service-ului auto din Chișinău",
-      ru: "Механик ForceCar ремонтирует двигатель автомобиля в автосервисе в Кишинёве",
-      it: "Meccanico ForceCar al lavoro sul motore di un'auto nell'officina di Chișinău",
-      en: "ForceCar mechanic working on a car engine in the Chișinău workshop",
-    },
-  },
-  mechanicsUnderCar: {
-    file: "workshop/forcecar-mecanici-sub-masina.webp",
-    focal: "50% 45%",
+  diagnostica: {
+    file: "services/diagnostica.jpg",
+    focal: "42% 38%",
     category: "mechanical",
     alt: {
-      ro: "Doi mecanici verificând suspensia și partea de jos a unui automobil ridicat pe elevator",
-      ru: "Два механика проверяют подвеску и днище автомобиля на подъёмнике",
-      it: "Due meccanici controllano sospensioni e sottoscocca di un'auto sul ponte sollevatore",
-      en: "Two mechanics inspecting the suspension and underside of a car on a lift",
+      ro: "Mecanic diagnosticând un automobil cu laptop-ul conectat la motor, capota deschisă",
+      ru: "Механик диагностирует автомобиль с ноутбуком, подключённым к двигателю, капот открыт",
+      it: "Meccanico che diagnostica un'auto con il laptop collegato al motore, cofano aperto",
+      en: "Mechanic diagnosing a car with a laptop connected to the engine, bonnet open",
     },
   },
-  timingBelt: {
-    file: "timing/forcecar-curea-distributie.webp",
-    focal: "50% 45%",
-    category: "timing",
-    alt: {
-      ro: "Mecanic montând cureaua de distribuție și rolele pe motorul unui automobil",
-      ru: "Механик устанавливает ремень ГРМ и ролики на двигатель автомобиля",
-      it: "Meccanico che monta la cinghia di distribuzione e i rulli sul motore",
-      en: "Mechanic fitting a timing belt and rollers on a car engine",
-    },
-  },
-  timingRollers: {
-    file: "timing/forcecar-distributie-role-rulmenti.webp",
-    focal: "62% 45%",
-    category: "timing",
-    alt: {
-      ro: "Role de distribuție, rulmenți și componente mecanice pregătite pentru montaj",
-      ru: "Ролики ГРМ, подшипники и механические детали, подготовленные к установке",
-      it: "Rulli della distribuzione, cuscinetti e componenti meccanici pronti per il montaggio",
-      en: "Timing belt rollers, bearings and mechanical components ready for fitting",
-    },
-  },
-  engineBlock: {
-    file: "engine/forcecar-bloc-motor.webp",
-    focal: "50% 50%",
+  motor: {
+    file: "services/motor.jpg",
+    focal: "55% 48%",
     category: "engine",
     alt: {
-      ro: "Bloc motor curățat, pregătit pentru reparație în atelier",
-      ru: "Очищенный блок цилиндров, подготовленный к ремонту в мастерской",
-      it: "Blocco motore pulito, pronto per la riparazione in officina",
-      en: "Cleaned engine block prepared for repair in the workshop",
+      ro: "Motor scos pe stand, în lucru, în atelierul auto",
+      ru: "Двигатель на стенде в работе в автомастерской",
+      it: "Motore sul banco di lavoro in officina",
+      en: "Engine on a stand being worked on in the workshop",
     },
   },
-  brakes: {
-    file: "brakes/forcecar-reparatie-frane.webp",
-    focal: "50% 45%",
+  distributie: {
+    file: "services/distributie.jpg",
+    focal: "48% 45%",
+    category: "timing",
+    alt: {
+      ro: "Lanț de distribuție și ax cu came vizibile pe un motor deschis",
+      ru: "Цепь ГРМ и распредвал на открытом двигателе",
+      it: "Catena di distribuzione e albero a camme su un motore aperto",
+      en: "Timing chain and camshaft on an opened engine",
+    },
+  },
+  frane: {
+    file: "services/frane.webp",
+    focal: "50% 50%",
     category: "brakes",
     alt: {
-      ro: "Mecanic ForceCar verificând discul și etrierul de frână al unui automobil",
-      ru: "Механик ForceCar проверяет тормозной диск и суппорт автомобиля",
-      it: "Meccanico ForceCar che controlla disco e pinza del freno di un'auto",
-      en: "ForceCar mechanic checking a car's brake disc and caliper",
+      ro: "Disc și etrier de frână verificați pe un automobil ridicat",
+      ru: "Тормозной диск и суппорт на поднятом автомобиле",
+      it: "Disco e pinza del freno su un'auto sollevata",
+      en: "Brake disc and caliper on a car on a lift",
     },
   },
-  collisionRepair: {
-    file: "bodywork/forcecar-reparatie-dupa-accident.webp",
-    focal: "55% 50%",
+  mecanica: {
+    file: "services/mecanica.jpg",
+    focal: "50% 42%",
+    category: "mechanical",
+    alt: {
+      ro: "Verificare a părții de jos a unui automobil ridicat pe elevator",
+      ru: "Проверка днища автомобиля на подъёмнике",
+      it: "Controllo del sottoscocca di un'auto sul ponte sollevatore",
+      en: "Underside inspection of a car on a lift",
+    },
+  },
+  caroserie: {
+    file: "services/caroserie.jpg",
+    focal: "50% 50%",
     category: "bodywork",
     alt: {
-      ro: "Mecanic reparând caroseria unui automobil avariat după un accident, pe standul de îndreptare",
-      ru: "Мастер восстанавливает кузов автомобиля после ДТП на стапеле",
-      it: "Carrozziere che ripara un'auto incidentata sul banco di raddrizzatura",
-      en: "Technician repairing a collision-damaged car on a frame straightening bench",
-    },
-  },
-  bodyPrep: {
-    file: "bodywork/forcecar-pregatire-caroserie.webp",
-    focal: "40% 45%",
-    category: "paint",
-    alt: {
-      ro: "Tehnician șlefuind un panou de caroserie înainte de vopsire",
-      ru: "Мастер шлифует кузовную панель перед покраской",
-      it: "Tecnico che carteggia un pannello della carrozzeria prima della verniciatura",
-      en: "Technician sanding a body panel before painting",
-    },
-  },
-  paintBooth: {
-    file: "paint/forcecar-vopsitorie-auto.webp",
-    focal: "45% 50%",
-    category: "paint",
-    alt: {
-      ro: "Vopsitor auto aplicând vopsea pe o ușă de automobil în cabina de vopsire",
-      ru: "Маляр наносит краску на дверь автомобиля в покрасочной камере",
-      it: "Verniciatore che applica la vernice sulla portiera di un'auto in cabina di verniciatura",
-      en: "Painter spraying a car door inside a paint booth",
+      ro: "Tehnicieni lucrând la caroseria unui automobil pe standul de îndreptare",
+      ru: "Мастера работают с кузовом автомобиля на стапеле",
+      it: "Tecnici al lavoro sulla carrozzeria di un'auto sul banco di raddrizzatura",
+      en: "Technicians working on a car body on a frame bench",
     },
   },
 } satisfies Record<string, ImageDef>;
@@ -152,38 +137,28 @@ export interface BeforeAfterPair {
  * Harta semantică folosită de componente. Nu scrie căi de imagini în componente.
  */
 export const forceCarImages = {
-  hero: "hero",
-  about: "mechanicsUnderCar",
-  workshop: ["mechanicsUnderCar", "hero"],
-  finalCta: "timingBelt",
+  hero: "diagnostica",
+  about: "mecanica",
+  workshop: ["mecanica", "diagnostica"],
+  finalCta: "motor",
   services: {
-    diagnostics: "hero",
-    engine: "engineBlock",
-    timing: "timingBelt",
-    brakes: "brakes",
-    suspension: "mechanicsUnderCar",
-    mechanical: "timingRollers",
-    bodywork: "collisionRepair",
-    paint: "paintBooth",
+    diagnostics: "diagnostica",
+    engine: "motor",
+    timing: "distributie",
+    brakes: "frane",
+    suspension: "mecanica",
+    mechanical: "mecanica",
+    bodywork: "caroserie",
+    paint: "caroserie",
   },
-  engine: ["engineBlock", "hero"],
-  timing: ["timingBelt", "timingRollers"],
-  brakes: ["brakes"],
-  mechanical: ["mechanicsUnderCar", "timingRollers"],
-  bodywork: ["collisionRepair", "bodyPrep"],
-  paint: ["paintBooth", "bodyPrep"],
-  parts: ["timingRollers"],
-  gallery: [
-    "engineBlock",
-    "timingBelt",
-    "brakes",
-    "collisionRepair",
-    "paintBooth",
-    "mechanicsUnderCar",
-    "bodyPrep",
-    "timingRollers",
-    "hero",
-  ],
+  engine: ["motor"],
+  timing: ["distributie"],
+  brakes: ["frane"],
+  mechanical: ["mecanica"],
+  bodywork: ["caroserie"],
+  paint: ["caroserie"],
+  parts: ["mecanica"],
+  gallery: ["motor", "distributie", "frane", "caroserie", "mecanica", "diagnostica"],
   /**
    * NU există încă perechi reale Înainte/După. Nu combina fotografii ale unor mașini diferite.
    * Exemplu (după ce ai fotografiile reale ale aceleiași lucrări):
@@ -210,6 +185,8 @@ export interface ResolvedImage {
   alt: string;
   focal: string;
   category?: GalleryCategory;
+  kind?: MediaKind;
+  poster?: string;
 }
 
 export function getImage(key: ImageKey, locale: Locale): ResolvedImage | null {
@@ -231,6 +208,7 @@ export function getImage(key: ImageKey, locale: Locale): ResolvedImage | null {
     alt: def.alt[locale],
     focal: def.focal,
     category: def.category,
+    kind: "image",
   };
 }
 
@@ -274,9 +252,36 @@ export function getGalleryImages(
       alt: genericAlt(category),
       focal: "50% 50%",
       category,
+      kind: "image",
     });
   }
   return [...configured, ...extra];
+}
+
+/** Galeria Lucrări: fotografii + videoclipuri din atelier (fără videoclipul din header). */
+export function getGalleryMedia(
+  locale: Locale,
+  genericAlt: (category: GalleryCategory) => string,
+  genericVideoAlt: string,
+): ResolvedImage[] {
+  const photos = getGalleryImages(locale, genericAlt);
+  const videos: ResolvedImage[] = [];
+  for (const [file, entry] of Object.entries(videoManifest)) {
+    videos.push({
+      id: file,
+      src: entry.src,
+      width: entry.width ?? 1080,
+      height: entry.height ?? 1920,
+      blurDataURL: entry.posterBlur ?? VIDEO_PLACEHOLDER,
+      og: entry.poster ?? entry.src,
+      alt: genericVideoAlt,
+      focal: "50% 50%",
+      category: "video",
+      kind: "video",
+      poster: entry.poster,
+    });
+  }
+  return [...photos, ...videos];
 }
 
 export function getBeforeAfterPairs(serviceId?: string): BeforeAfterPair[] {

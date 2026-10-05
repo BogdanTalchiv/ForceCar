@@ -24,7 +24,7 @@ const chisinau = { "@type": "City", name: "Chișinău", sameAs: "https://en.wiki
  */
 export function businessNode(locale: Locale): Node {
   const dict = getDictionary(locale);
-  const hero = getImage("hero", locale);
+  const hero = getImage("diagnostica", locale);
   const { address } = business;
   const sameAs = [business.googleBusinessProfileUrl, ...socialLinks().map((s) => s.href)].filter(Boolean);
 

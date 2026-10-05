@@ -8,10 +8,10 @@ import { breadcrumbNode } from "./schema";
 import { buildMetadata } from "./seo";
 
 const ogImage: Partial<Record<SectionKey, ImageKey>> = {
-  services: "engineBlock",
-  works: "paintBooth",
-  about: "mechanicsUnderCar",
-  blog: "timingBelt",
+  services: "motor",
+  works: "caroserie",
+  about: "mecanica",
+  blog: "distributie",
 };
 
 export function sectionMetadata(locale: Locale, key: SectionKey): Metadata {

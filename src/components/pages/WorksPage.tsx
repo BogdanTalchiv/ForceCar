@@ -1,4 +1,4 @@
-import { getBeforeAfterPairs, getGalleryImages, getImage } from "@/config/forcecar-images";
+import { getBeforeAfterPairs, getGalleryMedia, getImage } from "@/config/forcecar-images";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { fmt } from "@/lib/format";
@@ -14,7 +14,11 @@ export function WorksPage({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const t = dict.works;
   const crumbs = crumbsFor(locale, "works");
-  const images = getGalleryImages(locale, (category) => fmt(dict.gallery.genericAlt, { category: dict.gallery.categories[category] }));
+  const images = getGalleryMedia(
+    locale,
+    (category) => fmt(dict.gallery.genericAlt, { category: dict.gallery.categories[category] }),
+    dict.gallery.genericVideoAlt,
+  );
   const pairs = getBeforeAfterPairs()
     .map((p) => ({ ...p, before: getImage(p.before, locale), after: getImage(p.after, locale) }))
     .filter((p) => p.before && p.after);
