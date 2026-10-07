@@ -100,16 +100,34 @@ export function ContactPage({ locale }: { locale: Locale }) {
               </div>
             )}
 
-            <div className={`${card} flex gap-4`}>
-              <span className={iconBox}>
-                <MapPin className="size-5" aria-hidden="true" />
-              </span>
-              <div>
-                <p className="text-sm font-bold text-muted">{address ? dict.common.address : t.location}</p>
-                <p className="mt-0.5 text-lg font-bold">{address ?? dict.common.locationLong}</p>
-                {address && <p className="text-muted">{dict.common.locationLong}</p>}
+            {maps && address ? (
+              <a
+                href={maps}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${card} flex items-center gap-4 hover:ring-ink-900`}
+              >
+                <span className={iconBox}>
+                  <MapPin className="size-5" aria-hidden="true" />
+                </span>
+                <span>
+                  <span className="block text-sm font-bold text-muted">{dict.common.address}</span>
+                  <span className="mt-0.5 block text-lg font-bold">{address}</span>
+                  <span className="block text-muted">{dict.common.locationLong}</span>
+                </span>
+              </a>
+            ) : (
+              <div className={`${card} flex gap-4`}>
+                <span className={iconBox}>
+                  <MapPin className="size-5" aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="text-sm font-bold text-muted">{address ? dict.common.address : t.location}</p>
+                  <p className="mt-0.5 text-lg font-bold">{address ?? dict.common.locationLong}</p>
+                  {address && <p className="text-muted">{dict.common.locationLong}</p>}
+                </div>
               </div>
-            </div>
+            )}
 
             {hours.length > 0 && (
               <div className={`${card} flex gap-4`}>

@@ -5,7 +5,7 @@ import { consentRequired } from "@/config/site";
 import { localeMeta, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath } from "@/i18n/routes";
-import { emailLink, messengerLinks, openingHoursRows, phoneLink, socialLinks, streetAddressLine } from "@/lib/business-info";
+import { emailLink, mapsUrl, messengerLinks, openingHoursRows, phoneLink, socialLinks, streetAddressLine } from "@/lib/business-info";
 import { fmt } from "@/lib/format";
 import { hasReviews, serviceLinks } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
@@ -19,6 +19,7 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
   const phone = phoneLink();
   const email = emailLink();
   const address = streetAddressLine();
+  const maps = mapsUrl();
   const hours = openingHoursRows(dict);
   const messengers = messengerLinks();
   const socials = socialLinks();
@@ -96,7 +97,13 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
             )}
             <li className="flex items-start gap-3 text-white/75">
               <MapPin className="mt-0.5 size-4 shrink-0 text-brand" aria-hidden="true" />
-              <span>{address ?? dict.common.locationLong}</span>
+              {maps && address ? (
+                <a href={maps} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                  {address}
+                </a>
+              ) : (
+                <span>{address ?? dict.common.locationLong}</span>
+              )}
             </li>
             {hours.length > 0 && (
               <li className="flex items-start gap-3 text-white/75">

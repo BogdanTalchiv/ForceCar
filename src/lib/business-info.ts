@@ -32,18 +32,24 @@ export function streetAddressLine(): string | null {
   return [streetAddress, [postalCode, locality].filter(Boolean).join(" ")].join(", ");
 }
 
+/** Interogarea Google Maps: adresa confirmată, altfel coordonatele. */
+function mapsQuery(): string | null {
+  const line = streetAddressLine();
+  if (line) return `ForceCar, ${line}`;
+  if (business.geo) return `${business.geo.lat},${business.geo.lng}`;
+  return null;
+}
+
 export function mapsUrl(): string | null {
   if (business.googleMapsUrl) return business.googleMapsUrl;
-  if (business.geo) return `https://www.google.com/maps/search/?api=1&query=${business.geo.lat},${business.geo.lng}`;
-  const line = streetAddressLine();
-  return line ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`ForceCar, ${line}`)}` : null;
+  const q = mapsQuery();
+  return q ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}` : null;
 }
 
 /** Harta se încarcă doar la cerere și doar dacă locația exactă este cunoscută. */
 export function mapsEmbedUrl(): string | null {
-  if (business.geo) return `https://www.google.com/maps?q=${business.geo.lat},${business.geo.lng}&z=16&output=embed`;
-  const line = streetAddressLine();
-  return line ? `https://www.google.com/maps?q=${encodeURIComponent(`ForceCar, ${line}`)}&z=16&output=embed` : null;
+  const q = mapsQuery();
+  return q ? `https://www.google.com/maps?q=${encodeURIComponent(q)}&z=16&output=embed` : null;
 }
 
 const dayOrder: DayOfWeek[] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];

@@ -5,6 +5,7 @@ import { forceCarImages, getImage } from "@/config/forcecar-images";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath } from "@/i18n/routes";
+import { mapsUrl, streetAddressLine } from "@/lib/business-info";
 import { fmt } from "@/lib/format";
 import { serviceLinks, type ServiceLink } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
@@ -36,14 +37,31 @@ export function Hero({ locale }: { locale: Locale }) {
   const years = business.experienceYears;
   const image = getImage(forceCarImages.hero, locale);
   const services = serviceLinks(locale);
+  const street = business.address.streetAddress;
+  const addressLine = streetAddressLine();
+  const maps = mapsUrl();
   const stats = [
     {
       icon: ShieldCheck,
       value: fmt(t.stats.experienceValue, { years }),
       label: t.stats.experienceLabel,
+      href: null as string | null,
+      srLabel: null as string | null,
     },
-    { icon: Globe, value: t.stats.languagesValue, label: t.stats.languagesLabel },
-    { icon: MapPin, value: t.stats.locationValue, label: t.stats.locationLabel },
+    {
+      icon: Globe,
+      value: t.stats.languagesValue,
+      label: t.stats.languagesLabel,
+      href: null as string | null,
+      srLabel: null as string | null,
+    },
+    {
+      icon: MapPin,
+      value: street ?? t.stats.locationValue,
+      label: street ? t.stats.locationValue : t.stats.locationLabel,
+      href: street && maps ? maps : null,
+      srLabel: street && maps ? `${dict.contact.openMaps}: ${addressLine}` : null,
+    },
   ];
 
   return (
@@ -90,16 +108,33 @@ export function Hero({ locale }: { locale: Locale }) {
           <ul className="mt-7 flex flex-wrap items-center gap-y-3 text-sm">
             {stats.map((stat, i) => {
               const Icon = stat.icon;
+              const body = (
+                <>
+                  <Icon className="size-4 shrink-0 text-brand-bright" strokeWidth={1.75} aria-hidden="true" />
+                  <span>
+                    <span className="font-extrabold tabular-nums">{stat.value}</span>
+                    <span className="ml-1.5 text-steel-300">{stat.label}</span>
+                  </span>
+                </>
+              );
               return (
                 <li key={stat.label} className="flex items-center">
                   {i > 0 && <span aria-hidden="true" className="mx-4 hidden h-3.5 w-px bg-white/20 sm:block" />}
-                  <span className="flex items-center gap-2.5">
-                    <Icon className="size-4 shrink-0 text-brand-bright" strokeWidth={1.75} aria-hidden="true" />
-                    <span>
-                      <span className="font-extrabold tabular-nums">{stat.value}</span>
-                      <span className="ml-1.5 text-steel-300">{stat.label}</span>
-                    </span>
-                  </span>
+                  {stat.href ? (
+                    <a
+                      href={stat.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={stat.srLabel ?? undefined}
+                      title={dict.contact.openMaps}
+                      className="flex items-center gap-2.5 rounded-sm transition-colors hover:text-white [&_span:last-child]:underline [&_span:last-child]:decoration-white/40 [&_span:last-child]:underline-offset-4 hover:[&_span:last-child]:decoration-white"
+                      data-track-location="hero"
+                    >
+                      {body}
+                    </a>
+                  ) : (
+                    <span className="flex items-center gap-2.5">{body}</span>
+                  )}
                 </li>
               );
             })}

@@ -74,22 +74,22 @@ export const business: BusinessConfig = {
   experienceYears: 20,
   foundingYear: null, // ⚠ OWNER: anul înființării (opțional)
 
-  phone: null, // ⚠ OWNER: telefon principal, format "+373XXXXXXXX"
+  phone: "+37362115092",
   secondaryPhone: null,
-  email: null, // ⚠ OWNER: email public de contact
+  email: "talchivbogdan03@gmail.com",
   whatsapp: null, // ⚠ OWNER
   viber: null, // ⚠ OWNER
   telegram: null, // ⚠ OWNER
 
   address: {
-    streetAddress: null, // ⚠ OWNER: strada și numărul
+    streetAddress: "str. Ismail 103",
     locality: "Chișinău",
     region: "Municipiul Chișinău",
     postalCode: null, // ⚠ OWNER: ex. "MD-2000"
     countryCode: "MD",
     countryName: "Republica Moldova",
   },
-  geo: { lat: 47.007, lng: 28.709571 }, // confirmat de proprietar
+  geo: null, // coordonatele anterioare nu coincideau cu str. Ismail 103
 
   // ⚠ OWNER: programul real, ex. [{ days: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "09:00", closes: "18:00" }]
   openingHours: [],

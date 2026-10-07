@@ -9,6 +9,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import nodemailer, { type Transporter } from "nodemailer";
+import { business } from "@/config/business";
 
 export type MailerMode = "oauth2" | "smtp" | "outbox" | "none";
 
@@ -47,7 +48,7 @@ export function getMailerMode(): MailerMode {
 
 /** Destinatarii interni. BOOKING_TO_EMAIL poate conține mai multe adrese separate prin virgulă. */
 export function getBookingRecipients(): string[] {
-  return (env("BOOKING_TO_EMAIL") ?? env("SMTP_USER") ?? "")
+  return (env("BOOKING_TO_EMAIL") ?? business.email ?? env("SMTP_USER") ?? "")
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean);
