@@ -1,4 +1,20 @@
 {
+  "results/bmw-caroserie-dupa.jpg": {
+    "src": "/images/forcecar/results/bmw-caroserie-dupa.jpg",
+    "width": 2402,
+    "height": 1651,
+    "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAABQAgCdASoQAAsAA4BaJbACdH8AFWT+M3FVT4AA/byLVbJhOFwtcSHTMEczWObKpP7ouMxa4iM6pNEZsRunHJOetDpcSfHaqM4sgAAA",
+    "og": "/images/forcecar/_og/results--bmw-caroserie-dupa.jpg",
+    "bytes": 506635
+  },
+  "results/bmw-caroserie-inainte.jpg": {
+    "src": "/images/forcecar/results/bmw-caroserie-inainte.jpg",
+    "width": 2410,
+    "height": 1657,
+    "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABQAgCdASoQAAsAA4BaJbACdAYwn25Gkq3yROAA/k7DuTWIyn+golQbGHMvOXhq3DvsIkbjNNNrSbyOXoth7Zz+rtqQmGaAEPQiL2j8ZYDpU7ODeHOtZPNSTYfYmi+46l0PK+slQGYAAA==",
+    "og": "/images/forcecar/_og/results--bmw-caroserie-inainte.jpg",
+    "bytes": 451355
+  },
   "workshop/atelier-01.jpg": {
     "src": "/images/forcecar/workshop/atelier-01.jpg",
     "width": 2732,

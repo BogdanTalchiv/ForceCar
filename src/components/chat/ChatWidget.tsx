@@ -117,7 +117,7 @@ export default function ChatWidget({ locale, labels, bookingHref, contactHref, p
           key={key}
           href={a.serviceId ? `${bookingHref}?service=${a.serviceId}` : bookingHref}
           onClick={() => handoff(a.serviceId)}
-          className={`${cls} bg-brand text-white hover:bg-brand-hover`}
+          className={`${cls} fc-book-glow bg-brand text-white hover:bg-brand-hover`}
         >
           <CalendarCheck className="size-4" aria-hidden="true" />
           {name ? labels.bookServiceCta.replace("{service}", name) : labels.bookCta}

@@ -5,7 +5,7 @@ const article: Article = {
   datePublished: "2026-09-25",
   dateModified: "2026-09-25",
   serviceId: "brakes",
-  image: "frane",
+  image: "lucrareAripa",
   translations: {
     ro: {
       slug: "cand-se-schimba-placutele-de-frana",

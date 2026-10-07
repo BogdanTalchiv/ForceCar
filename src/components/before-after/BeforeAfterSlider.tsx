@@ -55,7 +55,7 @@ export function BeforeAfterSlider({
   return (
     <figure className={className}>
       <div
-        className={`relative aspect-[16/11] overflow-hidden rounded-xl bg-ink-800 select-none has-[input:focus-visible]:ring-2 has-[input:focus-visible]:ring-brand has-[input:focus-visible]:ring-offset-2 sm:aspect-[16/10] ${
+        className={`relative aspect-[16/11] overflow-hidden rounded-xl bg-ink-800 select-none has-[input:focus-visible]:ring-2 has-[input:focus-visible]:ring-brand has-[input:focus-visible]:ring-offset-2 ${
           onDark ? "shadow-[0_24px_60px_-28px_rgb(0_0_0/0.7)] ring-1 ring-white/10" : "ring-1 ring-black/5"
         }`}
       >

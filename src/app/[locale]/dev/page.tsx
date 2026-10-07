@@ -32,7 +32,7 @@ export default async function DevPage({ params }: { params: Promise<{ locale: st
         <h1 className="text-2xl font-extrabold">DEV · ForceCar — date demonstrative, nu apar pe site</h1>
         <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">
           <li>Date lipsă în business.ts: {getMissingBusinessFields().join(", ") || "niciuna"}</li>
-          <li>Email: mod „{getMailerMode()}” (outbox = emailurile sunt salvate în .outbox/)</li>
+          <li>Email: mod „{getMailerMode()}” (formsubmit = fără parolă; smtp = Gmail; outbox = .outbox/)</li>
           <li>Asistent: {ai ? `AI activ (${ai.provider}, ${ai.model})` : "mod fără AI (răspunsuri din config)"}</li>
         </ul>
       </div>

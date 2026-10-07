@@ -55,14 +55,14 @@ interface ImageDef {
 
 const images = {
   fatada: {
-    file: "workshop/atelier-19.jpg",
-    focal: "50% 55%",
-    category: "mechanical",
+    file: "workshop/atelier-01.jpg",
+    focal: "38% 48%",
+    category: "bodywork",
     alt: {
-      ro: "BMW parcat în fața service-ului auto ForceCar din Chișinău",
-      ru: "BMW у здания автосервиса ForceCar в Кишинёве",
-      it: "BMW parcheggiata davanti all'officina ForceCar di Chișinău",
-      en: "BMW parked in front of the ForceCar workshop in Chișinău",
+      ro: "Automobil pe standul de îndreptare a caroseriei, în atelierul ForceCar",
+      ru: "Автомобиль на стапеле для правки кузова в мастерской ForceCar",
+      it: "Auto sul banco di raddrizzatura della carrozzeria in officina ForceCar",
+      en: "Car on a body-alignment bench in the ForceCar workshop",
     },
   },
   diagnostica: {
@@ -70,10 +70,10 @@ const images = {
     focal: "42% 45%",
     category: "mechanical",
     alt: {
-      ro: "Porsche cu capota deschisă și bara demontată, în atelier",
-      ru: "Porsche с открытым капотом и снятым бампером в мастерской",
-      it: "Porsche con cofano aperto e paraurti smontato in officina",
-      en: "Porsche with the bonnet open and bumper removed in the workshop",
+      ro: "Porsche cu capota deschisă și bara demontată, pregătit pentru verificare în atelier",
+      ru: "Porsche с открытым капотом и снятым бампером, подготовлен к проверке",
+      it: "Porsche con cofano aperto e paraurti smontato, pronta per il controllo",
+      en: "Porsche with the bonnet open and bumper removed, ready for inspection",
     },
   },
   motor: {
@@ -88,28 +88,28 @@ const images = {
     },
   },
   distributie: {
-    file: "workshop/atelier-09.jpg",
-    focal: "45% 42%",
+    file: "workshop/atelier-07.jpg",
+    focal: "35% 45%",
     category: "timing",
     alt: {
-      ro: "Compartimentul motor al unui automobil, deschis pentru intervenție în atelier",
-      ru: "Моторный отсек автомобиля, открытый для ремонта в мастерской",
-      it: "Vano motore di un'auto aperto per l'intervento in officina",
-      en: "Car engine bay opened for workshop work",
+      ro: "Structura față și compartimentul motor, deschise pentru intervenție în atelier",
+      ru: "Передняя структура и моторный отсек, открытые для ремонта",
+      it: "Struttura anteriore e vano motore aperti per l'intervento in officina",
+      en: "Front structure and engine bay opened for workshop work",
     },
   },
   frane: {
-    file: "workshop/atelier-14.jpg",
-    focal: "58% 62%",
+    file: "workshop/atelier-03.jpg",
+    focal: "48% 58%",
     category: "brakes",
     alt: {
-      ro: "Automobil pe standul de îndreptare, cu discul de frână și suspensia vizibile",
-      ru: "Автомобиль на стапеле, видны тормозной диск и подвеска",
-      it: "Auto sul banco di raddrizzatura, con disco freno e sospensione visibili",
-      en: "Car on a frame bench with the brake disc and suspension visible",
+      ro: "Automobil pe stand, cu discul de frână și amortizorul vizibile",
+      ru: "Автомобиль на стапеле, видны тормозной диск и амортизатор",
+      it: "Auto sul banco, con disco freno e ammortizzatore visibili",
+      en: "Car on a repair bench with the brake disc and shock absorber visible",
     },
   },
-  mecanica: {
+  suspensie: {
     file: "workshop/atelier-17.jpg",
     focal: "50% 42%",
     category: "mechanical",
@@ -120,15 +120,26 @@ const images = {
       en: "Underside inspection of a car on a lift",
     },
   },
+  mecanica: {
+    file: "workshop/atelier-04.jpg",
+    focal: "48% 40%",
+    category: "mechanical",
+    alt: {
+      ro: "Mecanici la lucru sub un automobil ridicat pe elevator",
+      ru: "Механики работают под автомобилем на подъёмнике",
+      it: "Meccanici al lavoro sotto un'auto sul ponte sollevatore",
+      en: "Mechanics working under a car on a lift",
+    },
+  },
   caroserie: {
-    file: "workshop/atelier-01.jpg",
-    focal: "38% 48%",
+    file: "workshop/atelier-08.jpg",
+    focal: "45% 48%",
     category: "bodywork",
     alt: {
-      ro: "Automobil pe standul de îndreptare a caroseriei, în atelier",
-      ru: "Автомобиль на стапеле для правки кузова в мастерской",
-      it: "Auto sul banco di raddrizzatura della carrozzeria in officina",
-      en: "Car on a body-alignment bench in the workshop",
+      ro: "Fața unui automobil cu avarie, înainte de reparația de caroserie",
+      ru: "Передняя часть автомобиля с повреждением, до ремонта кузова",
+      it: "Fronte di un'auto danneggiata, prima della riparazione della carrozzeria",
+      en: "Damaged car front, before body repair",
     },
   },
   vopsitorie: {
@@ -140,6 +151,127 @@ const images = {
       ru: "Деталь кузова после покраски в окрасочной камере",
       it: "Elemento di carrozzeria verniciato in cabina di verniciatura",
       en: "Body panel painted inside the paint booth",
+    },
+  },
+  despreAtelier: {
+    file: "workshop/atelier-13.jpg",
+    focal: "42% 40%",
+    category: "paint",
+    alt: {
+      ro: "Tehnician ForceCar șlefuiește un element de caroserie, pregătire pentru vopsire",
+      ru: "Техник ForceCar шлифует деталь кузова перед покраской",
+      it: "Tecnico ForceCar che carteggia un pannello, preparazione alla verniciatura",
+      en: "ForceCar technician sanding a body panel, preparing it for paint",
+    },
+  },
+  ctaAtelier: {
+    file: "workshop/atelier-20.jpg",
+    focal: "50% 48%",
+    category: "bodywork",
+    alt: {
+      ro: "Mercedes cu avarie laterală și spate, pregătit pentru reparația de caroserie",
+      ru: "Mercedes с боковым и задним повреждением, подготовлен к ремонту кузова",
+      it: "Mercedes con danno laterale e posteriore, pronta per la riparazione",
+      en: "Mercedes with side and rear damage, ready for body repair",
+    },
+  },
+  lucrareCaroserie: {
+    file: "workshop/atelier-16.jpg",
+    focal: "55% 42%",
+    category: "bodywork",
+    alt: {
+      ro: "Spatele unui automobil pe standul de caroserie, în lucru",
+      ru: "Задняя часть автомобиля на стапеле, в работе",
+      it: "Posteriore di un'auto sul banco carrozzeria, in lavorazione",
+      en: "Car rear on a body-repair bench, work in progress",
+    },
+  },
+  lucrareVopsitorie: {
+    file: "workshop/atelier-10.jpg",
+    focal: "50% 45%",
+    category: "paint",
+    alt: {
+      ro: "Pregătirea vopsitoriei pe un automobil Mercedes, în atelier",
+      ru: "Подготовка к покраске Mercedes в мастерской",
+      it: "Preparazione alla verniciatura di una Mercedes in officina",
+      en: "Paint preparation on a Mercedes in the workshop",
+    },
+  },
+  lucrarePregatire: {
+    file: "workshop/atelier-15.jpg",
+    focal: "50% 48%",
+    category: "paint",
+    alt: {
+      ro: "Lateralul unui automobil, pregătit pentru vopsire",
+      ru: "Боковая часть автомобиля, подготовленная к покраске",
+      it: "Fiancata di un'auto preparata per la verniciatura",
+      en: "Car side panel prepared for painting",
+    },
+  },
+  lucrareBara: {
+    file: "workshop/atelier-02.jpg",
+    focal: "50% 48%",
+    category: "bodywork",
+    alt: {
+      ro: "Mercedes cu bara spate demontată, reparație de caroserie în atelier",
+      ru: "Mercedes со снятым задним бампером, ремонт кузова",
+      it: "Mercedes con paraurti posteriore smontato, riparazione carrozzeria",
+      en: "Mercedes with the rear bumper removed, body repair in the workshop",
+    },
+  },
+  lucrareAripa: {
+    file: "workshop/atelier-12.jpg",
+    focal: "50% 50%",
+    category: "bodywork",
+    alt: {
+      ro: "Aripă deteriorată, detaliu din reparația de caroserie",
+      ru: "Повреждённое крыло, деталь кузовного ремонта",
+      it: "Parafrango danneggiato, dettaglio della riparazione carrozzeria",
+      en: "Damaged wing, a detail from body repair",
+    },
+  },
+  lucrareHaion: {
+    file: "workshop/atelier-11.jpg",
+    focal: "48% 45%",
+    category: "bodywork",
+    alt: {
+      ro: "Mercedes cu avarie față și haionul deschis, în atelier",
+      ru: "Mercedes с повреждением переда и открытым багажником",
+      it: "Mercedes con danno anteriore e portellone aperto in officina",
+      en: "Mercedes with front damage and the boot open, in the workshop",
+    },
+  },
+  lucrareImpact: {
+    file: "workshop/atelier-05.jpg",
+    focal: "40% 42%",
+    category: "engine",
+    alt: {
+      ro: "Porsche cu capota deschisă, compartimentul motor vizibil în atelier",
+      ru: "Porsche с открытым капотом, моторный отсек виден в мастерской",
+      it: "Porsche con cofano aperto, vano motore visibile in officina",
+      en: "Porsche with the bonnet open and the engine bay visible in the workshop",
+    },
+  },
+  bmwCaroserieBefore: {
+    file: "results/bmw-caroserie-inainte.jpg",
+    focal: "50% 48%",
+    category: "bodywork",
+    alt: {
+      ro: "BMW în atelier, înainte de reparația de caroserie: ușa demontată, structura laterală deschisă",
+      ru: "BMW в мастерской до ремонта кузова: дверь снята, боковая структура открыта",
+      it: "BMW in officina prima della riparazione della carrozzeria: portiera smontata, struttura laterale aperta",
+      en: "BMW in the workshop before body repair: door removed, side structure exposed",
+    },
+  },
+  bmwCaroserieAfter: {
+    file: "results/bmw-caroserie-dupa.jpg",
+    focal: "48% 52%",
+    category: "bodywork",
+    alt: {
+      ro: "Același BMW după reparația de caroserie, parcat în fața service-ului ForceCar",
+      ru: "Тот же BMW после ремонта кузова, припаркован у сервиса ForceCar",
+      it: "La stessa BMW dopo la riparazione della carrozzeria, parcheggiata davanti a ForceCar",
+      en: "The same BMW after body repair, parked in front of the ForceCar workshop",
     },
   },
 } satisfies Record<string, ImageDef>;
@@ -160,33 +292,60 @@ export interface BeforeAfterPair {
  */
 export const forceCarImages = {
   hero: "fatada",
-  about: "mecanica",
-  workshop: ["mecanica", "fatada"],
-  finalCta: "fatada",
+  about: "despreAtelier",
+  workshop: ["lucrareAripa", "lucrareHaion", "lucrareBara"],
+  finalCta: "ctaAtelier",
   services: {
     diagnostics: "diagnostica",
     engine: "motor",
     timing: "distributie",
     brakes: "frane",
-    suspension: "mecanica",
+    suspension: "suspensie",
     mechanical: "mecanica",
     bodywork: "caroserie",
     paint: "vopsitorie",
   },
   engine: ["motor"],
-  timing: ["motor"],
+  timing: ["distributie"],
   brakes: ["frane"],
+  suspension: ["suspensie"],
   mechanical: ["mecanica"],
-  bodywork: ["caroserie"],
-  paint: ["vopsitorie"],
+  bodywork: ["caroserie", "lucrareCaroserie", "lucrareBara"],
+  paint: ["vopsitorie", "lucrareVopsitorie", "lucrarePregatire"],
   parts: ["mecanica"],
-  gallery: ["caroserie", "vopsitorie", "frane", "motor", "mecanica", "diagnostica", "fatada"],
-  /**
-   * NU există încă perechi reale Înainte/După. Nu combina fotografii ale unor mașini diferite.
-   * Exemplu (după ce ai fotografiile reale ale aceleiași lucrări):
-   * { id: "bmw-bara-fata", serviceId: "bodywork", before: "bmwBefore", after: "bmwAfter", title: {...} }
-   */
-  beforeAfter: [] as BeforeAfterPair[],
+  gallery: [
+    "fatada",
+    "diagnostica",
+    "motor",
+    "distributie",
+    "frane",
+    "suspensie",
+    "mecanica",
+    "caroserie",
+    "vopsitorie",
+    "despreAtelier",
+    "lucrareCaroserie",
+    "lucrareVopsitorie",
+    "lucrarePregatire",
+    "lucrareBara",
+    "lucrareAripa",
+    "lucrareHaion",
+    "lucrareImpact",
+  ],
+  beforeAfter: [
+    {
+      id: "bmw-caroserie",
+      serviceId: "bodywork",
+      before: "bmwCaroserieBefore",
+      after: "bmwCaroserieAfter",
+      title: {
+        ro: "Reparație caroserie BMW",
+        ru: "Ремонт кузова BMW",
+        it: "Riparazione carrozzeria BMW",
+        en: "BMW body repair",
+      },
+    },
+  ] as BeforeAfterPair[],
 } as const satisfies {
   hero: ImageKey;
   about: ImageKey;
@@ -249,6 +408,9 @@ const folderCategory: Record<string, GalleryCategory> = {
   paint: "paint",
 };
 
+/** Sursele Înainte/După — nu le mai arătăm și în grila Lucrări. */
+const GALLERY_SKIP_FILES = new Set(["workshop/atelier-14.jpg", "workshop/atelier-19.jpg"]);
+
 /**
  * Galeria = imaginile configurate + fotografiile noi adăugate în folderele de categorie
  * (fără configurare manuală). Textul alternativ generic vine din dicționar.
@@ -261,7 +423,7 @@ export function getGalleryImages(
   const knownFiles = new Set(Object.values(images).map((d: ImageDef) => d.file));
   const extra: ResolvedImage[] = [];
   for (const [file, entry] of Object.entries(manifest)) {
-    if (knownFiles.has(file)) continue;
+    if (knownFiles.has(file) || GALLERY_SKIP_FILES.has(file)) continue;
     const category = folderCategory[file.split("/")[0]];
     if (!category) continue;
     extra.push({
@@ -277,7 +439,14 @@ export function getGalleryImages(
       kind: "image",
     });
   }
-  return [...configured, ...extra];
+  const seen = new Set<string>();
+  const unique: ResolvedImage[] = [];
+  for (const img of [...configured, ...extra]) {
+    if (seen.has(img.src)) continue;
+    seen.add(img.src);
+    unique.push(img);
+  }
+  return unique;
 }
 
 /** Galeria Lucrări: fotografii + videoclipuri din atelier (fără videoclipul din header). */

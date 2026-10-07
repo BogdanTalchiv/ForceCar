@@ -75,7 +75,7 @@ export function ContactBand({ locale }: { locale: Locale }) {
         </ul>
 
         <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-          <Link href={pagePath(locale, "booking")} className={buttonClasses()}>
+          <Link href={pagePath(locale, "booking")} className={buttonClasses({ className: "fc-book-glow" })}>
             {t.bookNow}
             <ArrowRight className="btn-arrow size-4" aria-hidden="true" />
           </Link>

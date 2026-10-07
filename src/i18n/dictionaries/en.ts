@@ -194,7 +194,7 @@ const en: Dictionary = {
     results: {
       eyebrow: "Real results",
       title: "Transformations that speak for themselves.",
-      lead: "Before/after comparisons appear here when we have photos of the same car, from the same job.",
+      lead: "The same car, before and after the repair at ForceCar. Drag the slider to compare.",
       previewNotice:
         "Demo slider: the same workshop photo, in two versions. This is not a comparison of the same repair. Real pairs will be published here.",
     },
@@ -533,7 +533,7 @@ const en: Dictionary = {
       name: "Please enter your full name (at least 2 characters).",
       phone: "That phone number doesn't look right. E.g. 069 123 456.",
       email: "That email address doesn't look right.",
-      emailRequired: "To be contacted by email, please enter your email address.",
+      emailRequired: "Please enter your email address.",
       year: "Please choose the year of manufacture.",
       mileage: "Mileage must be a number.",
       service: "Please choose a service or “Not sure”.",

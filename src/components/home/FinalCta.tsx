@@ -26,7 +26,7 @@ export function FinalCta({ locale, title, text }: { locale: Locale; title?: stri
           </h2>
           <p className="mt-4 text-lead text-steel-300">{text ?? dict.home.finalCta.text}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href={pagePath(locale, "booking")} className={buttonClasses({ size: "lg" })}>
+            <Link href={pagePath(locale, "booking")} className={buttonClasses({ size: "lg", className: "fc-book-glow" })}>
               <CalendarCheck className="size-5" aria-hidden="true" />
               {dict.cta.bookCheck}
             </Link>

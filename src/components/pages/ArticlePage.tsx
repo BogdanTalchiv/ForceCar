@@ -86,7 +86,7 @@ export function ArticlePage({ locale, article }: { locale: Locale; article: Arti
                 </div>
               </div>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Link href={`${pagePath(locale, "booking")}?service=${service.id}`} className={buttonClasses()}>
+                <Link href={`${pagePath(locale, "booking")}?service=${service.id}`} className={buttonClasses({ className: "fc-book-glow" })}>
                   <CalendarCheck className="size-5" aria-hidden="true" />
                   {dict.cta.bookCheck}
                 </Link>

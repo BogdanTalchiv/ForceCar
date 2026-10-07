@@ -52,7 +52,7 @@ export type BookingErrors = Partial<Record<BookingField, BookingErrorKey>>;
 export interface BookingData {
   name: string;
   phone: string;
-  email: string | null;
+  email: string;
   contactMethod: ContactMethod;
   carBrand: string;
   carModel: string;
@@ -131,8 +131,8 @@ export function validateBooking(
     : "phone";
 
   const email = oneLine(raw.email, 120).toLowerCase();
-  if (email && !isValidEmail(email)) errors.email = "email";
-  else if (!email && contactMethod === "email") errors.email = "emailRequired";
+  if (!email) errors.email = "emailRequired";
+  else if (!isValidEmail(email)) errors.email = "email";
 
   const carBrand = oneLine(raw.carBrand, 40);
   if (!carBrand) errors.carBrand = "required";
@@ -188,7 +188,7 @@ export function validateBooking(
     data: {
       name,
       phone: phone!,
-      email: email || null,
+      email,
       contactMethod,
       carBrand,
       carModel,

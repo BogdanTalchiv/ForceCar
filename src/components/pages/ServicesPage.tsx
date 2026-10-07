@@ -53,7 +53,7 @@ export function ServicesPage({ locale }: { locale: Locale }) {
             </div>
           </div>
           <div className="flex shrink-0 flex-col gap-2 sm:flex-row lg:flex-col">
-            <Link href={pagePath(locale, "booking")} className={buttonClasses()}>
+            <Link href={pagePath(locale, "booking")} className={buttonClasses({ className: "fc-book-glow" })}>
               {dict.cta.bookCheck}
             </Link>
             {diagnostics && (

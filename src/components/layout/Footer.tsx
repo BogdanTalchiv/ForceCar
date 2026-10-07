@@ -135,7 +135,7 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
               ))}
             </ul>
           )}
-          <Link href={pagePath(locale, "booking")} className={buttonClasses({ className: "mt-6" })}>
+          <Link href={pagePath(locale, "booking")} className={buttonClasses({ className: "fc-book-glow mt-6" })}>
             {dict.cta.requestBooking}
           </Link>
         </div>

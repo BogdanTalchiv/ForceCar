@@ -314,9 +314,144 @@
   }
 }
 
+.header-frame {
+  overflow: visible;
+}
 .header-bar {
   height: 4rem;
+  overflow: visible;
   transition: height 0.3s var(--ease-out-soft);
+}
+.fc-book-glow {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  transition-property: background-color, color, transform;
+}
+.fc-book-glow::before,
+.fc-book-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+}
+.fc-book-glow::before {
+  background: #d71920;
+  filter: blur(7px);
+  opacity: 0.55;
+  transform: scale(1.05);
+}
+.fc-book-glow::after {
+  background: #ff5a3a;
+  filter: blur(9px);
+  opacity: 0.35;
+  transform: scale(1.06);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .fc-book-glow::before {
+    animation: fc-book-burn 1.9s ease-in-out infinite;
+  }
+  .fc-book-glow::after {
+    animation: fc-book-burn 2.3s ease-in-out 0.35s infinite reverse;
+  }
+}
+.fc-book-glow:hover::before,
+.fc-book-glow:hover::after,
+.fc-book-glow:focus-visible::before,
+.fc-book-glow:focus-visible::after {
+  animation: none;
+  opacity: 0.5;
+  transform: scale(1.05);
+}
+@keyframes fc-book-burn {
+  0%,
+  100% {
+    opacity: 0.32;
+    filter: blur(6px);
+    transform: scale(1.04);
+  }
+  18% {
+    opacity: 0.62;
+    filter: blur(8px);
+    transform: scale(1.07);
+  }
+  36% {
+    opacity: 0.38;
+    filter: blur(6px);
+    transform: scale(1.03);
+  }
+  58% {
+    opacity: 0.72;
+    filter: blur(9px);
+    transform: scale(1.08);
+  }
+  76% {
+    opacity: 0.44;
+    filter: blur(7px);
+    transform: scale(1.05);
+  }
+}
+.fc-phone-ring {
+  display: block;
+  transform-origin: 70% 80%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .fc-phone-ring {
+    animation: fc-phone-ring 3.6s ease-in-out infinite;
+  }
+}
+a:hover .fc-phone-ring,
+a:focus-visible .fc-phone-ring {
+  animation-play-state: paused;
+}
+@keyframes fc-phone-ring {
+  0%,
+  8% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(16deg);
+  }
+  12% {
+    transform: rotate(-14deg);
+  }
+  14% {
+    transform: rotate(12deg);
+  }
+  16% {
+    transform: rotate(-10deg);
+  }
+  18% {
+    transform: rotate(8deg);
+  }
+  20% {
+    transform: rotate(-5deg);
+  }
+  22%,
+  36% {
+    transform: rotate(0deg);
+  }
+  38% {
+    transform: rotate(15deg);
+  }
+  40% {
+    transform: rotate(-13deg);
+  }
+  42% {
+    transform: rotate(11deg);
+  }
+  44% {
+    transform: rotate(-9deg);
+  }
+  46% {
+    transform: rotate(6deg);
+  }
+  48%,
+  100% {
+    transform: rotate(0deg);
+  }
 }
 .header-bar img {
   transition: height 0.3s var(--ease-out-soft);

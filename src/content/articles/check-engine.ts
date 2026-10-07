@@ -5,7 +5,7 @@ const article: Article = {
   datePublished: "2026-09-25",
   dateModified: "2026-09-25",
   serviceId: "diagnostics",
-  image: "diagnostica",
+  image: "lucrareHaion",
   translations: {
     ro: {
       slug: "de-ce-se-aprinde-check-engine",

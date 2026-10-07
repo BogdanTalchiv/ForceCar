@@ -457,8 +457,8 @@ export function BookingForm({ locale, labels, optionalLabel, services, uploadsEn
             {errorText("phone")}
           </div>
           <div>
-            {label("email", f.email, false)}
-            <input {...a11y("email", true)} type="email" inputMode="email" autoComplete="email" maxLength={120} className={input} />
+            {label("email", f.email, true)}
+            <input {...a11y("email", true)} type="email" inputMode="email" autoComplete="email" maxLength={120} required className={input} />
             {!errors.email && (
               <p id="bf-email-hint" className="mt-1.5 text-sm text-muted">
                 {f.emailHint}

@@ -22,6 +22,77 @@ interface Labels {
 const fill = (template: string, vars: Record<string, string | number>) =>
   template.replace(/\{(\w+)\}/g, (m, k: string) => (k in vars ? String(vars[k]) : m));
 
+function showFirstFrame(video: HTMLVideoElement) {
+  video.muted = true;
+  video.defaultMuted = true;
+  video.pause();
+  if (video.readyState >= 1 && video.currentTime < 0.08) {
+    try {
+      video.currentTime = 0.12;
+    } catch {
+      /* unele browsere blochează seek-ul până la loadeddata */
+    }
+  }
+}
+
+/** Miniatură: primul cadru, oprit, fără sunet — fără ecran negru. */
+function GalleryVideoThumb({ src, poster }: { src: string; poster?: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.muted = true;
+    el.defaultMuted = true;
+    el.volume = 0;
+
+    const onReady = () => showFirstFrame(el);
+    const onSeeked = () => {
+      el.pause();
+      el.muted = true;
+    };
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        if (el.preload !== "metadata") {
+          el.preload = "metadata";
+          el.load();
+        }
+      },
+      { rootMargin: "320px" },
+    );
+    io.observe(el);
+    el.addEventListener("loadedmetadata", onReady);
+    el.addEventListener("loadeddata", onReady);
+    el.addEventListener("seeked", onSeeked);
+
+    return () => {
+      io.disconnect();
+      el.removeEventListener("loadedmetadata", onReady);
+      el.removeEventListener("loadeddata", onReady);
+      el.removeEventListener("seeked", onSeeked);
+      el.pause();
+    };
+  }, [src]);
+
+  return (
+    <video
+      ref={ref}
+      src={`${src}#t=0.1`}
+      poster={poster}
+      muted
+      playsInline
+      preload="none"
+      disablePictureInPicture
+      disableRemotePlayback
+      className="pointer-events-none absolute inset-0 size-full object-cover"
+      aria-hidden="true"
+      tabIndex={-1}
+    />
+  );
+}
+
 export function Gallery({ images, labels, filters = true }: { images: ResolvedImage[]; labels: Labels; filters?: boolean }) {
   const [filter, setFilter] = useState<GalleryCategory | "all">("all");
   const [index, setIndex] = useState<number | null>(null);
@@ -52,12 +123,23 @@ export function Gallery({ images, labels, filters = true }: { images: ResolvedIm
       if (e.key === "ArrowRight") step(1);
       if (e.key === "ArrowLeft") step(-1);
     };
-    const onClose = () => setIndex(null);
+    const pauseVideos = () => {
+      el.querySelectorAll("video").forEach((v) => {
+        v.pause();
+        v.muted = true;
+        v.volume = 0;
+      });
+    };
+    const onClose = () => {
+      pauseVideos();
+      setIndex(null);
+    };
     el.addEventListener("keydown", onKey);
     el.addEventListener("close", onClose);
     return () => {
       el.removeEventListener("keydown", onKey);
       el.removeEventListener("close", onClose);
+      pauseVideos();
     };
   }, [step]);
 
@@ -93,20 +175,9 @@ export function Gallery({ images, labels, filters = true }: { images: ResolvedIm
                 className="group relative block aspect-[4/3] w-full overflow-hidden rounded-lg bg-ink-800"
               >
                 {isVideo ? (
-                  img.poster ? (
-                    <Image
-                      src={img.poster}
-                      alt=""
-                      fill
-                      sizes="(min-width: 768px) 33vw, 50vw"
-                      quality={60}
-                      placeholder={img.blurDataURL.startsWith("data:image/webp") ? "blur" : "empty"}
-                      blurDataURL={img.blurDataURL.startsWith("data:image/webp") ? img.blurDataURL : undefined}
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-                  ) : (
-                    <span className="absolute inset-0 bg-ink-800" aria-hidden="true" />
-                  )
+                  <span className="absolute inset-0 overflow-hidden transition-transform duration-500 group-hover:scale-[1.03]">
+                    <GalleryVideoThumb src={img.src} poster={img.poster} />
+                  </span>
                 ) : (
                   <Image
                     src={img.src}
@@ -176,13 +247,24 @@ export function Gallery({ images, labels, filters = true }: { images: ResolvedIm
                 {current.kind === "video" ? (
                   <video
                     key={current.id}
-                    src={current.src}
+                    src={`${current.src}#t=0.1`}
                     poster={current.poster}
                     controls
                     playsInline
-                    autoPlay
+                    muted
                     preload="metadata"
+                    disablePictureInPicture
                     className="absolute inset-0 m-auto max-h-full max-w-full animate-fade-up object-contain"
+                    onLoadedMetadata={(e) => showFirstFrame(e.currentTarget)}
+                    onLoadedData={(e) => showFirstFrame(e.currentTarget)}
+                    onPlay={(e) => {
+                      e.currentTarget.muted = true;
+                      e.currentTarget.volume = 0;
+                    }}
+                    onVolumeChange={(e) => {
+                      e.currentTarget.muted = true;
+                      e.currentTarget.volume = 0;
+                    }}
                   >
                     {labels.play}
                   </video>

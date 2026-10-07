@@ -141,7 +141,7 @@ export function MobileMenu({
         </nav>
 
         <div className="container-fc grid shrink-0 gap-2 border-t border-white/8 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
-          <Link href={bookingHref} className={buttonClasses({ size: "lg", full: true })}>
+          <Link href={bookingHref} className={buttonClasses({ size: "lg", full: true, className: "fc-book-glow" })}>
             {labels.book}
           </Link>
           {phone && (

@@ -14,7 +14,7 @@ const ctx = { serviceIds: ["diagnostics", "brakes"], today: "2026-09-25" };
 const valid: RawBooking = {
   name: "Ion Popescu",
   phone: "069 123 456",
-  email: "",
+  email: "ion.popescu@example.md",
   contactMethod: "phone",
   carBrand: "Volkswagen",
   carModel: "Passat",
@@ -53,7 +53,7 @@ describe("validateBooking", () => {
     expect(r.data.phone).toBe("+37369123456");
     expect(r.data.mileage).toBe(215000);
     expect(r.data.plate).toBe("ABC 123");
-    expect(r.data.email).toBeNull();
+    expect(r.data.email).toBe("ion.popescu@example.md");
     expect(r.data.carYear).toBe(2014);
   });
 
@@ -64,6 +64,7 @@ describe("validateBooking", () => {
     expect(r.errors).toMatchObject({
       name: "required",
       phone: "required",
+      email: "emailRequired",
       carBrand: "required",
       carModel: "required",
       carYear: "year",
@@ -72,9 +73,11 @@ describe("validateBooking", () => {
     });
   });
 
-  it("cere email când metoda de contact este emailul", () => {
-    const r = validateBooking({ ...valid, contactMethod: "email", email: "" }, ctx);
-    expect(r.ok || r.errors.email).toBe("emailRequired");
+  it("cere email la fiecare cerere", () => {
+    const r = validateBooking({ ...valid, email: "" }, ctx);
+    expect(r.ok).toBe(false);
+    if (r.ok) return;
+    expect(r.errors.email).toBe("emailRequired");
   });
 
   it("respinge emailuri cu caractere de antet", () => {

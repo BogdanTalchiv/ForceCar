@@ -47,7 +47,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
               <CalendarCheck className="size-7 text-brand" aria-hidden="true" />
               <h2 className="mt-4 text-xl font-extrabold">{t.bookingCard.title}</h2>
               <p className="mt-2 leading-relaxed text-steel-300">{t.bookingCard.text}</p>
-              <Link href={pagePath(locale, "booking")} className={buttonClasses({ className: "mt-5" })}>
+              <Link href={pagePath(locale, "booking")} className={buttonClasses({ className: "fc-book-glow mt-5" })}>
                 {dict.cta.requestBooking}
               </Link>
             </div>

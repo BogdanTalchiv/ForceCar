@@ -67,7 +67,7 @@ export function MobileActionBar({ phone, messengers, whatsapp, mapsHref, booking
               {labels.message}
             </button>
           )}
-          <Link href={bookingHref} className={`${item} flex-[1.35] bg-brand hover:bg-brand-hover`}>
+          <Link href={bookingHref} className={`${item} fc-book-glow flex-[1.35] bg-brand hover:bg-brand-hover`}>
             <CalendarCheck className="size-5" aria-hidden="true" />
             {labels.book}
           </Link>

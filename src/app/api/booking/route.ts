@@ -132,7 +132,7 @@ export async function POST(req: Request) {
   const recipients = getBookingRecipients();
   const mode = getMailerMode();
   if (mode === "none" || (mode !== "outbox" && recipients.length === 0)) {
-    console.error("[booking] Emailul nu este configurat (SMTP_* / GMAIL_OAUTH_* / BOOKING_TO_EMAIL).");
+    console.error("[booking] Emailul nu este configurat (BOOKING_TO_EMAIL / SMTP).");
     return respond(req, locale, 503, { ok: false, error: "server" });
   }
 
@@ -143,7 +143,7 @@ export async function POST(req: Request) {
       subject: internal.subject,
       html: internal.html,
       text: internal.text,
-      replyTo: data.email ?? undefined,
+      replyTo: data.email,
       attachments,
     });
   } catch (err) {
@@ -152,14 +152,12 @@ export async function POST(req: Request) {
   }
 
   let customerEmailSent = false;
-  if (data.email) {
-    const customer = buildCustomerEmail(data, meta);
-    try {
-      await sendMail({ to: data.email, subject: customer.subject, html: customer.html, text: customer.text });
-      customerEmailSent = true;
-    } catch (err) {
-      console.warn(`[booking] Confirmarea către client pentru ${id} nu a putut fi trimisă:`, err instanceof Error ? err.message : "unknown");
-    }
+  const customer = buildCustomerEmail(data, meta);
+  try {
+    await sendMail({ to: data.email, subject: customer.subject, html: customer.html, text: customer.text });
+    customerEmailSent = true;
+  } catch (err) {
+    console.warn(`[booking] Confirmarea către client pentru ${id} nu a putut fi trimisă:`, err instanceof Error ? err.message : "unknown");
   }
 
   return respond(req, locale, 200, { ok: true, id, customerEmailSent });

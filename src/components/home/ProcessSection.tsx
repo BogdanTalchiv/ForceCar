@@ -20,7 +20,7 @@ export function ProcessSection({ locale }: { locale: Locale }) {
         title={t.title}
         dark
         action={
-          <Link href={pagePath(locale, "booking")} className={buttonClasses()}>
+          <Link href={pagePath(locale, "booking")} className={buttonClasses({ className: "fc-book-glow" })}>
             {dict.cta.book}
           </Link>
         }

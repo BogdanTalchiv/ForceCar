@@ -96,7 +96,7 @@ export function Hero({ locale }: { locale: Locale }) {
           <p className="mt-4 max-w-[34rem] text-lead text-steel-300">{fmt(t.lead, { years })}</p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Link href={pagePath(locale, "booking")} className={buttonClasses({ size: "lg" })}>
+            <Link href={pagePath(locale, "booking")} className={buttonClasses({ size: "lg", className: "fc-book-glow" })}>
               <CalendarCheck className="size-5" aria-hidden="true" />
               {dict.cta.book}
             </Link>

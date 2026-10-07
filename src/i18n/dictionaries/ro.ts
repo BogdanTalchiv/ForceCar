@@ -192,7 +192,7 @@ const ro = {
     results: {
       eyebrow: "Rezultate reale",
       title: "Transformări care vorbesc de la sine.",
-      lead: "Comparațiile Înainte/După apar aici când avem fotografiile aceleiași mașini, din aceeași lucrare.",
+      lead: "Aceeași mașină, înainte și după reparația din atelierul ForceCar. Trage glisorul ca să compari.",
       previewNotice:
         "Glisor demonstrativ: aceeași fotografie din atelier, în două variante. Nu este o comparație a aceleiași reparații. Perechile reale vor fi publicate aici.",
     },
@@ -531,7 +531,7 @@ const ro = {
       name: "Scrie numele și prenumele (minimum 2 caractere).",
       phone: "Numărul de telefon nu pare corect. Ex.: 069 123 456.",
       email: "Adresa de email nu pare corectă.",
-      emailRequired: "Pentru contact prin email, scrie adresa de email.",
+      emailRequired: "Completează adresa de email.",
       year: "Alege anul fabricației.",
       mileage: "Kilometrajul trebuie să fie un număr.",
       service: "Alege un serviciu sau „Nu știu”.",

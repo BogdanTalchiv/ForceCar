@@ -1,10 +1,10 @@
 import { business } from "@/config/business";
-import { siteConfig } from "@/config/site";
 import { getService, type ServiceId } from "@/config/services";
 import { getServiceContent } from "@/content/services";
 import { localeMeta, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import type { Utm } from "@/lib/analytics/utm";
+import { emailLink, phoneLink, streetAddressLine } from "@/lib/business-info";
 import { formatPhone } from "@/lib/format";
 import { escapeHtml, singleLine } from "@/lib/security";
 import { customerEmailCopy } from "./customer-copy";
@@ -25,10 +25,16 @@ export interface EmailContent {
   text: string;
 }
 
+/** CID pentru logo-ul inline (atașat de mailer). */
+export const EMAIL_LOGO_CID = "forcecar-logo";
+
 const BRAND = "#D71920";
 const INK = "#111315";
+const CANVAS = "#0B0C0E";
 const MUTED = "#5A6068";
 const LINE = "#E3E5E8";
+const MIST = "#F5F6F7";
+const STEEL = "#C9CDD2";
 
 const e = escapeHtml;
 
@@ -66,8 +72,8 @@ function rowsHtml(rows: Row[]): string {
     .filter(([, v]) => v)
     .map(
       ([label, value]) => `<tr>
-  <td style="padding:10px 12px 10px 0;border-bottom:1px solid ${LINE};color:${MUTED};font-size:13px;vertical-align:top;width:38%;">${e(label)}</td>
-  <td style="padding:10px 0;border-bottom:1px solid ${LINE};color:${INK};font-size:15px;vertical-align:top;white-space:pre-wrap;">${e(value!)}</td>
+  <td style="padding:11px 16px 11px 0;border-bottom:1px solid ${LINE};color:${MUTED};font-size:13px;vertical-align:top;width:36%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">${e(label)}</td>
+  <td style="padding:11px 0;border-bottom:1px solid ${LINE};color:${INK};font-size:15px;vertical-align:top;white-space:pre-wrap;font-weight:600;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">${e(value!)}</td>
 </tr>`,
     )
     .join("");
@@ -76,38 +82,77 @@ function rowsHtml(rows: Row[]): string {
 function sectionHtml(title: string, rows: Row[]): string {
   const body = rowsHtml(rows);
   if (!body) return "";
-  return `<tr><td style="padding:24px 32px 0;">
-  <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:${BRAND};font-weight:700;margin-bottom:4px;">${e(title)}</div>
+  return `<tr><td style="padding:8px 36px 20px;">
+  <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:${BRAND};font-weight:800;margin:0 0 8px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">${e(title)}</div>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">${body}</table>
 </td></tr>`;
 }
 
 function button(href: string, label: string, bg: string): string {
-  return `<a href="${e(href)}" style="display:inline-block;background:${bg};color:#ffffff;text-decoration:none;font-weight:700;font-size:15px;padding:12px 20px;border-radius:6px;margin:0 8px 8px 0;">${e(label)}</a>`;
+  return `<a href="${e(href)}" style="display:inline-block;background:${bg};color:#ffffff;text-decoration:none;font-weight:700;font-size:14px;letter-spacing:.01em;padding:13px 22px;border-radius:6px;margin:0 8px 8px 0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">${e(label)}</a>`;
 }
 
-function layout({ preheader, header, body, lang }: { preheader: string; header: string; body: string; lang: string }) {
+function logoBlock(): string {
+  return `<img src="cid:${EMAIL_LOGO_CID}" alt="ForceCar" width="200" height="70" style="display:block;margin:0 auto;border:0;height:56px;width:auto;max-width:220px;" />`;
+}
+
+function footerBlock(): string {
+  const phone = phoneLink();
+  const mail = emailLink();
+  const address = streetAddressLine();
+  const lines = [
+    `<strong style="color:#ffffff;">${e(business.name)}</strong>`,
+    address ? e(`${address}`) : null,
+    phone ? `<a href="${e(phone.href)}" style="color:${STEEL};text-decoration:none;">${e(phone.label)}</a>` : null,
+    mail ? `<a href="${e(mail.href)}" style="color:${STEEL};text-decoration:none;">${e(mail.label)}</a>` : null,
+  ].filter(Boolean);
+  return lines.join(`<br />`);
+}
+
+function layout({ preheader, kicker, body, lang }: { preheader: string; kicker: string; body: string; lang: string }) {
+  const font = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif";
   return `<!doctype html>
 <html lang="${lang}">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>ForceCar</title></head>
-<body style="margin:0;padding:0;background:#F5F6F7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
-<div style="display:none;max-height:0;overflow:hidden;opacity:0;">${e(preheader)}</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F5F6F7;padding:24px 12px;">
-<tr><td align="center">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:640px;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid ${LINE};">
-<tr><td style="background:${INK};padding:20px 32px;border-bottom:4px solid ${BRAND};">
-  ${
-    business.logo
-      ? `<img src="${e(`${siteConfig.url}${business.logo}`)}" alt="ForceCar" height="44" style="height:44px;width:auto;display:block;border:0;" />`
-      : `<span style="color:#ffffff;font-size:20px;font-weight:800;letter-spacing:.02em;">FORCE<span style="color:${BRAND};">CAR</span></span>`
-  }
-  <div style="color:#C9CDD2;font-size:13px;margin-top:4px;">${e(header)}</div>
-</td></tr>
-${body}
-<tr><td style="padding:28px 32px 32px;"></td></tr>
-</table>
-</td></tr>
-</table>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>ForceCar</title>
+</head>
+<body style="margin:0;padding:0;background:${CANVAS};font-family:${font};">
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:${CANVAS};">${e(preheader)}</div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${CANVAS}" style="background:${CANVAS};padding:0;margin:0;">
+    <tr>
+      <td align="center" style="padding:28px 12px 40px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;border-collapse:collapse;">
+          <tr>
+            <td align="center" style="padding:12px 24px 20px;">
+              ${logoBlock()}
+              <div style="margin-top:14px;color:${STEEL};font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;">${e(kicker)}</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="height:3px;line-height:3px;font-size:0;background:${BRAND};">&nbsp;</td>
+          </tr>
+          <tr>
+            <td bgcolor="#ffffff" style="background:#ffffff;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                ${body}
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="height:3px;line-height:3px;font-size:0;background:${BRAND};">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:28px 28px 8px;color:${STEEL};font-size:13px;line-height:1.7;">
+              ${footerBlock()}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>`;
 }
@@ -127,17 +172,17 @@ export function buildInternalEmail(data: BookingData, meta: BookingMeta): EmailC
 
   const subject = singleLine(`Programare nouă ForceCar — ${data.name} — ${car}`, 180);
 
-  const hero = `<tr><td style="padding:28px 32px 8px;">
-  <div style="font-size:13px;color:${MUTED};">Cerere ${e(meta.id)} · ${e(submitted)}</div>
-  <div style="font-size:22px;font-weight:800;color:${INK};margin:6px 0 2px;">${e(data.name)}</div>
-  <div style="font-size:15px;color:${INK};">${e(car)} · ${e(serviceRo)}</div>
-  <a href="tel:${e(data.phone)}" style="display:block;font-size:32px;line-height:1.2;font-weight:800;color:${BRAND};text-decoration:none;margin:18px 0 14px;">${e(phonePretty)}</a>
+  const hero = `<tr><td style="padding:32px 36px 12px;">
+  <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:${MUTED};font-weight:700;">Cerere ${e(meta.id)} · ${e(submitted)}</div>
+  <div style="font-size:26px;font-weight:800;color:${INK};margin:10px 0 6px;letter-spacing:-0.02em;">${e(data.name)}</div>
+  <div style="font-size:16px;color:${INK};line-height:1.45;">${e(car)} · ${e(serviceRo)}</div>
+  <a href="tel:${e(data.phone)}" style="display:block;font-size:30px;line-height:1.2;font-weight:800;color:${BRAND};text-decoration:none;margin:20px 0 16px;">${e(phonePretty)}</a>
   <div>
     ${button(`tel:${data.phone}`, "Sună clientul", BRAND)}
     ${button(`https://wa.me/${digits}`, "WhatsApp", INK)}
-    ${data.email ? button(`mailto:${data.email}`, "Email", INK) : ""}
+    ${button(`mailto:${data.email}`, "Email client", INK)}
   </div>
-  <div style="margin-top:12px;padding:12px 14px;background:#FFF5F5;border-left:3px solid ${BRAND};font-size:14px;color:${INK};">
+  <div style="margin-top:8px;padding:14px 16px;background:#FFF5F5;border-left:3px solid ${BRAND};font-size:14px;line-height:1.5;color:${INK};">
     Contact preferat: <strong>${e(f.methods[data.contactMethod])}</strong>. Clientul așteaptă confirmarea programării.
   </div>
 </td></tr>`;
@@ -169,12 +214,13 @@ export function buildInternalEmail(data: BookingData, meta: BookingMeta): EmailC
       ["Pagina", meta.page],
       ...utmEntries.map(([k, v]) => [k, v] as Row),
     ]),
+    `<tr><td style="height:16px;line-height:16px;font-size:0;">&nbsp;</td></tr>`,
   ].join("");
 
   const html = layout({
     lang: "ro",
     preheader: `${data.name} · ${car} · ${phonePretty}`,
-    header: "Cerere nouă de programare de pe site",
+    kicker: "Cerere nouă de programare",
     body,
   });
 
@@ -184,7 +230,7 @@ export function buildInternalEmail(data: BookingData, meta: BookingMeta): EmailC
     "",
     `Nume: ${data.name}`,
     `Telefon: ${phonePretty}`,
-    data.email ? `Email: ${data.email}` : null,
+    `Email: ${data.email}`,
     `Contact preferat: ${f.methods[data.contactMethod]}`,
     "",
     `Mașina: ${car}, ${data.carYear}`,
@@ -218,17 +264,24 @@ export function buildCustomerEmail(data: BookingData, meta: BookingMeta): EmailC
   const date = formatDate(data.preferredDate, locale);
   const time = f.times[data.preferredTime];
   const greeting = c.greeting.replace("{name}", data.name.split(" ")[0]);
+  const workshopPhone = phoneLink();
+  const workshopMail = emailLink();
+  const address = streetAddressLine();
 
   const contactRows: Row[] = [
-    [c.phone, business.phone ? formatPhone(business.phone) : null],
-    [c.email, business.email],
+    [c.phone, workshopPhone ? workshopPhone.label : business.phone ? formatPhone(business.phone) : null],
+    [c.email, workshopMail ? workshopMail.label : business.email],
+    [c.address, address],
   ];
 
+  const callBtn = workshopPhone ? button(workshopPhone.href, c.callUs, BRAND) : "";
+
   const body = [
-    `<tr><td style="padding:28px 32px 0;">
-  <div style="font-size:20px;font-weight:800;color:${INK};">${e(greeting)}</div>
-  <p style="font-size:15px;line-height:1.6;color:${INK};margin:12px 0 0;">${e(c.intro)}</p>
-  <div style="margin-top:16px;padding:12px 14px;background:#F5F6F7;border-left:3px solid ${BRAND};font-size:15px;line-height:1.5;color:${INK};">${e(c.notConfirmed)}</div>
+    `<tr><td style="padding:32px 36px 8px;">
+  <div style="font-size:24px;font-weight:800;color:${INK};letter-spacing:-0.02em;line-height:1.25;">${e(greeting)}</div>
+  <p style="font-size:16px;line-height:1.65;color:${INK};margin:14px 0 0;">${e(c.intro)}</p>
+  <div style="margin-top:18px;padding:14px 16px;background:${MIST};border-left:3px solid ${BRAND};font-size:15px;line-height:1.55;color:${INK};">${e(c.notConfirmed)}</div>
+  ${callBtn ? `<div style="margin-top:20px;">${callBtn}</div>` : ""}
 </td></tr>`,
     sectionHtml(c.summaryTitle, [
       [c.reference, meta.id],
@@ -239,10 +292,10 @@ export function buildCustomerEmail(data: BookingData, meta: BookingMeta): EmailC
       [c.photos, meta.photoCount > 0 ? String(meta.photoCount) : null],
     ]),
     sectionHtml(c.contactTitle, contactRows),
-    `<tr><td style="padding:24px 32px 0;font-size:12px;line-height:1.5;color:${MUTED};">${e(c.footer)}</td></tr>`,
+    `<tr><td style="padding:8px 36px 28px;font-size:12px;line-height:1.6;color:${MUTED};">${e(c.footer)}</td></tr>`,
   ].join("");
 
-  const html = layout({ lang: locale, preheader: c.notConfirmed, header: c.subject.split(" — ")[0], body });
+  const html = layout({ lang: locale, preheader: c.notConfirmed, kicker: c.kicker, body });
 
   const text = [
     greeting,

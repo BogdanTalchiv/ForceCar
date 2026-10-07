@@ -194,7 +194,7 @@ const it: Dictionary = {
     results: {
       eyebrow: "Risultati reali",
       title: "Trasformazioni che parlano da sole.",
-      lead: "I confronti Prima/Dopo compaiono qui quando abbiamo le foto della stessa auto, dello stesso intervento.",
+      lead: "La stessa auto, prima e dopo la riparazione in officina ForceCar. Trascina il cursore per confrontare.",
       previewNotice:
         "Slider dimostrativo: la stessa foto dell'officina, in due versioni. Non è il confronto dello stesso intervento. Le coppie reali saranno pubblicate qui.",
     },
@@ -533,7 +533,7 @@ const it: Dictionary = {
       name: "Inserisci nome e cognome (almeno 2 caratteri).",
       phone: "Il numero di telefono non sembra corretto. Es.: 069 123 456.",
       email: "L'indirizzo email non sembra corretto.",
-      emailRequired: "Per essere contattato via email, inserisci l'indirizzo email.",
+      emailRequired: "Inserisci l'indirizzo email.",
       year: "Scegli l'anno di immatricolazione.",
       mileage: "Il chilometraggio deve essere un numero.",
       service: "Scegli un servizio oppure «Non lo so».",

@@ -58,7 +58,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
             <h1 className="mt-4 text-display font-extrabold text-balance">{c.h1}</h1>
             <p className="mt-5 max-w-xl text-lead text-steel-300">{firstIntro}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href={bookingHref} className={buttonClasses({ size: "lg" })}>
+              <Link href={bookingHref} className={buttonClasses({ size: "lg", className: "fc-book-glow" })}>
                 <CalendarCheck className="size-5" aria-hidden="true" />
                 {dict.cta.bookCheck}
               </Link>

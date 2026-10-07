@@ -40,10 +40,11 @@ describe("emailul intern", () => {
     expect(mail.html).toContain("&lt;script&gt;");
     expect(mail.html).not.toContain("<b>la frânare</b>");
   });
-  it("conține acțiunile rapide și sursa cererii", () => {
+  it("conține acțiunile rapide, logo-ul și sursa cererii", () => {
     expect(mail.html).toContain('href="tel:+37369123456"');
     expect(mail.html).toContain("https://wa.me/37369123456");
     expect(mail.html).toContain("frane-toamna");
+    expect(mail.html).toContain("cid:forcecar-logo");
     expect(mail.text).toContain("FC-260925-AB12");
   });
 });
@@ -51,8 +52,9 @@ describe("emailul intern", () => {
 describe("emailul către client", () => {
   const mail = buildCustomerEmail(data, meta);
 
-  it("este în limba clientului și nu confirmă programarea", () => {
+  it("este în limba clientului, are logo și nu confirmă programarea", () => {
     expect(mail.html).toContain('lang="ru"');
+    expect(mail.html).toContain("cid:forcecar-logo");
     expect(mail.text).toContain("FC-260925-AB12");
   });
   it("nu conține date interne (UTM, pagină, telefonul clientului)", () => {
