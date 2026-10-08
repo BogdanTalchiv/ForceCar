@@ -257,7 +257,7 @@ const en: Dictionary = {
     reviews: {
       eyebrow: "What our customers say",
       title: "Their trust is what drives us.",
-      lead: "What ForceCar customers say after work in our workshop.",
+      lead: "What customers wrote after repairs at the ForceCar workshop.",
       placeholderQuote: "The customer's real video review will appear here.",
       placeholderName: "Reserved slot",
       placeholderNotice: "We do not publish invented reviews.",
@@ -288,7 +288,7 @@ const en: Dictionary = {
     groups: {
       mechanical: {
         title: "Mechanics and diagnostics",
-        text: "Engine, timing, brakes, suspension, steering and maintenance.",
+        text: "Engine, timing belt, brakes, suspension, steering and maintenance.",
       },
       body: {
         title: "Bodywork and paint",
@@ -319,7 +319,7 @@ const en: Dictionary = {
   works: {
     eyebrow: "ForceCar work",
     title: "Our work",
-    lead: "Photos from the ForceCar workshop in Chișinău: engine, timing, brakes, mechanical, body repair and paint.",
+    lead: "Photos from the ForceCar workshop in Chișinău: engine, timing belt, brakes, mechanical work, body repair and paint.",
     beforeAfterTitle: "Before and after",
     beforeAfterLead: "Same car, same job — before and after the repair.",
   },
@@ -329,7 +329,7 @@ const en: Dictionary = {
     filterLabel: "Filter by type of work",
     categories: {
       engine: "Engine",
-      timing: "Timing",
+      timing: "Timing belt",
       brakes: "Brakes",
       mechanical: "Mechanical",
       bodywork: "Bodywork",
@@ -401,7 +401,7 @@ const en: Dictionary = {
       title: "ForceCar at a glance",
       name: "Name",
       type: "Type",
-      typeValue: "Car service / auto repair",
+      typeValue: "Car service",
       location: "Location",
       experience: "Experience",
       experienceValue: "More than {years} years",
@@ -487,13 +487,13 @@ const en: Dictionary = {
     eyebrow: "Online booking",
     title: "Book an appointment at ForceCar",
     lead: "Fill in the request in a few minutes. The ForceCar team will contact you to confirm the day and time.",
-    notice: "This is an appointment request. The time is only confirmed once the ForceCar team confirms it.",
+    notice: "This is an appointment request. The time becomes final only after the ForceCar team confirms it.",
     requiredNote: "Fields marked * are required.",
     sections: {
       client: "Your details",
       car: "Your car",
       request: "What needs doing",
-      when: "When suits you",
+      when: "When it suits you",
       photos: "Photos",
     },
     fields: {

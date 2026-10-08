@@ -47,7 +47,7 @@ const it: Dictionary = {
       description: "Come ForceCar raccoglie e utilizza i dati personali inviati tramite il sito.",
     },
     cookies: {
-      title: "Cookie policy",
+      title: "Informativa sui cookie",
       description: "Quali cookie utilizza il sito ForceCar e come gestire le tue preferenze.",
     },
     blog: {
@@ -67,7 +67,7 @@ const it: Dictionary = {
   a11y: {
     skip: "Vai al contenuto",
     mainNav: "Navigazione principale",
-    footerNav: "Navigazione del piè di pagina",
+    footerNav: "Navigazione in fondo alla pagina",
     openMenu: "Apri il menu",
     closeMenu: "Chiudi il menu",
     language: "Lingua del sito",
@@ -82,7 +82,7 @@ const it: Dictionary = {
   },
 
   nav: {
-    home: "Home",
+    home: "Inizio",
     services: "Servizi",
     works: "Lavori",
     about: "Chi siamo",
@@ -148,7 +148,7 @@ const it: Dictionary = {
       eyebrow: "Esperienza. Qualità. Fiducia.",
       kicker: "Officina auto a Chișinău.",
       accent: "Ripariamo nel modo giusto,",
-      rest: "ti spieghiamo con chiarezza.",
+      rest: "spieghiamo con chiarezza.",
       lead: "Oltre {years} anni di esperienza nella riparazione e manutenzione delle auto. Diagnostichiamo, ripariamo e ti spieghiamo ogni passo in modo chiaro.",
       servicesLabel: "Servizi ForceCar",
       stats: {
@@ -359,7 +359,7 @@ const it: Dictionary = {
     eyebrow: "Recensioni",
     title: "Le recensioni dei clienti ForceCar",
     lead: "Cosa dicono i clienti dell'officina ForceCar a Chișinău.",
-    videoTitle: "Video recensioni",
+    videoTitle: "Recensioni video",
     ratingLabel: "Voto {rating} su 5",
     sources: { google: "Google", facebook: "Facebook", instagram: "Instagram", site: "Sito ForceCar", video: "Video" },
     leaveReview: "Lascia una recensione su Google",
@@ -410,7 +410,7 @@ const it: Dictionary = {
       bookingValue: "Online, tramite il modulo di prenotazione",
       bookingPhone: "e per telefono",
       languages: "Lingue del sito",
-      languagesValue: "rumeno, russo, italiano, inglese",
+      languagesValue: "romeno, russo, italiano, inglese",
     },
   },
 
@@ -438,7 +438,7 @@ const it: Dictionary = {
       no: "Lavoriamo su appuntamento, per dedicare a ogni auto il tempo necessario. Invia una richiesta online e ti ricontattiamo.",
     },
     cost: {
-      q: "Come conosco il costo di una riparazione?",
+      q: "Come posso sapere il costo di una riparazione?",
       a: "Il costo dipende dall'auto, dal problema riscontrato e dai ricambi necessari, per questo non pubblichiamo prezzi fissi sul sito. Dopo il controllo ti spieghiamo quali lavori servono, prima di iniziare la riparazione.",
     },
     services: {
@@ -485,7 +485,7 @@ const it: Dictionary = {
 
   booking: {
     eyebrow: "Prenotazione online",
-    title: "Prenota da ForceCar",
+    title: "Prenotazione da ForceCar",
     lead: "Compila la richiesta in pochi minuti. Il team ForceCar ti ricontatta per confermare giorno e ora.",
     notice: "Questa è una richiesta di appuntamento. L'orario diventa definitivo solo dopo la conferma del team ForceCar.",
     requiredNote: "I campi contrassegnati da * sono obbligatori.",
@@ -508,7 +508,7 @@ const it: Dictionary = {
       brandHint: "Es.: Volkswagen",
       model: "Modello",
       modelHint: "Es.: Passat",
-      year: "Anno di immatricolazione",
+      year: "Anno di fabbricazione",
       yearPlaceholder: "Scegli l'anno",
       mileage: "Chilometraggio",
       mileageHint: "km",
@@ -525,8 +525,8 @@ const it: Dictionary = {
       photos: "Aggiungi foto",
       photosHint: "Fino a {max} foto JPG, PNG o WebP. Le riduciamo automaticamente prima dell'invio.",
       removePhoto: "Rimuovi la foto {n}",
-      consentBefore: "Acconsento all'uso dei miei dati da parte di ForceCar per rispondere a questa richiesta, secondo l'",
-      consentLink: "Informativa sulla privacy",
+      consentBefore: "Acconsento all'uso dei miei dati da parte di ForceCar per rispondere a questa richiesta, secondo ",
+      consentLink: "l'Informativa sulla privacy",
       consentAfter: ".",
     },
     submit: "Invia la richiesta di appuntamento",
@@ -538,7 +538,7 @@ const it: Dictionary = {
       phone: "Il numero di telefono non sembra corretto. Es.: 069 123 456.",
       email: "L'indirizzo email non sembra corretto.",
       emailRequired: "Inserisci l'indirizzo email.",
-      year: "Scegli l'anno di immatricolazione.",
+      year: "Scegli l'anno di fabbricazione.",
       mileage: "Il chilometraggio deve essere un numero.",
       service: "Scegli un servizio oppure «Non lo so».",
       date: "Scegli una data da oggi in poi.",
@@ -640,7 +640,7 @@ const it: Dictionary = {
     save: "Salva le preferenze",
     preferencesTitle: "Impostazioni cookie",
     alwaysOn: "Sempre attivi",
-    policyLink: "Cookie policy",
+    policyLink: "Informativa sui cookie",
     settingsLink: "Impostazioni cookie",
     noTracking: "Al momento il sito non utilizza cookie di analisi o di marketing.",
     categories: {
@@ -694,7 +694,7 @@ const it: Dictionary = {
   },
 
   breadcrumbs: {
-    home: "Home",
+    home: "Inizio",
   },
 };
 

@@ -18,7 +18,7 @@ const it: LegalContent = {
           "Tramite il modulo di prenotazione: nome, telefono, email, metodo di contatto preferito, dati dell'auto (marca, modello, anno e, facoltativamente, chilometraggio e targa), descrizione del problema, data e fascia oraria preferite e foto allegate (facoltative).",
           "Informazioni tecniche sulla richiesta: la pagina da cui è stata inviata, la lingua del sito e, se sei arrivato da una campagna, i parametri della campagna (UTM).",
           "Tramite l'assistente virtuale: i messaggi che scrivi nella conversazione.",
-          "Cookie e tecnologie simili — descritti nella Cookie policy.",
+          "Cookie e tecnologie simili — descritti nell'informativa sui cookie.",
         ],
       },
       {

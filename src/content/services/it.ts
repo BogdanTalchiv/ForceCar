@@ -101,7 +101,7 @@ const it: ServiceContentMap = {
   },
 
   timing: {
-    name: "Distribuzione",
+    name: "Sostituzione distribuzione",
     short: "Sostituiamo per tempo cinghia o catena di distribuzione, rulli e tenditore.",
     h1: "Sostituzione della distribuzione a Chișinău",
     metaTitle: "Sostituzione cinghia di distribuzione a Chișinău | ForceCar",
@@ -298,7 +298,7 @@ const it: ServiceContentMap = {
   },
 
   bodywork: {
-    name: "Carrozzeria",
+    name: "Carrozzeria e lattoneria",
     short: "Ripariamo la carrozzeria dopo un incidente: raddrizzatura, lattoneria e sostituzione dei pezzi danneggiati.",
     h1: "Riparazione carrozzeria a Chișinău",
     metaTitle: "Carrozzeria a Chișinău — riparazioni dopo incidente | ForceCar",

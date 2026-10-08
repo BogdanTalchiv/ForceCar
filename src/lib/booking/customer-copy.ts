@@ -68,7 +68,7 @@ export const customerEmailCopy: Localized<CustomerEmailCopy> = {
   it: {
     subject: "Abbiamo ricevuto la tua richiesta di prenotazione — ForceCar",
     kicker: "Conferma di ricezione",
-    greeting: "Ciao {name}!",
+    greeting: "Ciao, {name}!",
     intro: "Grazie! Abbiamo ricevuto la tua richiesta di prenotazione presso ForceCar.",
     notConfirmed:
       "Questa non è ancora una prenotazione confermata. Il team ForceCar ti contatterà per confermare giorno e ora.",
