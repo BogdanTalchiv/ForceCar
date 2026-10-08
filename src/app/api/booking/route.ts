@@ -154,7 +154,14 @@ export async function POST(req: Request) {
   let customerEmailSent = false;
   const customer = buildCustomerEmail(data, meta);
   try {
-    await sendMail({ to: data.email, subject: customer.subject, html: customer.html, text: customer.text });
+    await new Promise((resolve) => setTimeout(resolve, 400));
+    await sendMail({
+      to: data.email,
+      subject: customer.subject,
+      html: customer.html,
+      text: customer.text,
+      replyTo: data.email,
+    });
     customerEmailSent = true;
   } catch (err) {
     console.warn(`[booking] Confirmarea către client pentru ${id} nu a putut fi trimisă:`, err instanceof Error ? err.message : "unknown");

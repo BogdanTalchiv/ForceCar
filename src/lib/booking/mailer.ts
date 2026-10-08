@@ -139,6 +139,7 @@ async function writeToOutbox(mail: OutgoingMail, logo: MailAttachment | null): P
 }
 
 const FORMSUBMIT_MAX = 9 * 1024 * 1024;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function labeledFields(text: string): Record<string, string> {
   const fields: Record<string, string> = {};
@@ -159,6 +160,24 @@ function labeledFields(text: string): Record<string, string> {
   return fields;
 }
 
+function listedAddresses(to: OutgoingMail["to"]): string[] {
+  return (Array.isArray(to) ? to : [to]).map((s) => s.trim()).filter(Boolean);
+}
+
+function guestEmailOf(mail: OutgoingMail, inbox: string): string | undefined {
+  if (mail.replyTo && EMAIL_RE.test(mail.replyTo)) return mail.replyTo;
+  const listed = listedAddresses(mail.to);
+  return listed.find((addr) => addr.toLowerCase() !== inbox.toLowerCase() && EMAIL_RE.test(addr)) ?? listed.find((addr) => EMAIL_RE.test(addr));
+}
+
+function isFileRejection(message: string): boolean {
+  return /file|upload|extension|attach|mime|10\s*mb|too large|not allowed|invalid type/i.test(message);
+}
+
+function asBlob(content: Buffer | string, type: string): Blob {
+  return typeof content === "string" ? new Blob([content], { type }) : new Blob([new Uint8Array(content)], { type });
+}
+
 type FormSubmitResult = { ok: boolean; activating: boolean; message: string };
 
 async function postFormSubmit(url: string, origin: string, fd: FormData): Promise<FormSubmitResult> {
@@ -166,7 +185,7 @@ async function postFormSubmit(url: string, origin: string, fd: FormData): Promis
     method: "POST",
     headers: { Accept: "application/json", Origin: origin, Referer: `${origin}/` },
     body: fd,
-    signal: AbortSignal.timeout(20_000),
+    signal: AbortSignal.timeout(45_000),
   });
   const raw = await res.text();
   let parsed: { success?: string | boolean; message?: string } = {};
@@ -175,70 +194,70 @@ async function postFormSubmit(url: string, origin: string, fd: FormData): Promis
   } catch {
     parsed = {};
   }
-  const activating = /activat/i.test(parsed.message ?? "");
+  const activating = /activat/i.test(parsed.message ?? raw);
   const ok = activating || (res.ok && parsed.success !== false && parsed.success !== "false");
   return { ok, activating, message: parsed.message || `FormSubmit ${res.status}: ${raw.slice(0, 180)}` };
 }
 
-function formSubmitBase(mail: OutgoingMail, cc: string[]): FormData {
+function formSubmitPayload(
+  mail: OutgoingMail,
+  inbox: string,
+  files: { html?: string; logo?: MailAttachment | null; extras?: MailAttachment[] },
+): FormData {
   const fd = new FormData();
+  const guest = guestEmailOf(mail, inbox);
+  const cc = listedAddresses(mail.to).filter((addr) => addr.toLowerCase() !== inbox.toLowerCase() && EMAIL_RE.test(addr));
   fd.set("_subject", mail.subject);
   fd.set("_template", "box");
   fd.set("_captcha", "false");
-  if (mail.replyTo) fd.set("_replyto", mail.replyTo);
+  if (guest) {
+    fd.set("email", guest);
+    fd.set("_replyto", guest);
+  }
   if (cc.length) fd.set("_cc", cc.join(","));
   const fields = labeledFields(mail.text);
-  const keys = Object.keys(fields);
-  if (keys.length) {
-    for (const [key, value] of Object.entries(fields)) fd.set(key, value);
-  } else {
-    fd.set("Mesaj", mail.text);
+  for (const [key, value] of Object.entries(fields)) {
+    if (key.toLowerCase() === "email") continue;
+    fd.set(key, value);
+  }
+  if (fields.Nume && !fd.has("name")) fd.set("name", fields.Nume);
+  if (!fd.has("name")) fd.set("name", "ForceCar");
+  fd.set("Mesaj", mail.text.slice(0, 8000));
+  if (files.html) fd.append("email_html", asBlob(files.html, "text/html;charset=utf-8"), "ForceCar.html");
+  if (files.logo) fd.append("logo", asBlob(files.logo.content, "image/png"), "forcecar-logo.png");
+  for (const [i, file] of (files.extras ?? []).entries()) {
+    fd.append(`fisier_${i + 1}`, asBlob(file.content, file.contentType), file.filename);
   }
   return fd;
 }
 
 async function sendViaFormSubmit(mail: OutgoingMail, logo: MailAttachment | null): Promise<void> {
   const inbox = getBookingRecipients()[0];
-  if (!inbox) throw new MailerNotConfiguredError();
-  const listed = (Array.isArray(mail.to) ? mail.to : [mail.to]).map((s) => s.trim()).filter(Boolean);
-  const cc = listed.filter((addr) => addr.toLowerCase() !== inbox.toLowerCase());
+  if (!inbox || !EMAIL_RE.test(inbox)) throw new MailerNotConfiguredError();
   const origin = siteConfig.url || "http://localhost:3000";
-  const url = `https://formsubmit.co/ajax/${encodeURIComponent(inbox)}`;
+  // FormSubmit identifică formularul după adresa din URL. Nu encode-ui `@` — altfel e alt formular, neactivat.
+  const url = `https://formsubmit.co/ajax/${inbox}`;
   const brandedHtml = withPreviewLogo(mail.html, logo);
-  const extraFiles = (mail.attachments ?? []).filter((a) => a.cid !== EMAIL_LOGO_CID);
-  const extraBytes = extraFiles.reduce((n, a) => n + a.content.length, 0);
-  const logoBytes = logo?.content.length ?? 0;
+  const extras = (mail.attachments ?? []).filter((a) => a.cid !== EMAIL_LOGO_CID);
   const htmlBytes = Buffer.byteLength(brandedHtml, "utf8");
-  const sendExtras = extraBytes + logoBytes + htmlBytes <= FORMSUBMIT_MAX;
+  const logoBytes = logo?.content.length ?? 0;
+  const extraBytes = extras.reduce((n, a) => n + a.content.length, 0);
+  const extrasFit = extraBytes + logoBytes + htmlBytes <= FORMSUBMIT_MAX;
+  const payloadMail =
+    extrasFit || extras.length === 0
+      ? mail
+      : { ...mail, text: `${mail.text}\n\n(Fotografiile nu au putut fi atașate — fișierele sunt prea mari.)` };
 
-  const withFiles = (includeHtml: boolean, includeLogo: boolean, includeExtras: boolean) => {
-    const fd = formSubmitBase(mail, cc);
-    if (includeHtml) {
-      fd.append("email_html", new Blob([brandedHtml], { type: "text/html;charset=utf-8" }), "ForceCar.html");
-    }
-    if (includeLogo && logo) {
-      fd.append("logo", new Blob([new Uint8Array(logo.content)], { type: "image/png" }), "forcecar-logo.png");
-    }
-    if (includeExtras && sendExtras) {
-      for (const [i, file] of extraFiles.entries()) {
-        fd.append(`fisier_${i + 1}`, new Blob([new Uint8Array(file.content)], { type: file.contentType }), file.filename);
-      }
-    } else if (includeExtras && extraFiles.length) {
-      fd.set("Fotografii", "Nu au putut fi atașate — fișierele sunt prea mari.");
-    }
-    return fd;
-  };
-
-  let result = await postFormSubmit(url, origin, withFiles(true, true, true));
-  if (!result.ok) {
-    result = await postFormSubmit(url, origin, withFiles(false, true, true));
+  let result = await postFormSubmit(
+    url,
+    origin,
+    formSubmitPayload(payloadMail, inbox, { html: brandedHtml, logo, extras: extrasFit ? extras : [] }),
+  );
+  if (!result.ok && isFileRejection(result.message)) {
+    result = await postFormSubmit(url, origin, formSubmitPayload(payloadMail, inbox, {}));
   }
-  if (!result.ok) {
-    result = await postFormSubmit(url, origin, withFiles(false, false, false));
-  }
-  if (!result.ok) {
-    throw new Error(result.message);
-  }
+  if (!result.ok) throw new Error(result.message);
+  const cc = listedAddresses(mail.to).filter((addr) => addr.toLowerCase() !== inbox.toLowerCase());
   if (result.activating) {
     console.info(`[ForceCar] FormSubmit: deschide inboxul ${inbox} și apasă „Activate Form” (doar prima dată).`);
   } else {
