@@ -77,6 +77,8 @@ const en: Dictionary = {
     home: "ForceCar — home page",
     whatsapp: "WhatsApp ForceCar",
     viber: "Viber ForceCar",
+    instagram: "Instagram ForceCar",
+    tiktok: "TikTok ForceCar",
   },
 
   nav: {
@@ -198,8 +200,7 @@ const en: Dictionary = {
       eyebrow: "Real results",
       title: "Transformations that speak for themselves.",
       lead: "The same car, before and after the repair at ForceCar. Drag the slider to compare.",
-      previewNotice:
-        "Demo slider: the same workshop photo, in two versions. This is not a comparison of the same repair. Real pairs will be published here.",
+      previewNotice: "The same car, before and after the repair at ForceCar.",
     },
     process: {
       eyebrow: "How it works",
@@ -256,7 +257,7 @@ const en: Dictionary = {
     reviews: {
       eyebrow: "What our customers say",
       title: "Their trust is what drives us.",
-      lead: "Customer reviews with photos of their cars, shown in a Google-style layout.",
+      lead: "What ForceCar customers say after work in our workshop.",
       placeholderQuote: "The customer's real video review will appear here.",
       placeholderName: "Reserved slot",
       placeholderNotice: "We do not publish invented reviews.",
@@ -272,7 +273,7 @@ const en: Dictionary = {
     contactBand: {
       eyebrow: "Contact and booking",
       title: "Let's talk about your car.",
-      lead: "Send a booking request. If contact details are published, you will find them here, along with the Chișinău location.",
+      lead: "Send a booking request or call us. You'll find us in Chișinău, str. Ismail 103.",
       call: "Call us",
       whatsapp: "WhatsApp",
       bookNow: "Book now",
@@ -357,7 +358,7 @@ const en: Dictionary = {
   reviews: {
     eyebrow: "Reviews",
     title: "ForceCar customer reviews",
-    lead: "Genuine reviews from our customers. We never edit review text.",
+    lead: "What customers say about ForceCar in Chișinău.",
     videoTitle: "Video reviews",
     ratingLabel: "Rated {rating} out of 5",
     sources: { google: "Google", facebook: "Facebook", instagram: "Instagram", site: "ForceCar website", video: "Video" },

@@ -3,7 +3,7 @@ import { CalendarCheck, Clock, Mail, MapPin, MessageCircle, Phone } from "lucide
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath } from "@/i18n/routes";
-import { additionalPhoneLinks, emailLink, mapsEmbedUrl, mapsUrl, messengerLinks, openingHoursRows, phoneLink, streetAddressLine } from "@/lib/business-info";
+import { additionalPhoneLinks, emailLink, mapsEmbedUrl, mapsUrl, messengerLinks, openingHoursRows, phoneLink, socialLinks, streetAddressLine } from "@/lib/business-info";
 import { fmt } from "@/lib/format";
 import { crumbsFor } from "@/lib/page-meta";
 import { BUSINESS_ID } from "@/lib/schema";
@@ -22,6 +22,8 @@ export function ContactPage({ locale }: { locale: Locale }) {
   const extraPhones = additionalPhoneLinks();
   const email = emailLink();
   const messengers = messengerLinks(locale);
+  const socials = socialLinks().filter((s): s is { id: "instagram" | "tiktok"; href: string } => s.id === "instagram" || s.id === "tiktok");
+  const socialNames = { instagram: "Instagram", tiktok: "TikTok" } as const;
   const address = streetAddressLine();
   const hours = openingHoursRows(dict);
   const embed = mapsEmbedUrl();
@@ -89,7 +91,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
               </a>
             )}
 
-            {messengers.length > 0 && (
+            {(messengers.length > 0 || socials.length > 0) && (
               <div className={card}>
                 <p className="flex items-center gap-3 text-sm font-bold text-muted">
                   <MessageCircle className="size-5 text-brand" aria-hidden="true" />
@@ -105,6 +107,19 @@ export function ContactPage({ locale }: { locale: Locale }) {
                         data-track-location="contact_page"
                       >
                         {fmt(t.writeUs, { name: dict.common.messengerNames[m.id] })}
+                      </a>
+                    </li>
+                  ))}
+                  {socials.map((s) => (
+                    <li key={s.id}>
+                      <a
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={buttonClasses({ variant: "outline", size: "sm" })}
+                        data-track-location="contact_page"
+                      >
+                        {socialNames[s.id]}
                       </a>
                     </li>
                   ))}

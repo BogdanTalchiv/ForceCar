@@ -77,6 +77,8 @@ const ru: Dictionary = {
     home: "ForceCar — главная страница",
     whatsapp: "WhatsApp ForceCar",
     viber: "Viber ForceCar",
+    instagram: "Instagram ForceCar",
+    tiktok: "TikTok ForceCar",
   },
 
   nav: {
@@ -198,8 +200,7 @@ const ru: Dictionary = {
       eyebrow: "Реальные результаты",
       title: "Преобразования, которые говорят сами за себя.",
       lead: "Та же машина — до и после ремонта в сервисе ForceCar. Перетащите ползунок, чтобы сравнить.",
-      previewNotice:
-        "Демонстрационный слайдер: одно и то же фото из мастерской, в двух вариантах. Это не сравнение одного ремонта. Реальные пары будут опубликованы здесь.",
+      previewNotice: "Та же машина — до и после ремонта в сервисе ForceCar.",
     },
     process: {
       eyebrow: "Как это работает",
@@ -256,7 +257,7 @@ const ru: Dictionary = {
     reviews: {
       eyebrow: "Что говорят наши клиенты",
       title: "Их доверие нас мотивирует.",
-      lead: "Отзывы клиентов с фото автомобиля — в оформлении как в Google.",
+      lead: "Что пишут клиенты после работ в мастерской ForceCar.",
       placeholderQuote: "Настоящий видеоотзыв клиента появится здесь.",
       placeholderName: "Зарезервировано",
       placeholderNotice: "Мы не публикуем выдуманные отзывы.",
@@ -272,7 +273,7 @@ const ru: Dictionary = {
     contactBand: {
       eyebrow: "Контакты и запись",
       title: "Давайте обсудим ваш автомобиль.",
-      lead: "Отправьте заявку на запись. Если контакты опубликованы, вы найдёте их здесь, вместе с локацией в Кишинёве.",
+      lead: "Оставьте заявку на запись или позвоните нам. Мы в Кишинёве, str. Ismail 103.",
       call: "Позвонить",
       whatsapp: "WhatsApp",
       bookNow: "Записаться сейчас",
@@ -357,7 +358,7 @@ const ru: Dictionary = {
   reviews: {
     eyebrow: "Отзывы",
     title: "Отзывы клиентов ForceCar",
-    lead: "Настоящие отзывы клиентов автосервиса. Мы не изменяем текст отзывов.",
+    lead: "Что говорят клиенты об автосервисе ForceCar в Кишинёве.",
     videoTitle: "Видеоотзывы",
     ratingLabel: "Оценка {rating} из 5",
     sources: { google: "Google", facebook: "Facebook", instagram: "Instagram", site: "Сайт ForceCar", video: "Видео" },

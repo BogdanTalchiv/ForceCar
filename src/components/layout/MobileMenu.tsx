@@ -8,6 +8,8 @@ import type { NavItem, ServiceLink } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
 import { rememberLocale } from "./LanguageSwitcher";
+import { HeaderMessengers } from "./HeaderMessengers";
+import { HeaderSocials } from "./HeaderSocials";
 import { Logo } from "./Logo";
 
 interface Labels {
@@ -19,6 +21,11 @@ interface Labels {
   language: string;
   nav: string;
   allServices: string;
+  whatsapp: string;
+  viber: string;
+  instagram: string;
+  tiktok: string;
+  newTab: string;
 }
 
 export function MobileMenu({
@@ -140,7 +147,18 @@ export function MobileMenu({
           </ul>
         </nav>
 
-        <div className="container-fc grid shrink-0 gap-2 border-t border-white/8 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+        <div className="container-fc grid shrink-0 gap-3 border-t border-white/8 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+          <div className="flex items-center justify-center gap-1">
+            <HeaderMessengers
+              locale={locale}
+              trackLocation="mobile_menu"
+              labels={{ whatsapp: labels.whatsapp, viber: labels.viber, newTab: labels.newTab }}
+            />
+            <HeaderSocials
+              trackLocation="mobile_menu"
+              labels={{ instagram: labels.instagram, tiktok: labels.tiktok, newTab: labels.newTab }}
+            />
+          </div>
           <Link href={bookingHref} className={buttonClasses({ size: "lg", full: true, className: "fc-book-glow" })}>
             {labels.book}
           </Link>

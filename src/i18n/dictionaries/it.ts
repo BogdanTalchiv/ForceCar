@@ -77,6 +77,8 @@ const it: Dictionary = {
     home: "ForceCar — pagina iniziale",
     whatsapp: "WhatsApp ForceCar",
     viber: "Viber ForceCar",
+    instagram: "Instagram ForceCar",
+    tiktok: "TikTok ForceCar",
   },
 
   nav: {
@@ -198,8 +200,7 @@ const it: Dictionary = {
       eyebrow: "Risultati reali",
       title: "Trasformazioni che parlano da sole.",
       lead: "La stessa auto, prima e dopo la riparazione in officina ForceCar. Trascina il cursore per confrontare.",
-      previewNotice:
-        "Slider dimostrativo: la stessa foto dell'officina, in due versioni. Non è il confronto dello stesso intervento. Le coppie reali saranno pubblicate qui.",
+      previewNotice: "La stessa auto, prima e dopo la riparazione in officina ForceCar.",
     },
     process: {
       eyebrow: "Come funziona",
@@ -256,7 +257,7 @@ const it: Dictionary = {
     reviews: {
       eyebrow: "Cosa dicono i nostri clienti",
       title: "La loro fiducia ci motiva.",
-      lead: "Recensioni dei clienti con la foto dell'auto, presentate come su Google.",
+      lead: "Cosa scrivono i clienti dopo i lavori in officina ForceCar.",
       placeholderQuote: "La recensione video reale del cliente apparirà qui.",
       placeholderName: "Spazio riservato",
       placeholderNotice: "Non pubblichiamo recensioni inventate.",
@@ -272,7 +273,7 @@ const it: Dictionary = {
     contactBand: {
       eyebrow: "Contatti e prenotazione",
       title: "Parliamo della tua auto.",
-      lead: "Invia una richiesta di prenotazione. Se i recapiti sono pubblicati, li trovi qui, insieme alla sede di Chișinău.",
+      lead: "Invia una richiesta di prenotazione o chiamaci. Ci trovi a Chișinău, str. Ismail 103.",
       call: "Chiamaci",
       whatsapp: "WhatsApp",
       bookNow: "Prenota ora",
@@ -357,7 +358,7 @@ const it: Dictionary = {
   reviews: {
     eyebrow: "Recensioni",
     title: "Le recensioni dei clienti ForceCar",
-    lead: "Recensioni reali dei clienti dell'officina. Non modifichiamo il testo delle recensioni.",
+    lead: "Cosa dicono i clienti dell'officina ForceCar a Chișinău.",
     videoTitle: "Video recensioni",
     ratingLabel: "Voto {rating} su 5",
     sources: { google: "Google", facebook: "Facebook", instagram: "Instagram", site: "Sito ForceCar", video: "Video" },

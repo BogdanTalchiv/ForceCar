@@ -75,6 +75,8 @@ const ro = {
     home: "ForceCar — pagina principală",
     whatsapp: "WhatsApp ForceCar",
     viber: "Viber ForceCar",
+    instagram: "Instagram ForceCar",
+    tiktok: "TikTok ForceCar",
   },
 
   nav: {
@@ -196,8 +198,7 @@ const ro = {
       eyebrow: "Rezultate reale",
       title: "Transformări care vorbesc de la sine.",
       lead: "Aceeași mașină, înainte și după reparația din atelierul ForceCar. Trage glisorul ca să compari.",
-      previewNotice:
-        "Glisor demonstrativ: aceeași fotografie din atelier, în două variante. Nu este o comparație a aceleiași reparații. Perechile reale vor fi publicate aici.",
+      previewNotice: "Aceeași mașină, înainte și după reparația din atelierul ForceCar.",
     },
     process: {
       eyebrow: "Cum funcționează",
@@ -254,7 +255,7 @@ const ro = {
     reviews: {
       eyebrow: "Ce spun clienții noștri",
       title: "Încrederea lor ne motivează.",
-      lead: "Recenzii de la clienți, cu fotografia mașinii — prezentate ca pe Google.",
+      lead: "Ce au scris clienții după lucrările din atelierul ForceCar.",
       placeholderQuote: "Recenzia video reală a clientului va apărea aici.",
       placeholderName: "Loc rezervat",
       placeholderNotice: "Nu publicăm recenzii inventate.",
@@ -270,7 +271,7 @@ const ro = {
     contactBand: {
       eyebrow: "Contact și programare",
       title: "Hai să discutăm despre mașina ta.",
-      lead: "Trimite o cerere de programare. Dacă datele de contact sunt publicate, le găsești aici, împreună cu locația din Chișinău.",
+      lead: "Trimite o cerere de programare sau sună-ne. Ne găsești în Chișinău, str. Ismail 103.",
       call: "Sună-ne",
       whatsapp: "WhatsApp",
       bookNow: "Programează-te acum",
@@ -355,7 +356,7 @@ const ro = {
   reviews: {
     eyebrow: "Recenzii",
     title: "Recenziile clienților ForceCar",
-    lead: "Recenzii reale de la clienții service-ului. Nu modificăm textul recenziilor.",
+    lead: "Ce spun clienții despre service-ul ForceCar din Chișinău.",
     videoTitle: "Recenzii video",
     ratingLabel: "Nota {rating} din 5",
     sources: { google: "Google", facebook: "Facebook", instagram: "Instagram", site: "Site ForceCar", video: "Video" },

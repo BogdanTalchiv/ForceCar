@@ -100,8 +100,8 @@ export const business: BusinessConfig = {
 
   socials: {
     facebook: null,
-    instagram: null,
-    tiktok: null,
+    instagram: "https://www.instagram.com/forcecar.md",
+    tiktok: "https://www.tiktok.com/@forcecar.autoservice",
     youtube: null,
   },
 

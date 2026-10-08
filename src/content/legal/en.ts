@@ -15,7 +15,7 @@ const en: LegalContent = {
       {
         h: "What data we collect",
         ul: [
-          "Through the booking form: your name, phone, email (optional), preferred contact method, car details (make, model, year and, optionally, mileage and plate number), a description of the problem, your preferred date and time and any attached photos (optional).",
+          "Through the booking form: your name, phone, email, preferred contact method, car details (make, model, year and, optionally, mileage and plate number), a description of the problem, your preferred date and time and any attached photos (optional).",
           "Technical information about the request: the page it was sent from, the site language and, if you arrived from a campaign, the campaign parameters (UTM).",
           "Through the virtual assistant: the messages you write in the chat.",
           "Cookies and similar technologies — described in the Cookie policy.",

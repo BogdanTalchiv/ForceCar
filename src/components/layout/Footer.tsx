@@ -11,7 +11,7 @@ import { hasReviews, serviceLinks } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
 import { CookieSettingsButton } from "./CookieSettingsButton";
 import { Logo } from "./Logo";
-import { ViberIcon, WhatsAppIcon } from "./MessengerBrandIcons";
+import { InstagramIcon, TikTokIcon, ViberIcon, WhatsAppIcon } from "./MessengerBrandIcons";
 
 const socialNames = { facebook: "Facebook", instagram: "Instagram", tiktok: "TikTok", youtube: "YouTube" } as const;
 
@@ -133,6 +133,26 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
                 </li>
               );
             })}
+            {socials.map((s) => {
+              if (s.id !== "instagram" && s.id !== "tiktok") return null;
+              const instagram = s.id === "instagram";
+              return (
+                <li key={s.id}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-3 ${link}`}
+                    data-track-location="footer"
+                  >
+                    <span className={instagram ? "text-[#E4405F]" : "text-white"}>
+                      {instagram ? <InstagramIcon className="size-4" /> : <TikTokIcon className="size-4" />}
+                    </span>
+                    {socialNames[s.id]}
+                  </a>
+                </li>
+              );
+            })}
             {hours.length > 0 && (
               <li className="flex items-start gap-3 text-white/75">
                 <Clock className="mt-0.5 size-4 shrink-0 text-brand" aria-hidden="true" />
@@ -172,13 +192,18 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
                 <CookieSettingsButton label={dict.consent.settingsLink} />
               </li>
             )}
-            {socials.map((s) => (
-              <li key={s.id}>
-                <a href={s.href} target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                  {socialNames[s.id]}
-                </a>
-              </li>
-            ))}
+            {socials.map((s) => {
+              if (s.id !== "instagram" && s.id !== "tiktok") {
+                return (
+                  <li key={s.id}>
+                    <a href={s.href} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                      {socialNames[s.id]}
+                    </a>
+                  </li>
+                );
+              }
+              return null;
+            })}
           </ul>
           <ul className="flex gap-1" aria-label={dict.footer.languagesTitle}>
             {locales.map((l) =>

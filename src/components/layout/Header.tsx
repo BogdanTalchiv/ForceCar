@@ -97,6 +97,7 @@ export function Header({
             )}
             <HeaderMessengers
               locale={locale}
+              className="hidden items-center gap-0.5 lg:flex"
               labels={{ whatsapp: dict.a11y.whatsapp, viber: dict.a11y.viber, newTab: dict.a11y.newTab }}
             />
           </div>
@@ -121,6 +122,11 @@ export function Header({
               language: dict.footer.languagesTitle,
               nav: dict.a11y.mainNav,
               allServices: dict.nav.allServices,
+              whatsapp: dict.a11y.whatsapp,
+              viber: dict.a11y.viber,
+              instagram: dict.a11y.instagram,
+              tiktok: dict.a11y.tiktok,
+              newTab: dict.a11y.newTab,
             }}
           />
         </div>

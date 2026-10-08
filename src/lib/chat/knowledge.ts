@@ -7,7 +7,7 @@ import { enabledServices } from "@/config/services";
 import { getServiceContent } from "@/content/services";
 import { localeMeta, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { additionalPhoneLinks, emailLink, messengerLinks, openingHoursText, phoneLink, streetAddressLine } from "@/lib/business-info";
+import { additionalPhoneLinks, emailLink, messengerLinks, openingHoursText, phoneLink, socialLinks, streetAddressLine } from "@/lib/business-info";
 import { getGeneralFaq } from "@/lib/faq";
 
 const languageNames: Record<Locale, string> = { ro: "Romanian", ru: "Russian", it: "Italian", en: "English" };
@@ -21,6 +21,8 @@ export function buildSystemPrompt(locale: Locale): string {
   const address = streetAddressLine();
   const hours = openingHoursText(dict);
   const messengers = messengerLinks(locale).map((m) => dict.common.messengerNames[m.id]);
+  const socialNames = { facebook: "Facebook", instagram: "Instagram", tiktok: "TikTok", youtube: "YouTube" } as const;
+  const socials = socialLinks().map((s) => `${socialNames[s.id]} ${s.href}`);
 
   const services = enabledServices
     .map((s) => {
@@ -47,6 +49,7 @@ CONFIRMED FACTS (the ONLY business facts you may use):
 - Phone: ${phones || unknown}
 - Email: ${email?.label ?? unknown}
 - Messengers: ${messengers.length ? messengers.join(", ") : unknown}
+- Social: ${socials.length ? socials.join(", ") : unknown}
 - Online booking: customers send a booking REQUEST through the website form; the ForceCar team then contacts them to confirm day and time.
 - Prices: NOT published. Cost depends on the car, the fault found and the parts; it is explained after inspection.
 

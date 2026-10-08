@@ -15,7 +15,7 @@ const ro: LegalContent = {
       {
         h: "Ce date colectăm",
         ul: [
-          "Prin formularul de programare: numele, telefonul, emailul (opțional), modul de contact preferat, datele mașinii (marcă, model, an și, opțional, kilometraj și număr de înmatriculare), descrierea problemei, data și intervalul preferat și fotografiile atașate (opțional).",
+          "Prin formularul de programare: numele, telefonul, emailul, modul de contact preferat, datele mașinii (marcă, model, an și, opțional, kilometraj și număr de înmatriculare), descrierea problemei, data și intervalul preferat și fotografiile atașate (opțional).",
           "Informații tehnice despre cerere: pagina de pe care a fost trimisă, limba site-ului și, dacă ai ajuns pe site dintr-o campanie, parametrii campaniei (UTM).",
           "Prin asistentul virtual: mesajele pe care le scrii în conversație.",
           "Cookie-uri și tehnologii similare — detaliate în Politica de cookie-uri.",
