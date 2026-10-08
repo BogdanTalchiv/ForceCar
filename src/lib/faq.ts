@@ -31,7 +31,7 @@ export function getGeneralFaq(locale: Locale): FaqItem[] {
   const dict = getDictionary(locale);
   const phone = phoneLink();
   const email = emailLink();
-  const messengers = messengerLinks().map((m) => dict.common.messengerNames[m.id]);
+  const messengers = messengerLinks(locale).map((m) => dict.common.messengerNames[m.id]);
   const address = streetAddressLine();
   const hours = openingHoursText(dict);
   const items: FaqItem[] = [];

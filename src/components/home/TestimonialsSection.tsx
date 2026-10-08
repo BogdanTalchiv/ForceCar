@@ -32,22 +32,17 @@ export function TestimonialsSection({ locale }: { locale: Locale }) {
   const texts = reviews.slice(0, 3);
   const showReal = hasReviews && (videos.length > 0 || texts.length > 0);
 
+  const reviewLabels = {
+    ratingLabel: dict.reviews.ratingLabel,
+    sources: dict.reviews.sources,
+    viewSource: dict.reviews.viewSource,
+    newTab: dict.a11y.newTab,
+  };
+
   const realCards =
-    videos.length > 0
-      ? videos.map((review) => <VideoReview key={review.id} review={review} labels={dict.video} />)
-      : texts.map((r) => (
-          <ReviewCard
-            key={r.id}
-            review={r}
-            locale={locale}
-            labels={{
-              ratingLabel: dict.reviews.ratingLabel,
-              sources: dict.reviews.sources,
-              viewSource: dict.reviews.viewSource,
-              newTab: dict.a11y.newTab,
-            }}
-          />
-        ));
+    texts.length > 0
+      ? texts.map((r) => <ReviewCard key={r.id} review={r} locale={locale} labels={reviewLabels} />)
+      : videos.map((review) => <VideoReview key={review.id} review={review} labels={dict.video} />);
 
   const reserved = [0, 1, 2].map((i) => (
     <ReservedCard key={i} name={t.placeholderName} notice={t.placeholderNotice} quote={t.placeholderQuote} />

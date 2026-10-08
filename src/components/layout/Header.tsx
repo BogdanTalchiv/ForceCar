@@ -8,6 +8,7 @@ import { mainNav, serviceLinks } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
 import { HeaderFrame } from "./HeaderFrame";
+import { HeaderMessengers } from "./HeaderMessengers";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
 import { MobileMenu } from "./MobileMenu";
@@ -83,16 +84,22 @@ export function Header({
         </nav>
 
         <div className="flex items-center gap-1.5 sm:gap-2">
-          {phone && (
-            <a
-              href={phone.href}
-              className="hidden h-10 items-center gap-2 rounded-md px-3 text-[0.9375rem] font-bold text-white hover:bg-white/8 xl:flex"
-              data-track-location="header"
-            >
-              <Phone className="fc-phone-ring size-4 text-brand" aria-hidden="true" />
-              {phone.label}
-            </a>
-          )}
+          <div className="flex items-center gap-0.5">
+            {phone && (
+              <a
+                href={phone.href}
+                className="hidden h-10 items-center gap-2 rounded-md px-3 text-[0.9375rem] font-bold text-white hover:bg-white/8 xl:flex"
+                data-track-location="header"
+              >
+                <Phone className="fc-phone-ring size-4 text-brand" aria-hidden="true" />
+                {phone.label}
+              </a>
+            )}
+            <HeaderMessengers
+              locale={locale}
+              labels={{ whatsapp: dict.a11y.whatsapp, viber: dict.a11y.viber, newTab: dict.a11y.newTab }}
+            />
+          </div>
           <LanguageSwitcher locale={locale} alternates={alternates} label={dict.a11y.language} />
           <Link href={bookingHref} className={buttonClasses({ size: "sm", className: "fc-book-glow max-sm:hidden" })}>
             {dict.cta.book}

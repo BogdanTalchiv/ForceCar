@@ -75,6 +75,8 @@ const en: Dictionary = {
     quickActions: "Quick actions",
     newTab: "(opens in a new tab)",
     home: "ForceCar — home page",
+    whatsapp: "WhatsApp ForceCar",
+    viber: "Viber ForceCar",
   },
 
   nav: {
@@ -136,6 +138,7 @@ const en: Dictionary = {
       Sunday: "Sunday",
     },
     messengerNames: { whatsapp: "WhatsApp", viber: "Viber", telegram: "Telegram" },
+    messengerPrefill: "Hello! I'm writing from the ForceCar website. I would like to book an appointment.",
   },
 
   home: {
@@ -253,7 +256,7 @@ const en: Dictionary = {
     reviews: {
       eyebrow: "What our customers say",
       title: "Their trust is what drives us.",
-      lead: "We only publish real reviews, with the customer's consent. Until then, this space stays reserved.",
+      lead: "Customer reviews with photos of their cars, shown in a Google-style layout.",
       placeholderQuote: "The customer's real video review will appear here.",
       placeholderName: "Reserved slot",
       placeholderNotice: "We do not publish invented reviews.",

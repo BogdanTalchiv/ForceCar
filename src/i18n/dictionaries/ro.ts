@@ -73,6 +73,8 @@ const ro = {
     quickActions: "Acțiuni rapide",
     newTab: "(se deschide într-o filă nouă)",
     home: "ForceCar — pagina principală",
+    whatsapp: "WhatsApp ForceCar",
+    viber: "Viber ForceCar",
   },
 
   nav: {
@@ -134,6 +136,7 @@ const ro = {
       Sunday: "Duminică",
     },
     messengerNames: { whatsapp: "WhatsApp", viber: "Viber", telegram: "Telegram" },
+    messengerPrefill: "Bună ziua! Vă scriu de pe site-ul ForceCar. Aș dori să mă programez la service.",
   },
 
   home: {
@@ -251,7 +254,7 @@ const ro = {
     reviews: {
       eyebrow: "Ce spun clienții noștri",
       title: "Încrederea lor ne motivează.",
-      lead: "Publicăm doar recenzii reale, cu acordul clientului. Până atunci, spațiul de mai jos rămâne rezervat.",
+      lead: "Recenzii de la clienți, cu fotografia mașinii — prezentate ca pe Google.",
       placeholderQuote: "Recenzia video reală a clientului va apărea aici.",
       placeholderName: "Loc rezervat",
       placeholderNotice: "Nu publicăm recenzii inventate.",

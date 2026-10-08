@@ -29,7 +29,7 @@ export function PageShell({
 }) {
   const dict = getDictionary(locale);
   const alternates = localizedPaths(pageRef);
-  const messengers = messengerLinks();
+  const messengers = messengerLinks(locale);
   const whatsapp = messengers.find((m) => m.id === "whatsapp") ?? null;
 
   return (

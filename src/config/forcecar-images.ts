@@ -77,14 +77,14 @@ const images = {
     },
   },
   motor: {
-    file: "workshop/atelier-09.jpg",
-    focal: "45% 42%",
+    file: "workshop/bloc-motor.webp",
+    focal: "48% 46%",
     category: "engine",
     alt: {
-      ro: "Motor și structura față a unui Porsche, în lucru în atelier",
-      ru: "Двигатель и передняя структура Porsche в работе в мастерской",
-      it: "Motore e struttura anteriore di una Porsche in lavorazione",
-      en: "Porsche engine and front structure being worked on in the workshop",
+      ro: "Bloc motor pe stand, în atelierul ForceCar",
+      ru: "Блок двигателя на стенде в мастерской ForceCar",
+      it: "Blocco motore sul banco in officina ForceCar",
+      en: "Engine block on a stand in the ForceCar workshop",
     },
   },
   distributie: {
@@ -272,6 +272,36 @@ const images = {
       ru: "Тот же BMW после ремонта кузова, припаркован у сервиса ForceCar",
       it: "La stessa BMW dopo la riparazione della carrozzeria, parcheggiata davanti a ForceCar",
       en: "The same BMW after body repair, parked in front of the ForceCar workshop",
+    },
+  },
+  recenzieBmw: {
+    file: "reviews/bmw-3.webp",
+    focal: "50% 72%",
+    alt: {
+      ro: "BMW Seria 3 roșu, parcat în fața service-ului ForceCar din Chișinău",
+      ru: "Красный BMW 3 серии у сервиса ForceCar в Кишинёве",
+      it: "BMW Serie 3 rossa parcheggiata davanti all'officina ForceCar a Chișinău",
+      en: "Red BMW 3 Series parked in front of the ForceCar workshop in Chișinău",
+    },
+  },
+  recenzieVolvo: {
+    file: "reviews/volvo-s90.webp",
+    focal: "48% 48%",
+    alt: {
+      ro: "Volvo alb după lucrarea de la ForceCar",
+      ru: "Белый Volvo после работы в ForceCar",
+      it: "Volvo bianca dopo il lavoro da ForceCar",
+      en: "White Volvo after work at ForceCar",
+    },
+  },
+  recenzieFiat: {
+    file: "reviews/fiat-500.webp",
+    focal: "42% 58%",
+    alt: {
+      ro: "Fiat 500 roșie pe elevator, în atelier",
+      ru: "Красный Fiat 500 на подъёмнике в мастерской",
+      it: "Fiat 500 rossa sul sollevatore in officina",
+      en: "Red Fiat 500 on a lift in the workshop",
     },
   },
 } satisfies Record<string, ImageDef>;

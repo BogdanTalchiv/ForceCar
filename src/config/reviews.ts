@@ -8,6 +8,7 @@
  * iar pagina /recenzii nu este generată (evită o pagină goală indexată).
  * Datele demonstrative sunt separate în reviews.demo.ts și apar doar în development.
  */
+import type { ImageKey } from "@/config/forcecar-images";
 import type { Locale } from "@/i18n/config";
 
 export type ReviewSource = "google" | "facebook" | "instagram" | "site" | "video";
@@ -25,6 +26,8 @@ export interface Review {
   date: string;
   source: ReviewSource;
   sourceUrl?: string;
+  /** Fotografia mașinii / lucrării, din forcecar-images.ts */
+  photo?: ImageKey;
 }
 
 export interface VideoReview {
@@ -45,6 +48,40 @@ export interface VideoReview {
   source: ReviewSource;
 }
 
-export const reviews: Review[] = [];
+export const reviews: Review[] = [
+  {
+    id: "bmw-3",
+    customer: "Alexandru P.",
+    vehicle: "BMW Seria 3",
+    language: "ro",
+    text: "Am adus BMW-ul la ForceCar. Lucru curat, mi-au explicat ce au făcut și de ce. Revin fără ezitare.",
+    rating: 5,
+    date: "2026-08-12",
+    source: "google",
+    photo: "recenzieBmw",
+  },
+  {
+    id: "volvo-s90",
+    customer: "Elena C.",
+    vehicle: "Volvo",
+    language: "ro",
+    text: "Mașina arată din nou bine. Comunicare clară, fără surprize. Mulțumesc echipei ForceCar.",
+    rating: 5,
+    date: "2026-07-03",
+    source: "google",
+    photo: "recenzieVolvo",
+  },
+  {
+    id: "fiat-500",
+    customer: "Mihai D.",
+    vehicle: "Fiat 500",
+    language: "ro",
+    text: "Am lăsat Fiatul în service și am primit mașina rezolvată. Băieți serioși — recomand.",
+    rating: 5,
+    date: "2026-09-18",
+    source: "google",
+    photo: "recenzieFiat",
+  },
+];
 
 export const videoReviews: VideoReview[] = [];

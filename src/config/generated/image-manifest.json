@@ -15,6 +15,30 @@
     "og": "/images/forcecar/_og/results--bmw-caroserie-inainte.jpg",
     "bytes": 451355
   },
+  "reviews/bmw-3.webp": {
+    "src": "/images/forcecar/reviews/bmw-3.webp",
+    "width": 1201,
+    "height": 1599,
+    "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQBACdASoQABUAPu1iqU2ppaQiMAgBMB2JYgCdACPg/8mEHx3FL+nnyADh5/tCmYMSPfJWvFUSVixNt3RUSjeoD4zjSBQTRqZDxiccTDwuQFbpN+UTne8r6NzH+cokUeV8L4YgAAA=",
+    "og": "/images/forcecar/_og/reviews--bmw-3.jpg",
+    "bytes": 339412
+  },
+  "reviews/fiat-500.webp": {
+    "src": "/images/forcecar/reviews/fiat-500.webp",
+    "width": 1293,
+    "height": 1217,
+    "blurDataURL": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAABwAgCdASoQAA8AA4BaJbACsDiABySFfLb7P1aAAP7J9JUCyPx/XADHXodzF7nVhL5U9B/+xTHBE1sm8y3FwphjuIsHmAcT8rf6dy2ZjpcRMNugPC/K3mKbY4fvRW2V6s++zJDN9WaMm86ovJ6PI8jKI4T+ZPULMtYi8Sq0r7Aan3hKT3USYJrEAAA=",
+    "og": "/images/forcecar/_og/reviews--fiat-500.jpg",
+    "bytes": 334508
+  },
+  "reviews/volvo-s90.webp": {
+    "src": "/images/forcecar/reviews/volvo-s90.webp",
+    "width": 1800,
+    "height": 1350,
+    "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoQAAwAA4BaJZQAD5Avsdmb5aAAAP7m0HF4XNLMZNhxAzS89CR+VukRZ4onYQrhdlXH5F3S1mLpOEinZzUeiSm8eBO4mK7OPsoHU6nUY4AAAA==",
+    "og": "/images/forcecar/_og/reviews--volvo-s90.jpg",
+    "bytes": 458568
+  },
   "workshop/atelier-01.jpg": {
     "src": "/images/forcecar/workshop/atelier-01.jpg",
     "width": 2732,
@@ -174,5 +198,13 @@
     "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoQAAwAA4BaJZQC7ADpGD2EAAD5aGc722CSvm4UoYENmiUMszlohStsKPnfxy5YCeOZ8amSATA39dcWLOFdQFgA",
     "og": "/images/forcecar/_og/workshop--atelier-20.jpg",
     "bytes": 3066896
+  },
+  "workshop/bloc-motor.webp": {
+    "src": "/images/forcecar/workshop/bloc-motor.webp",
+    "width": 1448,
+    "height": 1086,
+    "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACwAgCdASoQAAwAA4BaJZQCw7fwIsshY6n5g8LanAAA/sGdLeqByYgJRpA5CX7oiHk7ECCUAvFbzRXNeW31Li3Guhc+ZI6FSLIgKQja08GG5mVdLX8f8HU+PAx2f2JAFl2LQMFEyAA=",
+    "og": "/images/forcecar/_og/workshop--bloc-motor.jpg",
+    "bytes": 222604
   }
 }

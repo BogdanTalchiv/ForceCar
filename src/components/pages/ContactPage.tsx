@@ -20,7 +20,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
   const crumbs = crumbsFor(locale, "contact");
   const phone = phoneLink();
   const email = emailLink();
-  const messengers = messengerLinks();
+  const messengers = messengerLinks(locale);
   const address = streetAddressLine();
   const hours = openingHoursRows(dict);
   const embed = mapsEmbedUrl();
@@ -87,8 +87,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
                     <li key={m.id}>
                       <a
                         href={m.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        {...(m.id === "viber" ? {} : { target: "_blank", rel: "noopener noreferrer" })}
                         className={buttonClasses({ variant: "outline", size: "sm" })}
                         data-track-location="contact_page"
                       >

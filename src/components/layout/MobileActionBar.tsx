@@ -106,8 +106,7 @@ export function MobileActionBar({ phone, messengers, whatsapp, mapsHref, booking
                 <li key={m.id}>
                   <a
                     href={m.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {...(m.id === "viber" ? {} : { target: "_blank", rel: "noopener noreferrer" })}
                     className="flex h-14 items-center gap-3 rounded-md px-4 font-bold ring-1 ring-line hover:ring-ink-900"
                     data-track-location="mobile_sheet"
                   >

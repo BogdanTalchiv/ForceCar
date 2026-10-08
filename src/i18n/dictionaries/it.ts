@@ -75,6 +75,8 @@ const it: Dictionary = {
     quickActions: "Azioni rapide",
     newTab: "(si apre in una nuova scheda)",
     home: "ForceCar — pagina iniziale",
+    whatsapp: "WhatsApp ForceCar",
+    viber: "Viber ForceCar",
   },
 
   nav: {
@@ -136,6 +138,7 @@ const it: Dictionary = {
       Sunday: "Domenica",
     },
     messengerNames: { whatsapp: "WhatsApp", viber: "Viber", telegram: "Telegram" },
+    messengerPrefill: "Buongiorno! Scrivo dal sito ForceCar. Vorrei prenotare un appuntamento in officina.",
   },
 
   home: {
@@ -253,7 +256,7 @@ const it: Dictionary = {
     reviews: {
       eyebrow: "Cosa dicono i nostri clienti",
       title: "La loro fiducia ci motiva.",
-      lead: "Pubblichiamo solo recensioni reali, con il consenso del cliente. Fino ad allora, questo spazio resta riservato.",
+      lead: "Recensioni dei clienti con la foto dell'auto, presentate come su Google.",
       placeholderQuote: "La recensione video reale del cliente apparirà qui.",
       placeholderName: "Spazio riservato",
       placeholderNotice: "Non pubblichiamo recensioni inventate.",

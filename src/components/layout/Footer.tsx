@@ -11,6 +11,7 @@ import { hasReviews, serviceLinks } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
 import { CookieSettingsButton } from "./CookieSettingsButton";
 import { Logo } from "./Logo";
+import { ViberIcon, WhatsAppIcon } from "./MessengerBrandIcons";
 
 const socialNames = { facebook: "Facebook", instagram: "Instagram", tiktok: "TikTok", youtube: "YouTube" } as const;
 
@@ -21,7 +22,7 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
   const address = streetAddressLine();
   const maps = mapsUrl();
   const hours = openingHoursRows(dict);
-  const messengers = messengerLinks();
+  const messengers = messengerLinks(locale);
   const socials = socialLinks();
   const year = new Date().getFullYear();
 
@@ -105,6 +106,24 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
                 <span>{address ?? dict.common.locationLong}</span>
               )}
             </li>
+            {messengers.map((m) => {
+              const whatsapp = m.id === "whatsapp";
+              return (
+                <li key={m.id}>
+                  <a
+                    href={m.href}
+                    {...(whatsapp ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    className={`flex items-center gap-3 ${link}`}
+                    data-track-location="footer"
+                  >
+                    <span className={whatsapp ? "text-[#25D366]" : "text-[#7360F2]"}>
+                      {whatsapp ? <WhatsAppIcon className="size-4" /> : <ViberIcon className="size-4" />}
+                    </span>
+                    {dict.common.messengerNames[m.id]}
+                  </a>
+                </li>
+              );
+            })}
             {hours.length > 0 && (
               <li className="flex items-start gap-3 text-white/75">
                 <Clock className="mt-0.5 size-4 shrink-0 text-brand" aria-hidden="true" />
@@ -118,23 +137,6 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
               </li>
             )}
           </ul>
-          {messengers.length > 0 && (
-            <ul className="mt-5 flex flex-wrap gap-2">
-              {messengers.map((m) => (
-                <li key={m.id}>
-                  <a
-                    href={m.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex h-9 items-center rounded-md px-3 text-sm font-semibold ring-1 ring-white/15 hover:bg-white/8"
-                    data-track-location="footer"
-                  >
-                    {dict.common.messengerNames[m.id]}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
           <Link href={pagePath(locale, "booking")} className={buttonClasses({ className: "fc-book-glow mt-6" })}>
             {dict.cta.requestBooking}
           </Link>

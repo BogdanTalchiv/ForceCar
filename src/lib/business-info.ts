@@ -1,5 +1,7 @@
 import { business, type DayOfWeek } from "@/config/business";
+import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/ro";
+import { getDictionary } from "@/i18n/get-dictionary";
 import { formatPhone, telHref } from "./format";
 
 export type MessengerId = "whatsapp" | "viber" | "telegram";
@@ -16,11 +18,18 @@ export function emailLink(): { href: string; label: string } | null {
   return business.email ? { href: `mailto:${business.email}`, label: business.email } : null;
 }
 
-/** Link-urile de mesagerie configurate, în ordinea de afișare. */
-export function messengerLinks(): { id: MessengerId; href: string }[] {
+/** Link-urile de mesagerie configurate, în ordinea de afișare. Mesajul de deschidere e deja completat. */
+export function messengerLinks(locale: Locale = "ro"): { id: MessengerId; href: string }[] {
   const out: { id: MessengerId; href: string }[] = [];
-  if (business.whatsapp) out.push({ id: "whatsapp", href: `https://wa.me/${digitsOnly(business.whatsapp)}` });
-  if (business.viber) out.push({ id: "viber", href: `viber://chat?number=%2B${digitsOnly(business.viber)}` });
+  const text = encodeURIComponent(getDictionary(locale).common.messengerPrefill);
+  if (business.whatsapp) {
+    const n = digitsOnly(business.whatsapp);
+    out.push({ id: "whatsapp", href: `https://wa.me/${n}?text=${text}` });
+  }
+  if (business.viber) {
+    const n = digitsOnly(business.viber);
+    out.push({ id: "viber", href: `viber://chat?number=%2B${n}&draft=${text}` });
+  }
   if (business.telegram) out.push({ id: "telegram", href: `https://t.me/${business.telegram.replace(/^@/, "")}` });
   return out;
 }

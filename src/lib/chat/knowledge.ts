@@ -18,7 +18,7 @@ export function buildSystemPrompt(locale: Locale): string {
   const email = emailLink();
   const address = streetAddressLine();
   const hours = openingHoursText(dict);
-  const messengers = messengerLinks().map((m) => dict.common.messengerNames[m.id]);
+  const messengers = messengerLinks(locale).map((m) => dict.common.messengerNames[m.id]);
 
   const services = enabledServices
     .map((s) => {

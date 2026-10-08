@@ -74,11 +74,11 @@ export const business: BusinessConfig = {
   experienceYears: 20,
   foundingYear: null, // ⚠ OWNER: anul înființării (opțional)
 
-  phone: "+37362115092",
+  phone: "+37379535005",
   secondaryPhone: null,
-  email: "talchivbogdan03@gmail.com",
-  whatsapp: null, // ⚠ OWNER
-  viber: null, // ⚠ OWNER
+  email: "force-car@nxt.ru",
+  whatsapp: "+37379535005",
+  viber: "+37379535005",
   telegram: null, // ⚠ OWNER
 
   address: {
