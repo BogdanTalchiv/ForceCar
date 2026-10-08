@@ -3,7 +3,7 @@ import { CalendarCheck, Clock, Mail, MapPin, MessageCircle, Phone } from "lucide
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath } from "@/i18n/routes";
-import { emailLink, mapsEmbedUrl, mapsUrl, messengerLinks, openingHoursRows, phoneLink, streetAddressLine } from "@/lib/business-info";
+import { additionalPhoneLinks, emailLink, mapsEmbedUrl, mapsUrl, messengerLinks, openingHoursRows, phoneLink, streetAddressLine } from "@/lib/business-info";
 import { fmt } from "@/lib/format";
 import { crumbsFor } from "@/lib/page-meta";
 import { BUSINESS_ID } from "@/lib/schema";
@@ -19,6 +19,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
   const t = dict.contact;
   const crumbs = crumbsFor(locale, "contact");
   const phone = phoneLink();
+  const extraPhones = additionalPhoneLinks();
   const email = emailLink();
   const messengers = messengerLinks(locale);
   const address = streetAddressLine();
@@ -53,15 +54,27 @@ export function ContactPage({ locale }: { locale: Locale }) {
             </div>
 
             {phone && (
-              <a href={phone.href} className={`${card} flex items-center gap-4 hover:ring-ink-900`} data-track-location="contact_page">
+              <div className={`${card} flex items-start gap-4`}>
                 <span className={iconBox}>
                   <Phone className="size-5" aria-hidden="true" />
                 </span>
                 <span>
                   <span className="block text-sm font-bold text-muted">{dict.common.phone}</span>
-                  <span className="text-xl font-extrabold">{phone.label}</span>
+                  <a href={phone.href} className="mt-0.5 block text-xl font-extrabold hover:text-brand" data-track-location="contact_page">
+                    {phone.label}
+                  </a>
+                  {extraPhones.map((p) => (
+                    <a
+                      key={p.href}
+                      href={p.href}
+                      className="mt-1.5 block text-xl font-extrabold hover:text-brand"
+                      data-track-location="contact_page"
+                    >
+                      {p.label}
+                    </a>
+                  ))}
                 </span>
-              </a>
+              </div>
             )}
 
             {email && (

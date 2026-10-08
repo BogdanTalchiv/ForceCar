@@ -14,6 +14,15 @@ export function phoneLink(): { href: string; label: string } | null {
   return business.phone ? { href: telHref(business.phone), label: formatPhone(business.phone) } : null;
 }
 
+export function additionalPhoneLinks(): { href: string; label: string }[] {
+  return business.additionalPhones.map((p) => ({ href: telHref(p), label: formatPhone(p) }));
+}
+
+export function allPhoneLinks(): { href: string; label: string }[] {
+  const primary = phoneLink();
+  return primary ? [primary, ...additionalPhoneLinks()] : additionalPhoneLinks();
+}
+
 export function emailLink(): { href: string; label: string } | null {
   return business.email ? { href: `mailto:${business.email}`, label: business.email } : null;
 }

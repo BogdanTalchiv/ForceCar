@@ -33,7 +33,7 @@ const PHONE_RE = /(?:\+|(?<![\d.,])0)\d[\d\s().-]{6,}\d(?!\s?(km|км|mi|mm|ml))
 /** Plasă de siguranță: un răspuns AI cu prețuri sau numere de telefon neconfigurate este respins. */
 export function findPolicyViolation(text: string): "price" | "phone" | null {
   if (PRICE_RE.test(text)) return "price";
-  const allowed = [business.phone, business.secondaryPhone, business.whatsapp, business.viber]
+  const allowed = [business.phone, ...business.additionalPhones, business.whatsapp, business.viber]
     .filter((p): p is string => Boolean(p))
     .map((p) => p.replace(/\D/g, ""));
   for (const n of text.match(PHONE_RE) ?? []) {

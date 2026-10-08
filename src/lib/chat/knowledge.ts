@@ -7,7 +7,7 @@ import { enabledServices } from "@/config/services";
 import { getServiceContent } from "@/content/services";
 import { localeMeta, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { emailLink, messengerLinks, openingHoursText, phoneLink, streetAddressLine } from "@/lib/business-info";
+import { additionalPhoneLinks, emailLink, messengerLinks, openingHoursText, phoneLink, streetAddressLine } from "@/lib/business-info";
 import { getGeneralFaq } from "@/lib/faq";
 
 const languageNames: Record<Locale, string> = { ro: "Romanian", ru: "Russian", it: "Italian", en: "English" };
@@ -15,6 +15,8 @@ const languageNames: Record<Locale, string> = { ro: "Romanian", ru: "Russian", i
 export function buildSystemPrompt(locale: Locale): string {
   const dict = getDictionary(locale);
   const phone = phoneLink();
+  const extraPhones = additionalPhoneLinks();
+  const phones = [phone?.label, ...extraPhones.map((p) => p.label)].filter(Boolean).join(", ");
   const email = emailLink();
   const address = streetAddressLine();
   const hours = openingHoursText(dict);
@@ -42,7 +44,7 @@ CONFIRMED FACTS (the ONLY business facts you may use):
 - City: ${business.address.locality}, ${business.address.countryName}
 - Street address: ${address ?? unknown}
 - Opening hours: ${hours ?? unknown}
-- Phone: ${phone?.label ?? unknown}
+- Phone: ${phones || unknown}
 - Email: ${email?.label ?? unknown}
 - Messengers: ${messengers.length ? messengers.join(", ") : unknown}
 - Online booking: customers send a booking REQUEST through the website form; the ForceCar team then contacts them to confirm day and time.

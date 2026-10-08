@@ -34,7 +34,8 @@ export interface BusinessConfig {
   foundingYear: number | null;
   /** Format E.164, ex. "+37369000000" */
   phone: string | null;
-  secondaryPhone: string | null;
+  /** Numere E.164 suplimentare, afișate lângă telefonul principal. */
+  additionalPhones: string[];
   email: string | null;
   /** Număr E.164 folosit pentru WhatsApp */
   whatsapp: string | null;
@@ -75,7 +76,7 @@ export const business: BusinessConfig = {
   foundingYear: null, // ⚠ OWNER: anul înființării (opțional)
 
   phone: "+37379535005",
-  secondaryPhone: null,
+  additionalPhones: ["+37360706800", "+37379501011"],
   email: "force-car@nxt.ru",
   whatsapp: "+37379535005",
   viber: "+37379535005",

@@ -5,7 +5,7 @@ import { consentRequired } from "@/config/site";
 import { localeMeta, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath } from "@/i18n/routes";
-import { emailLink, mapsUrl, messengerLinks, openingHoursRows, phoneLink, socialLinks, streetAddressLine } from "@/lib/business-info";
+import { additionalPhoneLinks, emailLink, mapsUrl, messengerLinks, openingHoursRows, phoneLink, socialLinks, streetAddressLine } from "@/lib/business-info";
 import { fmt } from "@/lib/format";
 import { hasReviews, serviceLinks } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
@@ -18,6 +18,7 @@ const socialNames = { facebook: "Facebook", instagram: "Instagram", tiktok: "Tik
 export function Footer({ locale, alternates }: { locale: Locale; alternates: Partial<Record<Locale, string>> }) {
   const dict = getDictionary(locale);
   const phone = phoneLink();
+  const extraPhones = additionalPhoneLinks();
   const email = emailLink();
   const address = streetAddressLine();
   const maps = mapsUrl();
@@ -88,6 +89,14 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
                 </a>
               </li>
             )}
+            {extraPhones.map((p) => (
+              <li key={p.href}>
+                <a href={p.href} className="flex items-center gap-3 font-bold text-white hover:text-white/80" data-track-location="footer">
+                  <Phone className="size-4 text-brand" aria-hidden="true" />
+                  {p.label}
+                </a>
+              </li>
+            ))}
             {email && (
               <li>
                 <a href={email.href} className={`flex items-center gap-3 ${link}`}>

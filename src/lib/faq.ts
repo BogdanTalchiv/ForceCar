@@ -4,7 +4,7 @@ import { enabledServices, getService } from "@/config/services";
 import { getServiceContent } from "@/content/services";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { emailLink, messengerLinks, openingHoursText, phoneLink, streetAddressLine } from "./business-info";
+import { additionalPhoneLinks, emailLink, messengerLinks, openingHoursText, phoneLink, streetAddressLine } from "./business-info";
 import { fmt, listFormat, lowerFirst } from "./format";
 
 export interface FaqItem {
@@ -30,13 +30,14 @@ export function getGeneralFaq(locale: Locale): FaqItem[] {
   const d = getDictionary(locale).faq;
   const dict = getDictionary(locale);
   const phone = phoneLink();
+  const phones = [phone?.label, ...additionalPhoneLinks().map((p) => p.label)].filter(Boolean).join(", ");
   const email = emailLink();
   const messengers = messengerLinks(locale).map((m) => dict.common.messengerNames[m.id]);
   const address = streetAddressLine();
   const hours = openingHoursText(dict);
   const items: FaqItem[] = [];
 
-  items.push({ id: "booking", q: d.booking.q, a: join(d.booking.a, phone && fmt(d.booking.phone, { phone: phone.label })) });
+  items.push({ id: "booking", q: d.booking.q, a: join(d.booking.a, phones && fmt(d.booking.phone, { phone: phones })) });
   if (getService("diagnostics")) items.push({ id: "diagnostics-duration", ...d.diagnosticsDuration });
   if (business.policies.walkInsAccepted !== null) {
     items.push({ id: "walk-ins", q: d.walkIns.q, a: business.policies.walkInsAccepted ? d.walkIns.yes : d.walkIns.no });
@@ -52,7 +53,7 @@ export function getGeneralFaq(locale: Locale): FaqItem[] {
     q: d.contact.q,
     a: join(
       d.contact.a,
-      phone && fmt(d.contact.phone, { phone: phone.label }),
+      phones && fmt(d.contact.phone, { phone: phones }),
       email && fmt(d.contact.email, { email: email.label }),
       messengers.length > 0 && fmt(d.contact.messengers, { list: listFormat(messengers, locale) }),
     ),

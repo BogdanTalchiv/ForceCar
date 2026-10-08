@@ -37,7 +37,9 @@ export function businessNode(locale: Locale): Node {
     description: dict.meta.home.description,
     ...(hero ? { image: absoluteUrl(hero.src) } : {}),
     ...(business.logo ? { logo: absoluteUrl(business.logo) } : {}),
-    ...(business.phone ? { telephone: business.phone } : {}),
+    ...(business.phone || business.additionalPhones.length
+      ? { telephone: [business.phone, ...business.additionalPhones].filter((p): p is string => Boolean(p)) }
+      : {}),
     ...(business.email ? { email: business.email } : {}),
     ...(business.foundingYear ? { foundingDate: String(business.foundingYear) } : {}),
     address: {
