@@ -5,7 +5,7 @@ const article: Article = {
   datePublished: "2026-09-25",
   dateModified: "2026-09-25",
   serviceId: "timing",
-  image: "lucrareImpact",
+  image: "sfatDistributie",
   translations: {
     ro: {
       slug: "cand-se-schimba-cureaua-de-distributie",

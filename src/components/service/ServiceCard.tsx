@@ -31,8 +31,8 @@ export function ServiceCard({
           image={image}
           fill
           decorative
-          quality={60}
-          sizes="(min-width: 1024px) 24vw, (min-width: 640px) 48vw, 100vw"
+          quality={80}
+          sizes="(min-width: 1024px) 768px, (min-width: 640px) 100vw, 100vw"
           className="transition-transform duration-700 ease-out group-hover:scale-[1.03]"
         />
         <div

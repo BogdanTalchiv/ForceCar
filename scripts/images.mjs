@@ -34,7 +34,7 @@ async function walk(dir) {
     return out;
   }
   for (const e of entries) {
-    if (e.name.startsWith(".") || e.name === OG_DIR_NAME) continue;
+    if (e.name.startsWith(".") || e.name === OG_DIR_NAME || e.name === "ForceCar_poze_homepage") continue;
     const full = path.join(dir, e.name);
     if (e.isDirectory()) out.push(...(await walk(full)));
     else if (EXT.has(path.extname(e.name).toLowerCase()) || VIDEO_EXT.has(path.extname(e.name).toLowerCase())) out.push(full);

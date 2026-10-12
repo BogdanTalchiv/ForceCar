@@ -9,7 +9,7 @@ import { buildMetadata } from "./seo";
 
 const ogImage: Partial<Record<SectionKey, ImageKey>> = {
   services: "motor",
-  works: "lucrareCaroserie",
+  works: "lucrareAripa",
   about: "despreAtelier",
   blog: "diagnostica",
 };
