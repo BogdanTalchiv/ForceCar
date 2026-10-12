@@ -67,6 +67,11 @@ export interface BusinessConfig {
   };
   /** Logo oficial (PNG/SVG în /public). `null` = se folosește wordmark-ul tipografic. */
   logo: string | null;
+  /**
+   * Site-ul de vulcanizare auto. Butonul din homepage îl deschide într-o filă nouă.
+   * `null` = site-ul nu e încă public; secțiunea rămâne vizibilă.
+   */
+  vulcanizareUrl: string | null;
 }
 
 export const business: BusinessConfig = {
@@ -110,6 +115,8 @@ export const business: BusinessConfig = {
   },
 
   logo: "/images/forcecar/_og/forcecarlogo2.png",
+
+  vulcanizareUrl: null, // ⚠ OWNER: pune URL-ul site-ului de vulcanizare când e activ
 };
 
 /** Lista câmpurilor esențiale care lipsesc — afișată în dev și la build. */

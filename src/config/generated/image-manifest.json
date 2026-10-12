@@ -103,6 +103,30 @@
     "og": "/images/forcecar/_og/homepage--vopsitorie-cabina-forcecar.jpg",
     "bytes": 368446
   },
+  "homepage/vulcanizare-depozit.webp": {
+    "src": "/images/forcecar/homepage/vulcanizare-depozit.webp",
+    "width": 736,
+    "height": 981,
+    "blurDataURL": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAABwBACdASoQABUAPu1iqU2ppaOiMAgBMB2JYwDE2Yt87QKz1jUANuYgOuYdQAD+0EyV4ZZmZ+yEHbwAl9X9JxTfqdu0ZgwQfLyfPfc1y1GFC28MkOfSnYsK9pATnS7Ouo3z0q3veWkauYHbE2BYXLHwqT4r1JvFrcytfHoqAoPuoldeSkgWzpY8/dkTEU0PbZMerD251v5Y+7ba2fCKyC/JVYcionAA",
+    "og": "/images/forcecar/_og/homepage--vulcanizare-depozit.jpg",
+    "bytes": 237290
+  },
+  "homepage/vulcanizare-echilibrare.webp": {
+    "src": "/images/forcecar/homepage/vulcanizare-echilibrare.webp",
+    "width": 736,
+    "height": 1104,
+    "blurDataURL": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAABQBACdASoQABgAPu1iqU2ppaOiMAgBMB2JYgCpFExDA0ZI9p2tqomQo+LgAP7pKIZw2eFMiAIhI/ts9G0J/Oq1m5v6V0KeHMyA95oKmH5OPte/QVNessX/OT1eC0ReJ5+e55r8atCxzducnUINCVKEL6zijjZTHL4y4tb5EbQP6atlMuvKg8erBD9zWWKPxML6eTwzgWqAK4AA",
+    "og": "/images/forcecar/_og/homepage--vulcanizare-echilibrare.jpg",
+    "bytes": 157088
+  },
+  "homepage/vulcanizare-montaj.webp": {
+    "src": "/images/forcecar/homepage/vulcanizare-montaj.webp",
+    "width": 735,
+    "height": 490,
+    "blurDataURL": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACQAQCdASoQAAsAA4BaJZwAAWbn6IgA/vbvQid6vOoYYMfTQHWOT1AAhXlkb+LFaLLuNepV743SV3kJYhmOxM+u08lovgQIAAA=",
+    "og": "/images/forcecar/_og/homepage--vulcanizare-montaj.jpg",
+    "bytes": 52648
+  },
   "results/bmw-caroserie-dupa.jpg": {
     "src": "/images/forcecar/results/bmw-caroserie-dupa.jpg",
     "width": 2402,

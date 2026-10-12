@@ -337,6 +337,36 @@ const images = {
       en: "In-car diagnostics: a scan tablet connected in the cabin",
     },
   },
+  vulcanizareBalans: {
+    file: "homepage/vulcanizare-echilibrare.webp",
+    focal: "50% 62%",
+    alt: {
+      ro: "Roată pe mașina de echilibrat, în vulcanizare",
+      ru: "Колесо на балансировочном станке в шиномонтаже",
+      it: "Ruota sull'equilibratrice, dal gommista",
+      en: "A wheel on the balancing machine in the tire shop",
+    },
+  },
+  vulcanizareStoc: {
+    file: "homepage/vulcanizare-depozit.webp",
+    focal: "50% 48%",
+    alt: {
+      ro: "Anvelope stivuite pe rafturi, în depozitul de vulcanizare",
+      ru: "Шины на стеллажах на складе шиномонтажа",
+      it: "Pneumatici impilati sugli scaffali nel magazzino del gommista",
+      en: "Tires stacked on racks in the tire-shop storage",
+    },
+  },
+  vulcanizareMontaj: {
+    file: "homepage/vulcanizare-montaj.webp",
+    focal: "28% 42%",
+    alt: {
+      ro: "Tehnician montează o anvelopă pe mașina de vulcanizare",
+      ru: "Техник устанавливает шину на шиномонтажном станке",
+      it: "Tecnico che monta uno pneumatico sulla macchina del gommista",
+      en: "A technician fitting a tire on the tire-changing machine",
+    },
+  },
 } satisfies Record<string, ImageDef>;
 
 export type ImageKey = keyof typeof images;
@@ -376,6 +406,7 @@ export const forceCarImages = {
   bodywork: ["caroserie", "lucrareCaroserie", "lucrareBara"],
   paint: ["vopsitorie", "lucrareVopsitorie", "lucrarePregatire"],
   parts: ["mecanica"],
+  vulcanizare: ["vulcanizareBalans", "vulcanizareStoc", "vulcanizareMontaj"],
   gallery: [
     "fatada",
     "motor",

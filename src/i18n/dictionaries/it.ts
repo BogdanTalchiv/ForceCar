@@ -212,12 +212,29 @@ const it: Dictionary = {
         { title: "Eseguiamo la riparazione", text: "Con il tuo consenso eseguiamo i lavori e verifichiamo il risultato." },
       ],
     },
-    about: {
-      eyebrow: "Chi è ForceCar",
-      title: "Oltre {years} anni di riparazioni auto",
-      paragraphs: [
-        "Per ForceCar, esperienza significa riconoscere rapidamente i segnali di un problema e sapere come ripararlo correttamente. Da oltre {years} anni lavoriamo sulle auto — dalla diagnosi e dalla meccanica fino alla carrozzeria e alla verniciatura.",
-        "Per noi una buona riparazione inizia con una spiegazione chiara: ti diciamo cosa abbiamo trovato e cosa va fatto, così puoi decidere in modo consapevole.",
+    vulcanizare: {
+      eyebrow: "Gommista",
+      title: "Ti serve anche il gommista?",
+      lead: "Una foratura, il cambio stagionale degli pneumatici o l'equilibratura — i lavori da gommista sono su un sito separato. Lo apri dal pulsante qui sotto.",
+      cta: "Vai al gommista",
+      soon: "Il sito del gommista non è ancora pubblico. Il pulsante lo aprirà non appena sarà online.",
+      items: [
+        {
+          title: "Riparazione foratura",
+          text: "Controlliamo lo pneumatico e ripariamo la foratura, se le sue condizioni lo consentono.",
+        },
+        {
+          title: "Cambio pneumatici",
+          text: "Smontaggio e montaggio, anche per il passaggio tra estivi e invernali.",
+        },
+        {
+          title: "Equilibratura ruote",
+          text: "Equilibriamo la ruota dopo il montaggio, per evitare vibrazioni al volante.",
+        },
+        {
+          title: "Pressione e valvole",
+          text: "Controlliamo pressione e valvole, così lo pneumatico tiene l'aria.",
+        },
       ],
     },
     works: {

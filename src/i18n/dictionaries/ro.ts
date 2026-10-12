@@ -210,12 +210,29 @@ const ro = {
         { title: "Realizăm reparația", text: "După acordul tău, efectuăm lucrările și verificăm rezultatul." },
       ],
     },
-    about: {
-      eyebrow: "Despre ForceCar",
-      title: "Peste {years} de ani în reparații auto",
-      paragraphs: [
-        "La ForceCar, experiența înseamnă să recunoști repede semnele unei probleme și să știi cum se repară corect. De peste {years} de ani lucrăm cu automobile — de la diagnosticare și mecanică până la caroserie și vopsitorie.",
-        "Pentru noi, o reparație bună începe cu o explicație clară: îți spunem ce am găsit și ce trebuie făcut, ca să iei o decizie informată.",
+    vulcanizare: {
+      eyebrow: "Vulcanizare auto",
+      title: "Ai nevoie și de vulcanizare?",
+      lead: "Pană, schimb de anvelope sau echilibrare — lucrările de vulcanizare sunt pe un site separat. Le deschizi din butonul de mai jos.",
+      cta: "Mergi la vulcanizare",
+      soon: "Site-ul de vulcanizare nu este încă public. Butonul va deschide site-ul imediat ce este activ.",
+      items: [
+        {
+          title: "Reparație pană",
+          text: "Verificăm anvelopa și reparăm pana, când starea ei o permite.",
+        },
+        {
+          title: "Schimb anvelope",
+          text: "Demontare și montare, inclusiv la schimbul între vară și iarnă.",
+        },
+        {
+          title: "Echilibrare roți",
+          text: "Echilibrăm roata după montare, ca să eviți vibrațiile în volan.",
+        },
+        {
+          title: "Presiune și valve",
+          text: "Controlăm presiunea și valvele, ca anvelopa să țină aerul corect.",
+        },
       ],
     },
     works: {

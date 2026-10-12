@@ -212,12 +212,29 @@ const en: Dictionary = {
         { title: "We carry out the repair", text: "With your approval, we do the work and check the result." },
       ],
     },
-    about: {
-      eyebrow: "About ForceCar",
-      title: "More than {years} years in car repair",
-      paragraphs: [
-        "At ForceCar, experience means spotting the signs of a problem quickly and knowing how to repair it properly. For more than {years} years we have worked on cars — from diagnostics and mechanics to body repair and painting.",
-        "For us, a good repair starts with a clear explanation: we tell you what we found and what needs to be done, so you can make an informed decision.",
+    vulcanizare: {
+      eyebrow: "Tire service",
+      title: "Need tire service as well?",
+      lead: "A puncture, a seasonal tire change or wheel balancing — tire work is on a separate website. Open it from the button below.",
+      cta: "Go to tire service",
+      soon: "The tire-service website isn't public yet. The button will open it as soon as it is live.",
+      items: [
+        {
+          title: "Puncture repair",
+          text: "We inspect the tire and repair the puncture when its condition allows.",
+        },
+        {
+          title: "Tire change",
+          text: "Removal and fitting, including the change between summer and winter tires.",
+        },
+        {
+          title: "Wheel balancing",
+          text: "We balance the wheel after fitting, so you avoid vibration in the steering wheel.",
+        },
+        {
+          title: "Pressure and valves",
+          text: "We check pressure and valves so the tire holds air properly.",
+        },
       ],
     },
     works: {

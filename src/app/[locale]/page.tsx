@@ -9,7 +9,7 @@ import { getHomeFaq } from "@/lib/faq";
 import { faqNode } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { ArticleCard } from "@/components/blog/ArticleCard";
-import { AboutTeaser } from "@/components/home/AboutTeaser";
+import { VulcanizareTeaser } from "@/components/home/VulcanizareTeaser";
 import { ContactBand } from "@/components/home/ContactBand";
 import { FaqSection } from "@/components/home/FaqSection";
 import { FinalCta } from "@/components/home/FinalCta";
@@ -49,7 +49,7 @@ export default async function HomePage({ params }: Params) {
       <ResultsSection locale={locale} />
       <WorksTeaser locale={locale} />
       <TrustSection locale={locale} />
-      <AboutTeaser locale={locale} />
+      <VulcanizareTeaser locale={locale} />
       <TestimonialsSection locale={locale} />
       <ProcessSection locale={locale} />
 
