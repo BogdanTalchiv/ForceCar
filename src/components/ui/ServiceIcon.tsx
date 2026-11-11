@@ -1,4 +1,17 @@
-import { CarFront, Cog, Disc3, Gauge, ScanSearch, Settings2, SprayCan, Wrench, type LucideProps } from "lucide-react";
+import {
+  Boxes,
+  CarFront,
+  Cog,
+  Disc3,
+  Droplets,
+  Gauge,
+  LifeBuoy,
+  ScanSearch,
+  Settings2,
+  SprayCan,
+  Wrench,
+  type LucideProps,
+} from "lucide-react";
 import type { ServiceIcon as ServiceIconName } from "@/config/services";
 
 const icons: Record<ServiceIconName, React.ComponentType<LucideProps>> = {
@@ -8,6 +21,9 @@ const icons: Record<ServiceIconName, React.ComponentType<LucideProps>> = {
   brakes: Disc3,
   suspension: Settings2,
   mechanical: Wrench,
+  oil: Droplets,
+  tires: LifeBuoy,
+  parts: Boxes,
   bodywork: CarFront,
   paint: SprayCan,
 };

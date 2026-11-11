@@ -7,13 +7,23 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath } from "@/i18n/routes";
 import { additionalPhoneLinks, emailLink, mapsUrl, messengerLinks, openingHoursRows, phoneLink, socialLinks, streetAddressLine } from "@/lib/business-info";
 import { fmt } from "@/lib/format";
-import { hasReviews, serviceLinks } from "@/lib/navigation";
+import { externalLinkProps, hasReviews, serviceLinks } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
 import { CookieSettingsButton } from "./CookieSettingsButton";
 import { Logo } from "./Logo";
-import { InstagramIcon, TikTokIcon, ViberIcon, WhatsAppIcon } from "./MessengerBrandIcons";
+import { FacebookIcon, InstagramIcon, TikTokIcon, ViberIcon, WhatsAppIcon } from "./MessengerBrandIcons";
 
 const socialNames = { facebook: "Facebook", instagram: "Instagram", tiktok: "TikTok", youtube: "YouTube" } as const;
+
+const socialBrands = {
+  facebook: { Icon: FacebookIcon, color: "text-[#1877F2]" },
+  instagram: { Icon: InstagramIcon, color: "text-[#E4405F]" },
+  tiktok: { Icon: TikTokIcon, color: "text-white" },
+} as const;
+
+function hasBrandIcon(id: string): id is keyof typeof socialBrands {
+  return id in socialBrands;
+}
 
 export function Footer({ locale, alternates }: { locale: Locale; alternates: Partial<Record<Locale, string>> }) {
   const dict = getDictionary(locale);
@@ -57,7 +67,7 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
           <ul className="space-y-2.5">
             {serviceLinks(locale).map((s) => (
               <li key={s.id}>
-                <Link href={s.href} className={link}>
+                <Link href={s.href} {...externalLinkProps(s.external)} className={link}>
                   {s.label}
                 </Link>
               </li>
@@ -134,8 +144,8 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
               );
             })}
             {socials.map((s) => {
-              if (s.id !== "instagram" && s.id !== "tiktok") return null;
-              const instagram = s.id === "instagram";
+              if (!hasBrandIcon(s.id)) return null;
+              const { Icon, color } = socialBrands[s.id];
               return (
                 <li key={s.id}>
                   <a
@@ -145,8 +155,8 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
                     className={`flex items-center gap-3 ${link}`}
                     data-track-location="footer"
                   >
-                    <span className={instagram ? "text-[#E4405F]" : "text-white"}>
-                      {instagram ? <InstagramIcon className="size-4" /> : <TikTokIcon className="size-4" />}
+                    <span className={color}>
+                      <Icon className="size-4" />
                     </span>
                     {socialNames[s.id]}
                   </a>
@@ -192,18 +202,15 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
                 <CookieSettingsButton label={dict.consent.settingsLink} />
               </li>
             )}
-            {socials.map((s) => {
-              if (s.id !== "instagram" && s.id !== "tiktok") {
-                return (
-                  <li key={s.id}>
-                    <a href={s.href} target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                      {socialNames[s.id]}
-                    </a>
-                  </li>
-                );
-              }
-              return null;
-            })}
+            {socials.map((s) =>
+              hasBrandIcon(s.id) ? null : (
+                <li key={s.id}>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                    {socialNames[s.id]}
+                  </a>
+                </li>
+              ),
+            )}
           </ul>
           <ul className="flex gap-1" aria-label={dict.footer.languagesTitle}>
             {locales.map((l) =>

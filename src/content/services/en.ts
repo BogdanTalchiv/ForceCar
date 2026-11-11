@@ -2,29 +2,30 @@ import type { ServiceContentMap } from "./types";
 
 const en: ServiceContentMap = {
   diagnostics: {
-    name: "Car diagnostics",
-    short: "We find where the problem comes from: warning lights, noises, vibrations or higher fuel use.",
-    h1: "Car diagnostics in Chișinău",
-    metaTitle: "Car diagnostics in Chișinău — ForceCar",
+    name: "Computer diagnostics & Auto electrics",
+    short: "We read the fault codes and fix electrical problems: warning lights, hard starting, lights, sensors.",
+    h1: "Computer diagnostics and auto electrics in Chișinău",
+    metaTitle: "Computer diagnostics & auto electrics in Chișinău — ForceCar",
     metaDescription:
-      "Car diagnostics at ForceCar, Chișinău: we check warning lights, noises and faults and explain clearly what's wrong with your car before any repair.",
+      "Computer diagnostics and auto electrics at ForceCar, Chișinău: we read fault codes, check the battery, alternator, sensors and wiring, and explain clearly what's wrong with your car.",
     intro: [
-      "Diagnostics means finding the real cause of a problem, not just reading a fault code. At ForceCar we combine reading the codes stored in the car's computer with a hands-on inspection, backed by more than 20 years of experience.",
-      "After the check we explain in plain terms what we found and what needs repairing, so you can make an informed decision.",
+      "Diagnostics means finding the real cause of a problem, not just reading a fault code. At ForceCar we combine computer diagnostics — reading the codes stored in the car's computer — with a hands-on inspection, backed by more than 20 years of experience.",
+      "We also handle auto electrics: battery, alternator, starter motor, lights, sensors, fuses and connections. After the check we explain in plain terms what we found and what needs repairing, so you can make an informed decision.",
     ],
     symptoms: [
       "The Check Engine light or another warning light has come on",
       "The car feels weaker or jerks while driving",
+      "The car is hard to start or the battery keeps going flat",
+      "Lights, electric windows or other equipment have stopped working",
       "Fuel consumption has gone up for no clear reason",
-      "New noises, vibrations or smells have appeared",
-      "The car is hard to start or cuts out",
       "A problem comes and goes and you don't know why",
     ],
     checks: [
       "Fault codes stored in the car's computer",
       "Sensors and live engine data",
+      "Battery, alternator and starter motor",
+      "Wiring: fuses, relays, connections, lights",
       "Ignition and fuel systems",
-      "General condition: leaks, hoses, belts",
       "Noises and vibrations — on a test drive if needed",
     ],
     steps: [
@@ -41,6 +42,10 @@ const en: ServiceContentMap = {
       {
         q: "Can I keep driving with the Check Engine light on?",
         a: "It depends. If the light is flashing, the car loses power, or there's smoke, a burning smell or high temperature, stop safely and don't continue driving. If the light is on steadily and the car drives normally, book an inspection as soon as possible.",
+      },
+      {
+        q: "Do you fix electrical problems too?",
+        a: "Yes. We check the battery, alternator, starter motor, lights, fuses and connections, and track down why equipment has stopped working or the battery keeps going flat.",
       },
       {
         q: "What information should I prepare before diagnostics?",
@@ -293,6 +298,150 @@ const en: ServiceContentMap = {
       {
         q: "Will you tell me if a job can wait?",
         a: "Yes. After the inspection we explain what's urgent for the car's safety and operation and what can be planned for later.",
+      },
+    ],
+  },
+
+  oil: {
+    name: "Oil & filter change",
+    short: "We change the engine oil and the oil, air, cabin and fuel filters with the right parts for your car.",
+    h1: "Oil and filter change in Chișinău",
+    metaTitle: "Oil and filter change in Chișinău — ForceCar",
+    metaDescription:
+      "Engine oil and filter change at ForceCar, Chișinău: the right oil for your engine, oil, air, cabin and fuel filters, plus a quick check of the car.",
+    intro: [
+      "Engine oil loses its properties over time and filters clog up. A timely change protects the engine, keeps fuel consumption normal and prevents premature wear.",
+      "At ForceCar we choose the oil according to the manufacturer's specification for your engine, replace the filters that are due and, while the car is on the lift, look for leaks and other visible problems.",
+    ],
+    symptoms: [
+      "You've gone past the change interval (in kilometres or time)",
+      "The service or oil warning light has come on",
+      "The oil on the dipstick is dark or below the minimum mark",
+      "The engine sounds noisier than usual",
+      "The cabin air smells dusty or the ventilation is weak",
+      "You don't know when the oil was last changed",
+    ],
+    checks: [
+      "Oil level and condition before the change",
+      "Oil, air, cabin and fuel filters",
+      "Oil leaks from the sump, gaskets and seals",
+      "Other fluid levels: coolant, brake fluid, washer fluid",
+      "Condition of visible belts and hoses",
+    ],
+    steps: [
+      { title: "We identify the engine", text: "Make, model, engine and mileage tell us which oil and filters are needed." },
+      { title: "We drain the old oil", text: "We drain the used oil and replace the oil filter." },
+      { title: "New filters and oil", text: "We fill the right oil and change the filters agreed with you." },
+      { title: "Check and reset", text: "We check the level and for leaks and reset the service indicator where applicable." },
+    ],
+    faq: [
+      {
+        q: "How often should the oil be changed?",
+        a: "The interval is set by the manufacturer, in kilometres and time, and depends on the engine and how you use the car. Short city trips wear oil out faster. We'll tell you which interval suits your car.",
+      },
+      {
+        q: "Can I bring my own oil?",
+        a: "Let us know when you book. We check that the oil meets the engine's specification before using it.",
+      },
+      {
+        q: "Which filters are changed with the oil?",
+        a: "The oil filter is changed at every oil change. Air, cabin and fuel filters have their own intervals — we'll tell you which ones are due now.",
+      },
+    ],
+  },
+
+  tires: {
+    name: "24/7 tire service",
+    short: "Round-the-clock tire service: puncture repair, tire changes, wheel balancing and pressure checks, day and night.",
+    h1: "24/7 tire service in Chișinău",
+    metaTitle: "24/7 tire service in Chișinău — ForceCar",
+    metaDescription:
+      "24/7 tire service at ForceCar, Chișinău: puncture repair, wheel fitting and balancing, seasonal tire changes and pressure checks, around the clock.",
+    intro: [
+      "A puncture doesn't keep office hours. That's why the ForceCar tire service works 24/7 — come day or night with a puncture, a vibrating wheel or for your seasonal tire change.",
+      "We inspect the tire, repair the puncture when its condition allows, fit and balance the wheels and check the pressure, so you leave safely.",
+    ],
+    symptoms: [
+      "You have a puncture or a tire keeps losing air",
+      "The steering wheel vibrates at speed",
+      "The season is changing and the tires need swapping",
+      "You hit a pothole or kerb and the wheel looks damaged",
+      "The tires are wearing unevenly",
+      "The tire pressure warning light is on",
+    ],
+    checks: [
+      "Tire condition: cuts, bulges, tread wear",
+      "Where the puncture is and how big, to see if it can be repaired",
+      "The rim: bends or cracks after impacts",
+      "Valves and the seal on the rim",
+      "Pressure in all wheels, including the spare",
+    ],
+    steps: [
+      { title: "Come any time", text: "The tire service works 24/7. To be seen at a set time, call us first." },
+      { title: "We inspect the wheel", text: "We check the tire, rim and valve and tell you what can be done." },
+      { title: "Repair or fit", text: "We repair the puncture or fit the tires, then balance the wheels." },
+      { title: "Pressure check", text: "We inflate to the recommended pressure and tighten the wheels correctly." },
+    ],
+    faq: [
+      {
+        q: "Do you work at night?",
+        a: "Yes, the ForceCar tire service works 24/7. If you're coming at night, call us first so we can see you straight away.",
+      },
+      {
+        q: "Can every puncture be repaired?",
+        a: "No. Small punctures in the tread area can usually be repaired. A cut in the sidewall, a bulge or a tire driven flat for a long time can't be repaired safely — then we recommend replacing it.",
+      },
+      {
+        q: "Why do wheels need balancing?",
+        a: "An unbalanced wheel causes steering vibration, uneven tire wear and extra load on the suspension. Balancing is done after every tire fitting.",
+      },
+    ],
+    safety:
+      "If a tire has a bulge or a cut in the sidewall, don't keep driving on it — it can fail suddenly. Fit the spare or call us.",
+  },
+
+  parts: {
+    name: "Car parts sales",
+    short: "Car parts for servicing and repairs: filters, brake pads, discs, belts, bearings and much more.",
+    h1: "Car parts sales in Chișinău",
+    metaTitle: "Car parts in Chișinău — parts sales | ForceCar",
+    metaDescription:
+      "Car parts sales at ForceCar, Chișinău: filters, brake pads and discs, belts, bearings, suspension parts and more, matched to your car, with fitting in the workshop.",
+    intro: [
+      "At ForceCar you can also buy car parts: from filters and brake pads to timing belts, bearings and suspension parts. We help you choose the right part for your car, so you don't buy blindly.",
+      "You can take the part with you or have it fitted right here in the workshop.",
+    ],
+    symptoms: [
+      "You need a part and aren't sure which part number fits",
+      "You're preparing a service and want the right filters and oil",
+      "You've been advised to replace a worn part",
+      "You want the part and the fitting in one place",
+      "You're looking for a part for an older or rarer car",
+    ],
+    checks: [
+      "Make, model, year and engine of the car",
+      "The VIN, for the exact part number",
+      "Compatibility with your car's version",
+      "Which other parts are usually replaced at the same time",
+    ],
+    steps: [
+      { title: "Tell us what you need", text: "Call or message us with the make, model, year and, if possible, the VIN." },
+      { title: "We find the right part", text: "We check compatibility and tell you which options are available." },
+      { title: "Pick up the part", text: "The part waits for you at the workshop, str. Ismail 103." },
+      { title: "We fit it, if you like", text: "We can fit the part right away in the ForceCar workshop." },
+    ],
+    faq: [
+      {
+        q: "How do I know which part fits my car?",
+        a: "The safest way is by the VIN, which you'll find on the registration certificate. Send it to us and we'll check the exact part number.",
+      },
+      {
+        q: "Can I buy a part without having it fitted by you?",
+        a: "Yes. You can buy just the part or have it fitted in the ForceCar workshop.",
+      },
+      {
+        q: "Do you have the parts in stock?",
+        a: "It depends on the part. Call or message us and we'll tell you whether we have it on site or how long it takes to arrive, before you order.",
       },
     ],
   },

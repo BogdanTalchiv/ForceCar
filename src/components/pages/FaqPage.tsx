@@ -4,8 +4,8 @@ import { enabledServices } from "@/config/services";
 import { getServiceContent } from "@/content/services";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { servicePath } from "@/i18n/routes";
 import { getGeneralFaq } from "@/lib/faq";
+import { externalLinkProps, serviceHref } from "@/lib/navigation";
 import { crumbsFor } from "@/lib/page-meta";
 import { faqNode } from "@/lib/schema";
 import { FaqList } from "@/components/faq/FaqList";
@@ -20,7 +20,7 @@ export function FaqPage({ locale }: { locale: Locale }) {
   const crumbs = crumbsFor(locale, "faq");
   const general = getGeneralFaq(locale);
   const byService = enabledServices
-    .map((s) => ({ service: s, content: getServiceContent(locale, s.id) }))
+    .map((s) => ({ service: s, content: getServiceContent(locale, s.id), link: serviceHref(locale, s) }))
     .filter((x) => x.content.faq.length > 0);
   const all = [...general, ...byService.flatMap((x) => x.content.faq)];
 
@@ -42,11 +42,11 @@ export function FaqPage({ locale }: { locale: Locale }) {
           {t.servicesTitle}
         </h2>
         <div className="grid gap-x-12 gap-y-12 lg:grid-cols-2">
-          {byService.map(({ service, content }) => (
+          {byService.map(({ service, content, link }) => (
             <div key={service.id}>
               <div className="mb-2 flex items-baseline justify-between gap-4">
                 <h3 className="text-xl font-extrabold">{content.name}</h3>
-                <Link href={servicePath(locale, service.slugs)} className="inline-flex shrink-0 items-center gap-1 text-sm font-bold text-brand hover:underline">
+                <Link href={link.href} {...externalLinkProps(link.external)} className="inline-flex shrink-0 items-center gap-1 text-sm font-bold text-brand hover:underline">
                   {dict.cta.details}
                   <ArrowRight className="btn-arrow size-4" aria-hidden="true" />
                 </Link>

@@ -367,6 +367,39 @@ const images = {
       en: "A technician fitting a tire on the tire-changing machine",
     },
   },
+  vulcanizareNonStop: {
+    file: "homepage/vulcanizare-24-24.webp",
+    focal: "50% 55%",
+    category: "mechanical",
+    alt: {
+      ro: "Vulcanizare noaptea: tehnician montează o anvelopă, cu atelierul luminat și rafturi cu anvelope",
+      ru: "Шиномонтаж ночью: мастер монтирует шину в освещённой мастерской со стеллажами шин",
+      it: "Gommista di notte: un tecnico monta uno pneumatico nell'officina illuminata, tra scaffali di gomme",
+      en: "Tire service at night: a technician fitting a tire in the lit workshop, with tire racks behind",
+    },
+  },
+  schimbUlei: {
+    file: "homepage/schimb-ulei-filtre.webp",
+    focal: "50% 55%",
+    category: "mechanical",
+    alt: {
+      ro: "Schimb de ulei: ulei nou turnat în motor, lângă filtrul de ulei și filtrul de aer noi",
+      ru: "Замена масла: заливка нового масла в двигатель, рядом новые масляный и воздушный фильтры",
+      it: "Cambio olio: olio nuovo versato nel motore, accanto ai nuovi filtri olio e aria",
+      en: "Oil change: fresh oil poured into the engine, next to new oil and air filters",
+    },
+  },
+  piese: {
+    file: "homepage/piese-auto.webp",
+    focal: "50% 50%",
+    category: "mechanical",
+    alt: {
+      ro: "Piese auto pe bancul de lucru: filtre, plăcuțe de frână, bujii, curele, rulmenți și garnituri",
+      ru: "Автозапчасти на верстаке: фильтры, тормозные колодки, свечи, ремни, подшипники и прокладки",
+      it: "Ricambi auto sul banco: filtri, pastiglie, candele, cinghie, cuscinetti e guarnizioni",
+      en: "Car parts on a workbench: filters, brake pads, spark plugs, belts, bearings and gaskets",
+    },
+  },
 } satisfies Record<string, ImageDef>;
 
 export type ImageKey = keyof typeof images;
@@ -395,9 +428,14 @@ export const forceCarImages = {
     brakes: "frane",
     suspension: "suspensie",
     mechanical: "mecanica",
+    oil: "schimbUlei",
+    tires: "vulcanizareNonStop",
+    parts: "piese",
     bodywork: "caroserie",
     paint: "vopsitorie",
   },
+  oil: ["schimbUlei"],
+  spareParts: ["piese"],
   engine: ["motor"],
   timing: ["distributie"],
   brakes: ["frane"],

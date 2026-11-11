@@ -31,6 +31,14 @@
     "og": "/images/forcecar/_og/homepage--diagnostica-auto.jpg",
     "bytes": 178512
   },
+  "homepage/piese-auto.webp": {
+    "src": "/images/forcecar/homepage/piese-auto.webp",
+    "width": 1152,
+    "height": 864,
+    "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAwAgCdASoQAAwAA4BaJZwAD5Aw3L4FpqSpgAD+zytBGOoCQPrmQ95Qt6d9uvUsQxSbepdqdOwyDlhZYXJUraE7Ez+6HMK9tWd+uYcAAAA=",
+    "og": "/images/forcecar/_og/homepage--piese-auto.jpg",
+    "bytes": 306972
+  },
   "homepage/reparatii-frane.webp": {
     "src": "/images/forcecar/homepage/reparatii-frane.webp",
     "width": 1200,
@@ -46,6 +54,14 @@
     "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoQAAwAA4BaJZQAD4eJ5xdJ+JAA+5zpppiiic+wQRxkwFS0RnX2l2Ltfugptk3wzNUs9mD1QRq80apbR/luqN655KMO7fbTWdTWV/wLpwZK3OZcdPRXn8D6biKAAA==",
     "og": "/images/forcecar/_og/homepage--schimb-distributie.jpg",
     "bytes": 380274
+  },
+  "homepage/schimb-ulei-filtre.webp": {
+    "src": "/images/forcecar/homepage/schimb-ulei-filtre.webp",
+    "width": 1152,
+    "height": 864,
+    "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAwAgCdASoQAAwAA4BaJZwAD45Qd2OP2zILoAD+8YY2pGYCz3xg5Km77Cg47be29y7IBZp7mZ2FmuGbUVmjY2SVbTa5zz01wUYYOtDddgM81aBIAAA=",
+    "og": "/images/forcecar/_og/homepage--schimb-ulei-filtre.jpg",
+    "bytes": 97536
   },
   "homepage/sfat-check-engine.webp": {
     "src": "/images/forcecar/homepage/sfat-check-engine.webp",
@@ -102,6 +118,14 @@
     "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAwAgCdASoQAAoAA4BaJYwC7AYtVq9J6iaGAAD+67tHCvMw7OLgYSrp5g90+EZGrGqxkw2eHnYhvsrTwJr8GZalXZu7EzzG2lOa8Re9GghULSRUYAA=",
     "og": "/images/forcecar/_og/homepage--vopsitorie-cabina-forcecar.jpg",
     "bytes": 368446
+  },
+  "homepage/vulcanizare-24-24.webp": {
+    "src": "/images/forcecar/homepage/vulcanizare-24-24.webp",
+    "width": 1152,
+    "height": 864,
+    "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADwAQCdASoQAAwAA4BaJaQAAn/HWUllJgAA/vbZcIudSAP2N6H1SnSb/K8vOr9is2s9mSf7rM6l5oAA",
+    "og": "/images/forcecar/_og/homepage--vulcanizare-24-24.jpg",
+    "bytes": 91120
   },
   "homepage/vulcanizare-depozit.webp": {
     "src": "/images/forcecar/homepage/vulcanizare-depozit.webp",

@@ -4,7 +4,7 @@ import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath, type PageKey } from "@/i18n/routes";
 import { phoneLink } from "@/lib/business-info";
-import { mainNav, serviceLinks } from "@/lib/navigation";
+import { externalLinkProps, mainNav, serviceLinks } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
 import { HeaderFrame } from "./HeaderFrame";
@@ -52,7 +52,11 @@ export function Header({
                     <ul className="grid grid-cols-2 gap-1 rounded-lg bg-white p-3 text-text shadow-float ring-1 ring-black/5">
                       {services.map((s) => (
                         <li key={s.id}>
-                          <Link href={s.href} className="flex items-center gap-3 rounded-md px-3 py-2.5 text-[0.9375rem] font-semibold hover:bg-mist">
+                          <Link
+                            href={s.href}
+                            {...externalLinkProps(s.external)}
+                            className="flex items-center gap-3 rounded-md px-3 py-2.5 text-[0.9375rem] font-semibold hover:bg-mist"
+                          >
                             <span className="flex size-9 items-center justify-center rounded-md bg-mist text-brand">
                               <ServiceIcon name={s.icon} className="size-[1.125rem]" />
                             </span>
@@ -124,6 +128,7 @@ export function Header({
               allServices: dict.nav.allServices,
               whatsapp: dict.a11y.whatsapp,
               viber: dict.a11y.viber,
+              facebook: dict.a11y.facebook,
               instagram: dict.a11y.instagram,
               tiktok: dict.a11y.tiktok,
               newTab: dict.a11y.newTab,

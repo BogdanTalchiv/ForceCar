@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { enabledServices, getServiceBySlug } from "@/config/services";
+import { getServiceBySlug, pagedServices } from "@/config/services";
 import { getArticleBySlug, getArticlesForLocale } from "@/content/articles";
 import { getServiceContent } from "@/content/services";
 import { isLocale, locales } from "@/i18n/config";
@@ -15,7 +15,7 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => [
-    ...enabledServices.map((s) => ({ locale, section: sectionSegments.services[locale], slug: s.slugs[locale] })),
+    ...pagedServices.map((s) => ({ locale, section: sectionSegments.services[locale], slug: s.slugs[locale] })),
     ...getArticlesForLocale(locale).map((a) => ({ locale, section: sectionSegments.blog[locale], slug: a.t.slug })),
   ]);
 }

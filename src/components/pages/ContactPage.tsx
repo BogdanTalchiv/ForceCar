@@ -22,8 +22,10 @@ export function ContactPage({ locale }: { locale: Locale }) {
   const extraPhones = additionalPhoneLinks();
   const email = emailLink();
   const messengers = messengerLinks(locale);
-  const socials = socialLinks().filter((s): s is { id: "instagram" | "tiktok"; href: string } => s.id === "instagram" || s.id === "tiktok");
-  const socialNames = { instagram: "Instagram", tiktok: "TikTok" } as const;
+  const socialNames = { facebook: "Facebook", instagram: "Instagram", tiktok: "TikTok" } as const;
+  const socials = socialLinks().filter(
+    (s): s is { id: keyof typeof socialNames; href: string } => s.id in socialNames,
+  );
   const address = streetAddressLine();
   const hours = openingHoursRows(dict);
   const embed = mapsEmbedUrl();

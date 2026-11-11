@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { enabledServices } from "@/config/services";
+import { pagedServices } from "@/config/services";
 import { siteConfig } from "@/config/site";
 import { articles } from "@/content/articles";
 import { locales } from "@/i18n/config";
@@ -47,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     if (key === "reviews" && !hasReviews) continue;
     add({ type: "page", key }, priorities[key] ?? 0.5, siteConfig.contentUpdatedAt);
   }
-  for (const s of enabledServices) add({ type: "service", id: s.id, slugs: s.slugs }, 0.9, siteConfig.contentUpdatedAt);
+  for (const s of pagedServices) add({ type: "service", id: s.id, slugs: s.slugs }, 0.9, siteConfig.contentUpdatedAt);
   for (const a of articles) {
     const slugs = Object.fromEntries(Object.entries(a.translations).map(([l, t]) => [l, t!.slug]));
     add({ type: "article", id: a.id, slugs }, 0.5, a.dateModified);

@@ -4,7 +4,7 @@ import { getImage } from "@/config/forcecar-images";
 import type { ServiceConfig } from "@/config/services";
 import { getServiceContent } from "@/content/services";
 import type { Locale } from "@/i18n/config";
-import { servicePath } from "@/i18n/routes";
+import { externalLinkProps, serviceHref } from "@/lib/navigation";
 import { FcImage } from "@/components/ui/FcImage";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
 
@@ -22,6 +22,7 @@ export function ServiceCard({
 }) {
   const content = getServiceContent(locale, service.id);
   const image = getImage(service.image, locale);
+  const link = serviceHref(locale, service);
   return (
     <article
       className="group relative isolate flex min-h-[16.5rem] flex-col overflow-hidden rounded-lg bg-ink-900 text-white ring-1 ring-white/10 transition-[ring-color] duration-300 hover:ring-white/28 sm:min-h-[19.5rem]"
@@ -46,7 +47,7 @@ export function ServiceCard({
           <ServiceIcon name={service.icon} className="size-5" />
         </span>
         <h3 className="mt-4 text-lg leading-snug font-bold">
-          <Link href={servicePath(locale, service.slugs)} className="after:absolute after:inset-0 after:content-['']">
+          <Link href={link.href} {...externalLinkProps(link.external)} className="after:absolute after:inset-0 after:content-['']">
             {content.name}
           </Link>
         </h3>

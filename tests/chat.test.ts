@@ -11,7 +11,12 @@ describe("detectService", () => {
     expect(detectService("Скрипят тормоза")).toBe("brakes");
     expect(detectService("Quando cambiare la cinghia di distribuzione?")).toBe("timing");
     expect(detectService("My check engine light is on")).toBe("diagnostics");
-    expect(detectService("Vreau schimb ulei și filtre")).toBe("mechanical");
+    expect(detectService("Vreau schimb ulei și filtre")).toBe("oil");
+    expect(detectService("Am făcut pană la roată noaptea")).toBe("tires");
+    expect(detectService("Нужен шиномонтаж")).toBe("tires");
+    expect(detectService("Aveți piese pentru Golf 5?")).toBe("parts");
+    expect(detectService("Mi se descarcă bateria")).toBe("diagnostics");
+    expect(detectService("Vreau o revizie")).toBe("mechanical");
     expect(detectService("Iese fum de la motor")).toBe("engine");
   });
   it("nu ghicește fără indicii", () => {

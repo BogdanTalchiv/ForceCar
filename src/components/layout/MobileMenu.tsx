@@ -23,6 +23,7 @@ interface Labels {
   allServices: string;
   whatsapp: string;
   viber: string;
+  facebook: string;
   instagram: string;
   tiktok: string;
   newTab: string;
@@ -95,7 +96,11 @@ export function MobileMenu({
                     <ul className="grid gap-1 pb-4">
                       {services.map((s) => (
                         <li key={s.id}>
-                          <Link href={s.href} className="flex items-center gap-3 rounded-md px-2 py-2.5 text-[0.9375rem] text-white/85 hover:bg-white/5">
+                          <Link
+                            href={s.href}
+                            {...(s.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                            className="flex items-center gap-3 rounded-md px-2 py-2.5 text-[0.9375rem] text-white/85 hover:bg-white/5"
+                          >
                             <ServiceIcon name={s.icon} className="size-[1.125rem] text-brand" />
                             {s.label}
                           </Link>
@@ -156,7 +161,7 @@ export function MobileMenu({
             />
             <HeaderSocials
               trackLocation="mobile_menu"
-              labels={{ instagram: labels.instagram, tiktok: labels.tiktok, newTab: labels.newTab }}
+              labels={{ facebook: labels.facebook, instagram: labels.instagram, tiktok: labels.tiktok, newTab: labels.newTab }}
             />
           </div>
           <Link href={bookingHref} className={buttonClasses({ size: "lg", full: true, className: "fc-book-glow" })}>

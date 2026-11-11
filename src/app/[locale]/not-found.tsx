@@ -3,7 +3,7 @@ import { locale as rootLocale } from "next/root-params";
 import { isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath } from "@/i18n/routes";
-import { serviceLinks } from "@/lib/navigation";
+import { externalLinkProps, serviceLinks } from "@/lib/navigation";
 import { PageShell } from "@/components/layout/PageShell";
 import { buttonClasses } from "@/components/ui/button";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
@@ -40,7 +40,11 @@ export default async function NotFound() {
         <ul className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {serviceLinks(locale).map((s) => (
             <li key={s.id}>
-              <Link href={s.href} className="flex items-center gap-3 rounded-md p-3 font-semibold ring-1 ring-line hover:ring-ink-900">
+              <Link
+                href={s.href}
+                {...externalLinkProps(s.external)}
+                className="flex items-center gap-3 rounded-md p-3 font-semibold ring-1 ring-line hover:ring-ink-900"
+              >
                 <ServiceIcon name={s.icon} className="size-5 text-brand" />
                 {s.label}
               </Link>

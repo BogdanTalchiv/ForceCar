@@ -7,7 +7,7 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath } from "@/i18n/routes";
 import { mapsUrl, streetAddressLine } from "@/lib/business-info";
 import { fmt } from "@/lib/format";
-import { serviceLinks, type ServiceLink } from "@/lib/navigation";
+import { externalLinkProps, serviceLinks, type ServiceLink } from "@/lib/navigation";
 import { buttonClasses } from "@/components/ui/button";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
 import { HeroMedia } from "./HeroMedia";
@@ -19,6 +19,7 @@ function HeroServicePills({ services, hidden }: { services: ServiceLink[]; hidde
         <li key={`${hidden ? "dup" : "src"}-${s.id}`} className="shrink-0">
           <Link
             href={s.href}
+            {...externalLinkProps(s.external)}
             tabIndex={hidden ? -1 : undefined}
             className="flex h-9 items-center gap-2 rounded-md px-3 text-sm font-semibold whitespace-nowrap text-white/80 ring-1 ring-white/12 transition-colors hover:bg-white/8 hover:text-white"
           >

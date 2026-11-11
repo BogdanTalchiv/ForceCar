@@ -5,8 +5,9 @@
  * formularul de programare și asistentul AI. Textele sunt în src/content/services/<limba>.ts.
  *
  * ⚠ OWNER: confirmă lista serviciilor. Au fost activate serviciile ilustrate în fotografiile
- *   și pe panoul ForceCar (diagnoză, mecanică, motor, distribuție, frâne, suspensie,
- *   caroserie, vopsitorie). Dezactivează orice serviciu pe care nu îl oferiți.
+ *   și pe panoul ForceCar (diagnoză și electrică, mecanică, motor, distribuție, frâne, suspensie,
+ *   ulei și filtre, vulcanizare 24/24, piese auto, caroserie, vopsitorie).
+ *   Dezactivează orice serviciu pe care nu îl oferiți.
  */
 import type { Locale, Localized } from "@/i18n/config";
 import type { GalleryCategory, ImageKey } from "./forcecar-images";
@@ -19,10 +20,13 @@ export type ServiceId =
   | "brakes"
   | "suspension"
   | "mechanical"
+  | "oil"
+  | "tires"
+  | "parts"
   | "bodywork"
   | "paint";
 
-export type ServiceIcon = "diagnostics" | "engine" | "timing" | "brakes" | "suspension" | "mechanical" | "bodywork" | "paint";
+export type ServiceIcon = ServiceId;
 
 export interface ServiceConfig {
   id: ServiceId;
@@ -36,6 +40,11 @@ export interface ServiceConfig {
   related: ServiceId[];
   /** Denumire în engleză pentru schema.org `serviceType`. */
   schemaType: string;
+  /**
+   * Serviciul are site propriu (`business.vulcanizareUrl`): nu are pagină pe acest site,
+   * iar cardul și meniul duc acolo. Până la setarea URL-ului duc la secțiunea din homepage.
+   */
+  external?: boolean;
 }
 
 export const services: ServiceConfig[] = [
@@ -142,6 +151,58 @@ export const services: ServiceConfig[] = [
     schemaType: "General car mechanics and maintenance",
   },
   {
+    id: "oil",
+    enabled: true,
+    group: "mechanical",
+    icon: "oil",
+    slugs: {
+      ro: "schimb-ulei-filtre-chisinau",
+      ru: "zamena-masla-filtrov-kishinev",
+      it: "cambio-olio-filtri-chisinau",
+      en: "oil-filter-change-chisinau",
+    },
+    image: forceCarImages.services.oil,
+    photos: forceCarImages.oil,
+    galleryCategory: "mechanical",
+    related: ["mechanical", "parts", "engine"],
+    schemaType: "Oil and filter change",
+  },
+  {
+    id: "tires",
+    enabled: true,
+    group: "mechanical",
+    icon: "tires",
+    slugs: {
+      ro: "vulcanizare-non-stop-chisinau",
+      ru: "shinomontazh-kruglosutochno-kishinev",
+      it: "gommista-24-ore-chisinau",
+      en: "24-hour-tire-service-chisinau",
+    },
+    image: forceCarImages.services.tires,
+    photos: [forceCarImages.services.tires],
+    galleryCategory: "mechanical",
+    related: ["suspension", "brakes", "parts"],
+    schemaType: "24-hour tire repair and wheel balancing",
+    external: true,
+  },
+  {
+    id: "parts",
+    enabled: true,
+    group: "mechanical",
+    icon: "parts",
+    slugs: {
+      ro: "vanzare-piese-auto-chisinau",
+      ru: "prodazha-avtozapchastey-kishinev",
+      it: "vendita-ricambi-auto-chisinau",
+      en: "car-parts-sale-chisinau",
+    },
+    image: forceCarImages.services.parts,
+    photos: forceCarImages.spareParts,
+    galleryCategory: "mechanical",
+    related: ["oil", "mechanical", "brakes"],
+    schemaType: "Auto parts sales",
+  },
+  {
     id: "bodywork",
     enabled: true,
     group: "body",
@@ -179,12 +240,15 @@ export const services: ServiceConfig[] = [
 
 export const enabledServices = services.filter((s) => s.enabled);
 
+/** Serviciile care au pagină proprie pe acest site (rute, sitemap). */
+export const pagedServices = enabledServices.filter((s) => !s.external);
+
 export function getService(id: string): ServiceConfig | undefined {
   return enabledServices.find((s) => s.id === id);
 }
 
 export function getServiceBySlug(locale: Locale, slug: string): ServiceConfig | undefined {
-  return enabledServices.find((s) => s.slugs[locale] === slug);
+  return pagedServices.find((s) => s.slugs[locale] === slug);
 }
 
 export function isServiceId(value: unknown): value is ServiceId {

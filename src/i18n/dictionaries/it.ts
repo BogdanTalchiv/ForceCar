@@ -7,12 +7,12 @@ const it: Dictionary = {
     home: {
       title: "Officina auto a Chișinău con oltre 20 anni di esperienza | ForceCar",
       description:
-        "ForceCar è un'officina auto a Chișinău con oltre 20 anni di esperienza: diagnosi, riparazione motore, distribuzione, freni, sospensioni, carrozzeria e verniciatura. Prenota online.",
+        "ForceCar è un'officina auto a Chișinău con oltre 20 anni di esperienza: diagnosi computerizzata ed elettrauto, riparazione motore, distribuzione, freni, sospensioni, cambio olio, gommista 24/24, ricambi auto, carrozzeria e verniciatura. Prenota online.",
     },
     services: {
       title: "Servizi di officina a Chișinău — meccanica, carrozzeria, verniciatura",
       description:
-        "I servizi ForceCar a Chișinău: diagnosi auto, riparazione motore, sostituzione distribuzione, freni, sospensioni e sterzo, meccanica generale, carrozzeria e verniciatura.",
+        "I servizi ForceCar a Chișinău: diagnosi computerizzata ed elettrauto, riparazione motore, sostituzione distribuzione, freni, sospensioni e sterzo, meccanica generale, cambio olio e filtri, gommista 24/24, vendita ricambi auto, carrozzeria e verniciatura.",
     },
     works: {
       title: "Lavori ForceCar — galleria dell'officina di Chișinău",
@@ -79,6 +79,7 @@ const it: Dictionary = {
     viber: "Viber ForceCar",
     instagram: "Instagram ForceCar",
     tiktok: "TikTok ForceCar",
+    facebook: "Facebook ForceCar",
   },
 
   nav: {
@@ -305,7 +306,7 @@ const it: Dictionary = {
     groups: {
       mechanical: {
         title: "Meccanica e diagnosi",
-        text: "Motore, distribuzione, freni, sospensioni, sterzo e manutenzione.",
+        text: "Diagnosi ed elettrauto, motore, distribuzione, freni, sospensioni, olio e filtri, gommista 24/24 e ricambi auto.",
       },
       body: {
         title: "Carrozzeria e verniciatura",

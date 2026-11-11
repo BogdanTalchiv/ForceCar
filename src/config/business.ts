@@ -104,7 +104,7 @@ export const business: BusinessConfig = {
   googleMapsUrl: null, // ⚠ OWNER: link Google Maps către service
 
   socials: {
-    facebook: null,
+    facebook: "https://www.facebook.com/share/1BbesdwQZH/",
     instagram: "https://www.instagram.com/forcecar.md",
     tiktok: "https://www.tiktok.com/@forcecar.autoservice",
     youtube: null,

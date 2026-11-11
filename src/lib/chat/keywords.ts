@@ -39,6 +39,21 @@ export const serviceKeywords: [ServiceId, string[]][] = [
   ],
   ["paint", ["vopsi", "zgarietur", "покрас", "краск", "царап", "paint", "scratch", "vernic", "graffi"]],
   [
+    "oil",
+    [
+      "schimb ulei", "schimbul de ulei", "ulei de motor", "filtr", "замена масла", "заменить масло", "фильтр", "oil change",
+      "oil filter", "cambio olio", "cambiare l olio",
+    ],
+  ],
+  [
+    "tires",
+    [
+      // „pana” lipsește intenționat: fără diacritice se confundă cu „până”; „шин” apare în „машина”.
+      "vulcaniz", "anvelop", "cauciuc", "echilibr", "roata", "шиномонт", "шины", "шину", "покрышк", "прокол", "колес",
+      "балансир", " tire", " tyre", "puncture", "wheel balanc", "gommist", "gomma", "gomme", "pneumatic", "foratur", "equilibr",
+    ],
+  ],
+  [
     "engine",
     [
       "motor", "двигат", "мотор", "engine", "fum", "дым", "smoke", "fumo", "ulei", "масл", "oil", "olio", "supraincalz", "перегрев",
@@ -49,14 +64,20 @@ export const serviceKeywords: [ServiceId, string[]][] = [
     "diagnostics",
     [
       "diagnost", "check engine", "martor", "eroare", "erori", "диагност", "чек", "ошибк", "лампочк", "горит", "spia", "diagnosi", "errore",
-      "warning light", "fault code", "obd", "nu stiu ce are", "не знаю", "non so",
+      "warning light", "fault code", "obd", "nu stiu ce are", "не знаю", "non so", "electric", "bateri", "acumulator",
+      "alternator", "electromotor", "электрик", "аккумулятор", "генератор", "стартер", "elettric", "batteria", "motorino",
+      "battery", "starter motor",
     ],
+  ],
+  [
+    "parts",
+    ["piese", "piesa", "запчаст", "spare part", "car part", "ricambi"],
   ],
   [
     "mechanical",
     [
-      "revizi", "intretiner", "ambreiaj", "filtr", "schimb ulei", " то ", "обслуживан", "сцеплен", "замена масла", "maintenance", "clutch",
-      "oil change", "tagliando", "frizione", "manutenzion", "mecanic", "механик", "слесар", "meccanic", "mechanic",
+      "revizi", "intretiner", "ambreiaj", " то ", "обслуживан", "сцеплен", "maintenance", "clutch", "tagliando", "frizione",
+      "manutenzion", "mecanic", "механик", "слесар", "meccanic", "mechanic",
     ],
   ],
 ];

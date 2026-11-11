@@ -2,29 +2,30 @@ import type { ServiceContentMap } from "./types";
 
 const ro: ServiceContentMap = {
   diagnostics: {
-    name: "Diagnostică auto",
-    short: "Aflăm de unde vine problema: martori aprinși în bord, zgomote, vibrații sau consum crescut.",
-    h1: "Diagnostică auto în Chișinău",
-    metaTitle: "Diagnostică auto în Chișinău — ForceCar",
+    name: "Diagnostică computerizată & Electrică auto",
+    short: "Citim erorile din calculator și reparăm problemele electrice: martori în bord, pornire grea, lumini, senzori.",
+    h1: "Diagnostică computerizată și electrică auto în Chișinău",
+    metaTitle: "Diagnostică computerizată & electrică auto în Chișinău — ForceCar",
     metaDescription:
-      "Diagnostică auto la ForceCar, Chișinău: verificăm martorii din bord, zgomotele și defecțiunile și îți explicăm clar ce are mașina înainte de reparație.",
+      "Diagnostică computerizată și electrică auto la ForceCar, Chișinău: citim erorile, verificăm bateria, alternatorul, senzorii și instalația electrică și îți explicăm clar ce are mașina.",
     intro: [
-      "Diagnostica auto înseamnă să găsim cauza reală a unei probleme, nu doar să citim un cod de eroare. La ForceCar combinăm citirea erorilor din calculatorul mașinii cu verificarea practică, pe baza unei experiențe de peste 20 de ani.",
-      "După verificare îți explicăm pe înțeles ce am găsit și ce trebuie reparat, ca să decizi informat.",
+      "Diagnostica auto înseamnă să găsim cauza reală a unei probleme, nu doar să citim un cod de eroare. La ForceCar combinăm diagnoza computerizată — citirea erorilor din calculatorul mașinii — cu verificarea practică, pe baza unei experiențe de peste 20 de ani.",
+      "Ne ocupăm și de electrica auto: baterie, alternator, electromotor, lumini, senzori, siguranțe și conexiuni. După verificare îți explicăm pe înțeles ce am găsit și ce trebuie reparat, ca să decizi informat.",
     ],
     symptoms: [
       "S-a aprins Check Engine sau alt martor în bord",
       "Mașina trage mai slab sau merge sacadat",
+      "Pornește greu sau bateria se descarcă des",
+      "Nu funcționează luminile, geamurile electrice sau alte consumatoare",
       "Consumul de combustibil a crescut fără un motiv clar",
-      "Apar zgomote, vibrații sau mirosuri noi",
-      "Pornește greu sau se oprește singură",
       "Ai o problemă care apare doar uneori și nu știi de unde vine",
     ],
     checks: [
       "Erorile memorate în calculatorul mașinii",
       "Senzorii și parametrii motorului în funcționare",
+      "Bateria, alternatorul și electromotorul",
+      "Instalația electrică: siguranțe, relee, conexiuni, lumini",
       "Sistemele de aprindere și de alimentare",
-      "Starea generală: scurgeri, furtunuri, curele",
       "Zgomotele și vibrațiile, la nevoie în timpul unui test de drum",
     ],
     steps: [
@@ -41,6 +42,10 @@ const ro: ServiceContentMap = {
       {
         q: "Pot circula cu martorul Check Engine aprins?",
         a: "Depinde. Dacă martorul clipește, mașina pierde puterea sau apar fum, miros de ars ori temperatură mare, oprește în siguranță și nu continua drumul. Dacă martorul e aprins constant și mașina merge normal, programează o verificare cât mai curând.",
+      },
+      {
+        q: "Reparați și problemele electrice?",
+        a: "Da. Verificăm bateria, alternatorul, electromotorul, luminile, siguranțele și conexiunile și căutăm cauza consumatorilor care nu funcționează sau a bateriei care se descarcă.",
       },
       {
         q: "Ce informații să pregătesc înainte de diagnosticare?",
@@ -293,6 +298,150 @@ const ro: ServiceContentMap = {
       {
         q: "Îmi spuneți dacă o lucrare poate aștepta?",
         a: "Da. După verificare îți explicăm ce este urgent pentru siguranța și funcționarea mașinii și ce poate fi planificat mai târziu.",
+      },
+    ],
+  },
+
+  oil: {
+    name: "Schimb ulei & filtre",
+    short: "Schimbăm uleiul de motor și filtrele de ulei, aer, habitaclu și combustibil, potrivite pentru mașina ta.",
+    h1: "Schimb ulei și filtre în Chișinău",
+    metaTitle: "Schimb ulei și filtre în Chișinău — ForceCar",
+    metaDescription:
+      "Schimb ulei de motor și filtre la ForceCar, Chișinău: ulei potrivit pentru motorul tău, filtru de ulei, aer, habitaclu și combustibil, plus o verificare rapidă a mașinii.",
+    intro: [
+      "Uleiul de motor își pierde în timp proprietățile, iar filtrele se îmbâcsesc. Un schimb făcut la timp protejează motorul, păstrează consumul în limite normale și previne uzura prematură.",
+      "La ForceCar alegem uleiul după specificațiile producătorului pentru motorul tău, înlocuim filtrele necesare și, cât mașina e pe elevator, ne uităm și după scurgeri sau alte probleme vizibile.",
+    ],
+    symptoms: [
+      "Ai depășit intervalul de schimb (în kilometri sau în timp)",
+      "S-a aprins martorul de service sau de ulei",
+      "Uleiul de pe jojă este închis la culoare sau sub nivelul minim",
+      "Motorul merge mai zgomotos decât de obicei",
+      "Aerul din habitaclu miroase a praf sau ventilația suflă slab",
+      "Nu știi când s-a schimbat ultima dată uleiul",
+    ],
+    checks: [
+      "Nivelul și starea uleiului înainte de schimb",
+      "Filtrul de ulei, de aer, de habitaclu și de combustibil",
+      "Scurgerile de ulei de la baie, garnituri și simeringuri",
+      "Nivelurile celorlalte lichide: antigel, lichid de frână, spălător",
+      "Starea curelelor și a furtunurilor vizibile",
+    ],
+    steps: [
+      { title: "Identificăm motorul", text: "Marca, modelul, motorizarea și kilometrajul ne arată ce ulei și ce filtre trebuie." },
+      { title: "Golim uleiul vechi", text: "Scurgem uleiul uzat și înlocuim filtrul de ulei." },
+      { title: "Montăm filtrele și uleiul nou", text: "Turnăm uleiul potrivit și schimbăm filtrele stabilite împreună cu tine." },
+      { title: "Verificăm și resetăm", text: "Verificăm nivelul și etanșeitatea și resetăm indicatorul de service, unde e cazul." },
+    ],
+    faq: [
+      {
+        q: "La câți kilometri se schimbă uleiul?",
+        a: "Intervalul îl stabilește producătorul, în kilometri și în timp, și depinde de motor și de modul în care folosești mașina. În oraș, cu drumuri scurte, uleiul se uzează mai repede. Îți spunem ce interval se potrivește mașinii tale.",
+      },
+      {
+        q: "Pot să-mi aduc uleiul meu?",
+        a: "Spune-ne când faci programarea. Verificăm dacă uleiul corespunde specificațiilor motorului înainte să îl folosim.",
+      },
+      {
+        q: "Ce filtre se schimbă odată cu uleiul?",
+        a: "Filtrul de ulei se schimbă la fiecare schimb de ulei. Filtrele de aer, de habitaclu și de combustibil au intervale proprii — îți spunem care sunt necesare acum.",
+      },
+    ],
+  },
+
+  tires: {
+    name: "Vulcanizare 24/24",
+    short: "Vulcanizare non-stop: reparație pană, schimb anvelope, echilibrare și verificarea presiunii, zi și noapte.",
+    h1: "Vulcanizare 24/24 în Chișinău",
+    metaTitle: "Vulcanizare non-stop 24/24 în Chișinău — ForceCar",
+    metaDescription:
+      "Vulcanizare 24/24 la ForceCar, Chișinău: reparație pană, montare și echilibrare roți, schimb anvelope de sezon și verificarea presiunii, non-stop.",
+    intro: [
+      "O pană nu ține cont de program. De aceea vulcanizarea ForceCar lucrează 24/24 — poți veni ziua sau noaptea, cu o pană, o roată care vibrează sau pentru schimbul anvelopelor de sezon.",
+      "Verificăm anvelopa, reparăm pana când starea ei o permite, montăm și echilibrăm roțile și controlăm presiunea, ca să pleci în siguranță.",
+    ],
+    symptoms: [
+      "Ai făcut pană sau anvelopa pierde aer",
+      "Volanul vibrează la viteză",
+      "Vine sezonul și trebuie schimbate anvelopele",
+      "Ai lovit o groapă sau o bordură și roata arată deteriorată",
+      "Anvelopele s-au uzat neuniform",
+      "Se aprinde martorul de presiune în anvelope",
+    ],
+    checks: [
+      "Starea anvelopei: tăieturi, umflături, uzura profilului",
+      "Locul și mărimea penei, ca să știm dacă se poate repara",
+      "Janta: deformări sau fisuri după lovituri",
+      "Valvele și etanșarea pe jantă",
+      "Presiunea în toate roțile, inclusiv roata de rezervă",
+    ],
+    steps: [
+      { title: "Vii oricând", text: "Vulcanizarea lucrează 24/24. Pentru o programare la ora dorită, sună-ne înainte." },
+      { title: "Verificăm roata", text: "Ne uităm la anvelopă, jantă și valvă și îți spunem ce se poate face." },
+      { title: "Reparăm sau montăm", text: "Reparăm pana sau montăm anvelopele, apoi echilibrăm roțile." },
+      { title: "Controlăm presiunea", text: "Umflăm la presiunea recomandată și strângem roțile corect." },
+    ],
+    faq: [
+      {
+        q: "Lucrați și noaptea?",
+        a: "Da, vulcanizarea ForceCar lucrează 24/24. Dacă vii noaptea, sună-ne înainte, ca să te putem primi imediat.",
+      },
+      {
+        q: "Orice pană se poate repara?",
+        a: "Nu. Penele mici în zona de rulare se pot repara de obicei. O tăietură pe flanc, o umflătură sau o anvelopă rulată mult timp fără aer nu se mai repară în siguranță — atunci îți recomandăm înlocuirea.",
+      },
+      {
+        q: "De ce trebuie echilibrate roțile?",
+        a: "O roată neechilibrată produce vibrații în volan, uzează neuniform anvelopa și solicită suspensia. Echilibrarea se face după fiecare montare de anvelopă.",
+      },
+    ],
+    safety:
+      "Dacă anvelopa are o umflătură sau o tăietură pe flanc, nu continua drumul cu ea — poate ceda brusc. Pune roata de rezervă sau sună-ne.",
+  },
+
+  parts: {
+    name: "Vânzare piese auto",
+    short: "Piese auto pentru întreținere și reparații: filtre, plăcuțe, discuri, curele, rulmenți și multe altele.",
+    h1: "Vânzare piese auto în Chișinău",
+    metaTitle: "Piese auto în Chișinău — vânzare piese | ForceCar",
+    metaDescription:
+      "Vânzare piese auto la ForceCar, Chișinău: filtre, plăcuțe și discuri de frână, curele, rulmenți, piese de suspensie și altele, potrivite pentru mașina ta, cu montaj în service.",
+    intro: [
+      "La ForceCar găsești și piese auto: de la filtre și plăcuțe de frână până la curele de distribuție, rulmenți și piese de suspensie. Te ajutăm să alegi piesa potrivită pentru mașina ta, ca să nu cumperi la întâmplare.",
+      "Poți lua piesa și pleca sau o poți monta direct la noi în service.",
+    ],
+    symptoms: [
+      "Ai nevoie de o piesă și nu știi exact ce cod se potrivește",
+      "Pregătești revizia și vrei filtrele și uleiul potrivite",
+      "Ți s-a recomandat înlocuirea unei piese uzate",
+      "Vrei piesa și montajul în același loc",
+      "Cauți o piesă pentru o mașină mai veche sau mai rară",
+    ],
+    checks: [
+      "Marca, modelul, anul și motorizarea mașinii",
+      "Seria de caroserie (VIN), pentru codul exact al piesei",
+      "Compatibilitatea piesei cu varianta mașinii tale",
+      "Ce alte piese se schimbă de obicei odată cu ea",
+    ],
+    steps: [
+      { title: "Ne spui ce îți trebuie", text: "Sună-ne sau scrie-ne marca, modelul, anul și, dacă se poate, seria de caroserie (VIN)." },
+      { title: "Găsim piesa potrivită", text: "Verificăm compatibilitatea și îți spunem ce variante există." },
+      { title: "Ridici piesa", text: "Piesa te așteaptă la service, pe str. Ismail 103." },
+      { title: "O montăm, dacă vrei", text: "Putem monta piesa direct în atelierul ForceCar." },
+    ],
+    faq: [
+      {
+        q: "Cum aflu ce piesă se potrivește la mașina mea?",
+        a: "Cel mai sigur este după seria de caroserie (VIN), pe care o găsești în certificatul de înmatriculare. Ne-o trimiți și verificăm codul exact al piesei.",
+      },
+      {
+        q: "Pot cumpăra piesa fără să o montez la voi?",
+        a: "Da. Poți cumpăra doar piesa sau o poți monta direct în service-ul ForceCar.",
+      },
+      {
+        q: "Aveți piesele pe stoc?",
+        a: "Depinde de piesă. Sună-ne sau scrie-ne și îți spunem dacă o avem pe loc sau cât durează aducerea, înainte de comandă.",
       },
     ],
   },

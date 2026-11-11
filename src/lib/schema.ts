@@ -8,6 +8,7 @@ import { localeMeta, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { articlePath, servicePath } from "@/i18n/routes";
 import { mapsUrl, socialLinks } from "./business-info";
+import { serviceHref } from "./navigation";
 import type { FaqItem } from "./faq";
 import { absoluteUrl } from "./seo";
 
@@ -69,15 +70,18 @@ export function businessNode(locale: Locale): Node {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: dict.nav.services,
-      itemListElement: enabledServices.map((s) => ({
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: getServiceContent(locale, s.id).name,
-          serviceType: s.schemaType,
-          url: absoluteUrl(servicePath(locale, s.slugs)),
-        },
-      })),
+      itemListElement: enabledServices.map((s) => {
+        const link = serviceHref(locale, s);
+        return {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: getServiceContent(locale, s.id).name,
+            serviceType: s.schemaType,
+            url: link.external ? link.href : absoluteUrl(link.href),
+          },
+        };
+      }),
     },
   };
 }

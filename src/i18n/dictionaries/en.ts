@@ -7,12 +7,12 @@ const en: Dictionary = {
     home: {
       title: "Car service in Chișinău with 20+ years of experience | ForceCar",
       description:
-        "ForceCar is a car service in Chișinău, Moldova, with more than 20 years of experience: diagnostics, engine repair, timing belts, brakes, suspension, body repair and painting. Book online.",
+        "ForceCar is a car service in Chișinău, Moldova, with more than 20 years of experience: computer diagnostics and auto electrics, engine repair, timing belts, brakes, suspension, oil changes, 24/7 tire service, car parts, body repair and painting. Book online.",
     },
     services: {
       title: "Car repair services in Chișinău — mechanics, bodywork, paint",
       description:
-        "ForceCar services in Chișinău: car diagnostics, engine repair, timing belt replacement, brakes, suspension and steering, general mechanics, body repair and painting.",
+        "ForceCar services in Chișinău: computer diagnostics and auto electrics, engine repair, timing belt replacement, brakes, suspension and steering, general mechanics, oil and filter changes, 24/7 tire service, car parts sales, body repair and painting.",
     },
     works: {
       title: "ForceCar work — gallery from our Chișinău workshop",
@@ -79,6 +79,7 @@ const en: Dictionary = {
     viber: "Viber ForceCar",
     instagram: "Instagram ForceCar",
     tiktok: "TikTok ForceCar",
+    facebook: "Facebook ForceCar",
   },
 
   nav: {
@@ -305,7 +306,7 @@ const en: Dictionary = {
     groups: {
       mechanical: {
         title: "Mechanics and diagnostics",
-        text: "Engine, timing belt, brakes, suspension, steering and maintenance.",
+        text: "Diagnostics and electrics, engine, timing belt, brakes, suspension, oil and filters, 24/7 tire service and car parts.",
       },
       body: {
         title: "Bodywork and paint",

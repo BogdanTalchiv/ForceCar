@@ -5,12 +5,12 @@ const ro = {
     home: {
       title: "Service auto în Chișinău cu peste 20 de ani de experiență | ForceCar",
       description:
-        "ForceCar este un service auto din Chișinău: diagnostică auto, reparații motor, schimb distribuție, frâne, suspensie, caroserie și vopsitorie. Peste 20 de ani de experiență. Programează-te online.",
+        "ForceCar este un service auto din Chișinău: diagnostică computerizată și electrică auto, reparații motor, schimb distribuție, frâne, suspensie, schimb ulei, vulcanizare 24/24, piese auto, caroserie și vopsitorie. Peste 20 de ani de experiență. Programează-te online.",
     },
     services: {
       title: "Servicii auto în Chișinău — mecanică, caroserie, vopsitorie",
       description:
-        "Serviciile ForceCar în Chișinău: diagnostică auto, reparații motor, schimb distribuție, frâne, suspensie și direcție, mecanică generală, caroserie și vopsitorie.",
+        "Serviciile ForceCar în Chișinău: diagnostică computerizată și electrică auto, reparații motor, schimb distribuție, frâne, suspensie și direcție, mecanică generală, schimb ulei și filtre, vulcanizare 24/24, vânzare piese auto, caroserie și vopsitorie.",
     },
     works: {
       title: "Lucrări ForceCar — galerie din service-ul auto din Chișinău",
@@ -77,6 +77,7 @@ const ro = {
     viber: "Viber ForceCar",
     instagram: "Instagram ForceCar",
     tiktok: "TikTok ForceCar",
+    facebook: "Facebook ForceCar",
   },
 
   nav: {
@@ -303,7 +304,7 @@ const ro = {
     groups: {
       mechanical: {
         title: "Mecanică și diagnosticare",
-        text: "Motor, distribuție, frâne, suspensie, direcție și întreținere.",
+        text: "Diagnoză și electrică, motor, distribuție, frâne, suspensie, ulei și filtre, vulcanizare 24/24 și piese auto.",
       },
       body: {
         title: "Caroserie și vopsitorie",

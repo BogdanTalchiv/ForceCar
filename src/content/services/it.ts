@@ -2,29 +2,30 @@ import type { ServiceContentMap } from "./types";
 
 const it: ServiceContentMap = {
   diagnostics: {
-    name: "Diagnosi auto",
-    short: "Scopriamo da dove nasce il problema: spie accese, rumori, vibrazioni o consumi aumentati.",
-    h1: "Diagnosi auto a Chișinău",
-    metaTitle: "Diagnosi auto a Chișinău — ForceCar",
+    name: "Diagnosi computerizzata & Elettrauto",
+    short: "Leggiamo gli errori della centralina e ripariamo i guasti elettrici: spie, avviamento difficile, luci, sensori.",
+    h1: "Diagnosi computerizzata ed elettrauto a Chișinău",
+    metaTitle: "Diagnosi computerizzata & elettrauto a Chișinău — ForceCar",
     metaDescription:
-      "Diagnosi auto da ForceCar a Chișinău: controlliamo spie, rumori e guasti e ti spieghiamo con chiarezza cosa ha l'auto prima della riparazione.",
+      "Diagnosi computerizzata ed elettrauto da ForceCar a Chișinău: leggiamo gli errori, controlliamo batteria, alternatore, sensori e impianto elettrico e ti spieghiamo con chiarezza cosa ha l'auto.",
     intro: [
-      "Fare una diagnosi significa trovare la vera causa di un problema, non solo leggere un codice di errore. Da ForceCar uniamo la lettura degli errori della centralina al controllo pratico dell'auto, grazie a oltre 20 anni di esperienza.",
-      "Dopo il controllo ti spieghiamo in modo chiaro cosa abbiamo trovato e cosa va riparato, così puoi decidere in modo consapevole.",
+      "Fare una diagnosi significa trovare la vera causa di un problema, non solo leggere un codice di errore. Da ForceCar uniamo la diagnosi computerizzata — la lettura degli errori della centralina — al controllo pratico dell'auto, grazie a oltre 20 anni di esperienza.",
+      "Ci occupiamo anche dell'impianto elettrico: batteria, alternatore, motorino di avviamento, luci, sensori, fusibili e collegamenti. Dopo il controllo ti spieghiamo in modo chiaro cosa abbiamo trovato e cosa va riparato, così puoi decidere in modo consapevole.",
     ],
     symptoms: [
       "Si è accesa la spia motore (Check Engine) o un'altra spia",
       "L'auto ha meno spinta o procede a strappi",
+      "L'auto fatica ad avviarsi o la batteria si scarica spesso",
+      "Non funzionano luci, alzacristalli elettrici o altri dispositivi",
       "I consumi sono aumentati senza un motivo evidente",
-      "Compaiono rumori, vibrazioni o odori nuovi",
-      "L'auto fatica ad avviarsi o si spegne da sola",
       "Il problema si presenta solo ogni tanto e non sai da dove venga",
     ],
     checks: [
       "Gli errori memorizzati nella centralina",
       "Sensori e parametri del motore in funzione",
+      "Batteria, alternatore e motorino di avviamento",
+      "Impianto elettrico: fusibili, relè, collegamenti, luci",
       "Impianto di accensione e di alimentazione",
-      "Stato generale: perdite, tubi, cinghie",
       "Rumori e vibrazioni, se serve con una prova su strada",
     ],
     steps: [
@@ -41,6 +42,10 @@ const it: ServiceContentMap = {
       {
         q: "Posso guidare con la spia motore accesa?",
         a: "Dipende. Se la spia lampeggia, l'auto perde potenza o compaiono fumo, odore di bruciato o temperatura elevata, fermati in sicurezza e non proseguire. Se la spia è accesa fissa e l'auto va normalmente, prenota un controllo il prima possibile.",
+      },
+      {
+        q: "Riparate anche i guasti elettrici?",
+        a: "Sì. Controlliamo batteria, alternatore, motorino di avviamento, luci, fusibili e collegamenti e cerchiamo la causa dei dispositivi che non funzionano o della batteria che si scarica.",
       },
       {
         q: "Quali informazioni preparare prima della diagnosi?",
@@ -293,6 +298,150 @@ const it: ServiceContentMap = {
       {
         q: "Mi dite se un lavoro può aspettare?",
         a: "Sì. Dopo il controllo ti spieghiamo cosa è urgente per la sicurezza e il funzionamento dell'auto e cosa può essere pianificato più avanti.",
+      },
+    ],
+  },
+
+  oil: {
+    name: "Cambio olio & filtri",
+    short: "Cambiamo l'olio motore e i filtri olio, aria, abitacolo e carburante, adatti alla tua auto.",
+    h1: "Cambio olio e filtri a Chișinău",
+    metaTitle: "Cambio olio e filtri a Chișinău — ForceCar",
+    metaDescription:
+      "Cambio olio motore e filtri da ForceCar a Chișinău: l'olio giusto per il tuo motore, filtri olio, aria, abitacolo e carburante e un controllo rapido dell'auto.",
+    intro: [
+      "Con il tempo l'olio motore perde le sue proprietà e i filtri si intasano. Un cambio fatto per tempo protegge il motore, mantiene i consumi nella norma e previene l'usura precoce.",
+      "Da ForceCar scegliamo l'olio secondo le specifiche del costruttore per il tuo motore, sostituiamo i filtri necessari e, mentre l'auto è sul ponte, controlliamo perdite e altri problemi visibili.",
+    ],
+    symptoms: [
+      "Hai superato l'intervallo di cambio (in chilometri o in tempo)",
+      "Si è accesa la spia del tagliando o dell'olio",
+      "L'olio sull'astina è scuro o sotto il minimo",
+      "Il motore è più rumoroso del solito",
+      "L'aria nell'abitacolo sa di polvere o la ventilazione è debole",
+      "Non sai quando è stato cambiato l'olio l'ultima volta",
+    ],
+    checks: [
+      "Livello e stato dell'olio prima del cambio",
+      "Filtro olio, aria, abitacolo e carburante",
+      "Perdite d'olio da coppa, guarnizioni e paraoli",
+      "Livelli degli altri liquidi: refrigerante, liquido freni, lavavetri",
+      "Stato di cinghie e tubi visibili",
+    ],
+    steps: [
+      { title: "Identifichiamo il motore", text: "Marca, modello, motorizzazione e chilometraggio ci dicono quale olio e quali filtri servono." },
+      { title: "Scarichiamo l'olio vecchio", text: "Scarichiamo l'olio esausto e sostituiamo il filtro olio." },
+      { title: "Filtri e olio nuovi", text: "Mettiamo l'olio giusto e cambiamo i filtri concordati con te." },
+      { title: "Controllo e reset", text: "Controlliamo livello e tenuta e azzeriamo l'indicatore del tagliando, dove serve." },
+    ],
+    faq: [
+      {
+        q: "Ogni quanti chilometri si cambia l'olio?",
+        a: "L'intervallo lo stabilisce il costruttore, in chilometri e in tempo, e dipende dal motore e da come usi l'auto. Con tragitti brevi in città l'olio si consuma prima. Ti diciamo quale intervallo è adatto alla tua auto.",
+      },
+      {
+        q: "Posso portare il mio olio?",
+        a: "Diccelo quando prenoti. Prima di usarlo verifichiamo che l'olio rispetti le specifiche del motore.",
+      },
+      {
+        q: "Quali filtri si cambiano con l'olio?",
+        a: "Il filtro olio si cambia a ogni cambio olio. I filtri aria, abitacolo e carburante hanno intervalli propri: ti diciamo quali vanno sostituiti ora.",
+      },
+    ],
+  },
+
+  tires: {
+    name: "Gommista 24/24",
+    short: "Gommista sempre aperto: riparazione forature, cambio gomme, equilibratura e controllo pressione, giorno e notte.",
+    h1: "Gommista 24/24 a Chișinău",
+    metaTitle: "Gommista 24 ore su 24 a Chișinău — ForceCar",
+    metaDescription:
+      "Gommista 24/24 da ForceCar a Chișinău: riparazione forature, montaggio ed equilibratura ruote, cambio gomme stagionale e controllo della pressione, a qualsiasi ora.",
+    intro: [
+      "Una foratura non guarda l'orologio. Per questo il gommista ForceCar lavora 24 ore su 24: vieni di giorno o di notte, con una foratura, una ruota che vibra o per il cambio gomme stagionale.",
+      "Controlliamo lo pneumatico, ripariamo la foratura quando le condizioni lo permettono, montiamo ed equilibriamo le ruote e verifichiamo la pressione, così riparti in sicurezza.",
+    ],
+    symptoms: [
+      "Hai forato o una gomma perde aria",
+      "Il volante vibra in velocità",
+      "Cambia la stagione e vanno cambiate le gomme",
+      "Hai preso una buca o un marciapiede e la ruota sembra danneggiata",
+      "Le gomme si consumano in modo irregolare",
+      "Si accende la spia della pressione pneumatici",
+    ],
+    checks: [
+      "Stato dello pneumatico: tagli, bolle, usura del battistrada",
+      "Posizione e dimensione della foratura, per capire se si può riparare",
+      "Il cerchio: deformazioni o crepe dopo un urto",
+      "Valvole e tenuta sul cerchio",
+      "Pressione di tutte le ruote, compresa la ruota di scorta",
+    ],
+    steps: [
+      { title: "Vieni quando vuoi", text: "Il gommista lavora 24/24. Per essere servito a un orario preciso, chiamaci prima." },
+      { title: "Controlliamo la ruota", text: "Verifichiamo pneumatico, cerchio e valvola e ti diciamo cosa si può fare." },
+      { title: "Ripariamo o montiamo", text: "Ripariamo la foratura o montiamo le gomme, poi equilibriamo le ruote." },
+      { title: "Controllo pressione", text: "Gonfiamo alla pressione consigliata e serriamo correttamente le ruote." },
+    ],
+    faq: [
+      {
+        q: "Lavorate anche di notte?",
+        a: "Sì, il gommista ForceCar lavora 24 ore su 24. Se vieni di notte, chiamaci prima così possiamo riceverti subito.",
+      },
+      {
+        q: "Ogni foratura si può riparare?",
+        a: "No. Le piccole forature nella zona del battistrada di solito si riparano. Un taglio sul fianco, una bolla o una gomma usata a lungo a terra non si possono riparare in sicurezza: in quel caso consigliamo la sostituzione.",
+      },
+      {
+        q: "Perché le ruote vanno equilibrate?",
+        a: "Una ruota non equilibrata provoca vibrazioni al volante, usura irregolare della gomma e sollecita le sospensioni. L'equilibratura si fa dopo ogni montaggio.",
+      },
+    ],
+    safety:
+      "Se lo pneumatico ha una bolla o un taglio sul fianco, non continuare a guidare: può cedere all'improvviso. Monta la ruota di scorta o chiamaci.",
+  },
+
+  parts: {
+    name: "Vendita ricambi auto",
+    short: "Ricambi per manutenzione e riparazioni: filtri, pastiglie, dischi, cinghie, cuscinetti e molto altro.",
+    h1: "Vendita ricambi auto a Chișinău",
+    metaTitle: "Ricambi auto a Chișinău — vendita ricambi | ForceCar",
+    metaDescription:
+      "Vendita ricambi auto da ForceCar a Chișinău: filtri, pastiglie e dischi freno, cinghie, cuscinetti, parti delle sospensioni e altro, adatti alla tua auto, con montaggio in officina.",
+    intro: [
+      "Da ForceCar trovi anche ricambi auto: dai filtri e dalle pastiglie dei freni fino a cinghie di distribuzione, cuscinetti e parti delle sospensioni. Ti aiutiamo a scegliere il pezzo giusto per la tua auto, così non compri a caso.",
+      "Puoi portare via il pezzo o farlo montare direttamente nella nostra officina.",
+    ],
+    symptoms: [
+      "Ti serve un pezzo e non sai quale codice è quello giusto",
+      "Prepari il tagliando e vuoi filtri e olio adatti",
+      "Ti è stato consigliato di sostituire un pezzo usurato",
+      "Vuoi il pezzo e il montaggio nello stesso posto",
+      "Cerchi un pezzo per un'auto più vecchia o rara",
+    ],
+    checks: [
+      "Marca, modello, anno e motorizzazione dell'auto",
+      "Il numero di telaio (VIN), per il codice esatto del pezzo",
+      "Compatibilità con la versione della tua auto",
+      "Quali altri pezzi si cambiano di solito insieme",
+    ],
+    steps: [
+      { title: "Dicci cosa ti serve", text: "Chiamaci o scrivici marca, modello, anno e, se possibile, il numero di telaio (VIN)." },
+      { title: "Troviamo il pezzo giusto", text: "Verifichiamo la compatibilità e ti diciamo quali opzioni ci sono." },
+      { title: "Ritiri il pezzo", text: "Il pezzo ti aspetta in officina, in str. Ismail 103." },
+      { title: "Lo montiamo, se vuoi", text: "Possiamo montare il pezzo direttamente nell'officina ForceCar." },
+    ],
+    faq: [
+      {
+        q: "Come capisco quale pezzo va bene per la mia auto?",
+        a: "Il modo più sicuro è il numero di telaio (VIN), che trovi sul libretto di circolazione. Mandacelo e verifichiamo il codice esatto del pezzo.",
+      },
+      {
+        q: "Posso comprare il pezzo senza farlo montare da voi?",
+        a: "Sì. Puoi comprare solo il pezzo o farlo montare nell'officina ForceCar.",
+      },
+      {
+        q: "Avete i ricambi disponibili?",
+        a: "Dipende dal pezzo. Chiamaci o scrivici e ti diciamo se lo abbiamo subito o quanto tempo serve per farlo arrivare, prima dell'ordine.",
       },
     ],
   },

@@ -1,5 +1,6 @@
+import { business } from "@/config/business";
 import { reviews, videoReviews } from "@/config/reviews";
-import { enabledServices, type ServiceIcon } from "@/config/services";
+import { enabledServices, type ServiceConfig, type ServiceIcon } from "@/config/services";
 import { getServiceContent } from "@/content/services";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -18,6 +19,8 @@ export interface ServiceLink {
   id: string;
   label: string;
   href: string;
+  /** Link către alt site — se deschide într-o filă nouă. */
+  external: boolean;
   icon: ServiceIcon;
   group: "mechanical" | "body";
 }
@@ -37,11 +40,24 @@ export function mainNav(locale: Locale): NavItem[] {
   return items;
 }
 
+/** Unde duce un serviciu: pagina lui sau, pentru serviciile cu site propriu, acel site. */
+export function serviceHref(locale: Locale, service: ServiceConfig): { href: string; external: boolean } {
+  if (!service.external) return { href: servicePath(locale, service.slugs), external: false };
+  return business.vulcanizareUrl
+    ? { href: business.vulcanizareUrl, external: true }
+    : { href: `${pagePath(locale, "home")}#vulcanizare`, external: false };
+}
+
+/** Atributele pentru `<a>` / `<Link>` când serviciul duce pe alt site. */
+export function externalLinkProps(external: boolean) {
+  return external ? ({ target: "_blank", rel: "noopener noreferrer" } as const) : {};
+}
+
 export function serviceLinks(locale: Locale): ServiceLink[] {
   return enabledServices.map((s) => ({
     id: s.id,
     label: getServiceContent(locale, s.id).name,
-    href: servicePath(locale, s.slugs),
+    ...serviceHref(locale, s),
     icon: s.icon,
     group: s.group,
   }));
