@@ -50,6 +50,7 @@ export function ServicesGrid({ locale }: { locale: Locale }) {
                 service={s}
                 detailsLabel={dict.cta.details}
                 badge={s.id === "diagnostics" ? t.featuredLabel : undefined}
+                span={s.id === "tires" ? 2 : undefined}
               />
             ))}
           </div>

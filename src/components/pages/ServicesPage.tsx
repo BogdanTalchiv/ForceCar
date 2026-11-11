@@ -37,16 +37,14 @@ export function ServicesPage({ locale }: { locale: Locale }) {
             {g.services.map((s, idx) => {
               // Ultimul card rămas singur pe rând se întinde pe tot rândul.
               const last = idx === g.services.length - 1;
-              const aloneSm = last && g.services.length % 2 === 1;
-              const aloneLg = last && g.services.length % 4 === 1;
+              const span = last && g.services.length % 4 === 1 ? 4 : last && g.services.length % 2 === 1 ? 2 : undefined;
               return (
                 <ServiceCard
                   key={s.id}
                   locale={locale}
                   service={s}
                   detailsLabel={dict.cta.details}
-                  wide={aloneSm || aloneLg}
-                  className={`${aloneSm ? "sm:col-span-2" : ""} ${aloneLg ? "lg:col-span-4" : aloneSm ? "lg:col-span-1" : ""}`}
+                  span={span}
                 />
               );
             })}
