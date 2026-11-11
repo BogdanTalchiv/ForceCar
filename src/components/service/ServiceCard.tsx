@@ -14,18 +14,23 @@ export function ServiceCard({
   service,
   detailsLabel,
   badge,
+  className = "",
+  wide = false,
 }: {
   locale: Locale;
   service: ServiceConfig;
   detailsLabel: string;
   badge?: string;
+  className?: string;
+  /** Cardul ocupă un rând întreg: imagine mai mare, gradient lateral, text limitat la stânga. */
+  wide?: boolean;
 }) {
   const content = getServiceContent(locale, service.id);
   const image = getImage(service.image, locale);
   const link = serviceHref(locale, service);
   return (
     <article
-      className="group relative isolate flex min-h-[16.5rem] flex-col overflow-hidden rounded-lg bg-ink-900 text-white ring-1 ring-white/10 transition-[ring-color] duration-300 hover:ring-white/28 sm:min-h-[19.5rem]"
+      className={`group relative isolate flex min-h-[16.5rem] flex-col overflow-hidden rounded-lg bg-ink-900 text-white ring-1 ring-white/10 transition-[ring-color] duration-300 hover:ring-white/28 sm:min-h-[19.5rem] ${wide ? "lg:min-h-[23rem]" : ""} ${className}`}
     >
       <div className="absolute inset-0">
         <FcImage
@@ -33,15 +38,22 @@ export function ServiceCard({
           fill
           decorative
           quality={80}
-          sizes="(min-width: 1024px) 768px, (min-width: 640px) 100vw, 100vw"
-          className="transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          sizes={wide ? "(min-width: 1280px) 1280px, 100vw" : "(min-width: 1024px) 768px, (min-width: 640px) 100vw, 100vw"}
+          className={`transition-transform duration-700 ease-out group-hover:scale-[1.03] ${wide ? "brightness-[1.2]" : ""}`}
         />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-linear-to-t from-ink-950 from-15% via-ink-950/50 to-ink-950/10"
-        />
+        {wide ? (
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-linear-to-t from-ink-950 from-10% via-ink-950/40 to-transparent sm:bg-linear-to-r sm:from-ink-950/90 sm:from-0% sm:via-ink-950/30 sm:via-45%"
+          />
+        ) : (
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-linear-to-t from-ink-950 from-15% via-ink-950/50 to-ink-950/10"
+          />
+        )}
       </div>
-      <div className="relative mt-auto flex flex-1 flex-col justify-end p-5">
+      <div className={`relative mt-auto flex flex-1 flex-col justify-end p-5 ${wide ? "sm:max-w-xl sm:p-7" : ""}`}>
         {badge && <p className="eyebrow mb-3 text-[0.65rem]">{badge}</p>}
         <span className="flex size-10 items-center justify-center rounded-md bg-white/10 text-white ring-1 ring-white/15 transition-[background-color,ring-color] duration-300 group-hover:bg-brand group-hover:ring-brand">
           <ServiceIcon name={service.icon} className="size-5" />

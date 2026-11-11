@@ -34,9 +34,22 @@ export function ServicesPage({ locale }: { locale: Locale }) {
             <p className="mt-3 text-lead text-muted">{g.text}</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
-            {g.services.map((s) => (
-              <ServiceCard key={s.id} locale={locale} service={s} detailsLabel={dict.cta.details} />
-            ))}
+            {g.services.map((s, idx) => {
+              // Ultimul card rămas singur pe rând se întinde pe tot rândul.
+              const last = idx === g.services.length - 1;
+              const aloneSm = last && g.services.length % 2 === 1;
+              const aloneLg = last && g.services.length % 4 === 1;
+              return (
+                <ServiceCard
+                  key={s.id}
+                  locale={locale}
+                  service={s}
+                  detailsLabel={dict.cta.details}
+                  wide={aloneSm || aloneLg}
+                  className={`${aloneSm ? "sm:col-span-2" : ""} ${aloneLg ? "lg:col-span-4" : aloneSm ? "lg:col-span-1" : ""}`}
+                />
+              );
+            })}
           </div>
         </Section>
       ))}

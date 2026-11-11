@@ -369,7 +369,7 @@ const images = {
   },
   vulcanizareNonStop: {
     file: "homepage/vulcanizare-24-24.webp",
-    focal: "50% 55%",
+    focal: "55% 40%",
     category: "mechanical",
     alt: {
       ro: "Vulcanizare noaptea: tehnician montează o anvelopă, cu atelierul luminat și rafturi cu anvelope",
