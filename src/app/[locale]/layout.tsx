@@ -9,6 +9,7 @@ import { isLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath } from "@/i18n/routes";
 import { phoneLink } from "@/lib/business-info";
+import { consentCategories, consentManaged } from "@/lib/consent-categories";
 import { ChatLauncher } from "@/components/chat/ChatLauncher";
 import { ConsentManager } from "@/components/consent/ConsentManager";
 import { TrackingBootstrap } from "@/components/consent/TrackingBootstrap";
@@ -40,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 /** Consent Mode v2: totul refuzat implicit, până la alegerea vizitatorului. */
-const consentDefaults = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);`;
+const consentDefaults = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'denied',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);`;
 
 export default async function LocaleLayout({ children, params }: { children: ReactNode; params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
@@ -65,7 +66,9 @@ export default async function LocaleLayout({ children, params }: { children: Rea
           serviceNames={Object.fromEntries(enabledServices.map((s) => [s.id, getServiceContent(locale, s.id).name]))}
         />
         <TrackingBootstrap />
-        {consentRequired && <ConsentManager labels={dict.consent} policyHref={pagePath(locale, "cookies")} />}
+        {consentManaged && (
+          <ConsentManager labels={dict.consent} policyHref={pagePath(locale, "cookies")} available={consentCategories} />
+        )}
       </body>
     </html>
   );

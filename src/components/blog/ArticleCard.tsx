@@ -13,12 +13,16 @@ export function ArticleCard({
   article,
   readLabel,
   excerpt = true,
+  headingLevel = 3,
 }: {
   locale: Locale;
   article: Article & { t: ArticleTranslation };
   readLabel: string;
   excerpt?: boolean;
+  /** 2 când lista stă direct sub H1-ul paginii (indexul blogului). */
+  headingLevel?: 2 | 3;
 }) {
+  const Heading = headingLevel === 2 ? "h2" : "h3";
   const image = getImage(article.image, locale);
   const category = getServiceContent(locale, article.serviceId).name;
   const date = formatDate(article.datePublished, locale);
@@ -43,11 +47,11 @@ export function ArticleCard({
           </span>
           <time dateTime={article.datePublished}>{date}</time>
         </p>
-        <h3 className="mt-2 text-lg leading-snug font-bold">
+        <Heading className="mt-2 text-lg leading-snug font-bold">
           <Link href={articlePath(locale, article.t.slug)} className="after:absolute after:inset-0 after:content-['']">
             {article.t.title}
           </Link>
-        </h3>
+        </Heading>
         {excerpt && <p className="mt-2 line-clamp-2 text-[0.9375rem] leading-relaxed text-muted">{article.t.description}</p>}
         <span className="mt-auto ml-auto inline-flex size-9 items-center justify-center rounded-full border border-line text-ink-900 transition-[border-color,color,transform] duration-300 group-hover:translate-x-0.5 group-hover:border-brand group-hover:text-brand">
           <ArrowUpRight className="size-4" aria-hidden="true" />

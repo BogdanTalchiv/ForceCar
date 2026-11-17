@@ -1,11 +1,15 @@
 "use client";
 
 import { ExternalLink, MapPin } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ResolvedImage } from "@/config/forcecar-images";
+import { CONSENT_CHANGED_EVENT, readConsent, type ConsentState } from "@/lib/analytics/consent";
 import { FcImage } from "@/components/ui/FcImage";
 
-/** Harta Google se încarcă doar la cerere — fără cookie-uri terțe și fără cost de performanță la încărcare. */
+/**
+ * Harta Google se încarcă la click sau automat cu acord pentru cookie-uri funcționale.
+ * Până atunci: fără cookie-uri terțe și fără cost de performanță la încărcare.
+ */
 export function MapFacade({
   embedUrl,
   mapsUrl,
@@ -20,6 +24,12 @@ export function MapFacade({
   coords?: { lat: number; lng: number } | null;
 }) {
   const [active, setActive] = useState(false);
+  useEffect(() => {
+    if (readConsent()?.functional) queueMicrotask(() => setActive(true));
+    const onChange = (e: Event) => setActive((e as CustomEvent<ConsentState>).detail.functional);
+    window.addEventListener(CONSENT_CHANGED_EVENT, onChange);
+    return () => window.removeEventListener(CONSENT_CHANGED_EVENT, onChange);
+  }, []);
   return (
     <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-ink-800 text-white sm:aspect-[16/10]">
       {active ? (

@@ -6,6 +6,7 @@ import type { CookieRowKey, LegalSection } from "@/content/legal/types";
 import { localeMeta, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { emailLink, mapsEmbedUrl, phoneLink } from "@/lib/business-info";
+import { consentCategories, consentManaged } from "@/lib/consent-categories";
 import { crumbsFor } from "@/lib/page-meta";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { CookieSettingsButton } from "@/components/layout/CookieSettingsButton";
@@ -75,14 +76,14 @@ export function LegalPage({ locale, kind }: { locale: Locale; kind: "privacy" | 
   const { gtmId, ga4Id, googleAdsId, metaPixelId } = analyticsConfig;
   const rows: { key: CookieRowKey; category: keyof typeof legal.cookies.categories }[] = [
     { key: "locale", category: "necessary" },
-    ...(consentRequired ? [{ key: "consent" as const, category: "necessary" as const }] : []),
+    ...(consentManaged ? [{ key: "consent" as const, category: "necessary" as const }] : []),
     { key: "bookingDraft", category: "necessary" },
     { key: "utm", category: "necessary" },
     ...(gtmId || ga4Id ? [{ key: "ga" as const, category: "analytics" as const }] : []),
     ...(gtmId || googleAdsId ? [{ key: "ads" as const, category: "marketing" as const }] : []),
     ...(metaPixelId ? [{ key: "meta" as const, category: "marketing" as const }] : []),
-    ...(videoReviews.length ? [{ key: "youtube" as const, category: "external" as const }] : []),
-    ...(mapsEmbedUrl() ? [{ key: "maps" as const, category: "external" as const }] : []),
+    ...(videoReviews.length ? [{ key: "youtube" as const, category: "functional" as const }] : []),
+    ...(mapsEmbedUrl() ? [{ key: "maps" as const, category: "functional" as const }] : []),
   ];
 
   const title = dict.meta[kind].title;
@@ -105,7 +106,14 @@ export function LegalPage({ locale, kind }: { locale: Locale; kind: "privacy" | 
           ) : (
             <>
               <p className="text-lead text-muted">{legal.cookies.intro}</p>
-              <Sections sections={legal.cookies.sections} vars={vars} />
+              <Sections
+                sections={legal.cookies.sections.filter((s) => {
+                  if (s.id === "analytics-marketing") return consentCategories.analytics || consentCategories.marketing;
+                  if (s.id === "functional") return consentCategories.functional;
+                  return true;
+                })}
+                vars={vars}
+              />
               <h2>{legal.cookies.tableTitle}</h2>
               {!consentRequired && <p>{dict.consent.noTracking}</p>}
               <div className="overflow-x-auto rounded-lg ring-1 ring-line">
@@ -131,7 +139,7 @@ export function LegalPage({ locale, kind }: { locale: Locale; kind: "privacy" | 
                 </table>
               </div>
               <Sections sections={[legal.cookies.manage]} vars={vars} />
-              {consentRequired && (
+              {consentManaged && (
                 <p>
                   <span className="inline-flex h-11 items-center rounded-md bg-ink-900 px-5 font-bold text-white [&_button]:text-white">
                     <CookieSettingsButton label={dict.consent.settingsLink} />

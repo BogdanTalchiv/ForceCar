@@ -7,7 +7,7 @@ const ro: ServiceContentMap = {
     h1: "Diagnostică computerizată și electrică auto în Chișinău",
     metaTitle: "Diagnostică computerizată & electrică auto în Chișinău — ForceCar",
     metaDescription:
-      "Diagnostică computerizată și electrică auto la ForceCar, Chișinău: citim erorile, verificăm bateria, alternatorul, senzorii și instalația electrică și îți explicăm clar ce are mașina.",
+      "Diagnostică computerizată și electrică auto la ForceCar, Chișinău: citim erorile, verificăm bateria, alternatorul și instalația și îți explicăm clar ce are mașina.",
     intro: [
       "Diagnostica auto înseamnă să găsim cauza reală a unei probleme, nu doar să citim un cod de eroare. La ForceCar combinăm diagnoza computerizată — citirea erorilor din calculatorul mașinii — cu verificarea practică, pe baza unei experiențe de peste 20 de ani.",
       "Ne ocupăm și de electrica auto: baterie, alternator, electromotor, lumini, senzori, siguranțe și conexiuni. După verificare îți explicăm pe înțeles ce am găsit și ce trebuie reparat, ca să decizi informat.",
@@ -406,7 +406,7 @@ const ro: ServiceContentMap = {
     h1: "Vânzare piese auto în Chișinău",
     metaTitle: "Piese auto în Chișinău — vânzare piese | ForceCar",
     metaDescription:
-      "Vânzare piese auto la ForceCar, Chișinău: filtre, plăcuțe și discuri de frână, curele, rulmenți, piese de suspensie și altele, potrivite pentru mașina ta, cu montaj în service.",
+      "Vânzare piese auto la ForceCar, Chișinău: filtre, plăcuțe și discuri de frână, curele, rulmenți și piese de suspensie potrivite mașinii tale, cu montaj în service.",
     intro: [
       "La ForceCar găsești și piese auto: de la filtre și plăcuțe de frână până la curele de distribuție, rulmenți și piese de suspensie. Te ajutăm să alegi piesa potrivită pentru mașina ta, ca să nu cumperi la întâmplare.",
       "Poți lua piesa și pleca sau o poți monta direct la noi în service.",

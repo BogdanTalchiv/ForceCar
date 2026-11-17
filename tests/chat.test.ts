@@ -12,6 +12,7 @@ describe("detectService", () => {
     expect(detectService("Quando cambiare la cinghia di distribuzione?")).toBe("timing");
     expect(detectService("My check engine light is on")).toBe("diagnostics");
     expect(detectService("Vreau schimb ulei și filtre")).toBe("oil");
+    expect(detectService("Trebuie ulei")).toBe("oil");
     expect(detectService("Am făcut pană la roată noaptea")).toBe("tires");
     expect(detectService("Нужен шиномонтаж")).toBe("tires");
     expect(detectService("Aveți piese pentru Golf 5?")).toBe("parts");

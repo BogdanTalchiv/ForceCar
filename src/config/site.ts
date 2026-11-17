@@ -8,7 +8,7 @@ export const siteConfig = {
   url: cleanUrl(process.env.NEXT_PUBLIC_SITE_URL) || "http://localhost:3000",
   noindex: process.env.NEXT_PUBLIC_NOINDEX === "true",
   /** Data ultimei actualizări majore a conținutului (sitemap lastModified). */
-  contentUpdatedAt: "2026-09-25",
+  contentUpdatedAt: "2026-11-17",
   googleSiteVerification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || null,
 } as const;
 

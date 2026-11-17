@@ -78,27 +78,30 @@ const ro: LegalContent = {
       "Cookie-urile sunt fișiere mici salvate de browser. Le folosim doar în măsura necesară: unele sunt indispensabile funcționării site-ului, iar celelalte se activează doar cu acordul tău.",
     sections: [
       {
+        id: "necessary",
         h: "Cookie-uri necesare",
         p: [
           "Păstrează limba aleasă și preferințele tale privind cookie-urile. Nu pot fi dezactivate, deoarece fără ele site-ul nu funcționează corect.",
         ],
       },
       {
+        id: "analytics-marketing",
         h: "Cookie-uri de analiză și marketing",
         p: [
           "Se activează doar dacă îți dai acordul. Ne ajută să înțelegem cum este folosit site-ul și să măsurăm eficiența campaniilor. Poți refuza fără ca site-ul să funcționeze mai rău.",
         ],
       },
       {
-        h: "Conținut extern încărcat la cerere",
+        id: "functional",
+        h: "Cookie-uri funcționale (conținut extern)",
         p: [
-          "Videoclipurile YouTube și harta Google Maps nu se încarcă automat. Se încarcă doar după ce apeși pe ele; atunci furnizorii respectivi își pot seta propriile cookie-uri.",
+          "Conținutul extern (harta Google Maps de pe pagina de contact și, dacă există, clipurile YouTube din recenzii) este furnizat de Google. Dacă accepți cookie-urile funcționale, acest conținut se încarcă automat; altfel, doar când apeși butonul aferent. După încărcare, Google își poate seta propriile cookie-uri, conform politicii sale de confidențialitate.",
         ],
       },
     ],
     tableTitle: "Ce folosim pe acest site",
     columns: { name: "Nume", purpose: "Scop", duration: "Durată", category: "Categorie" },
-    categories: { necessary: "Necesar", analytics: "Analiză", marketing: "Marketing", external: "Extern, la cerere" },
+    categories: { necessary: "Necesar", analytics: "Analiză", marketing: "Marketing", functional: "Funcțional" },
     rows: {
       locale: { purpose: "Păstrează limba aleasă de tine.", duration: "1 an" },
       consent: { purpose: "Păstrează preferințele tale privind cookie-urile.", duration: "6 luni" },
@@ -119,7 +122,7 @@ const ro: LegalContent = {
     manage: {
       h: "Cum îți schimbi preferințele",
       p: [
-        "Poți schimba oricând alegerea din linkul „Setări cookie-uri” din subsolul site-ului. Poți șterge cookie-urile și din setările browserului.",
+        "Poți schimba sau retrage oricând acordul din linkul „Setări cookie-uri” din subsolul site-ului. Retragerea acordului nu afectează prelucrarea făcută înainte de retragere. Poți șterge cookie-urile și din setările browserului.",
       ],
     },
   },

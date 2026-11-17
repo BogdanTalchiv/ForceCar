@@ -7,7 +7,7 @@ const it: ServiceContentMap = {
     h1: "Diagnosi computerizzata ed elettrauto a Chișinău",
     metaTitle: "Diagnosi computerizzata & elettrauto a Chișinău — ForceCar",
     metaDescription:
-      "Diagnosi computerizzata ed elettrauto da ForceCar a Chișinău: leggiamo gli errori, controlliamo batteria, alternatore, sensori e impianto elettrico e ti spieghiamo con chiarezza cosa ha l'auto.",
+      "Diagnosi computerizzata ed elettrauto da ForceCar a Chișinău: leggiamo gli errori, controlliamo batteria, alternatore e impianto e ti spieghiamo cosa ha l'auto.",
     intro: [
       "Fare una diagnosi significa trovare la vera causa di un problema, non solo leggere un codice di errore. Da ForceCar uniamo la diagnosi computerizzata — la lettura degli errori della centralina — al controllo pratico dell'auto, grazie a oltre 20 anni di esperienza.",
       "Ci occupiamo anche dell'impianto elettrico: batteria, alternatore, motorino di avviamento, luci, sensori, fusibili e collegamenti. Dopo il controllo ti spieghiamo in modo chiaro cosa abbiamo trovato e cosa va riparato, così puoi decidere in modo consapevole.",
@@ -111,7 +111,7 @@ const it: ServiceContentMap = {
     h1: "Sostituzione della distribuzione a Chișinău",
     metaTitle: "Sostituzione cinghia di distribuzione a Chișinău | ForceCar",
     metaDescription:
-      "Sostituzione di cinghia o catena di distribuzione da ForceCar a Chișinău: controlliamo rulli, tenditore e pompa dell'acqua e ti diciamo con chiarezza cosa sostituire.",
+      "Sostituzione di cinghia o catena di distribuzione da ForceCar a Chișinău: controlliamo rulli, tenditore e pompa dell'acqua e ti diciamo cosa sostituire.",
     intro: [
       "La distribuzione sincronizza il movimento di pistoni e valvole. Se una cinghia usurata si rompe, in molti motori i pistoni colpiscono le valvole e la riparazione diventa molto più costosa di una sostituzione fatta per tempo.",
       "Da ForceCar controlliamo lo stato della distribuzione e ti diciamo cosa va sostituito: cinghia o catena, rulli, tenditore e, se necessario, pompa dell'acqua.",
@@ -406,7 +406,7 @@ const it: ServiceContentMap = {
     h1: "Vendita ricambi auto a Chișinău",
     metaTitle: "Ricambi auto a Chișinău — vendita ricambi | ForceCar",
     metaDescription:
-      "Vendita ricambi auto da ForceCar a Chișinău: filtri, pastiglie e dischi freno, cinghie, cuscinetti, parti delle sospensioni e altro, adatti alla tua auto, con montaggio in officina.",
+      "Vendita ricambi auto da ForceCar a Chișinău: filtri, pastiglie e dischi freno, cinghie, cuscinetti e sospensioni adatti alla tua auto, con montaggio in officina.",
     intro: [
       "Da ForceCar trovi anche ricambi auto: dai filtri e dalle pastiglie dei freni fino a cinghie di distribuzione, cuscinetti e parti delle sospensioni. Ti aiutiamo a scegliere il pezzo giusto per la tua auto, così non compri a caso.",
       "Puoi portare via il pezzo o farlo montare direttamente nella nostra officina.",

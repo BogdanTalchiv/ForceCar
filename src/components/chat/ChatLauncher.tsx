@@ -38,12 +38,12 @@ export function ChatLauncher(props: ChatLauncherProps) {
           onPointerEnter={preload}
           onFocus={preload}
           aria-label={props.labels.open}
-          className="fixed right-6 bottom-6 z-40 hidden h-14 items-center gap-2.5 rounded-full bg-ink-900 pr-5 pl-4 font-bold text-white shadow-float ring-1 ring-white/10 transition-transform hover:-translate-y-0.5 lg:flex"
+          className="fixed right-3 bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-40 flex size-12 items-center justify-center rounded-full bg-ink-900 font-bold text-white shadow-float ring-1 ring-white/10 transition-transform hover:-translate-y-0.5 lg:right-6 lg:bottom-6 lg:h-14 lg:w-auto lg:gap-2.5 lg:pr-5 lg:pl-4"
         >
           <span className="flex size-8 items-center justify-center rounded-full bg-brand">
             <MessageCircle className="size-[1.125rem]" aria-hidden="true" />
           </span>
-          {props.labels.launcher}
+          <span className="hidden lg:inline">{props.labels.launcher}</span>
         </button>
       )}
       {loaded && <ChatWidget {...props} open={open} onClose={() => setOpen(false)} />}

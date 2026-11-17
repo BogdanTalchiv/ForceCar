@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { Play } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { VideoReview as VideoReviewData } from "@/config/reviews";
+import { CONSENT_CHANGED_EVENT, readConsent, type ConsentState } from "@/lib/analytics/consent";
 import { track } from "@/lib/analytics/track";
 
 export function youtubeId(url: string): string | null {
@@ -29,13 +30,22 @@ interface Labels {
 }
 
 /**
- * Fațadă video: până la click nu se încarcă nimic de la YouTube (performanță + confidențialitate).
- * După click se folosește youtube-nocookie.com.
+ * Fațadă video: până la click (sau acord funcțional) nu se încarcă nimic de la YouTube.
+ * După activare se folosește youtube-nocookie.com.
  */
 export function VideoReview({ review, labels }: { review: VideoReviewData; labels: Labels }) {
   const [active, setActive] = useState(false);
   const id = youtubeId(review.videoUrl);
   const isFile = !id && /\.(mp4|webm)$/i.test(review.videoUrl);
+
+  useEffect(() => {
+    if (readConsent()?.functional) queueMicrotask(() => setActive(true));
+    const onChange = (e: Event) => {
+      if ((e as CustomEvent<ConsentState>).detail.functional) setActive(true);
+    };
+    window.addEventListener(CONSENT_CHANGED_EVENT, onChange);
+    return () => window.removeEventListener(CONSENT_CHANGED_EVENT, onChange);
+  }, []);
 
   if (!id && !isFile) {
     return (
@@ -54,7 +64,7 @@ export function VideoReview({ review, labels }: { review: VideoReviewData; label
         {active ? (
           id ? (
             <iframe
-              src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`}
+              src={`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`}
               title={review.quote}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -62,7 +72,7 @@ export function VideoReview({ review, labels }: { review: VideoReviewData; label
               className="absolute inset-0 size-full"
             />
           ) : (
-            <video src={review.videoUrl} controls autoPlay playsInline className="absolute inset-0 size-full bg-black" />
+            <video src={review.videoUrl} controls playsInline className="absolute inset-0 size-full bg-black" />
           )
         ) : (
           <button

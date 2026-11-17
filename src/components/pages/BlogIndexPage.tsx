@@ -32,7 +32,7 @@ export function BlogIndexPage({ locale }: { locale: Locale }) {
         <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((a) => (
             <li key={a.id}>
-              <ArticleCard locale={locale} article={a} readLabel={dict.cta.readArticle} />
+              <ArticleCard locale={locale} article={a} readLabel={dict.cta.readArticle} headingLevel={2} />
             </li>
           ))}
         </ul>

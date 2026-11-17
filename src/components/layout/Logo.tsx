@@ -14,10 +14,13 @@ export function Logo({
   tagline,
   className = "",
   size = "md",
+  preload = false,
 }: {
   tagline?: string;
   className?: string;
   size?: keyof typeof sizes;
+  /** Doar logo-ul din header ar trebui preîncărcat (LCP). */
+  preload?: boolean;
 }) {
   if (business.logo) {
     return (
@@ -27,7 +30,7 @@ export function Logo({
         width={2117}
         height={743}
         className={`${sizes[size]} w-auto max-w-full object-contain ${className}`}
-        preload
+        preload={preload}
       />
     );
   }

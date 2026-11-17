@@ -32,7 +32,7 @@ export function Header({
     <HeaderFrame>
       <div className="header-bar container-fc flex items-center justify-between gap-4">
         <Link href={pagePath(locale, "home")} aria-label={dict.a11y.home} className="shrink-0 rounded-sm">
-          <Logo tagline={`${dict.meta.tagline} · Chișinău`} />
+          <Logo tagline={`${dict.meta.tagline} · Chișinău`} preload />
         </Link>
 
         <nav aria-label={dict.a11y.mainNav} className="hidden lg:block">
@@ -48,7 +48,7 @@ export function Header({
                     {item.label}
                     <ChevronDown className="size-4 opacity-70 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" aria-hidden="true" />
                   </Link>
-                  <div className="invisible absolute top-full left-1/2 z-50 w-[36rem] -translate-x-1/2 pt-3 opacity-0 transition-[opacity,visibility] duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <div className="invisible absolute top-full left-1/2 z-50 w-[36rem] max-w-[min(36rem,calc(100vw-2rem))] -translate-x-1/2 pt-3 opacity-0 transition-[opacity,visibility] duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                     <ul className="grid grid-cols-2 gap-1 rounded-lg bg-white p-3 text-text shadow-float ring-1 ring-black/5">
                       {services.map((s) => (
                         <li key={s.id}>

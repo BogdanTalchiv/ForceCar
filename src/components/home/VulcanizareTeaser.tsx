@@ -1,9 +1,11 @@
 import Image from "next/image";
-import { ArrowUpRight, CircleDot, Disc3, Gauge, Wrench } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight, CircleDot, Disc3, Gauge, Wrench } from "lucide-react";
 import { business } from "@/config/business";
 import { forceCarImages, getImages } from "@/config/forcecar-images";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { pagePath } from "@/i18n/routes";
 import { buttonClasses } from "@/components/ui/button";
 import { FcImage } from "@/components/ui/FcImage";
 
@@ -36,7 +38,7 @@ export function VulcanizareTeaser({ locale }: { locale: Locale }) {
             <h2 id="vulcanizare-title" className="text-h2 font-extrabold text-balance">
               {t.title}
             </h2>
-            <p className="mt-5 text-lead text-steel-300">{t.lead}</p>
+            <p className="mt-5 text-lead text-steel-300">{url ? t.lead : t.leadPending}</p>
             <div className="mt-8 flex flex-wrap items-start gap-5">
               <div>
                 {url ? (
@@ -53,10 +55,10 @@ export function VulcanizareTeaser({ locale }: { locale: Locale }) {
                   </a>
                 ) : (
                   <>
-                    <a href="#vulcanizare" className={buttonClasses({ size: "lg" })} data-track-location="home_vulcanizare">
-                      {t.cta}
-                      <ArrowUpRight className="size-5" aria-hidden="true" />
-                    </a>
+                    <Link href={pagePath(locale, "booking")} className={buttonClasses({ size: "lg" })} data-track-location="home_vulcanizare">
+                      {dict.cta.book}
+                      <ArrowRight className="btn-arrow size-5" aria-hidden="true" />
+                    </Link>
                     <p className="mt-3 max-w-[16.5rem] text-sm leading-relaxed text-steel-400">{t.soon}</p>
                   </>
                 )}

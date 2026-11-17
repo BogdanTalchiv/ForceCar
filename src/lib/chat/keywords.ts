@@ -41,8 +41,8 @@ export const serviceKeywords: [ServiceId, string[]][] = [
   [
     "oil",
     [
-      "schimb ulei", "schimbul de ulei", "ulei de motor", "filtr", "замена масла", "заменить масло", "фильтр", "oil change",
-      "oil filter", "cambio olio", "cambiare l olio",
+      "schimb ulei", "schimbul de ulei", "ulei de motor", " ulei ", "filtr", "замена масла", "заменить масло", " масло ", "фильтр",
+      "oil change", " oil ", "oil filter", "cambio olio", "cambiare l olio", " olio ",
     ],
   ],
   [
@@ -56,7 +56,8 @@ export const serviceKeywords: [ServiceId, string[]][] = [
   [
     "engine",
     [
-      "motor", "двигат", "мотор", "engine", "fum", "дым", "smoke", "fumo", "ulei", "масл", "oil", "olio", "supraincalz", "перегрев",
+      // „ulei” / „oil” / „olio” / „масл” sunt pe serviciul oil (deasupra); aici rămân semnalele de motor.
+      "motor", "двигат", "мотор", "engine", "fum", "дым", "smoke", "fumo", "supraincalz", "перегрев",
       "overheat", "surriscald", "pierde putere", "не тянет", "power loss", "potenza",
     ],
   ],

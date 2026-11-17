@@ -148,7 +148,7 @@ export default function ChatWidget({ locale, labels, bookingHref, contactHref, p
   return (
     <section
       role="dialog"
-      aria-modal="false"
+      aria-modal="true"
       aria-labelledby="fc-chat-title"
       hidden={!open}
       className="fixed inset-0 z-50 flex flex-col bg-white shadow-float lg:inset-auto lg:right-6 lg:bottom-6 lg:h-[min(40rem,calc(100dvh-3rem))] lg:w-[24rem] lg:overflow-hidden lg:rounded-xl lg:ring-1 lg:ring-black/10"
@@ -235,7 +235,7 @@ export default function ChatWidget({ locale, labels, bookingHref, contactHref, p
             placeholder={labels.placeholder}
             disabled={limitReached}
             aria-invalid={tooLong || undefined}
-            className="max-h-32 min-h-11 flex-1 resize-none rounded-md border border-line px-3 py-2.5 text-base leading-snug focus:border-ink-900 focus:outline-none"
+            className="max-h-32 min-h-11 flex-1 resize-none rounded-md border border-line px-3 py-2.5 text-base leading-snug focus:border-ink-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
           />
           <button
             type="submit"

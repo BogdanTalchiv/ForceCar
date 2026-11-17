@@ -7,12 +7,12 @@ const it: Dictionary = {
     home: {
       title: "Officina auto a Chișinău con oltre 20 anni di esperienza | ForceCar",
       description:
-        "ForceCar è un'officina auto a Chișinău con oltre 20 anni di esperienza: diagnosi computerizzata ed elettrauto, riparazione motore, distribuzione, freni, sospensioni, cambio olio, gommista 24/24, ricambi auto, carrozzeria e verniciatura. Prenota online.",
+        "Officina ForceCar a Chișinău, oltre 20 anni di esperienza: diagnosi, motore, freni, cambio olio, gommista 24/24, ricambi, carrozzeria e verniciatura. Prenota online.",
     },
     services: {
-      title: "Servizi di officina a Chișinău — meccanica, carrozzeria, verniciatura",
+      title: "Servizi auto a Chișinău — meccanica e carrozzeria",
       description:
-        "I servizi ForceCar a Chișinău: diagnosi computerizzata ed elettrauto, riparazione motore, sostituzione distribuzione, freni, sospensioni e sterzo, meccanica generale, cambio olio e filtri, gommista 24/24, vendita ricambi auto, carrozzeria e verniciatura.",
+        "Diagnosi ed elettrauto, motore, distribuzione, freni, sospensioni, cambio olio, gommista 24/24, ricambi, carrozzeria e verniciatura: ForceCar, Chișinău.",
     },
     works: {
       title: "Lavori ForceCar — galleria dell'officina di Chișinău",
@@ -26,7 +26,7 @@ const it: Dictionary = {
     },
     reviews: {
       title: "Recensioni ForceCar — cosa dicono i clienti dell'officina",
-      description: "Recensioni reali dei clienti di ForceCar, officina auto a Chișinău.",
+      description: "Recensioni reali dei clienti di ForceCar, officina auto a Chișinău. Leggi le loro opinioni e prenota online un controllo.",
     },
     faq: {
       title: "Domande frequenti sull'officina ForceCar",
@@ -216,9 +216,11 @@ const it: Dictionary = {
     vulcanizare: {
       eyebrow: "Gommista",
       title: "Ti serve anche il gommista?",
-      lead: "Una foratura, il cambio stagionale degli pneumatici o l'equilibratura — i lavori da gommista sono su un sito separato. Lo apri dal pulsante qui sotto.",
+      lead: "Una foratura, il cambio stagionale degli pneumatici o l'equilibratura — i lavori da gommista sono su un sito dedicato. Lo apri dal pulsante qui sotto.",
+      leadPending:
+        "Una foratura, il cambio stagionale degli pneumatici o l'equilibratura — gommista 24/24 da ForceCar. Il sito dedicato arriva presto; nel frattempo puoi richiedere un appuntamento qui.",
       cta: "Vai al gommista",
-      soon: "Il sito del gommista non è ancora pubblico. Il pulsante lo aprirà non appena sarà online.",
+      soon: "Il sito dedicato del gommista non è ancora pubblico.",
       items: [
         {
           title: "Riparazione foratura",
@@ -649,14 +651,14 @@ const it: Dictionary = {
 
   consent: {
     title: "Cookie sul sito ForceCar",
-    text: "Utilizziamo cookie necessari al funzionamento del sito. Con il tuo consenso utilizziamo anche cookie di analisi e di marketing, per capire come viene usato il sito e misurare le campagne.",
-    textAnalytics: "Utilizziamo cookie necessari al funzionamento del sito. Con il tuo consenso utilizziamo anche cookie di analisi, per capire come viene usato il sito.",
-    textMarketing: "Utilizziamo cookie necessari al funzionamento del sito. Con il tuo consenso utilizziamo anche cookie di marketing, per misurare le campagne.",
+    text: "Utilizziamo cookie necessari al funzionamento del sito. Quelli facoltativi si attivano solo con il tuo consenso e puoi cambiare la scelta in qualsiasi momento.",
     acceptAll: "Accetta tutti",
-    rejectAll: "Solo necessari",
-    customize: "Impostazioni",
+    rejectAll: "Rifiuta facoltativi",
+    customize: "Personalizza preferenze",
     save: "Salva le preferenze",
+    close: "Chiudi",
     preferencesTitle: "Impostazioni cookie",
+    preferencesText: "Scegli quali categorie di cookie consentire. Quelli necessari sono sempre attivi; gli altri restano disattivati finché non li attivi.",
     alwaysOn: "Sempre attivi",
     policyLink: "Informativa sui cookie",
     settingsLink: "Impostazioni cookie",
@@ -665,6 +667,10 @@ const it: Dictionary = {
       necessary: {
         title: "Necessari",
         text: "Memorizzano la lingua scelta e le preferenze sui cookie. Senza di essi il sito non funziona correttamente.",
+      },
+      functional: {
+        title: "Funzionali",
+        text: "Caricano automaticamente i contenuti esterni (mappa Google Maps o video YouTube) quando sono presenti nella pagina. Senza consenso, si caricano solo con un clic.",
       },
       analytics: {
         title: "Analisi",

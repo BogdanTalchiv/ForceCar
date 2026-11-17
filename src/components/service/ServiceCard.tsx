@@ -36,7 +36,7 @@ export function ServiceCard({
       ? "(min-width: 1280px) 1280px, 100vw"
       : span === 2
         ? "(min-width: 1024px) 640px, 100vw"
-        : "(min-width: 1024px) 768px, (min-width: 640px) 100vw, 100vw";
+        : "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw";
   return (
     <article
       className={`group relative isolate flex min-h-[16.5rem] flex-col overflow-hidden rounded-lg bg-ink-900 text-white ring-1 ring-white/10 transition-[ring-color] duration-300 hover:ring-white/28 sm:min-h-[19.5rem] ${spanClass} ${className}`}
@@ -79,7 +79,7 @@ export function ServiceCard({
         <p className="mt-2 line-clamp-2 text-[0.9375rem] leading-relaxed text-steel-300">{content.short}</p>
         <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-white">
           {detailsLabel}
-          <ArrowRight className="btn-arrow size-4" aria-hidden="true" />
+          <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
         </span>
       </div>
     </article>

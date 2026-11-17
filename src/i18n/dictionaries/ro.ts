@@ -5,12 +5,12 @@ const ro = {
     home: {
       title: "Service auto în Chișinău cu peste 20 de ani de experiență | ForceCar",
       description:
-        "ForceCar este un service auto din Chișinău: diagnostică computerizată și electrică auto, reparații motor, schimb distribuție, frâne, suspensie, schimb ulei, vulcanizare 24/24, piese auto, caroserie și vopsitorie. Peste 20 de ani de experiență. Programează-te online.",
+        "Service auto în Chișinău cu peste 20 de ani de experiență: diagnoză, motor, frâne, schimb ulei, vulcanizare 24/24, piese auto, caroserie și vopsitorie. Programare online.",
     },
     services: {
-      title: "Servicii auto în Chișinău — mecanică, caroserie, vopsitorie",
+      title: "Servicii auto în Chișinău — mecanică și caroserie",
       description:
-        "Serviciile ForceCar în Chișinău: diagnostică computerizată și electrică auto, reparații motor, schimb distribuție, frâne, suspensie și direcție, mecanică generală, schimb ulei și filtre, vulcanizare 24/24, vânzare piese auto, caroserie și vopsitorie.",
+        "Diagnoză și electrică auto, motor, distribuție, frâne, suspensie, schimb ulei, vulcanizare 24/24, piese auto, caroserie și vopsitorie la ForceCar, Chișinău.",
     },
     works: {
       title: "Lucrări ForceCar — galerie din service-ul auto din Chișinău",
@@ -24,7 +24,7 @@ const ro = {
     },
     reviews: {
       title: "Recenzii ForceCar — ce spun clienții service-ului auto",
-      description: "Recenzii reale ale clienților ForceCar, service auto din Chișinău.",
+      description: "Recenzii reale ale clienților ForceCar, service auto din Chișinău. Citește părerile lor și programează-te online pentru o verificare.",
     },
     faq: {
       title: "Întrebări frecvente despre service-ul auto ForceCar",
@@ -214,9 +214,11 @@ const ro = {
     vulcanizare: {
       eyebrow: "Vulcanizare auto",
       title: "Ai nevoie și de vulcanizare?",
-      lead: "Pană, schimb de anvelope sau echilibrare — lucrările de vulcanizare sunt pe un site separat. Le deschizi din butonul de mai jos.",
+      lead: "Pană, schimb de anvelope sau echilibrare — lucrările de vulcanizare sunt pe un site dedicat. Le deschizi din butonul de mai jos.",
+      leadPending:
+        "Pană, schimb de anvelope sau echilibrare — vulcanizare 24/24 la ForceCar. Site-ul dedicat vine în curând; până atunci poți cere o programare aici.",
       cta: "Mergi la vulcanizare",
-      soon: "Site-ul de vulcanizare nu este încă public. Butonul va deschide site-ul imediat ce este activ.",
+      soon: "Site-ul dedicat de vulcanizare nu este încă public.",
       items: [
         {
           title: "Reparație pană",
@@ -645,14 +647,14 @@ const ro = {
 
   consent: {
     title: "Cookie-uri pe site-ul ForceCar",
-    text: "Folosim cookie-uri necesare pentru funcționarea site-ului. Cu acordul tău, folosim și cookie-uri de analiză și de marketing, ca să înțelegem cum este folosit site-ul și să măsurăm campaniile.",
-    textAnalytics: "Folosim cookie-uri necesare pentru funcționarea site-ului. Cu acordul tău, folosim și cookie-uri de analiză, ca să înțelegem cum este folosit site-ul.",
-    textMarketing: "Folosim cookie-uri necesare pentru funcționarea site-ului. Cu acordul tău, folosim și cookie-uri de marketing, ca să măsurăm campaniile.",
+    text: "Folosim cookie-uri necesare pentru funcționarea site-ului. Pe cele opționale le activăm doar cu acordul tău, iar alegerea o poți schimba oricând.",
     acceptAll: "Accept toate",
-    rejectAll: "Doar necesare",
-    customize: "Setări",
+    rejectAll: "Refuz opționalele",
+    customize: "Personalizează preferințele",
     save: "Salvează preferințele",
+    close: "Închide",
     preferencesTitle: "Setări cookie-uri",
+    preferencesText: "Alege ce categorii de cookie-uri permiți. Cele necesare sunt mereu active; celelalte rămân oprite până le activezi.",
     alwaysOn: "Întotdeauna active",
     policyLink: "Politica de cookie-uri",
     settingsLink: "Setări cookie-uri",
@@ -661,6 +663,10 @@ const ro = {
       necessary: {
         title: "Necesare",
         text: "Păstrează alegerea limbii și preferințele privind cookie-urile. Fără ele site-ul nu funcționează corect.",
+      },
+      functional: {
+        title: "Funcționale",
+        text: "Încarcă automat conținutul extern (harta Google Maps sau clipurile YouTube), când este prezent pe pagină. Fără acord, se încarcă doar când apeși pe el.",
       },
       analytics: {
         title: "Analiză",

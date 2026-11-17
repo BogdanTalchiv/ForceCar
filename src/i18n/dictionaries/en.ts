@@ -7,12 +7,12 @@ const en: Dictionary = {
     home: {
       title: "Car service in Chișinău with 20+ years of experience | ForceCar",
       description:
-        "ForceCar is a car service in Chișinău, Moldova, with more than 20 years of experience: computer diagnostics and auto electrics, engine repair, timing belts, brakes, suspension, oil changes, 24/7 tire service, car parts, body repair and painting. Book online.",
+        "ForceCar, a car service in Chișinău with 20+ years of experience: diagnostics, engine, brakes, oil changes, 24/7 tire service, car parts, body repair and paint. Book online.",
     },
     services: {
-      title: "Car repair services in Chișinău — mechanics, bodywork, paint",
+      title: "Car repair services in Chișinău — mechanics & bodywork",
       description:
-        "ForceCar services in Chișinău: computer diagnostics and auto electrics, engine repair, timing belt replacement, brakes, suspension and steering, general mechanics, oil and filter changes, 24/7 tire service, car parts sales, body repair and painting.",
+        "Diagnostics and auto electrics, engine, timing belts, brakes, suspension, oil changes, 24/7 tire service, car parts, body repair and paint at ForceCar, Chișinău.",
     },
     works: {
       title: "ForceCar work — gallery from our Chișinău workshop",
@@ -26,7 +26,7 @@ const en: Dictionary = {
     },
     reviews: {
       title: "ForceCar reviews — what our customers say",
-      description: "Genuine reviews from ForceCar customers, a car service in Chișinău.",
+      description: "Genuine reviews from ForceCar customers, a car service in Chișinău. Read what they say and book an inspection online.",
     },
     faq: {
       title: "Frequently asked questions about ForceCar car service",
@@ -216,9 +216,11 @@ const en: Dictionary = {
     vulcanizare: {
       eyebrow: "Tire service",
       title: "Need tire service as well?",
-      lead: "A puncture, a seasonal tire change or wheel balancing — tire work is on a separate website. Open it from the button below.",
+      lead: "A puncture, a seasonal tire change or wheel balancing — tire work is on a dedicated website. Open it from the button below.",
+      leadPending:
+        "A puncture, a seasonal tire change or wheel balancing — 24/7 tire service at ForceCar. The dedicated site is coming soon; until then you can request an appointment here.",
       cta: "Go to tire service",
-      soon: "The tire-service website isn't public yet. The button will open it as soon as it is live.",
+      soon: "The dedicated tire-service website isn't public yet.",
       items: [
         {
           title: "Puncture repair",
@@ -647,16 +649,14 @@ const en: Dictionary = {
 
   consent: {
     title: "Cookies on the ForceCar website",
-    text: "We use necessary cookies to make the site work. With your consent, we also use analytics and marketing cookies to understand how the site is used and to measure our campaigns.",
-    textAnalytics:
-      "We use necessary cookies to make the site work. With your consent, we also use analytics cookies to understand how the site is used.",
-    textMarketing:
-      "We use necessary cookies to make the site work. With your consent, we also use marketing cookies to measure our campaigns.",
+    text: "We use necessary cookies to make the site work. Optional ones are enabled only with your consent, and you can change your choice at any time.",
     acceptAll: "Accept all",
-    rejectAll: "Necessary only",
-    customize: "Settings",
+    rejectAll: "Reject optional",
+    customize: "Customize preferences",
     save: "Save preferences",
+    close: "Close",
     preferencesTitle: "Cookie settings",
+    preferencesText: "Choose which cookie categories you allow. Necessary cookies are always active; the others stay off until you turn them on.",
     alwaysOn: "Always active",
     policyLink: "Cookie policy",
     settingsLink: "Cookie settings",
@@ -665,6 +665,10 @@ const en: Dictionary = {
       necessary: {
         title: "Necessary",
         text: "Remember your language and cookie preferences. The site doesn't work properly without them.",
+      },
+      functional: {
+        title: "Functional",
+        text: "Load external content automatically (Google Maps or YouTube clips) when it appears on the page. Without consent, it loads only when you click it.",
       },
       analytics: {
         title: "Analytics",

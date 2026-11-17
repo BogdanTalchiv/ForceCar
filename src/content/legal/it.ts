@@ -78,27 +78,30 @@ const it: LegalContent = {
       "I cookie sono piccoli file salvati dal browser. Li usiamo solo quanto necessario: alcuni sono indispensabili al funzionamento del sito, gli altri si attivano solo con il tuo consenso.",
     sections: [
       {
+        id: "necessary",
         h: "Cookie necessari",
         p: [
           "Memorizzano la lingua scelta e le tue preferenze sui cookie. Non possono essere disattivati, perché senza di essi il sito non funziona correttamente.",
         ],
       },
       {
+        id: "analytics-marketing",
         h: "Cookie di analisi e marketing",
         p: [
           "Si attivano solo con il tuo consenso. Ci aiutano a capire come viene usato il sito e a misurare l'efficacia delle campagne. Puoi rifiutarli senza che il sito funzioni peggio.",
         ],
       },
       {
-        h: "Contenuti esterni caricati su richiesta",
+        id: "functional",
+        h: "Cookie funzionali (contenuti esterni)",
         p: [
-          "I video di YouTube e la mappa di Google Maps non si caricano automaticamente. Vengono caricati solo dopo un clic; a quel punto i rispettivi fornitori possono impostare i propri cookie.",
+          "I contenuti esterni (la mappa di Google Maps nella pagina contatti e, se presenti, i video YouTube nelle recensioni) sono forniti da Google. Se accetti i cookie funzionali, questi contenuti si caricano automaticamente; altrimenti solo quando premi il pulsante relativo. Dopo il caricamento, Google può impostare i propri cookie secondo la sua informativa sulla privacy.",
         ],
       },
     ],
     tableTitle: "Cosa usiamo su questo sito",
     columns: { name: "Nome", purpose: "Finalità", duration: "Durata", category: "Categoria" },
-    categories: { necessary: "Necessario", analytics: "Analisi", marketing: "Marketing", external: "Esterno, su richiesta" },
+    categories: { necessary: "Necessario", analytics: "Analisi", marketing: "Marketing", functional: "Funzionale" },
     rows: {
       locale: { purpose: "Memorizza la lingua che hai scelto.", duration: "1 anno" },
       consent: { purpose: "Memorizza le tue preferenze sui cookie.", duration: "6 mesi" },
@@ -119,7 +122,7 @@ const it: LegalContent = {
     manage: {
       h: "Come modificare le preferenze",
       p: [
-        "Puoi modificare la scelta in qualsiasi momento dal link «Impostazioni cookie» a fondo pagina. Puoi anche eliminare i cookie dalle impostazioni del browser.",
+        "Puoi modificare o revocare il consenso in qualsiasi momento dal link «Impostazioni cookie» a fondo pagina. La revoca non pregiudica il trattamento effettuato prima di essa. Puoi anche eliminare i cookie dalle impostazioni del browser.",
       ],
     },
   },

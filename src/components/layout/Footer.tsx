@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { business } from "@/config/business";
-import { consentRequired } from "@/config/site";
+import { consentManaged } from "@/lib/consent-categories";
 import { localeMeta, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { pagePath } from "@/i18n/routes";
@@ -197,7 +197,7 @@ export function Footer({ locale, alternates }: { locale: Locale; alternates: Par
                 {dict.meta.cookies.title}
               </Link>
             </li>
-            {consentRequired && (
+            {consentManaged && (
               <li>
                 <CookieSettingsButton label={dict.consent.settingsLink} />
               </li>

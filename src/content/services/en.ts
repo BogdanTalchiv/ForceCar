@@ -7,7 +7,7 @@ const en: ServiceContentMap = {
     h1: "Computer diagnostics and auto electrics in Chișinău",
     metaTitle: "Computer diagnostics & auto electrics in Chișinău — ForceCar",
     metaDescription:
-      "Computer diagnostics and auto electrics at ForceCar, Chișinău: we read fault codes, check the battery, alternator, sensors and wiring, and explain clearly what's wrong with your car.",
+      "Computer diagnostics and auto electrics at ForceCar, Chișinău: we read fault codes, check the battery, alternator and wiring, and explain clearly what's wrong.",
     intro: [
       "Diagnostics means finding the real cause of a problem, not just reading a fault code. At ForceCar we combine computer diagnostics — reading the codes stored in the car's computer — with a hands-on inspection, backed by more than 20 years of experience.",
       "We also handle auto electrics: battery, alternator, starter motor, lights, sensors, fuses and connections. After the check we explain in plain terms what we found and what needs repairing, so you can make an informed decision.",

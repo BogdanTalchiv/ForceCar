@@ -78,27 +78,30 @@ const en: LegalContent = {
       "Cookies are small files saved by your browser. We only use them as far as necessary: some are essential for the website to work, the others are enabled only with your consent.",
     sections: [
       {
+        id: "necessary",
         h: "Necessary cookies",
         p: [
           "They remember your chosen language and your cookie preferences. They can't be switched off, because the website wouldn't work properly without them.",
         ],
       },
       {
+        id: "analytics-marketing",
         h: "Analytics and marketing cookies",
         p: [
           "These are enabled only with your consent. They help us understand how the website is used and measure how well campaigns work. You can refuse them and the website will work just as well.",
         ],
       },
       {
-        h: "External content loaded on request",
+        id: "functional",
+        h: "Functional cookies (external content)",
         p: [
-          "YouTube videos and the Google Maps map don't load automatically. They load only after you click them; at that point those providers may set their own cookies.",
+          "External content (the Google Maps map on the contact page and, when present, YouTube clips in reviews) is provided by Google. If you accept functional cookies, this content loads automatically; otherwise it loads only when you click the related button. Once loaded, Google may set its own cookies under its privacy policy.",
         ],
       },
     ],
     tableTitle: "What we use on this website",
     columns: { name: "Name", purpose: "Purpose", duration: "Duration", category: "Category" },
-    categories: { necessary: "Necessary", analytics: "Analytics", marketing: "Marketing", external: "External, on request" },
+    categories: { necessary: "Necessary", analytics: "Analytics", marketing: "Marketing", functional: "Functional" },
     rows: {
       locale: { purpose: "Remembers the language you chose.", duration: "1 year" },
       consent: { purpose: "Remembers your cookie preferences.", duration: "6 months" },
@@ -119,7 +122,7 @@ const en: LegalContent = {
     manage: {
       h: "How to change your preferences",
       p: [
-        "You can change your choice at any time from the “Cookie settings” link in the footer. You can also delete cookies in your browser settings.",
+        "You can change or withdraw your consent at any time from the “Cookie settings” link in the footer. Withdrawing consent doesn't affect processing carried out before the withdrawal. You can also delete cookies in your browser settings.",
       ],
     },
   },

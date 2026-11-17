@@ -317,10 +317,16 @@ export function BookingForm({ locale, labels, optionalLabel, services, uploadsEn
     description: f.description,
     preferredDate: f.date,
     photos: f.photos,
+    consent: f.consentLink,
   };
 
   const a11y = (name: BookingField, hint = false) => {
-    const describedBy = [errors[name] ? `bf-${name}-error` : null, hint ? `bf-${name}-hint` : null].filter(Boolean).join(" ");
+    const describedBy = [
+      errors[name] ? `bf-${name}-error` : null,
+      hint && !errors[name] ? `bf-${name}-hint` : null,
+    ]
+      .filter(Boolean)
+      .join(" ");
     return {
       id: `bf-${name}`,
       name,
@@ -625,7 +631,7 @@ export function BookingForm({ locale, labels, optionalLabel, services, uploadsEn
               className="sr-only"
             />
             {photos.length > 0 && (
-              <ul className="mt-4 grid grid-cols-4 gap-3">
+              <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {photos.map((p, i) => (
                   <li key={p.url} className="relative aspect-square overflow-hidden rounded-md bg-mist ring-1 ring-line">
                     {/* eslint-disable-next-line @next/next/no-img-element -- previzualizare locală (blob:), nu trece prin optimizare */}
@@ -661,7 +667,7 @@ export function BookingForm({ locale, labels, optionalLabel, services, uploadsEn
             />
             <span className="text-[0.9375rem] leading-relaxed">
               {f.consentBefore}
-              <Link href={privacyHref} className="font-semibold text-brand underline underline-offset-2" target="_blank">
+              <Link href={privacyHref} className="font-semibold text-brand underline underline-offset-2" target="_blank" rel="noopener">
                 {f.consentLink}
               </Link>
               {f.consentAfter}

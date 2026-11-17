@@ -113,6 +113,7 @@
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
+      animation-delay: 0s !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
@@ -272,6 +273,28 @@
 
 .animate-fade-up {
   animation: fc-fade-up 0.35s var(--ease-out-soft) both;
+}
+
+/* Banner cookie: intrare cu delay scurt (nu concurează cu LCP), ieșire înainte de demontare. */
+@media (prefers-reduced-motion: no-preference) {
+  .fc-consent-in {
+    animation: fc-fade-up 0.45s var(--ease-out-soft) 0.6s both;
+  }
+  .fc-consent-out {
+    animation: fc-consent-out 0.22s ease-in both;
+  }
+  .fc-consent-dialog[open] {
+    animation: fc-fade-up 0.25s var(--ease-out-soft) both;
+  }
+  .fc-consent-dialog[open]::backdrop {
+    animation: fc-faq-in 0.25s ease-out both;
+  }
+}
+@keyframes fc-consent-out {
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
 }
 
 @keyframes fc-ticker {
@@ -1081,10 +1104,18 @@ details[open] .faq-pulse {
   .hero-services-ticker__track {
     animation: none !important;
     width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    row-gap: 0.5rem;
   }
 
   .hero-services-ticker [aria-hidden="true"] {
     display: none;
+  }
+
+  .hero-services-ticker {
+    overflow: visible;
   }
 
   .process-rail__progress,
